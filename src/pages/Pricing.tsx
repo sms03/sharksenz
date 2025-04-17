@@ -1,6 +1,7 @@
 import MainLayout from "@/layouts/MainLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { useState } from "react";
 
 const tiers = [
@@ -46,6 +47,18 @@ const tiers = [
 
 export default function Pricing() {
   const [currency, setCurrency] = useState<'USD' | 'INR'>('USD');
+  const [selectedTier, setSelectedTier] = useState<string | null>(null);
+
+  const handleCTAClick = (tierName: string) => {
+    if (tierName === "Free") {
+      alert("You have selected the Free plan!");
+    } else {
+      setSelectedTier(tierName);
+    }
+  };
+
+  const closeDialog = () => setSelectedTier(null);
+
   return (
     <MainLayout>
       <div className="mx-auto max-w-5xl py-12">
@@ -86,7 +99,29 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full" variant={tier.highlight ? "default" : "outline"}>{tier.cta}</Button>
+                {tier.name === "Free" ? (
+                  <Button className="w-full" variant={tier.highlight ? "default" : "outline"} onClick={() => handleCTAClick(tier.name)}>{tier.cta}</Button>
+                ) : (
+                  <Dialog open={selectedTier === tier.name} onOpenChange={closeDialog}>
+                    <DialogTrigger asChild>
+                      <Button className="w-full" variant={tier.highlight ? "default" : "outline"} onClick={() => handleCTAClick(tier.name)}>{tier.cta}</Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Subscribe to {tier.name} Plan</DialogTitle>
+                      </DialogHeader>
+                      <div className="my-4 text-center">
+                        <p className="mb-2">You have selected the <b>{tier.name}</b> plan for <b>{tier.price[currency]}</b>.</p>
+                        <p>Proceed to payment to complete your subscription.</p>
+                      </div>
+                      <DialogFooter>
+                        <Button className="w-full" onClick={() => { alert('Redirecting to payment gateway...'); closeDialog(); }}>
+                          Proceed to Payment
+                        </Button>
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
+                )}
               </CardContent>
             </Card>
           ))}
