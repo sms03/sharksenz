@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useEffect, useState } from 'react';
 import { Session, User } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
@@ -20,6 +19,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       (event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
+        // DEV: Always set current user as Pro for development
+        if (session?.user) {
+          localStorage.setItem("user_plan", "professional");
+        }
       }
     );
 
@@ -27,6 +30,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
+      // DEV: Always set current user as Pro for development
+      if (session?.user) {
+        localStorage.setItem("user_plan", "professional");
+      }
     });
 
     return () => subscription.unsubscribe();

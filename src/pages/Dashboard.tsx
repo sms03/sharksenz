@@ -18,6 +18,7 @@ import ValuationTabContent from "@/components/dashboard/ValuationTabContent";
 import RunwayTabContent from "@/components/dashboard/RunwayTabContent";
 import { Button } from "@/components/ui/button";
 import MetricsVisualizer from "@/components/dashboard/MetricsVisualizer";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export interface CalculatorTabContentProps {
   revenue: string;
@@ -62,6 +63,25 @@ export default function Dashboard() {
   // All metrics/charts zero if not visualized
   const zeroMetrics = { valuation: 0, monthlyBurnRate: 0, runway: 0, ltv: 0, ltvCacRatio: 0 };
   const displayMetrics = visualize ? metrics : zeroMetrics;
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Determine tab from route
+  let initialTab = "calculator";
+  if (location.pathname.endsWith("/valuation")) initialTab = "valuation";
+  else if (location.pathname.endsWith("/runway")) initialTab = "runway";
+  // You can add more routes if you add more widgets/pages
+
+  const [tab, setTab] = useState(initialTab);
+
+  // Sync tab with route
+  function handleTabChange(value: string) {
+    setTab(value);
+    if (value === "calculator") navigate("/dashboard/revenue");
+    else if (value === "valuation") navigate("/dashboard/valuation");
+    else if (value === "runway") navigate("/dashboard/runway");
+  }
   
   return (
     <MainLayout>
@@ -80,7 +100,7 @@ export default function Dashboard() {
           />
         </div>
         
-        <Tabs defaultValue="calculator" className="w-full">
+        <Tabs value={tab} onValueChange={handleTabChange} className="w-full">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="calculator">
               <Calculator className="mr-2 h-4 w-4" />
