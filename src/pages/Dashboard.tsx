@@ -19,6 +19,9 @@ import RunwayTabContent from "@/components/dashboard/RunwayTabContent";
 import { Button } from "@/components/ui/button";
 import MetricsVisualizer from "@/components/dashboard/MetricsVisualizer";
 import { useLocation, useNavigate } from "react-router-dom";
+import RevenueCalculator from "./RevenueCalculator";
+import MarketAnalysis from "./MarketAnalysis";
+import ProfitProjection from "./ProfitProjection";
 
 export interface CalculatorTabContentProps {
   revenue: string;
@@ -167,24 +170,15 @@ export default function Dashboard() {
           </TabsContent>
           
           <TabsContent value="revenue" className="mt-6 overflow-auto scrollbar-shark">
-            {/* Route to Revenue Calculator page */}
-            <Button asChild variant="outline" className="mb-4">
-              <a href="/RevenueCalculator">Open Full Revenue Calculator</a>
-            </Button>
+            <RevenueCalculator />
           </TabsContent>
           
           <TabsContent value="market" className="mt-6 overflow-auto scrollbar-shark">
-            {/* Route to Market Analysis page */}
-            <Button asChild variant="outline" className="mb-4">
-              <a href="/MarketAnalysis">Open Full Market Analysis</a>
-            </Button>
+            <MarketAnalysis />
           </TabsContent>
           
           <TabsContent value="profit" className="mt-6 overflow-auto scrollbar-shark">
-            {/* Route to Profit Projection page */}
-            <Button asChild variant="outline" className="mb-4">
-              <a href="/ProfitProjection">Open Full Profit Projection</a>
-            </Button>
+            <ProfitProjection />
           </TabsContent>
           
           <TabsContent value="valuation" className="mt-6 overflow-auto scrollbar-shark">
