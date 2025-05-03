@@ -124,10 +124,6 @@ export default function Contact() {
                     <Mail className="mt-0.5 h-5 w-5 text-shark-500" />
                     <div>
                       <h3 className="font-medium">Email</h3>
-                      <p className="text-sm text-muted-foreground">For general inquiries:</p>
-                      <a href="mailto:info@sharksenz.com" className="text-shark-600 hover:underline">
-                        info@sharksenz.com
-                      </a>
                       <p className="mt-2 text-sm text-muted-foreground">For support:</p>
                       <a href="mailto:support@sharksenz.com" className="text-shark-600 hover:underline">
                         support@sharksenz.com
