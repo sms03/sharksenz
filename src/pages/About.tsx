@@ -1,4 +1,3 @@
-
 import MainLayout from "@/layouts/MainLayout";
 import { FadeIn, FadeInStagger } from "@/components/ui/motion";
 import { BarChart3, Users, Book, GraduationCap, ChevronRight } from "lucide-react";
@@ -10,7 +9,7 @@ export default function About() {
     {
       name: "Shivam M. Salunkhe",
       role: "Founder & CEO",
-      bio: "Former investment banker with 10 years of experience in venture capital",
+      bio: "Business Enthusiast",
       avatar: "https://i.pravatar.cc/150?img=1",
     },
   ];

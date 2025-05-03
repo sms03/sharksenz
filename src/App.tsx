@@ -48,11 +48,7 @@ const App = () => (
               <Route path="/encyclopedia/:termId" element={<TermDetail />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/pitch-simulator" element={<PitchSimulator />} />
-              <Route path="/learning" element={
-                <ProtectedRoute>
-                  <Learning />
-                </ProtectedRoute>
-              } />
+              <Route path="/learning" element={<Learning />} />
               <Route path="/learning/:moduleId" element={
                 <ProtectedRoute>
                   <LearningModule />

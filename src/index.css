@@ -49,6 +49,13 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Scrollbar variables */
+    --scrollbar-track: 210 40% 96.1%;
+    --scrollbar-thumb: 199 89% 48%;
+    --scrollbar-thumb-hover: 199 89% 38%;
+    --scrollbar-width: 10px;
+    --scrollbar-height: 10px;
   }
 
   .dark {
@@ -87,6 +94,11 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Dark mode scrollbar variables */
+    --scrollbar-track: 222.2 47.4% 11.2%;
+    --scrollbar-thumb: 224.3 76.3% 48%;
+    --scrollbar-thumb-hover: 224.3 76.3% 58%; 
   }
 }
 
@@ -97,5 +109,80 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* Custom Scrollbar Styles */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--scrollbar-thumb)) hsl(var(--scrollbar-track));
+  }
+
+  /* Chrome, Edge, and Safari */
+  ::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    height: var(--scrollbar-height);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--scrollbar-track));
+    border-radius: calc(var(--radius) / 2);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--scrollbar-thumb));
+    border-radius: calc(var(--radius) / 2);
+    border: 2px solid hsl(var(--scrollbar-track));
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--scrollbar-thumb-hover));
+  }
+  
+  /* For horizontal scrollbars */
+  ::-webkit-scrollbar-corner {
+    background: hsl(var(--scrollbar-track));
+  }
+}
+
+/* Utility classes for custom scrollbars in specific components */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-thin {
+    --scrollbar-width: 6px;
+    --scrollbar-height: 6px;
+  }
+  
+  .scrollbar-shark {
+    scrollbar-color: hsl(var(--scrollbar-thumb)) hsl(var(--scrollbar-track));
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-shark::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    height: var(--scrollbar-height);
+  }
+  
+  .scrollbar-shark::-webkit-scrollbar-track {
+    background: hsl(var(--scrollbar-track));
+    border-radius: calc(var(--radius) / 2);
+  }
+  
+  .scrollbar-shark::-webkit-scrollbar-thumb {
+    background: hsl(var(--scrollbar-thumb));
+    border-radius: calc(var(--radius) / 2);
+    border: 2px solid hsl(var(--scrollbar-track));
+  }
+  
+  .scrollbar-shark::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--scrollbar-thumb-hover));
   }
 }

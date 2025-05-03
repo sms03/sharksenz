@@ -136,7 +136,7 @@ export default function EncyclopediaPage() {
         <SlideUpInView>
           {filteredTerms.length > 0 ? (
             <FadeInStagger>
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-h-[70vh] overflow-auto scrollbar-shark pr-2">
                 {filteredTerms.map((term) => {
                   // Map categories to icons
                   const categoryIcons: Record<string, LucideIcon> = {

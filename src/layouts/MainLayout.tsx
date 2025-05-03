@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import {
   BarChart3,
   BookOpen,
@@ -40,6 +41,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
 import { useTheme } from "@/components/ThemeProvider";
+import { PageTransition } from "@/components/ui/page-transition";
+import { gsap } from "gsap";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -108,15 +111,67 @@ const infoNavItems: NavItem[] = [
 const MainLayout = ({ children }: MainLayoutProps) => {
   const { user } = useAuth();
   const { theme, setTheme } = useTheme();
+  const location = useLocation();
+
+  useEffect(() => {
+    const activeMenuItem = document.querySelector(`a[href="${location.pathname}"]`);
+
+    if (activeMenuItem) {
+      gsap.fromTo(
+        activeMenuItem,
+        { backgroundColor: "rgba(var(--shark-500), 0.2)" },
+        {
+          backgroundColor: "rgba(var(--shark-500), 0.1)",
+          duration: 1,
+          ease: "power2.inOut",
+          repeat: -1,
+          yoyo: true,
+        }
+      );
+
+      const icon = activeMenuItem.querySelector("svg");
+      if (icon) {
+        gsap.fromTo(
+          icon,
+          { scale: 1 },
+          {
+            scale: 1.2,
+            duration: 0.8,
+            repeat: 1,
+            yoyo: true,
+            ease: "back.out(1.7)",
+          }
+        );
+      }
+    }
+
+    return () => {
+      gsap.killTweensOf(activeMenuItem);
+      if (activeMenuItem) {
+        const icon = activeMenuItem.querySelector("svg");
+        if (icon) {
+          gsap.killTweensOf(icon);
+        }
+      }
+    };
+  }, [location.pathname]);
 
   const handleLogout = async () => {
     try {
-      const { error } = await supabase.auth.signOut();
-      if (error) throw error;
-      toast.success("Logged out successfully");
+      gsap.to("body", {
+        opacity: 0.7,
+        duration: 0.3,
+        onComplete: async () => {
+          const { error } = await supabase.auth.signOut();
+          if (error) throw error;
+          toast.success("Logged out successfully");
+          gsap.to("body", { opacity: 1, duration: 0.3 });
+        },
+      });
     } catch (error) {
       console.error("Error signing out:", error);
       toast.error("Error signing out");
+      gsap.to("body", { opacity: 1, duration: 0.3 });
     }
   };
 
@@ -125,6 +180,18 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       return user.email.substring(0, 2).toUpperCase();
     }
     return "US";
+  };
+
+  const handleThemeToggle = () => {
+    const targetTheme = theme === "dark" ? "light" : "dark";
+
+    gsap.to("body", {
+      backgroundColor: targetTheme === "dark" ? "#121212" : "#ffffff",
+      color: targetTheme === "dark" ? "#ffffff" : "#121212",
+      duration: 0.5,
+      ease: "power2.inOut",
+      onComplete: () => setTheme(targetTheme),
+    });
   };
 
   return (
@@ -146,7 +213,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                 <SidebarMenu>
                   {mainNavItems.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton asChild>
+                      <SidebarMenuButton asChild isActive={location.pathname === item.href}>
                         <Link to={item.href} className="w-full">
                           <item.icon className="h-5 w-5" />
                           <span>{item.title}</span>
@@ -163,7 +230,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                 <SidebarMenu>
                   {learningNavItems.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton asChild>
+                      <SidebarMenuButton asChild isActive={location.pathname === item.href}>
                         <Link to={item.href} className="w-full">
                           <item.icon className="h-5 w-5" />
                           <span>{item.title}</span>
@@ -180,7 +247,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                 <SidebarMenu>
                   {infoNavItems.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton asChild>
+                      <SidebarMenuButton asChild isActive={location.pathname === item.href}>
                         <Link to={item.href} className="w-full">
                           <item.icon className="h-5 w-5" />
                           <span>{item.title}</span>
@@ -198,23 +265,23 @@ const MainLayout = ({ children }: MainLayoutProps) => {
             </div>
           </SidebarFooter>
         </Sidebar>
-        <div className="flex-1 overflow-auto">
+        <div className="flex-1 overflow-auto scrollbar-shark">
           <div className="sticky top-0 z-10 flex h-16 items-center border-b bg-background px-4">
             <SidebarTrigger className="mr-4" variant="outline" />
             <div className="ml-auto flex items-center gap-4">
-              {/* Dark mode toggle button */}
               <Button
                 variant="ghost"
                 size="icon"
                 aria-label="Toggle dark mode"
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                onClick={handleThemeToggle}
+                className="transition-transform hover:rotate-12"
               >
                 {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               </Button>
               {user ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                    <Button variant="ghost" className="relative h-8 w-8 rounded-full transition-transform hover:scale-110">
                       <Avatar className="h-8 w-8">
                         <AvatarImage src="" alt={user.email || ""} />
                         <AvatarFallback>{getInitials()}</AvatarFallback>
@@ -251,7 +318,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <Button asChild variant="outline" size="sm">
+                <Button asChild variant="outline" size="sm" className="transition-transform hover:scale-105">
                   <Link to="/auth">
                     <LogIn className="mr-2 h-4 w-4" />
                     Login
@@ -260,7 +327,9 @@ const MainLayout = ({ children }: MainLayoutProps) => {
               )}
             </div>
           </div>
-          <div className="p-6">{children}</div>
+          <PageTransition>
+            <div className="p-6">{children}</div>
+          </PageTransition>
         </div>
       </div>
     </SidebarProvider>

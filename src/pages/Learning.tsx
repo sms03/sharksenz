@@ -132,11 +132,24 @@ export default function Learning() {
     }
   }, [user, userModules, userBadges]);
 
+  // Track progress when a module is marked as completed (for logged in users)
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem(`modules_${user.email}`, JSON.stringify(userModules));
+      // Optionally, send progress to backend here
+    }
+  }, [userModules, user]);
+
   // Mark module as completed and unlock badge if needed
   const completeModule = (title: string) => {
-    setUserModules((prev) =>
-      prev.map((m) => (m.title === title ? { ...m, completed: true } : m))
-    );
+    setUserModules((prev) => {
+      const updated = prev.map((m) => (m.title === title ? { ...m, completed: true } : m));
+      // Track progress in localStorage for logged in users
+      if (user) {
+        localStorage.setItem(`modules_${user.email}`, JSON.stringify(updated));
+      }
+      return updated;
+    });
     // Unlock "Shark Apprentice" for first module
     if (!userBadges.find((b) => b.id === 1)?.unlocked) {
       setUserBadges((prev) => prev.map((b) => b.id === 1 ? { ...b, unlocked: true } : b));

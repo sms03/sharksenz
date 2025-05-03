@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
@@ -10,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
 import { BarChart3, LogIn, UserPlus } from 'lucide-react';
 import { useAuth } from '@/components/AuthProvider';
+import { gsap } from 'gsap';
 
 const Auth = () => {
   const [loading, setLoading] = useState(false);
@@ -19,6 +19,71 @@ const Auth = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useAuth();
+  
+  // Refs for GSAP animations
+  const cardRef = useRef(null);
+  const logoRef = useRef(null);
+  const formRef = useRef(null);
+  const loginTabRef = useRef(null);
+  const signupTabRef = useRef(null);
+  
+  // Initial animation on component mount
+  useEffect(() => {
+    // Logo animation
+    gsap.fromTo(
+      logoRef.current,
+      { opacity: 0, y: -50 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "back.out(1.7)" }
+    );
+    
+    // Card animation
+    gsap.fromTo(
+      cardRef.current,
+      { opacity: 0, scale: 0.9, y: 30 },
+      { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "power3.out", delay: 0.2 }
+    );
+    
+    // Create floating animation for the card
+    gsap.to(cardRef.current, {
+      y: 10,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+    
+    // Subtle background pulse animation
+    const bg = document.querySelector('.auth-background');
+    if (bg) {
+      gsap.to(bg, {
+        backgroundPosition: '100% 100%',
+        duration: 20,
+        repeat: -1,
+        yoyo: true,
+        ease: "none"
+      });
+    }
+  }, []);
+  
+  // Form fields animation
+  useEffect(() => {
+    if (!formRef.current) return;
+    
+    const formElements = formRef.current.querySelectorAll('div.space-y-2, button.w-full');
+    
+    gsap.fromTo(
+      formElements,
+      { opacity: 0, y: 20 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.5, 
+        stagger: 0.1, 
+        ease: "power2.out",
+        delay: 0.3
+      }
+    );
+  }, [activeTab]);
 
   useEffect(() => {
     // If user is already logged in, redirect to home page
@@ -32,18 +97,60 @@ const Auth = () => {
     }
   }, [user, navigate, location.state]);
 
+  // Tab switch animation
+  const handleTabChange = (value) => {
+    // Animate out current form
+    gsap.to(formRef.current, {
+      opacity: 0,
+      y: -20,
+      duration: 0.3,
+      ease: "power2.in",
+      onComplete: () => {
+        setActiveTab(value);
+        
+        // Animate highlighted tab
+        const targetTabRef = value === 'login' ? loginTabRef : signupTabRef;
+        gsap.fromTo(
+          targetTabRef.current,
+          { scale: 0.95 },
+          { scale: 1, duration: 0.3, ease: "back.out(1.7)" }
+        );
+      }
+    });
+  };
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
-      toast.success('Logged in successfully!');
-      navigate('/');
+      
+      // Success animation before redirect
+      gsap.to(cardRef.current, {
+        y: -20,
+        opacity: 0,
+        scale: 0.9,
+        duration: 0.5,
+        ease: "power2.in",
+        onComplete: () => {
+          toast.success('Logged in successfully!');
+          navigate('/');
+        }
+      });
     } catch (error: any) {
-      toast.error(error.message);
-    } finally {
-      setLoading(false);
+      // Error animation shake
+      gsap.to(cardRef.current, {
+        x: 10,
+        duration: 0.1,
+        repeat: 5,
+        yoyo: true,
+        ease: "power2.inOut",
+        onComplete: () => {
+          toast.error(error.message);
+          setLoading(false);
+        }
+      });
     }
   };
 
@@ -53,25 +160,84 @@ const Auth = () => {
     try {
       const { error } = await supabase.auth.signUp({ email, password });
       if (error) throw error;
-      toast.success('Check your email for the confirmation link!');
-      setActiveTab('login');
+      
+      // Success animation
+      gsap.to(cardRef.current, {
+        y: -10,
+        scale: 1.03,
+        duration: 0.4,
+        ease: "power2.out",
+        onComplete: () => {
+          gsap.to(cardRef.current, {
+            y: 0,
+            scale: 1,
+            duration: 0.4,
+            delay: 0.2,
+            ease: "power2.in",
+            onComplete: () => {
+              toast.success('Check your email for the confirmation link!');
+              handleTabChange('login');
+              setLoading(false);
+            }
+          });
+        }
+      });
     } catch (error: any) {
-      toast.error(error.message);
-    } finally {
-      setLoading(false);
+      // Error animation shake
+      gsap.to(cardRef.current, {
+        x: 10,
+        duration: 0.1,
+        repeat: 5,
+        yoyo: true,
+        ease: "power2.inOut",
+        onComplete: () => {
+          toast.error(error.message);
+          setLoading(false);
+        }
+      });
     }
   };
 
+  // Button hover animations
+  const buttonHoverEnter = (e) => {
+    gsap.to(e.currentTarget, {
+      scale: 1.05,
+      duration: 0.2,
+      ease: "power1.out"
+    });
+  };
+  
+  const buttonHoverLeave = (e) => {
+    gsap.to(e.currentTarget, {
+      scale: 1,
+      duration: 0.2,
+      ease: "power1.out"
+    });
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-gray-900 to-gray-800">
-      <div className="absolute top-4 left-4">
-        <Button variant="ghost" className="text-white" onClick={() => navigate('/')}>
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-shark-800 to-shark-950 auth-background relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute w-full h-full top-0 left-0 overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-shark-600/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-shark-600/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-shark-500/5 rounded-full blur-2xl"></div>
+      </div>
+      
+      <div className="absolute top-4 left-4" ref={logoRef}>
+        <Button 
+          variant="ghost" 
+          className="text-white" 
+          onClick={() => navigate('/')}
+          onMouseEnter={buttonHoverEnter}
+          onMouseLeave={buttonHoverLeave}
+        >
           <BarChart3 className="mr-2 h-5 w-5" />
           <span className="text-xl font-bold">SharkSenz</span>
         </Button>
       </div>
       
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md relative z-10" ref={cardRef}>
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">Welcome to SharkSenz</CardTitle>
           <CardDescription>
@@ -79,107 +245,127 @@ const Auth = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <Tabs value={activeTab} className="w-full">
             <TabsList className="grid w-full grid-cols-2 mb-6">
-              <TabsTrigger value="login">
+              <TabsTrigger 
+                value="login" 
+                onClick={() => handleTabChange('login')}
+                ref={loginTabRef}
+              >
                 <LogIn className="mr-2 h-4 w-4" />
                 Login
               </TabsTrigger>
-              <TabsTrigger value="signup">
+              <TabsTrigger 
+                value="signup" 
+                onClick={() => handleTabChange('signup')}
+                ref={signupTabRef}
+              >
                 <UserPlus className="mr-2 h-4 w-4" />
                 Sign Up
               </TabsTrigger>
             </TabsList>
             
-            <TabsContent value="login">
-              <form onSubmit={handleLogin} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="email-login">Email</Label>
-                  <Input
-                    id="email-login"
-                    type="email"
-                    placeholder="you@example.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <Label htmlFor="password-login">Password</Label>
-                    <Button variant="link" className="px-0 text-xs" type="button">
-                      Forgot password?
+            <div ref={formRef}>
+              {activeTab === 'login' ? (
+                <form onSubmit={handleLogin} className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="email-login">Email</Label>
+                    <Input
+                      id="email-login"
+                      type="email"
+                      placeholder="you@example.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <Label htmlFor="password-login">Password</Label>
+                      <Button variant="link" className="px-0 text-xs" type="button">
+                        Forgot password?
+                      </Button>
+                    </div>
+                    <Input
+                      id="password-login"
+                      type="password"
+                      placeholder="••••••••"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <Button 
+                    type="submit" 
+                    className="w-full" 
+                    disabled={loading}
+                    onMouseEnter={buttonHoverEnter}
+                    onMouseLeave={buttonHoverLeave}
+                  >
+                    {loading ? "Logging in..." : "Sign In"}
+                  </Button>
+                  <div className="text-center text-sm text-muted-foreground">
+                    <span>Don't have an account? </span>
+                    <Button 
+                      variant="link" 
+                      className="p-0"
+                      type="button"
+                      onClick={() => handleTabChange('signup')}
+                    >
+                      Sign up
                     </Button>
                   </div>
-                  <Input
-                    id="password-login"
-                    type="password"
-                    placeholder="••••••••"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                </div>
-                <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? "Logging in..." : "Sign In"}
-                </Button>
-                <div className="text-center text-sm text-muted-foreground">
-                  <span>Don't have an account? </span>
+                </form>
+              ) : (
+                <form onSubmit={handleSignUp} className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="email-signup">Email</Label>
+                    <Input
+                      id="email-signup"
+                      type="email"
+                      placeholder="you@example.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="password-signup">Password</Label>
+                    <Input
+                      id="password-signup"
+                      type="password"
+                      placeholder="••••••••"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      Password must be at least 6 characters
+                    </p>
+                  </div>
                   <Button 
-                    variant="link" 
-                    className="p-0"
-                    type="button"
-                    onClick={() => setActiveTab('signup')}
+                    type="submit" 
+                    className="w-full" 
+                    disabled={loading}
+                    onMouseEnter={buttonHoverEnter}
+                    onMouseLeave={buttonHoverLeave}
                   >
-                    Sign up
+                    {loading ? "Creating account..." : "Create Account"}
                   </Button>
-                </div>
-              </form>
-            </TabsContent>
-            
-            <TabsContent value="signup">
-              <form onSubmit={handleSignUp} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="email-signup">Email</Label>
-                  <Input
-                    id="email-signup"
-                    type="email"
-                    placeholder="you@example.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="password-signup">Password</Label>
-                  <Input
-                    id="password-signup"
-                    type="password"
-                    placeholder="••••••••"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                  <p className="text-xs text-muted-foreground">
-                    Password must be at least 6 characters
-                  </p>
-                </div>
-                <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? "Creating account..." : "Create Account"}
-                </Button>
-                <div className="text-center text-sm text-muted-foreground">
-                  <span>Already have an account? </span>
-                  <Button 
-                    variant="link" 
-                    className="p-0"
-                    type="button"
-                    onClick={() => setActiveTab('login')}
-                  >
-                    Sign in
-                  </Button>
-                </div>
-              </form>
-            </TabsContent>
+                  <div className="text-center text-sm text-muted-foreground">
+                    <span>Already have an account? </span>
+                    <Button 
+                      variant="link" 
+                      className="p-0"
+                      type="button"
+                      onClick={() => handleTabChange('login')}
+                    >
+                      Sign in
+                    </Button>
+                  </div>
+                </form>
+              )}
+            </div>
           </Tabs>
         </CardContent>
       </Card>

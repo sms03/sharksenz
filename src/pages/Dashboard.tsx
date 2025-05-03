@@ -116,7 +116,7 @@ export default function Dashboard() {
             </TabsTrigger>
           </TabsList>
           
-          <TabsContent value="calculator" className="mt-6">
+          <TabsContent value="calculator" className="mt-6 overflow-auto scrollbar-shark">
             <CalculatorTabContent 
               revenue={revenue}
               setRevenue={setRevenue}
@@ -154,7 +154,7 @@ export default function Dashboard() {
             )}
           </TabsContent>
           
-          <TabsContent value="valuation" className="mt-6">
+          <TabsContent value="valuation" className="mt-6 overflow-auto scrollbar-shark">
             {isPaid ? (
               <ValuationTabContent selectedCurrency={selectedCurrency} />
             ) : (
@@ -167,7 +167,7 @@ export default function Dashboard() {
             )}
           </TabsContent>
           
-          <TabsContent value="runway" className="mt-6">
+          <TabsContent value="runway" className="mt-6 overflow-auto scrollbar-shark">
             {isPaid ? (
               <RunwayTabContent />
             ) : (

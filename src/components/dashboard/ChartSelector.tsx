@@ -14,6 +14,8 @@ export default function ChartSelector({ chartType, setChartType }: ChartSelector
     setPlan(localStorage.getItem("user_plan") || "free");
   }, []);
   const isPaid = plan === "starter" || plan === "professional";
+  // Only allow advanced charts for Pro users
+  const isPro = plan === "professional";
 
   return (
     <div className="flex gap-2">
@@ -45,8 +47,8 @@ export default function ChartSelector({ chartType, setChartType }: ChartSelector
         variant={chartType === "donut" ? "default" : "outline"} 
         size="sm"
         onClick={() => setChartType("donut")}
-        disabled={!isPaid}
-        title={!isPaid ? "Upgrade to Starter or Pro to unlock Donut Chart" : undefined}
+        disabled={!isPro}
+        title={!isPro ? "Upgrade to Pro to unlock Donut Chart" : undefined}
       >
         <Donut className="mr-2 h-4 w-4" />
         Donut Chart
@@ -55,8 +57,8 @@ export default function ChartSelector({ chartType, setChartType }: ChartSelector
         variant={chartType === "area" ? "default" : "outline"} 
         size="sm"
         onClick={() => setChartType("area")}
-        disabled={!isPaid}
-        title={!isPaid ? "Upgrade to Starter or Pro to unlock Area Chart" : undefined}
+        disabled={!isPro}
+        title={!isPro ? "Upgrade to Pro to unlock Area Chart" : undefined}
       >
         <AreaChart className="mr-2 h-4 w-4" />
         Area Chart
@@ -65,8 +67,8 @@ export default function ChartSelector({ chartType, setChartType }: ChartSelector
         variant={chartType === "stacked" ? "default" : "outline"} 
         size="sm"
         onClick={() => setChartType("stacked")}
-        disabled={!isPaid}
-        title={!isPaid ? "Upgrade to Starter or Pro to unlock Stacked Bar" : undefined}
+        disabled={!isPro}
+        title={!isPro ? "Upgrade to Pro to unlock Stacked Bar" : undefined}
       >
         <Layers className="mr-2 h-4 w-4" />
         Stacked Bar
@@ -75,8 +77,8 @@ export default function ChartSelector({ chartType, setChartType }: ChartSelector
         variant={chartType === "radar" ? "default" : "outline"} 
         size="sm"
         onClick={() => setChartType("radar")}
-        disabled={!isPaid}
-        title={!isPaid ? "Upgrade to Starter or Pro to unlock Radar Chart" : undefined}
+        disabled={!isPro}
+        title={!isPro ? "Upgrade to Pro to unlock Radar Chart" : undefined}
       >
         <Radar className="mr-2 h-4 w-4" />
         Radar Chart

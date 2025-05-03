@@ -2,6 +2,7 @@ import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { VariantProps, cva } from "class-variance-authority"
 import { PanelLeft } from "lucide-react"
+import { gsap } from "gsap"
 
 import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
@@ -261,25 +262,102 @@ const SidebarTrigger = React.forwardRef<
   React.ElementRef<typeof Button>,
   React.ComponentProps<typeof Button>
 >(({ className, onClick, ...props }, ref) => {
-  const { toggleSidebar } = useSidebar()
+  const { toggleSidebar } = useSidebar();
+  const triggerRef = React.useRef(null);
+  
+  React.useEffect(() => {
+    try {
+      if (!triggerRef.current) return;
+      
+      // Create hover animation
+      const trigger = triggerRef.current;
+      
+      const handleMouseEnter = () => {
+        try {
+          gsap.to(trigger.querySelector('svg'), {
+            rotate: 15,
+            scale: 1.1,
+            duration: 0.2,
+            ease: "power1.out"
+          });
+        } catch (error) {
+          console.error("Sidebar trigger hover animation error:", error);
+        }
+      };
+      
+      const handleMouseLeave = () => {
+        try {
+          gsap.to(trigger.querySelector('svg'), {
+            rotate: 0,
+            scale: 1,
+            duration: 0.2,
+            ease: "power1.out"
+          });
+        } catch (error) {
+          console.error("Sidebar trigger leave animation error:", error);
+        }
+      };
+      
+      const handleClick = () => {
+        try {
+          gsap.timeline()
+            .to(trigger.querySelector('svg'), {
+              rotate: -180,
+              scale: 0.8,
+              duration: 0.2,
+              ease: "back.in(1.5)"
+            })
+            .to(trigger.querySelector('svg'), {
+              rotate: 0,
+              scale: 1,
+              duration: 0.3,
+              ease: "back.out(1.5)"
+            });
+        } catch (error) {
+          console.error("Sidebar trigger click animation error:", error);
+        }
+      };
+      
+      trigger.addEventListener('mouseenter', handleMouseEnter);
+      trigger.addEventListener('mouseleave', handleMouseLeave);
+      trigger.addEventListener('click', handleClick);
+      
+      return () => {
+        trigger.removeEventListener('mouseenter', handleMouseEnter);
+        trigger.removeEventListener('mouseleave', handleMouseLeave);
+        trigger.removeEventListener('click', handleClick);
+      };
+    } catch (error) {
+      console.error("SidebarTrigger animation setup error:", error);
+      return () => {};
+    }
+  }, []);
 
   return (
     <Button
-      ref={ref}
+      ref={(node) => {
+        // Assign to both refs
+        if (typeof ref === 'function') {
+          ref(node);
+        } else if (ref) {
+          ref.current = node;
+        }
+        triggerRef.current = node;
+      }}
       data-sidebar="trigger"
       variant="ghost"
       size="icon"
-      className={cn("h-7 w-7", className)}
+      className={cn("h-7 w-7 transition-colors", className)}
       onClick={(event) => {
-        onClick?.(event)
-        toggleSidebar()
+        onClick?.(event);
+        toggleSidebar();
       }}
       {...props}
     >
-      <PanelLeft />
+      <PanelLeft className="transition-transform" />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
-  )
+  );
 })
 SidebarTrigger.displayName = "SidebarTrigger"
 
@@ -402,7 +480,7 @@ const SidebarContent = React.forwardRef<
       ref={ref}
       data-sidebar="content"
       className={cn(
-        "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
+        "flex min-h-0 flex-1 flex-col gap-2 overflow-auto scrollbar-shark scrollbar-thin group-data-[collapsible=icon]:overflow-hidden",
         className
       )}
       {...props}
@@ -499,14 +577,105 @@ SidebarMenu.displayName = "SidebarMenu"
 const SidebarMenuItem = React.forwardRef<
   HTMLLIElement,
   React.ComponentProps<"li">
->(({ className, ...props }, ref) => (
-  <li
-    ref={ref}
-    data-sidebar="menu-item"
-    className={cn("group/menu-item relative", className)}
-    {...props}
-  />
-))
+>(({ className, ...props }, ref) => {
+  const itemRef = React.useRef<HTMLLIElement>(null);
+  
+  React.useEffect(() => {
+    try {
+      if (!itemRef.current) return;
+      
+      // Initialize GSAP for this menu item
+      const menuItem = itemRef.current;
+      const menuButton = menuItem.querySelector('[data-sidebar="menu-button"]');
+      
+      if (!menuButton) return;
+      
+      const handleMouseEnter = () => {
+        try {
+          gsap.to(menuButton, {
+            backgroundColor: 'rgba(var(--sidebar-accent), 0.2)',
+            scale: 1.02,
+            duration: 0.2,
+            ease: "power1.out"
+          });
+        } catch (error) {
+          console.error("Menu item hover animation error:", error);
+        }
+      };
+      
+      const handleMouseLeave = () => {
+        try {
+          gsap.to(menuButton, {
+            backgroundColor: '',
+            scale: 1,
+            duration: 0.2,
+            ease: "power1.out"
+          });
+        } catch (error) {
+          console.error("Menu item leave animation error:", error);
+        }
+      };
+      
+      const handleMouseDown = () => {
+        try {
+          gsap.to(menuButton, {
+            scale: 0.98,
+            duration: 0.1,
+            ease: "power1.in"
+          });
+        } catch (error) {
+          console.error("Menu item mousedown animation error:", error);
+        }
+      };
+      
+      const handleMouseUp = () => {
+        try {
+          gsap.to(menuButton, {
+            scale: 1.02,
+            duration: 0.1,
+            ease: "power1.out"
+          });
+        } catch (error) {
+          console.error("Menu item mouseup animation error:", error);
+        }
+      };
+      
+      menuButton.addEventListener('mouseenter', handleMouseEnter);
+      menuButton.addEventListener('mouseleave', handleMouseLeave);
+      menuButton.addEventListener('mousedown', handleMouseDown);
+      menuButton.addEventListener('mouseup', handleMouseUp);
+      
+      return () => {
+        menuButton.removeEventListener('mouseenter', handleMouseEnter);
+        menuButton.removeEventListener('mouseleave', handleMouseLeave);
+        menuButton.removeEventListener('mousedown', handleMouseDown);
+        menuButton.removeEventListener('mouseup', handleMouseUp);
+      };
+    } catch (error) {
+      console.error("SidebarMenuItem animation setup error:", error);
+      return () => {};
+    }
+  }, []);
+  
+  return (
+    <li
+      ref={(node) => {
+        // Assign to both refs
+        if (typeof ref === 'function') {
+          ref(node);
+        } else if (ref) {
+          ref.current = node;
+        }
+        if (itemRef.current !== node) {
+          itemRef.current = node;
+        }
+      }}
+      data-sidebar="menu-item"
+      className={cn("group/menu-item relative", className)}
+      {...props}
+    />
+  );
+})
 SidebarMenuItem.displayName = "SidebarMenuItem"
 
 const sidebarMenuButtonVariants = cva(
