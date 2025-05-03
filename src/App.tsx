@@ -47,6 +47,11 @@ const App = () => (
               <Route path="/encyclopedia" element={<Encyclopedia />} />
               <Route path="/encyclopedia/:termId" element={<TermDetail />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard/revenue" element={<Dashboard />} />
+              <Route path="/dashboard/valuation" element={<Dashboard />} />
+              <Route path="/dashboard/runway" element={<Dashboard />} />
+              <Route path="/dashboard/market" element={<Dashboard />} />
+              <Route path="/dashboard/profit" element={<Dashboard />} />
               <Route path="/pitch-simulator" element={<PitchSimulator />} />
               <Route path="/learning" element={<Learning />} />
               <Route path="/learning/:moduleId" element={

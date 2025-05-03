@@ -72,18 +72,23 @@ export default function Dashboard() {
 
   // Determine tab from route
   let initialTab = "calculator";
-  if (location.pathname.endsWith("/valuation")) initialTab = "valuation";
+  if (location.pathname.endsWith("/revenue")) initialTab = "revenue";
+  else if (location.pathname.endsWith("/valuation")) initialTab = "valuation";
   else if (location.pathname.endsWith("/runway")) initialTab = "runway";
-  // You can add more routes if you add more widgets/pages
+  else if (location.pathname.endsWith("/market")) initialTab = "market";
+  else if (location.pathname.endsWith("/profit")) initialTab = "profit";
 
   const [tab, setTab] = useState(initialTab);
 
   // Sync tab with route
   function handleTabChange(value: string) {
     setTab(value);
-    if (value === "calculator") navigate("/dashboard/revenue");
+    if (value === "calculator") navigate("/dashboard");
+    else if (value === "revenue") navigate("/dashboard/revenue");
     else if (value === "valuation") navigate("/dashboard/valuation");
     else if (value === "runway") navigate("/dashboard/runway");
+    else if (value === "market") navigate("/dashboard/market");
+    else if (value === "profit") navigate("/dashboard/profit");
   }
   
   return (
