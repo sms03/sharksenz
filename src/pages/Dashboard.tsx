@@ -101,10 +101,22 @@ export default function Dashboard() {
         </div>
         
         <Tabs value={tab} onValueChange={handleTabChange} className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="calculator">
               <Calculator className="mr-2 h-4 w-4" />
               Metrics Calculator
+            </TabsTrigger>
+            <TabsTrigger value="revenue">
+              <BarChart className="mr-2 h-4 w-4" />
+              Revenue Calculator
+            </TabsTrigger>
+            <TabsTrigger value="market">
+              <PieChart className="mr-2 h-4 w-4" />
+              Market Analysis
+            </TabsTrigger>
+            <TabsTrigger value="profit">
+              <LineChart className="mr-2 h-4 w-4" />
+              Profit Projection
             </TabsTrigger>
             <TabsTrigger value="valuation" disabled={!isPaid}>
               <CircleDollarSign className="mr-2 h-4 w-4" />
@@ -152,6 +164,27 @@ export default function Dashboard() {
                 </Button>
               </div>
             )}
+          </TabsContent>
+          
+          <TabsContent value="revenue" className="mt-6 overflow-auto scrollbar-shark">
+            {/* Route to Revenue Calculator page */}
+            <Button asChild variant="outline" className="mb-4">
+              <a href="/RevenueCalculator">Open Full Revenue Calculator</a>
+            </Button>
+          </TabsContent>
+          
+          <TabsContent value="market" className="mt-6 overflow-auto scrollbar-shark">
+            {/* Route to Market Analysis page */}
+            <Button asChild variant="outline" className="mb-4">
+              <a href="/MarketAnalysis">Open Full Market Analysis</a>
+            </Button>
+          </TabsContent>
+          
+          <TabsContent value="profit" className="mt-6 overflow-auto scrollbar-shark">
+            {/* Route to Profit Projection page */}
+            <Button asChild variant="outline" className="mb-4">
+              <a href="/ProfitProjection">Open Full Profit Projection</a>
+            </Button>
           </TabsContent>
           
           <TabsContent value="valuation" className="mt-6 overflow-auto scrollbar-shark">

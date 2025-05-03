@@ -1,4 +1,3 @@
-
 import { FadeInStagger } from "@/components/ui/motion";
 import MainLayout from "@/layouts/MainLayout";
 import { HeroSection } from "@/components/home/HeroSection";
