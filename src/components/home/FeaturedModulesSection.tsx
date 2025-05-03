@@ -129,8 +129,8 @@ export function FeaturedModulesSection() {
           
           // Hover animations for cards
           Array.from(cards).forEach(card => {
-            card.addEventListener('mouseenter', () => {
-              gsap.to(card, { 
+            (card as HTMLElement).addEventListener('mouseenter', () => {
+              gsap.to(card as HTMLElement, { 
                 y: -8, 
                 scale: 1.03, 
                 boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
@@ -139,8 +139,8 @@ export function FeaturedModulesSection() {
               });
             });
             
-            card.addEventListener('mouseleave', () => {
-              gsap.to(card, { 
+            (card as HTMLElement).addEventListener('mouseleave', () => {
+              gsap.to(card as HTMLElement, { 
                 y: 0, 
                 scale: 1, 
                 boxShadow: "0 1px 3px rgba(0,0,0,0.1)", 

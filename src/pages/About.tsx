@@ -10,7 +10,7 @@ export default function About() {
       name: "Shivam M. Salunkhe",
       role: "Founder & CEO",
       bio: "Business Enthusiast",
-      avatar: "https://i.pravatar.cc/150?img=1",
+      avatar: "/me.png",
     },
   ];
 
