@@ -84,9 +84,7 @@ export default function Pricing() {
               <CardHeader className="h-[150px]">
                 <CardTitle className="text-2xl text-center mb-2">{tier.name}</CardTitle>
                 <div className="text-3xl font-bold text-center mb-4">{tier.price[currency]}</div>
-                {currency === 'INR' && tier.name !== 'Free' && (
-                  <div className="text-xs text-center text-muted-foreground mb-2">All prices include 18% GST</div>
-                )}
+                {currency === 'INR' && tier.name !== 'Free'}
               </CardHeader>
               <CardContent className="h-[300px]">
                 <ul className="mb-6 space-y-2">
