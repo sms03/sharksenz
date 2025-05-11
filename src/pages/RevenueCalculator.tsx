@@ -249,8 +249,7 @@ export default function RevenueCalculator() {
             setShowResults(false);
           }} className="w-full">
             <TabsList className="grid w-full grid-cols-4">
-              {revenueModels.map(model => (
-                <TabsTrigger key={model.id} value={model.id} className="flex items-center gap-2">
+              {revenueModels.map(model => (                <TabsTrigger key={model.id} value={model.id} className="flex items-center gap-2 h-10">
                   <model.icon className="h-4 w-4" />
                   <span className="hidden md:inline">{model.name}</span>
                 </TabsTrigger>
@@ -267,8 +266,7 @@ export default function RevenueCalculator() {
                   Enter your business metrics to project future revenue
                 </CardDescription>
               </CardHeader>
-              
-              <CardContent>
+                <CardContent className="h-[550px]">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <div className="space-y-4">
                     <h3 className="text-lg font-medium">Base Metrics</h3>
@@ -276,12 +274,12 @@ export default function RevenueCalculator() {
                     <div className="space-y-2">
                       <Label htmlFor="customer-base">
                         {activeTab === "advertising" ? "Monthly Active Users" : "Initial Customer Base"}
-                      </Label>
-                      <Input
+                      </Label>                      <Input
                         id="customer-base"
                         type="text"
                         value={customerBase}
                         onChange={e => setCustomerBase(e.target.value.replace(/[^0-9]/g, ''))}
+                        className="h-10"
                       />
                     </div>
                     
@@ -329,11 +327,10 @@ export default function RevenueCalculator() {
                           <div className="relative">
                             <span className="absolute left-3 top-2.5 text-muted-foreground">
                               {selectedCurrency.symbol}
-                            </span>
-                            <Input
+                            </span>                            <Input
                               id="subscription-price"
                               type="text"
-                              className="pl-8"
+                              className="pl-8 h-10"
                               value={subscriptionPrice}
                               onChange={e => setSubscriptionPrice(e.target.value.replace(/[^0-9.]/g, ''))}
                             />
@@ -419,11 +416,10 @@ export default function RevenueCalculator() {
                           <div className="relative">
                             <span className="absolute left-3 top-2.5 text-muted-foreground">
                               {selectedCurrency.symbol}
-                            </span>
-                            <Input
+                            </span>                            <Input
                               id="premium-price"
                               type="text"
-                              className="pl-8"
+                              className="pl-8 h-10"
                               value={premiumPrice}
                               onChange={e => setPremiumPrice(e.target.value.replace(/[^0-9.]/g, ''))}
                             />
@@ -436,12 +432,12 @@ export default function RevenueCalculator() {
                     {activeTab === "advertising" && (
                       <>
                         <div className="space-y-2">
-                          <Label htmlFor="ad-impressions">Monthly Ad Impressions</Label>
-                          <Input
+                          <Label htmlFor="ad-impressions">Monthly Ad Impressions</Label>                          <Input
                             id="ad-impressions"
                             type="text"
                             value={adImpressions}
                             onChange={e => setAdImpressions(e.target.value.replace(/[^0-9]/g, ''))}
+                            className="h-10"
                           />
                         </div>
                         

@@ -51,8 +51,8 @@ export default function Contact() {
                   Fill out the form below and we'll get back to you as soon as possible.
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+              <CardContent className="h-[400px]">
+                <form onSubmit={handleSubmit} className="grid gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="name">Name</Label>
                     <Input
@@ -61,6 +61,7 @@ export default function Contact() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
+                      className="h-10"
                     />
                   </div>
                   <div className="space-y-2">
@@ -72,6 +73,7 @@ export default function Contact() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
+                      className="h-10"
                     />
                   </div>
                   <div className="space-y-2">
@@ -82,6 +84,7 @@ export default function Contact() {
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
                       required
+                      className="h-10"
                     />
                   </div>
                   <div className="space-y-2">
@@ -93,6 +96,7 @@ export default function Contact() {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       required
+                      className="h-[120px]"
                     />
                   </div>
                 </form>

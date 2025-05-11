@@ -286,11 +286,10 @@ export default function BurnRatePage() {
                           <div className="relative">
                             <span className="absolute left-3 top-2.5 text-muted-foreground">
                               {selectedCurrency.symbol}
-                            </span>
-                            <Input
+                            </span>                            <Input
                               id="cash-balance"
                               type="text"
-                              className="pl-8"
+                              className="pl-8 h-10"
                               value={cashBalance}
                               onChange={e => setCashBalance(e.target.value.replace(/[^0-9]/g, ''))}
                             />
@@ -302,11 +301,10 @@ export default function BurnRatePage() {
                           <div className="relative">
                             <span className="absolute left-3 top-2.5 text-muted-foreground">
                               {selectedCurrency.symbol}
-                            </span>
-                            <Input
+                            </span>                            <Input
                               id="monthly-revenue"
                               type="text"
-                              className="pl-8"
+                              className="pl-8 h-10"
                               value={monthlyRevenue}
                               onChange={e => setMonthlyRevenue(e.target.value.replace(/[^0-9]/g, ''))}
                             />
@@ -318,11 +316,10 @@ export default function BurnRatePage() {
                           <div className="relative">
                             <span className="absolute left-3 top-2.5 text-muted-foreground">
                               {selectedCurrency.symbol}
-                            </span>
-                            <Input
+                            </span>                            <Input
                               id="monthly-expenses"
                               type="text"
-                              className="pl-8"
+                              className="pl-8 h-10"
                               value={monthlyExpenses}
                               onChange={e => setMonthlyExpenses(e.target.value.replace(/[^0-9]/g, ''))}
                             />

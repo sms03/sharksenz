@@ -102,14 +102,14 @@ export default function EncyclopediaPage() {
             <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search terms or definitions..."
-              className="pl-9"
+              className="pl-9 h-10"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
           <div className="flex gap-3">
             <select
-              className="rounded-md border border-input bg-background px-3 py-2 text-sm"
+              className="rounded-md border border-input bg-background px-3 py-2 text-sm h-10"
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
@@ -120,7 +120,7 @@ export default function EncyclopediaPage() {
               ))}
             </select>
             <select
-              className="rounded-md border border-input bg-background px-3 py-2 text-sm"
+              className="rounded-md border border-input bg-background px-3 py-2 text-sm h-10"
               value={selectedDifficulty}
               onChange={(e) => setSelectedDifficulty(e.target.value)}
             >

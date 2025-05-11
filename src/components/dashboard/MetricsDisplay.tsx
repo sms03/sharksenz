@@ -18,7 +18,7 @@ export default function MetricsDisplay({ metrics, selectedCurrency }: MetricsDis
   const { valuation, monthlyBurnRate, runway, ltv, ltvCacRatio } = metrics;
   
   return (
-    <div className="space-y-6">
+    <div className="grid grid-cols-1 gap-6">
       <MetricsCard 
         title="Company Valuation" 
         icon={<CircleDollarSign className="h-4 w-4 text-muted-foreground" />}

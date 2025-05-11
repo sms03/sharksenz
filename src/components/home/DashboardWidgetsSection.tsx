@@ -63,13 +63,13 @@ export function DashboardWidgetsSection() {
           {dashboardWidgets.map((widget) => (
             <div
               key={widget.title}
-              className="flex flex-col rounded-xl border bg-card p-5 shadow-sm transition-all hover:shadow-md"
+              className="flex flex-col rounded-xl border bg-card p-5 shadow-sm transition-all hover:shadow-md h-[200px]"
             >
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-shark-100 text-shark-500">
                 <widget.icon className="h-6 w-6" />
               </div>
-              <h3 className="mb-1 text-lg font-semibold">{widget.title}</h3>
-              <p className="mb-4 text-sm text-muted-foreground">
+              <h3 className="mb-1 text-lg font-semibold line-clamp-1">{widget.title}</h3>
+              <p className="mb-4 text-sm text-muted-foreground line-clamp-3">
                 {widget.description}
               </p>
               <Link

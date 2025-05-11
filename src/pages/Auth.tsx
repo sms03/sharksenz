@@ -237,7 +237,7 @@ const Auth = () => {
         </Button>
       </div>
       
-      <Card className="w-full max-w-md relative z-10" ref={cardRef}>
+      <Card className="w-full max-w-md relative z-10 h-[500px]" ref={cardRef}>
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">Welcome to SharkSenz</CardTitle>
           <CardDescription>
@@ -251,6 +251,7 @@ const Auth = () => {
                 value="login" 
                 onClick={() => handleTabChange('login')}
                 ref={loginTabRef}
+                className="h-10"
               >
                 <LogIn className="mr-2 h-4 w-4" />
                 Login
@@ -259,6 +260,7 @@ const Auth = () => {
                 value="signup" 
                 onClick={() => handleTabChange('signup')}
                 ref={signupTabRef}
+                className="h-10"
               >
                 <UserPlus className="mr-2 h-4 w-4" />
                 Sign Up
@@ -277,6 +279,7 @@ const Auth = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
+                      className="h-10"
                     />
                   </div>
                   <div className="space-y-2">
@@ -293,6 +296,7 @@ const Auth = () => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
+                      className="h-10"
                     />
                   </div>
                   <Button 
@@ -327,6 +331,7 @@ const Auth = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
+                      className="h-10"
                     />
                   </div>
                   <div className="space-y-2">
@@ -338,6 +343,7 @@ const Auth = () => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
+                      className="h-10"
                     />
                     <p className="text-xs text-muted-foreground">
                       Password must be at least 6 characters

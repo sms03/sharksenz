@@ -34,15 +34,15 @@ export function TermCard({
       <Link
         to={href}
         className={cn(
-          "relative flex flex-col overflow-hidden rounded-xl border bg-card p-5 shadow-sm transition-all hover:shadow-md",
+          "relative flex flex-col overflow-hidden rounded-xl border bg-card p-5 shadow-sm transition-all hover:shadow-md h-[200px]",
           className
         )}
       >
         <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-shark-100 text-shark-500">
           <Icon className="h-6 w-6" />
         </div>
-        <h3 className="mb-1 text-lg font-semibold">{title}</h3>
-        <p className="mb-4 text-sm text-muted-foreground line-clamp-2">{definition}</p>
+        <h3 className="mb-1 text-lg font-semibold line-clamp-1">{title}</h3>
+        <p className="mb-4 text-sm text-muted-foreground line-clamp-3">{definition}</p>
         <div className="mt-auto flex items-center gap-2">
           <span className="rounded-full bg-shark-100 px-2 py-0.5 text-xs font-medium text-shark-700">
             {category}

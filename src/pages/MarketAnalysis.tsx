@@ -225,20 +225,19 @@ export default function MarketAnalysis() {
       {plan === "professional" ? (
         <div className="space-y-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="market-size" className="flex items-center gap-2">
+            <TabsList className="grid w-full grid-cols-4">              <TabsTrigger value="market-size" className="flex items-center gap-2 h-10">
                 <BarChart4 className="h-4 w-4" />
                 <span className="hidden md:inline">Market Size</span>
               </TabsTrigger>
-              <TabsTrigger value="competitors" className="flex items-center gap-2">
+              <TabsTrigger value="competitors" className="flex items-center gap-2 h-10">
                 <Building2 className="h-4 w-4" />
                 <span className="hidden md:inline">Competitors</span>
               </TabsTrigger>
-              <TabsTrigger value="trends" className="flex items-center gap-2">
+              <TabsTrigger value="trends" className="flex items-center gap-2 h-10">
                 <TrendingUp className="h-4 w-4" />
                 <span className="hidden md:inline">Industry Trends</span>
               </TabsTrigger>
-              <TabsTrigger value="segments" className="flex items-center gap-2">
+              <TabsTrigger value="segments" className="flex items-center gap-2 h-10">
                 <PieChart className="h-4 w-4" />
                 <span className="hidden md:inline">Market Segments</span>
               </TabsTrigger>
@@ -257,16 +256,14 @@ export default function MarketAnalysis() {
                       Understand your total addressable market (TAM), serviceable addressable market (SAM), and
                       serviceable obtainable market (SOM)
                     </CardDescription>
-                  </CardHeader>
-                  <CardContent>
+                  </CardHeader>                  <CardContent className="h-[600px]">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                       <div className="space-y-4 lg:col-span-1">
                         <h3 className="text-lg font-medium">Market Parameters</h3>
                         
                         <div className="space-y-2">
-                          <Label htmlFor="industry">Industry</Label>
-                          <Select value={selectedIndustry} onValueChange={setSelectedIndustry}>
-                            <SelectTrigger id="industry">
+                          <Label htmlFor="industry">Industry</Label>                          <Select value={selectedIndustry} onValueChange={setSelectedIndustry}>
+                            <SelectTrigger id="industry" className="h-10">
                               <SelectValue placeholder="Select industry" />
                             </SelectTrigger>
                             <SelectContent>
@@ -279,9 +276,8 @@ export default function MarketAnalysis() {
                         </div>
                         
                         <div className="space-y-2">
-                          <Label htmlFor="segment">Market Segment</Label>
-                          <Select value={selectedSegment} onValueChange={setSelectedSegment}>
-                            <SelectTrigger id="segment">
+                          <Label htmlFor="segment">Market Segment</Label>                          <Select value={selectedSegment} onValueChange={setSelectedSegment}>
+                            <SelectTrigger id="segment" className="h-10">
                               <SelectValue placeholder="Select segment" />
                             </SelectTrigger>
                             <SelectContent>
@@ -464,15 +460,14 @@ export default function MarketAnalysis() {
                       Analyze key competitors, their market share, and growth rates
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <div className="space-y-6">
+                  <CardContent>                    <div className="space-y-6">
                       <div className="flex w-full max-w-sm items-center space-x-2 mb-4">
                         <Input 
                           type="text" 
                           placeholder="Search competitors..." 
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
-                          className="flex-1"
+                          className="flex-1 h-10"
                         />
                         <Button type="submit" variant="ghost" size="icon">
                           <Search className="h-4 w-4" />

@@ -28,7 +28,7 @@ export function ModuleCard({
       <Link
         to={href}
         className={cn(
-          "relative flex flex-col overflow-hidden rounded-xl border bg-card p-5 shadow-sm transition-all hover:shadow-md",
+          "relative flex flex-col overflow-hidden rounded-xl border bg-card p-5 shadow-sm transition-all hover:shadow-md h-[220px]",
           completed ? "border-shark-200 bg-shark-50" : "border-border",
           className
         )}
@@ -41,8 +41,8 @@ export function ModuleCard({
         <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-shark-100 text-shark-500">
           <Icon className="h-6 w-6" />
         </div>
-        <h3 className="mb-1 text-lg font-semibold">{title}</h3>
-        <p className="mb-4 text-sm text-muted-foreground">{description}</p>
+        <h3 className="mb-1 text-lg font-semibold line-clamp-1">{title}</h3>
+        <p className="mb-4 text-sm text-muted-foreground line-clamp-3">{description}</p>
         <div className="mt-auto flex items-center text-xs text-muted-foreground">
           <Clock className="mr-1 h-3 w-3" />
           <span>{duration}</span>

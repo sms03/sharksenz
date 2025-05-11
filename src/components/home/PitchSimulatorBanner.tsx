@@ -146,7 +146,7 @@ export function PitchSimulatorBanner() {
     <section className="my-16 overflow-hidden">
       <div 
         ref={bannerRef} 
-        className={`rounded-xl border bg-gradient-to-r from-shark-500/90 to-shark-600 p-6 md:p-8 text-white shadow-xl relative overflow-hidden ${animationFailed ? 'opacity-100' : ''}`}
+        className={`rounded-xl border bg-gradient-to-r from-shark-500/90 to-shark-600 p-6 md:p-8 text-white shadow-xl relative overflow-hidden ${animationFailed ? 'opacity-100' : ''} h-[250px] flex flex-col justify-center`}
       >
         <div ref={textRef} className={`mb-6 text-center ${animationFailed ? 'opacity-100' : ''}`}>
           <h2 className="mb-2 text-2xl font-bold">Ready to pitch like a pro?</h2>
@@ -159,7 +159,7 @@ export function PitchSimulatorBanner() {
           <Link
             ref={buttonRef}
             to="/pitch-simulator"
-            className={`rounded-lg bg-shark-500 px-6 py-3 font-medium text-white shadow-sm transition-all hover:bg-shark-600 ${animationFailed ? 'opacity-100' : ''}`}
+            className={`rounded-lg bg-shark-500 px-6 py-3 font-medium text-white shadow-sm transition-all hover:bg-shark-600 ${animationFailed ? 'opacity-100' : ''} h-12 flex items-center justify-center w-64`}
           >
             Try the Pitch Simulator
           </Link>

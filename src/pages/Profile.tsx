@@ -201,7 +201,7 @@ export default function Profile() {
                           placeholder="https://example.com/avatar.jpg"
                           value={avatarUrl}
                           onChange={(e) => setAvatarUrl(e.target.value)}
-                          className="flex-1"
+                          className="flex-1 h-10"
                         />
                         <Button variant="outline" size="icon" disabled={uploading} asChild>
                           <label>
@@ -228,6 +228,7 @@ export default function Profile() {
                       placeholder="Enter a username"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
+                      className="h-10"
                     />
                   </div>
 
@@ -238,7 +239,7 @@ export default function Profile() {
                       type="email"
                       value={user?.email || ""}
                       disabled
-                      className="bg-muted"
+                      className="bg-muted h-10"
                     />
                     <p className="text-xs text-muted-foreground">
                       Your email address can't be changed

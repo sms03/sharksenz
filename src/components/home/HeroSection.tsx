@@ -64,7 +64,7 @@ export function HeroSection() {
 
   return (
     <section className={`mb-12 ${animationFailed ? 'opacity-100' : ''}`} ref={heroRef}>
-      <div className="rounded-xl bg-gradient-to-r from-shark-500 to-shark-700 px-6 py-12 text-white md:px-12 overflow-hidden relative">
+      <div className="rounded-xl bg-gradient-to-r from-shark-500 to-shark-700 px-6 py-12 text-white md:px-12 overflow-hidden relative h-[300px] flex flex-col justify-center">
         {/* Animated background elements */}
         <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute -top-20 -left-20 w-72 h-72 bg-shark-400/10 rounded-full blur-3xl"></div>
@@ -81,13 +81,13 @@ export function HeroSection() {
             <>
               <Link
                 to="/learning"
-                className="rounded-lg bg-white px-4 py-2 font-medium text-shark-700 shadow-sm transition-all hover:bg-shark-50 hover:shadow-md hover:-translate-y-0.5"
+                className="rounded-lg bg-white px-4 py-2 font-medium text-shark-700 shadow-sm transition-all hover:bg-shark-50 hover:shadow-md hover:-translate-y-0.5 h-10 flex items-center w-32 justify-center"
               >
                 Start Learning
               </Link>
               <Link
                 to="/profile"
-                className="rounded-lg bg-shark-600/30 px-4 py-2 font-medium text-white shadow-sm transition-all hover:bg-shark-600/50 hover:shadow-md hover:-translate-y-0.5"
+                className="rounded-lg bg-shark-600/30 px-4 py-2 font-medium text-white shadow-sm transition-all hover:bg-shark-600/50 hover:shadow-md hover:-translate-y-0.5 h-10 flex items-center w-32 justify-center"
               >
                 View Profile
               </Link>
@@ -96,14 +96,14 @@ export function HeroSection() {
             <>
               <Link
                 to="/auth"
-                className="flex items-center rounded-lg bg-white px-4 py-2 font-medium text-shark-700 shadow-sm transition-all hover:bg-shark-50 hover:shadow-md hover:-translate-y-0.5"
+                className="flex items-center rounded-lg bg-white px-4 py-2 font-medium text-shark-700 shadow-sm transition-all hover:bg-shark-50 hover:shadow-md hover:-translate-y-0.5 h-10 w-32 justify-center"
               >
                 <LogIn className="mr-2 h-4 w-4" />
                 Login
               </Link>
               <Link
                 to="/auth"
-                className="flex items-center rounded-lg bg-shark-600/30 px-4 py-2 font-medium text-white shadow-sm transition-all hover:bg-shark-600/50 hover:shadow-md hover:-translate-y-0.5"
+                className="flex items-center rounded-lg bg-shark-600/30 px-4 py-2 font-medium text-white shadow-sm transition-all hover:bg-shark-600/50 hover:shadow-md hover:-translate-y-0.5 h-10 w-32 justify-center"
                 state={{ isLogin: false }}
               >
                 <UserPlus className="mr-2 h-4 w-4" />

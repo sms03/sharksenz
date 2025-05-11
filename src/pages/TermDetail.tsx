@@ -21,17 +21,16 @@ export default function TermDetail() {
   }
 
   return (
-    <MainLayout>
-      <div className="mx-auto max-w-2xl py-12">
-        <Card>
-          <CardHeader>
+    <MainLayout>      <div className="mx-auto max-w-2xl py-12">
+        <Card className="min-h-[500px]">
+          <CardHeader className="h-[80px]">
             <CardTitle className="text-2xl mb-2 flex items-center gap-2">
               <term.icon className="h-7 w-7 text-shark-500" />
               {term.title}
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="mb-4 text-lg text-muted-foreground">{term.definition}</div>
+          <CardContent className="space-y-4">
+            <div className="mb-4 text-lg text-muted-foreground line-clamp-3">{term.definition}</div>
             <div className="mb-4">
               <span className="font-semibold">Category:</span> {term.category}
             </div>
