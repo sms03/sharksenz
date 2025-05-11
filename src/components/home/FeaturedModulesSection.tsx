@@ -185,12 +185,12 @@ export function FeaturedModulesSection() {
     <section className="mb-12" ref={sectionRef}>
       <div className={`mb-6 flex items-end justify-between ${animationFailed ? 'opacity-100' : ''}`} ref={headerRef}>
         <div>
-          <h2 className="text-2xl font-bold">Featured Learning Modules</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-heading text-2xl font-bold">Featured Learning Modules</h2>
+          <p className="font-subheading-libre text-muted-foreground">
             Bite-sized lessons to master business concepts
           </p>
         </div>
-        <Link to="/learning" className="text-sm font-medium text-shark-500 hover:underline relative group">
+        <Link to="/learning" className="font-body-merriweather text-sm font-medium text-shark-500 hover:underline relative group">
           View all modules
           <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-shark-500 transition-all duration-300 group-hover:w-full"></span>
         </Link>

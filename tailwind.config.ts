@@ -17,6 +17,16 @@ export default {
 				'2xl': '1400px'
 			}
 		},
+		fontFamily: {
+			// Heading font
+			'heading': ['"Bodoni Moda"', 'serif'],
+			// Subheading fonts
+			'subheading-libre': ['"Libre Baskerville"', 'serif'],
+			'subheading-playfair': ['"Playfair Display"', 'serif'],
+			// Body fonts
+			'body-merriweather': ['"Merriweather"', 'serif'],
+			'body-lora': ['"Lora"', 'serif'],
+		},
 		extend: {
 			colors: {
 				border: 'hsl(var(--border))',

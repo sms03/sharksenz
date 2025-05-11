@@ -8,39 +8,37 @@ export default function TermDetail() {
   const { termId } = useParams();
   const navigate = useNavigate();
   const term = businessTerms.find(t => t.id === Number(termId));
-
   if (!term) {
     return (
       <MainLayout>
         <div className="mx-auto max-w-2xl py-24 text-center">
-          <h1 className="mb-4 text-3xl font-bold">Term Not Found</h1>
-          <Button onClick={() => navigate(-1)}>Go Back</Button>
+          <h1 className="font-heading mb-4 text-3xl font-bold">Term Not Found</h1>
+          <Button onClick={() => navigate(-1)} className="font-body-merriweather">Go Back</Button>
         </div>
       </MainLayout>
     );
   }
 
   return (
-    <MainLayout>      <div className="mx-auto max-w-2xl py-12">
-        <Card className="min-h-[500px]">
+    <MainLayout>      <div className="mx-auto max-w-2xl py-12">        <Card className="min-h-[500px]">
           <CardHeader className="h-[80px]">
-            <CardTitle className="text-2xl mb-2 flex items-center gap-2">
+            <CardTitle className="font-heading text-2xl mb-2 flex items-center gap-2">
               <term.icon className="h-7 w-7 text-shark-500" />
               {term.title}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="mb-4 text-lg text-muted-foreground line-clamp-3">{term.definition}</div>
+            <div className="font-body-lora mb-4 text-lg text-muted-foreground line-clamp-3">{term.definition}</div>
             <div className="mb-4">
-              <span className="font-semibold">Category:</span> {term.category}
+              <span className="font-subheading-libre font-semibold">Category:</span> <span className="font-body-merriweather">{term.category}</span>
             </div>
             <div className="mb-4">
-              <span className="font-semibold">Difficulty:</span> {term.difficultyLevel.charAt(0).toUpperCase() + term.difficultyLevel.slice(1)}
+              <span className="font-subheading-libre font-semibold">Difficulty:</span> <span className="font-body-merriweather">{term.difficultyLevel.charAt(0).toUpperCase() + term.difficultyLevel.slice(1)}</span>
             </div>
             {/* Example usage and use case sections */}
             <div className="mb-4">
-              <span className="font-semibold">Usage:</span>
-              <p className="mt-1 text-sm text-muted-foreground">
+              <span className="font-subheading-libre font-semibold">Usage:</span>
+              <p className="font-body-merriweather mt-1 text-sm text-muted-foreground">
                 {/* Placeholder usage example, can be customized per term */}
                 {term.title} is commonly used in business analysis and financial reporting to assess company performance.
               </p>

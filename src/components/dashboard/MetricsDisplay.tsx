@@ -23,10 +23,10 @@ export default function MetricsDisplay({ metrics, selectedCurrency }: MetricsDis
         title="Company Valuation" 
         icon={<CircleDollarSign className="h-4 w-4 text-muted-foreground" />}
       >
-        <div className="text-2xl font-bold">
+        <div className="font-heading text-2xl font-bold">
           {formatCurrency(valuation, selectedCurrency)}
         </div>
-        <p className="text-xs text-muted-foreground">
+        <p className="font-body-lora text-xs text-muted-foreground">
           Based on revenue multiple of 5x
         </p>
       </MetricsCard>
@@ -35,12 +35,12 @@ export default function MetricsDisplay({ metrics, selectedCurrency }: MetricsDis
         title="Monthly Burn Rate" 
         icon={<TrendingDown className="h-4 w-4 text-muted-foreground" />}
       >
-        <div className="text-2xl font-bold">
+        <div className="font-heading text-2xl font-bold">
           {formatCurrency(monthlyBurnRate, selectedCurrency)}
         </div>
         <div className="flex items-center pt-1">
           <Clock className="mr-1 h-3 w-3 text-muted-foreground" />
-          <span className="text-xs text-muted-foreground">
+          <span className="font-body-merriweather text-xs text-muted-foreground">
             {runway} months runway
           </span>
         </div>

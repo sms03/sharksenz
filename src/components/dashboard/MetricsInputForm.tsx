@@ -32,22 +32,22 @@ export default function MetricsInputForm({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Business Metrics Calculator</CardTitle>
-        <CardDescription>
+        <CardTitle className="font-heading">Business Metrics Calculator</CardTitle>
+        <CardDescription className="font-body-lora">
           Enter your business metrics to see key calculations
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="monthly-revenue">Monthly Revenue ({selectedCurrency.symbol})</Label>
+            <Label htmlFor="monthly-revenue" className="font-subheading-libre">Monthly Revenue ({selectedCurrency.symbol})</Label>
             <Input
               id="monthly-revenue"
               type="number"
               placeholder={`e.g. 50000`}
               value={revenue}
               onChange={(e) => setRevenue(e.target.value)}
-              className="h-10"
+              className="h-10 font-body-merriweather"
             />
           </div>
           <div className="space-y-2">

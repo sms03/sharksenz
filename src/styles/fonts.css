@@ -1,0 +1,69 @@
+/* 
+  Font imports 
+  - Headings: Bodoni Moda
+  - Sub Headings: Libre Baskerville, Playfair Display
+  - Body: Merriweather, Lora
+*/
+
+/* Headings Font */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
+
+/* Sub Heading Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* Body Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+/* Font Classes */
+
+/* Heading Font */
+.font-heading {
+  font-family: "Bodoni Moda", serif;
+  font-optical-sizing: auto;
+}
+
+/* Sub Heading Fonts */
+.font-subheading-libre {
+  font-family: "Libre Baskerville", serif;
+}
+
+.font-subheading-playfair {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+}
+
+/* Body Fonts */
+.font-body-merriweather {
+  font-family: "Merriweather", serif;
+}
+
+.font-body-lora {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+}
+
+/* Utility Font Classes - Apply these classes to HTML elements */
+h1, h2, h3, .heading {
+  font-family: "Bodoni Moda", serif;
+  font-optical-sizing: auto;
+}
+
+h4, h5, h6, .subheading-libre {
+  font-family: "Libre Baskerville", serif;
+}
+
+.subheading-playfair {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+}
+
+p, span, div, input, textarea, select, button, .body-merriweather {
+  font-family: "Merriweather", serif;
+}
+
+.body-lora {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+}

@@ -96,8 +96,8 @@ export default function Dashboard() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <div>
-            <h1 className="mb-2 text-3xl font-bold">Metrics Dashboard</h1>
-            <p className="text-lg text-muted-foreground">
+            <h1 className="font-heading mb-2 text-3xl font-bold">Metrics Dashboard</h1>
+            <p className="font-subheading-libre text-lg text-muted-foreground">
               Calculate and visualize key business metrics
             </p>
           </div>

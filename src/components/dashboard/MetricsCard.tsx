@@ -89,18 +89,17 @@ export default function MetricsCard({ title, icon, children, delay = 0 }: Metric
 
   return (
     <Card ref={cardRef} className="overflow-hidden transition-all relative">
-      {/* Add a subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-transparent to-shark-50/30 dark:to-shark-950/20 pointer-events-none"></div>
+      {/* Add a subtle gradient background */}      <div className="absolute inset-0 bg-gradient-to-br from-transparent to-shark-50/30 dark:to-shark-950/20 pointer-events-none"></div>
       
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium" ref={titleRef}>
+        <CardTitle className="font-subheading-playfair text-sm font-medium" ref={titleRef}>
           {title}
         </CardTitle>
         <div ref={iconRef} className="transition-transform">
           {icon}
         </div>
       </CardHeader>
-      <CardContent ref={contentRef}>
+      <CardContent ref={contentRef} className="font-body-merriweather">
         {children}
       </CardContent>
     </Card>

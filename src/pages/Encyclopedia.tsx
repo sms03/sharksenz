@@ -91,8 +91,8 @@ export default function EncyclopediaPage() {
     <MainLayout>
       <div className="mx-auto max-w-6xl">
         <div className="mb-8">
-          <h1 className="mb-2 text-3xl font-bold">Business Terms Encyclopedia</h1>
-          <p className="text-lg text-muted-foreground">
+          <h1 className="font-heading mb-2 text-3xl font-bold">Business Terms Encyclopedia</h1>
+          <p className="font-subheading-libre text-lg text-muted-foreground">
             Search and explore key business and investment concepts
           </p>
         </div>
