@@ -79,18 +79,10 @@ export function HeroSection() {
         <div className={`flex flex-wrap gap-4 ${animationFailed ? 'opacity-100' : ''}`} ref={buttonsRef}>
           {user ? (
             <>
-              <Link
-                to="/learning"
-                className="rounded-lg bg-white px-4 py-2 font-medium text-shark-700 shadow-sm transition-all hover:bg-shark-50 hover:shadow-md hover:-translate-y-0.5 h-10 flex items-center w-32 justify-center"
-              >
-                Start Learning
-              </Link>
-              <Link
-                to="/profile"
-                className="rounded-lg bg-shark-600/30 px-4 py-2 font-medium text-white shadow-sm transition-all hover:bg-shark-600/50 hover:shadow-md hover:-translate-y-0.5 h-10 flex items-center w-32 justify-center"
-              >
-                View Profile
-              </Link>
+              <Link to="/learning" className="rounded-lg bg-white px-4 py-2 font-medium text-shark-700 shadow-sm transition-all hover:bg-shark-50 hover:shadow-md hover:-translate-y-0.5 h-10 flex items-center w-32 justify-center">
+              Learn Now</Link>
+              <Link to="/profile" className="rounded-lg bg-shark-600/30 px-4 py-2 font-medium text-white shadow-sm transition-all hover:bg-shark-600/50 hover:shadow-md hover:-translate-y-0.5 h-10 flex items-center w-32 justify-center">
+              View Profile</Link>
             </>
           ) : (
             <>
