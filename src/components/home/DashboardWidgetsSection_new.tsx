@@ -54,8 +54,9 @@ export function DashboardWidgetsSection() {
               Tools to calculate and visualize business metrics
             </p>
           </div>
-          <Link to="/dashboard" className="font-body-merriweather text-sm font-medium text-shark-500 hover:underline">
+          <Link to="/dashboard" className="font-body-merriweather text-sm font-medium text-shark-500 hover: group relative">
             Open dashboard
+          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-shark-500 transition-all duration-300 group-hover:w-full"></span>
           </Link>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

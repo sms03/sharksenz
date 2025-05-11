@@ -190,7 +190,7 @@ export function FeaturedModulesSection() {
             Bite-sized lessons to master business concepts
           </p>
         </div>
-        <Link to="/learning" className="font-body-merriweather text-sm font-medium text-shark-500 hover:underline relative group">
+        <Link to="/learning" className="font-body-merriweather text-sm font-medium text-shark-500 hover: group relative">
           View all modules
           <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-shark-500 transition-all duration-300 group-hover:w-full"></span>
         </Link>
