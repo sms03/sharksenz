@@ -38,19 +38,6 @@ const getInitialQuizzes = () => [
   { id: 4, title: "Pitch Structure", completed: false, score: 0 }
 ];
 
-// Dummy leaderboard data
-const leaderboardUsers = [
-  { id: 1, name: "Emma Johnson", points: 1250, badges: 5 },
-  { id: 2, name: "James Smith", points: 980, badges: 4 },
-  { id: 3, name: "Olivia Williams", points: 875, badges: 3 },
-  { id: 4, name: "Noah Brown", points: 730, badges: 3 },
-  { id: 5, name: "Sophia Jones", points: 690, badges: 2 },
-  { id: 6, name: "Current User", points: 540, badges: 2 },
-  { id: 7, name: "Liam Miller", points: 470, badges: 2 },
-  { id: 8, name: "Ava Davis", points: 410, badges: 1 },
-  { id: 9, name: "Lucas Wilson", points: 350, badges: 1 },
-  { id: 10, name: "Mia Taylor", points: 310, badges: 1 }
-];
 
 export default function Achievements() {
   const { user } = useAuth();
@@ -130,15 +117,12 @@ export default function Achievements() {
         </SlideUpInView>
         
         <Tabs defaultValue="badges" className="mb-8">
-          <TabsList className="w-full grid grid-cols-3">
+          <TabsList className="w-full grid grid-cols-2">
             <TabsTrigger value="badges">
               <Award className="mr-2 h-4 w-4" />
               Badges
             </TabsTrigger>
-            <TabsTrigger value="leaderboard">
-              <Trophy className="mr-2 h-4 w-4" />
-              Leaderboard
-            </TabsTrigger>
+
             <TabsTrigger value="quizzes">
               <CheckCircle2 className="mr-2 h-4 w-4" />
               Quizzes
@@ -189,55 +173,6 @@ export default function Achievements() {
                 </div>
               </div>
             </FadeInStagger>
-          </TabsContent>
-          
-          <TabsContent value="leaderboard" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Shark Tank Champions</CardTitle>
-                <CardDescription>
-                  See how you rank against other learners
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="rounded-md border">
-                  <div className="grid grid-cols-10 bg-muted/50 py-3">
-                    <div className="col-span-1 px-4 font-medium text-center">#</div>
-                    <div className="col-span-5 px-4 font-medium">User</div>
-                    <div className="col-span-2 px-4 font-medium text-right">Points</div>
-                    <div className="col-span-2 px-4 font-medium text-right">Badges</div>
-                  </div>
-                  {leaderboardUsers.map((user, index) => (
-                    <div
-                      key={user.id}
-                      className={`grid grid-cols-10 border-t py-3 ${
-                        user.name === "Current User"
-                          ? "bg-shark-50 font-medium"
-                          : ""
-                      }`}
-                    >
-                      <div className="col-span-1 px-4 text-center">{index + 1}</div>
-                      <div className="col-span-5 px-4 flex items-center">
-                        {user.name === "Current User" ? (
-                          <>
-                            <Star className="mr-2 h-3 w-3 text-amber-500" /> {user.name}{" "}
-                            <span className="ml-2 text-xs text-shark-500">(You)</span>
-                          </>
-                        ) : (
-                          user.name
-                        )}
-                      </div>
-                      <div className="col-span-2 px-4 text-right">
-                        {user.points.toLocaleString()}
-                      </div>
-                      <div className="col-span-2 px-4 text-right">
-                        {user.badges}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
           </TabsContent>
           
           <TabsContent value="quizzes" className="mt-6">
