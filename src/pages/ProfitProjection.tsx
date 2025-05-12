@@ -35,7 +35,7 @@ export default function ProfitProjection() {
         <CardHeader>
           <CardTitle>Projection Inputs</CardTitle>
           <CardDescription>Enter your base metrics and growth assumptions</CardDescription>
-        </CardHeader>        <CardContent className="space-y-4 h-[300px]">
+        </CardHeader>        <CardContent className="space-y-4 h-[350px]">
           <div className="space-y-2">
             <Label htmlFor="revenue">Monthly Revenue</Label>
             <Input id="revenue" type="number" value={revenue} onChange={e => setRevenue(e.target.value)} className="h-10" />

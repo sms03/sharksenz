@@ -69,9 +69,12 @@ export function HeroSection() {
         <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute -top-20 -left-20 w-72 h-72 bg-shark-400/10 rounded-full blur-3xl"></div>
         
-        <h1 className={`font-heading mb-4 text-3xl font-bold tracking-tight md:text-4xl ${animationFailed ? 'opacity-100' : ''}`} ref={titleRef}>
-          Welcome to SharkSenz
-        </h1>
+        <div className="flex items-center gap-3 mb-4">
+          <img src="/logo.png" alt="SharkSenz Logo" className="h-12 w-auto" />
+          <h1 className={`font-heading text-3xl font-bold tracking-tight md:text-4xl ${animationFailed ? 'opacity-100' : ''}`} ref={titleRef}>
+            Welcome to SharkSenz
+          </h1>
+        </div>
         <p className={`body-lora mb-6 max-w-2xl text-shark-100 md:text-lg ${animationFailed ? 'opacity-100' : ''}`} ref={descriptionRef}>
           Master the language of business and investment through interactive learning
           modules and practical tools inspired by Shark Tank.

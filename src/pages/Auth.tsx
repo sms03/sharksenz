@@ -232,7 +232,7 @@ const Auth = () => {
           onMouseEnter={buttonHoverEnter}
           onMouseLeave={buttonHoverLeave}
         >
-          <BarChart3 className="mr-2 h-5 w-5" />
+          <img src="/logo.png" alt="SharkSenz Logo" className="h-6 w-auto mr-2" />
           <span className="text-xl font-bold">SharkSenz</span>
         </Button>
       </div>
