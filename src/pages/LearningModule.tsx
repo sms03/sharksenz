@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import MainLayout from "@/layouts/MainLayout";
@@ -326,7 +325,121 @@ const moduleContent = {
         `
       }
     ]
-  }
+  },
+  "valuation-fundamentals": {
+    title: "Startup Valuation Methods",
+    description: "Learn how investors value early-stage companies",
+    sections: [
+      {
+        title: "Valuation Fundamentals",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Understanding Startup Valuation</h2>
+          <p class="mb-4">Valuation is both an art and a science, especially for early-stage companies without significant revenue or profits. Understanding different valuation methods helps you negotiate better with investors.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Valuation Concepts</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-2">Pre-money vs Post-money</h4>
+              <p>Pre-money valuation is your company's value before investment. Post-money is pre-money plus the investment amount.</p>
+              <div class="mt-2 bg-shark-50 p-3 rounded-md">
+                <p class="font-mono">Post-money = Pre-money + Investment</p>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-2">Dilution</h4>
+              <p>When you raise money, existing shareholders get diluted. The percentage depends on the valuation and investment amount.</p>
+              <div class="mt-2 bg-shark-50 p-3 rounded-md">
+                <p class="font-mono">Ownership % = Investment ÷ Post-money Valuation</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Example</h4>
+            <p>When a Shark offers "$100,000 for 20%", they're suggesting a post-money valuation of $500,000. The implied pre-money valuation is $400,000.</p>
+          </div>
+        `
+      },
+      {
+        title: "Valuation Methods",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Common Valuation Methods</h2>
+          <div class="space-y-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">1. Comparable Analysis</h3>
+              <p class="mb-3">Looking at similar companies that have raised money or been acquired.</p>
+              <div class="bg-shark-50 p-3 rounded-md">
+                <h4 class="font-medium mb-2">Key Metrics:</h4>
+                <ul class="list-disc pl-6 space-y-1">
+                  <li>Revenue multiples</li>
+                  <li>User/customer multiples</li>
+                  <li>Market size comparisons</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">2. Scorecard Method</h3>
+              <p class="mb-3">Comparing your startup to typical angel-funded companies in your region.</p>
+              <div class="bg-shark-50 p-3 rounded-md">
+                <h4 class="font-medium mb-2">Factors:</h4>
+                <ul class="list-disc pl-6 space-y-1">
+                  <li>Team strength (30%)</li>
+                  <li>Market size (25%)</li>
+                  <li>Product/Technology (15%)</li>
+                  <li>Competitive environment (10%)</li>
+                  <li>Marketing/Sales (10%)</li>
+                  <li>Need for additional investment (5%)</li>
+                  <li>Other factors (5%)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">3. DCF Analysis</h3>
+              <p class="mb-3">Discounted Cash Flow analysis for more mature startups with predictable revenue.</p>
+              <div class="bg-shark-50 p-3 rounded-md">
+                <p class="font-mono mb-2">Present Value = Future Cash Flows ÷ (1 + Discount Rate)^n</p>
+                <p class="text-sm">Note: Often less relevant for early-stage startups due to uncertainty in projections.</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        title: "Negotiating Valuation",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Valuation Negotiation Strategies</h2>
+          <p class="mb-6">Negotiating valuation is about more than just numbers—it's about telling your story and backing it up with data.</p>
+
+          <div class="space-y-6 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Key Value Drivers</h3>
+              <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Traction:</strong> Users, revenue, growth rates</li>
+                <li><strong>Team:</strong> Experience, track record, domain expertise</li>
+                <li><strong>Technology:</strong> IP, patents, technical innovation</li>
+                <li><strong>Market:</strong> Size, growth rate, competitive position</li>
+                <li><strong>Timing:</strong> Market readiness, competitive landscape</li>
+              </ul>
+            </div>
+
+            <div class="bg-shark-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-shark-700 mb-2">Red Flags That Lower Valuation</h4>
+              <ul class="list-disc pl-6 space-y-2">
+                <li>No clear path to profitability</li>
+                <li>High customer acquisition costs</li>
+                <li>Weak competitive moat</li>
+                <li>Inexperienced team</li>
+                <li>Small or shrinking market</li>
+              </ul>
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
 };
 
 export default function LearningModule() {
