@@ -9,7 +9,8 @@ import {
   MessageSquare, 
   CheckCircle2,
   Clock,
-  Award
+  Award,
+  Lock
 } from "lucide-react";
 import MainLayout from "@/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { FadeIn, FadeInStagger, SlideUp } from "@/components/ui/motion";
+import { useAuth } from "@/components/AuthProvider";
+import { Link } from "react-router-dom";
 
 // Sample pitch structure
 const pitchSteps = [
@@ -162,6 +165,7 @@ export default function PitchSimulator() {
   const [isRecording, setIsRecording] = useState(false);
   const [timer, setTimer] = useState(0);
   const [pitchDraft, setPitchDraft] = useState("");
+  const { user } = useAuth();
 
   // Get user plan from localStorage (default to free)
   const [plan] = useState(() => localStorage.getItem("user_plan") || "free");
@@ -185,6 +189,21 @@ export default function PitchSimulator() {
     setIsRecording(!isRecording);
   };
 
+  if (!user) {
+    return (
+      <MainLayout>
+        <div className="mx-auto max-w-2xl py-24 text-center">
+          <Lock className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+          <h1 className="mb-4 text-3xl font-bold">Pitch Simulator</h1>
+          <p className="mb-6 text-lg text-muted-foreground">Please login to access the Pitch Simulator.</p>
+          <Button asChild variant="default">
+            <Link to="/auth">Sign In</Link>
+          </Button>
+        </div>
+      </MainLayout>
+    );
+  }
+  
   if (!isPaid) {
     return (
       <MainLayout>

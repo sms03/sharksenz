@@ -326,150 +326,200 @@ const moduleContent = {
       }
     ]
   },
-  "cohort-analysis": {
-    title: "Cohort Analysis",
-    description: "Analyze user behavior over time",
+  "cap-table": {
+    title: "Cap Table (Capitalization Table)",
+    description: "Track company ownership, equity distribution, and dilution through funding rounds. Learn how to read, build, and use a cap table for investor negotiations.",
     sections: [
       {
-        title: "Cohort Analysis Basics",
+        title: "What is a Cap Table?",
         content: `
-          <h2 class="text-2xl font-bold mb-4">Understanding Cohort Analysis</h2>
-          <p class="mb-6">Cohort analysis is a powerful analytical tool that groups users into "cohorts" based on shared characteristics and tracks their behavior over time. It reveals patterns that are otherwise hidden in aggregated data.</p>
-
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">What Is a Cohort?</h3>
-              <p class="mb-3">A cohort is a group of users who share a common characteristic or experience within a defined time period. Common cohort types include:</p>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li><strong>Acquisition cohorts:</strong> Grouped by when users joined/signed up (most common)</li>
-                <li><strong>Behavioral cohorts:</strong> Grouped by actions they've taken (e.g., completed onboarding)</li>
-                <li><strong>Size cohorts:</strong> Grouped by transaction size or subscription tier</li>
-                <li><strong>Channel cohorts:</strong> Grouped by acquisition source (organic search, paid ads, etc.)</li>
-                <li><strong>Demographic cohorts:</strong> Grouped by age, location, or other demographics</li>
-              </ul>
-            </div>
-
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Why Cohort Analysis Matters</h3>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Reveals True Business Health</h4>
-                  <p class="text-sm">Aggregate metrics can mask underlying problems. For example, total revenue might be growing, but newer cohorts might have worse retention.</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Isolates Product & Marketing Impact</h4>
-                  <p class="text-sm">By comparing cohorts from before and after changes, you can measure the impact of product updates or marketing campaigns.</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Identifies Retention Patterns</h4>
-                  <p class="text-sm">Shows when and why users typically disengage, helping focus retention efforts at critical moments.</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Improves Forecasting</h4>
-                  <p class="text-sm">Historical cohort behavior patterns can predict how new cohorts will perform over time.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Cohort Analysis vs. Segment Analysis</h4>
-            <p class="mb-3">These are often confused but are different:</p>
-            <ul class="list-disc pl-6">
-              <li><strong>Cohort analysis:</strong> Groups users based on when they joined or experienced something, then tracks them over time</li>
-              <li><strong>Segment analysis:</strong> Groups users based on shared attributes (demographics, behavior) without necessarily tracking time progression</li>
-            </ul>
+          <h2 class="text-2xl font-bold mb-4">What is a Cap Table?</h2>
+          <p class="mb-4">A capitalization table (cap table) is a spreadsheet or table that shows the equity ownership capitalization for a company. It details who owns what percentage of the company, including founders, investors, and employees. Cap tables are essential for understanding how ownership changes over time, especially after new funding rounds or option grants.</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Tracks shares, options, warrants, and convertible securities</li>
+            <li>Shows how ownership changes after each investment round</li>
+            <li>Helps founders plan for dilution and future fundraising</li>
+            <li>Used in due diligence by investors and acquirers</li>
+          </ul>
+          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Example</h4>
+            <p>Sharks often ask, "How much of the company do you own?" or "What happens to my stake after future rounds?" A clear cap table answers these questions and shows you understand dilution and investor rights.</p>
           </div>
         `
       },
       {
-        title: "Implementing Cohort Analysis",
+        title: "Why Cap Tables Matter",
         content: `
-          <h2 class="text-2xl font-bold mb-4">Creating & Interpreting Cohort Analysis</h2>
-          <p class="mb-6">How to set up, analyze, and act on cohort data.</p>
-
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Retention Cohort Analysis</h3>
-              <p class="mb-3">The most common cohort analysis tracks what percentage of users are still active over time:</p>
-              <div class="overflow-x-auto">
-                <table class="min-w-full border-collapse text-sm">
-                  <thead>
-                    <tr class="bg-shark-100">
-                      <th class="border p-2">Cohort</th>
-                      <th class="border p-2">Month 0</th>
-                      <th class="border p-2">Month 1</th>
-                      <th class="border p-2">Month 2</th>
-                      <th class="border p-2">Month 3</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="border p-2 font-medium">Jan 2023</td>
-                      <td class="border p-2">100%</td>
-                      <td class="border p-2">72%</td>
-                      <td class="border p-2">63%</td>
-                      <td class="border p-2">58%</td>
-                    </tr>
-                    <tr>
-                      <td class="border p-2 font-medium">Feb 2023</td>
-                      <td class="border p-2">100%</td>
-                      <td class="border p-2">68%</td>
-                      <td class="border p-2">59%</td>
-                      <td class="border p-2">52%</td>
-                    </tr>
-                    <tr>
-                      <td class="border p-2 font-medium">Mar 2023</td>
-                      <td class="border p-2">100%</td>
-                      <td class="border p-2">75%</td>
-                      <td class="border p-2">67%</td>
-                      <td class="border p-2">-</td>
-                    </tr>
-                    <tr>
-                      <td class="border p-2 font-medium">Apr 2023</td>
-                      <td class="border p-2">100%</td>
-                      <td class="border p-2">79%</td>
-                      <td class="border p-2">-</td>
-                      <td class="border p-2">-</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <p class="mt-3 text-sm">In this example, we can see the March and April cohorts have better retention, which might indicate product or market improvements.</p>
-            </div>
-
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Cohort Analysis Metrics</h3>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Retention Rate</h4>
-                  <p class="text-sm">Percentage of users still active after a specific time period</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Churn Rate</h4>
-                  <p class="text-sm">Percentage of users who have stopped using your product (1 - retention rate)</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Lifetime Value (LTV)</h4>
-                  <p class="text-sm">Average revenue generated by a cohort over their lifetime</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Payback Period</h4>
-                  <p class="text-sm">Time it takes for a cohort's revenue to exceed their acquisition cost</p>
-                </div>
-              </div>
-            </div>
+          <h2 class="text-2xl font-bold mb-4">Why Cap Tables Matter</h2>
+          <p class="mb-4">Cap tables are essential for understanding dilution, negotiating investments, and planning exits. They help founders and investors see the impact of new funding rounds on ownership. A well-maintained cap table builds trust with investors and helps avoid disputes.</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Helps avoid surprises about dilution and control</li>
+            <li>Ensures transparency for all stakeholders</li>
+            <li>Required for due diligence in fundraising and acquisitions</li>
+            <li>Shows vesting schedules, option pools, and convertible notes</li>
+          </ul>
+          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>Use cap table software (like Carta or Pulley) as your company grows to avoid errors and keep records up to date.</p>
           </div>
-
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Cohort Analysis</h4>
-            <p class="mb-3">How cohort analysis applies to Shark Tank pitches:</p>
-            <ul class="list-disc pl-6">
-              <li>Sharks want to see evidence of improving retention in newer cohorts</li>
-              <li>They look for increasing LTV across cohorts as a sign of business health</li>
-              <li>They're interested in channel cohort analysis to identify scalable acquisition sources</li>
-              <li>They value businesses with predictable cohort behavior for forecasting</li>
-            </ul>
+        `
+      },
+      {
+        title: "Cap Table Example & Dilution",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Cap Table Example & Dilution</h2>
+          <p class="mb-4">Suppose your startup has 1,000,000 shares. You own 700,000 (70%), your co-founder owns 200,000 (20%), and an advisor owns 100,000 (10%). After raising money and issuing new shares to investors, your percentage ownership will decrease (dilution), but the company may be worth more overall.</p>
+          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold text-shark-700 mb-2">Sample Cap Table</h4>
+            <table class="min-w-full text-sm mb-2">
+              <thead><tr><th class="pr-4">Shareholder</th><th class="pr-4">Shares</th><th>% Ownership</th></tr></thead>
+              <tbody>
+                <tr><td>Founder A</td><td>700,000</td><td>70%</td></tr>
+                <tr><td>Founder B</td><td>200,000</td><td>20%</td></tr>
+                <tr><td>Advisor</td><td>100,000</td><td>10%</td></tr>
+              </tbody>
+            </table>
+            <p>After a $1M investment for 20% of the company, the new cap table will reflect the investor's shares and the dilution of existing shareholders.</p>
+          </div>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Always model dilution before agreeing to new investment terms</li>
+            <li>Understand pre-money and post-money valuation</li>
+          </ul>
+        `
+      }
+    ]
+  },
+  "cash-flow": {
+    title: "Cash Flow",
+    description: "Track the movement of money in and out of your business. Learn to analyze, forecast, and optimize cash flow for startup survival and growth.",
+    sections: [
+      {
+        title: "What is Cash Flow?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Cash Flow?</h2>
+          <p class="mb-4">Cash flow is the net amount of cash and cash-equivalents moving into and out of a business. Positive cash flow means more money is coming in than going out, which is vital for survival and growth. Cash flow is different from profit and is the lifeblood of any startup.</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Operating cash flow: from core business operations (sales, expenses)</li>
+            <li>Investing cash flow: from buying/selling assets (equipment, property)</li>
+            <li>Financing cash flow: from loans, investments, dividends</li>
+            <li>Free cash flow: cash available after capital expenditures</li>
+          </ul>
+          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold text-shark-700 mb-2">Why It Matters</h4>
+            <p>Even profitable companies can fail if they run out of cash. Always monitor your cash runway and plan for slow-paying customers or unexpected expenses.</p>
+          </div>
+        `
+      },
+      {
+        title: "Cash Flow vs. Profit",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Cash Flow vs. Profit</h2>
+          <p class="mb-4">Profit is not the same as cash flow. A company can be profitable on paper but run out of cash if customers delay payments or inventory builds up. Cash flow statements show the real movement of money and are critical for financial health.</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Profit is an accounting concept; cash flow is about actual money in the bank</li>
+            <li>Track both to avoid surprises</li>
+          </ul>
+          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Example</h4>
+            <p>Sharks want to know, "How much cash do you have in the bank?" and "How long will it last?" They care about cash flow, not just profits. Be ready to explain your cash conversion cycle and how you manage working capital.</p>
+          </div>
+        `
+      },
+      {
+        title: "Improving Cash Flow",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Improving Cash Flow</h2>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Invoice promptly and follow up on late payments</li>
+            <li>Negotiate better payment terms with suppliers</li>
+            <li>Reduce inventory levels to free up cash</li>
+            <li>Consider short-term financing or lines of credit</li>
+            <li>Monitor cash flow weekly, not just monthly</li>
+          </ul>
+          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>Use a cash flow forecast to anticipate shortfalls and plan corrective actions in advance.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "churn-rate": {
+    title: "Churn Rate",
+    description: "Measure how many customers you lose over time. Learn to analyze, reduce, and benchmark churn for SaaS and subscription businesses.",
+    sections: [
+      {
+        title: "What is Churn Rate?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Churn Rate?</h2>
+          <p class="mb-4">Churn rate is the percentage of customers who stop using your product or service during a given time period. It's a key metric for subscription and SaaS businesses. High churn can signal product or service issues, poor fit, or strong competition.</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li><strong>Formula:</strong> Churn Rate = (Customers Lost ÷ Total Customers at Start) × 100%</li>
+            <li>High churn means you need to acquire more customers just to maintain revenue</li>
+            <li>Track churn by cohort, segment, and reason for cancellation</li>
+          </ul>
+        `
+      },
+      {
+        title: "Reducing Churn",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Reducing Churn</h2>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Improve onboarding and customer support</li>
+            <li>Deliver ongoing value and product updates</li>
+            <li>Identify and address reasons for cancellation (survey churned users)</li>
+            <li>Offer win-back campaigns or loyalty incentives</li>
+            <li>Benchmark churn against industry standards</li>
+          </ul>
+          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>Reducing churn by even 1% can have a major impact on lifetime value and growth rate.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "cohort-analysis": {
+    title: "Cohort Analysis",
+    description: "Analyze groups of users over time to spot trends and improve retention. Learn how to use cohort analysis for actionable insights.",
+    sections: [
+      {
+        title: "What is Cohort Analysis?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Cohort Analysis?</h2>
+          <p class="mb-4">Cohort analysis groups users by shared characteristics (like signup month) and tracks their behavior over time. It helps you understand retention, engagement, and the impact of product changes. Cohort analysis is a powerful tool for SaaS, apps, and consumer businesses.</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Reveals if new users are sticking around or churning</li>
+            <li>Shows if product changes improve retention</li>
+            <li>Helps identify high-value customer segments</li>
+            <li>Can be used to test marketing campaigns or onboarding flows</li>
+          </ul>
+          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>Visualize cohorts with a heatmap to quickly spot trends and outliers.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "contribution-margin": {
+    title: "Contribution Margin",
+    description: "Understand how much each sale contributes to covering fixed costs and generating profit. Learn to calculate, interpret, and improve contribution margin.",
+    sections: [
+      {
+        title: "What is Contribution Margin?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Contribution Margin?</h2>
+          <p class="mb-4">Contribution margin is the amount each sale contributes to covering fixed costs and generating profit. It's calculated as sales revenue minus variable costs. High contribution margin means more profit per sale and greater flexibility to invest in growth.</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li><strong>Formula:</strong> Contribution Margin = Sales Revenue - Variable Costs</li>
+            <li>High contribution margin means more profit per sale</li>
+            <li>Track by product, customer segment, or channel</li>
+            <li>Use to set pricing and prioritize high-margin products</li>
+          </ul>
+          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>Improving contribution margin is often the fastest way to boost profitability.</p>
           </div>
         `
       }
@@ -477,585 +527,129 @@ const moduleContent = {
   },
   "conversion-rates": {
     title: "Conversion Rates",
-    description: "Tracking how prospects become customers",
+    description: "Track how many leads or visitors become customers. Learn to analyze, test, and improve conversion rates for growth.",
     sections: [
       {
-        title: "Understanding Conversion Rates",
+        title: "What is a Conversion Rate?",
         content: `
-          <h2 class="text-2xl font-bold mb-4">Conversion Rate Fundamentals</h2>
-          <p class="mb-6">Conversion rates measure the percentage of potential customers who complete a desired action. They're crucial metrics for evaluating marketing effectiveness and sales funnel efficiency.</p>
-
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Basic Conversion Rate Formula</h3>
-              <div class="bg-shark-50 p-3 rounded-md mb-4">
-                <p class="font-mono text-center">Conversion Rate (%) = (Number of Conversions ÷ Total Visitors or Opportunities) × 100</p>
-              </div>
-              <p class="mb-3"><strong>Examples:</strong></p>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li>Website: 500 purchases ÷ 10,000 visitors = 5% conversion rate</li>
-                <li>Sales: 20 closed deals ÷ 200 leads = 10% conversion rate</li>
-                <li>Email: 150 clicks ÷ 5,000 recipients = 3% conversion rate</li>
-              </ul>
-            </div>
-
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Common Conversion Metrics</h3>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">E-commerce Conversions</h4>
-                  <ul class="list-disc pl-6 text-sm">
-                    <li>Product Page to Add-to-Cart</li>
-                    <li>Cart to Checkout</li>
-                    <li>Checkout to Purchase (Cart Abandonment Rate)</li>
-                    <li>Overall Visitor to Purchase</li>
-                  </ul>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">SaaS Conversions</h4>
-                  <ul class="list-disc pl-6 text-sm">
-                    <li>Visitor to Free Trial/Signup</li>
-                    <li>Free Trial to Paid Conversion</li>
-                    <li>Basic Plan to Premium Upgrade</li>
-                  </ul>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">B2B Sales Conversions</h4>
-                  <ul class="list-disc pl-6 text-sm">
-                    <li>Lead to Qualified Lead</li>
-                    <li>Qualified Lead to Meeting</li>
-                    <li>Meeting to Proposal</li>
-                    <li>Proposal to Closed Deal</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Industry Benchmarks</h4>
-            <p class="mb-3">Average conversion rates vary by industry:</p>
-            <ul class="list-disc pl-6">
-              <li><strong>E-commerce:</strong> 1-4% overall visitor-to-purchase</li>
-              <li><strong>B2B:</strong> 3-5% visitor-to-lead, 10-20% lead-to-customer</li>
-              <li><strong>SaaS:</strong> 3-5% visitor-to-trial, 15-25% trial-to-paid</li>
-              <li><strong>Email marketing:</strong> 2-5% clickthrough rate, 0.5-3% conversion</li>
-            </ul>
-          </div>
+          <h2 class="text-2xl font-bold mb-4">What is a Conversion Rate?</h2>
+          <p class="mb-4">Conversion rate is the percentage of users who take a desired action, such as signing up, making a purchase, or subscribing. It's a key metric for marketing and sales effectiveness. Small improvements in conversion rate can have a big impact on revenue.</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li><strong>Formula:</strong> Conversion Rate = (Conversions ÷ Total Visitors) × 100%</li>
+            <li>Improving conversion rates increases revenue without more traffic</li>
+            <li>Track conversion rates at each step of the funnel</li>
+            <li>Segment by channel, device, or campaign</li>
+          </ul>
         `
       },
       {
         title: "Improving Conversion Rates",
         content: `
-          <h2 class="text-2xl font-bold mb-4">Optimization Strategies</h2>
-          <p class="mb-6">Improving conversion rates can dramatically impact your business growth while maintaining the same level of traffic or leads.</p>
-
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Sales Funnel Analysis</h3>
-              <p class="mb-3">Identifying where prospects drop off in your funnel:</p>
-              <img src="/images/conversion-funnel.png" alt="Sales Funnel" class="mb-4 mx-auto max-w-xs rounded-lg shadow-md"/>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Customer Journey Mapping</h4>
-                  <p class="text-sm">Document each touchpoint in your customer journey and measure conversion at each step. This reveals bottlenecks and opportunities.</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Funnel Visualization</h4>
-                  <p class="text-sm">Create visual representations of your conversion funnel to spot significant drop-offs that need attention.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Testing & Optimization</h3>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">A/B Testing</h4>
-                  <p class="text-sm">Systematically test different versions of landing pages, emails, ads, and other touchpoints to identify which performs better.</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">User Testing</h4>
-                  <p class="text-sm">Observe how real users interact with your website or product to identify confusion, friction, or barriers to conversion.</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Conversion Rate Optimization (CRO)</h4>
-                  <p class="text-sm">Implement methodical processes for improving conversion through hypotheses, tests, and iterations.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Conversion Insight</h4>
-            <p class="mb-3">In Shark Tank presentations, investors focus on these conversion metrics:</p>
-            <ul class="list-disc pl-6">
-              <li>Customer acquisition channels and their conversion rates</li>
-              <li>Sales conversion rate (leads to purchases)</li>
-              <li>Customer retention and repeat purchase rates</li>
-              <li>Upsell and cross-sell conversion rates</li>
-              <li>Evidence of improving conversion over time</li>
-            </ul>
+          <h2 class="text-2xl font-bold mb-4">Improving Conversion Rates</h2>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Test different headlines, images, and calls to action (A/B testing)</li>
+            <li>Reduce friction in the signup or checkout process</li>
+            <li>Use social proof, testimonials, and trust badges</li>
+            <li>Personalize messaging and offers</li>
+            <li>Analyze drop-off points and optimize the funnel</li>
+          </ul>
+          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>Even a 1% increase in conversion rate can significantly boost revenue. Always be testing!</p>
           </div>
         `
       }
     ]
   },
-  "nps": {
-    title: "NPS & Customer Satisfaction",
-    description: "Measuring customer loyalty and satisfaction",
+  "customer-acquisition-cost": {
+    title: "Customer Acquisition Cost (CAC)",
+    description: "Calculate how much it costs to acquire a new customer. Learn to optimize CAC and balance it with lifetime value (LTV).",
     sections: [
       {
-        title: "NPS Fundamentals",
+        title: "What is CAC?",
         content: `
-          <h2 class="text-2xl font-bold mb-4">Net Promoter Score (NPS)</h2>
-          <p class="mb-6">NPS is a widely-used metric that measures customer loyalty and satisfaction by asking customers how likely they are to recommend your product or service to others.</p>
-
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">The NPS Question</h3>
-              <p class="mb-3">NPS is based on a single question:</p>
-              <div class="bg-shark-50 p-3 rounded-md mb-4">
-                <p class="italic">"On a scale of 0-10, how likely are you to recommend [company/product/service] to a friend or colleague?"</p>
-              </div>
-              <div class="grid grid-cols-11 gap-1 mb-3">
-                <div class="flex items-center justify-center h-8 rounded bg-red-500">
-                  <span class="text-white font-medium">0</span>
-                </div>
-                <div class="flex items-center justify-center h-8 rounded bg-red-500">
-                  <span class="text-white font-medium">1</span>
-                </div>
-                <div class="flex items-center justify-center h-8 rounded bg-red-500">
-                  <span class="text-white font-medium">2</span>
-                </div>
-                <div class="flex items-center justify-center h-8 rounded bg-red-500">
-                  <span class="text-white font-medium">3</span>
-                </div>
-                <div class="flex items-center justify-center h-8 rounded bg-red-500">
-                  <span class="text-white font-medium">4</span>
-                </div>
-                <div class="flex items-center justify-center h-8 rounded bg-red-500">
-                  <span class="text-white font-medium">5</span>
-                </div>
-                <div class="flex items-center justify-center h-8 rounded bg-red-500">
-                  <span class="text-white font-medium">6</span>
-                </div>
-                <div class="flex items-center justify-center h-8 rounded bg-yellow-500">
-                  <span class="text-white font-medium">7</span>
-                </div>
-                <div class="flex items-center justify-center h-8 rounded bg-yellow-500">
-                  <span class="text-white font-medium">8</span>
-                </div>
-                <div class="flex items-center justify-center h-8 rounded bg-green-500">
-                  <span class="text-white font-medium">9</span>
-                </div>
-                <div class="flex items-center justify-center h-8 rounded bg-green-500">
-                  <span class="text-white font-medium">10</span>
-                </div>
-              </div>
-              <div class="grid grid-cols-3 gap-4 mt-2">
-                <div class="bg-red-100 p-2 text-center rounded">
-                  <p class="font-medium text-red-700">Detractors</p>
-                  <p class="text-xs text-red-600">Scores 0-6</p>
-                </div>
-                <div class="bg-yellow-100 p-2 text-center rounded">
-                  <p class="font-medium text-yellow-700">Passives</p>
-                  <p class="text-xs text-yellow-600">Scores 7-8</p>
-                </div>
-                <div class="bg-green-100 p-2 text-center rounded">
-                  <p class="font-medium text-green-700">Promoters</p>
-                  <p class="text-xs text-green-600">Scores 9-10</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Calculating NPS</h3>
-              <div class="bg-shark-50 p-3 rounded-md mb-4">
-                <p class="font-mono text-center">NPS = % of Promoters - % of Detractors</p>
-              </div>
-              <p class="mb-3"><strong>Example:</strong></p>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li>100 customers respond to your NPS survey</li>
-                <li>45 give scores of 9-10 (Promoters): 45%</li>
-                <li>30 give scores of 7-8 (Passives): 30% (not used in calculation)</li>
-                <li>25 give scores of 0-6 (Detractors): 25%</li>
-                <li>NPS = 45% - 25% = 20</li>
-              </ul>
-              <p class="mt-3 text-sm">NPS ranges from -100 (all detractors) to +100 (all promoters)</p>
-            </div>
-          </div>
-
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">NPS Benchmarks</h4>
-            <ul class="list-disc pl-6">
-              <li><strong>Above 70:</strong> Exceptional (top performers like Apple)</li>
-              <li><strong>50-70:</strong> Excellent</li>
-              <li><strong>30-50:</strong> Good</li>
-              <li><strong>0-30:</strong> Needs improvement</li>
-              <li><strong>Below 0:</strong> Critical issues to address</li>
-            </ul>
-            <p class="mt-3 text-sm"><em>Note: Benchmarks vary by industry. B2B typically has higher NPS than B2C.</em></p>
-          </div>
+          <h2 class="text-2xl font-bold mb-4">What is Customer Acquisition Cost?</h2>
+          <p class="mb-4">CAC is the total cost of acquiring a new customer, including marketing and sales expenses. It's a critical metric for understanding the efficiency of your growth efforts. Lowering CAC while maintaining growth is a key to startup success.</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li><strong>Formula:</strong> CAC = Total Sales & Marketing Cost ÷ Number of New Customers</li>
+            <li>Lower CAC means more efficient growth</li>
+            <li>Track CAC by channel, campaign, and customer segment</li>
+            <li>Compare CAC to LTV (lifetime value) for sustainability</li>
+          </ul>
         `
       },
       {
-        title: "Customer Satisfaction Metrics",
+        title: "Improving CAC",
         content: `
-          <h2 class="text-2xl font-bold mb-4">Beyond NPS: Customer Satisfaction Metrics</h2>
-          <p class="mb-6">While NPS is popular, a comprehensive customer satisfaction strategy includes multiple complementary metrics.</p>
-
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Key Satisfaction Metrics</h3>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Customer Satisfaction Score (CSAT)</h4>
-                  <p class="text-sm">Measures satisfaction with a specific interaction or feature</p>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="italic text-sm">"How satisfied are you with your recent experience?" (1-5 scale)</p>
-                  </div>
-                  <p class="mt-1 text-sm">CSAT = (Number of satisfied responses ÷ Total responses) × 100</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Customer Effort Score (CES)</h4>
-                  <p class="text-sm">Measures how easy it was for customers to accomplish their goals</p>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="italic text-sm">"How easy was it to solve your problem today?" (1-7 scale)</p>
-                  </div>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Customer Health Score</h4>
-                  <p class="text-sm">A composite metric combining usage data, support interactions, and feedback</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Using Satisfaction Data</h3>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Closing the Feedback Loop</h4>
-                  <ul class="list-disc pl-6 text-sm">
-                    <li>Follow up with detractors to resolve issues</li>
-                    <li>Thank promoters and encourage referrals</li>
-                    <li>Track issues mentioned in feedback to identify patterns</li>
-                  </ul>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Prioritizing Improvements</h4>
-                  <p class="text-sm">Use customer feedback to inform product roadmap and service improvements</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Predictive Analysis</h4>
-                  <p class="text-sm">Use satisfaction metrics to predict and prevent churn</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Perspective</h4>
-            <ul class="list-disc pl-6">
-              <li>Sharks value businesses with solid NPS scores (30+)</li>
-              <li>They appreciate evidence of responding to customer feedback</li>
-              <li>They look for improving trends in satisfaction metrics over time</li>
-              <li>Customer testimonials and case studies can reinforce satisfaction claims</li>
-            </ul>
+          <h2 class="text-2xl font-bold mb-4">Improving CAC</h2>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Focus on high-ROI marketing channels</li>
+            <li>Increase conversion rates at each funnel stage</li>
+            <li>Retain customers longer (improves LTV:CAC ratio)</li>
+            <li>Use referral programs and word-of-mouth</li>
+            <li>Automate and optimize sales processes</li>
+          </ul>
+          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>Always balance CAC with LTV. If your CAC is too high, growth will not be sustainable.</p>
           </div>
         `
       }
     ]
   },
-  "presentation-skills": {
-    title: "Presentation Skills",
-    description: "Deliver your pitch with confidence",
+  "debt-equity": {
+    title: "Debt vs. Equity",
+    description: "Understand the difference between debt and equity financing. Learn when to use each, and how they impact control, risk, and growth.",
     sections: [
       {
-        title: "The Power of Delivery",
+        title: "Debt vs. Equity Financing",
         content: `
-          <h2 class="text-2xl font-bold mb-4">Why Presentation Skills Matter</h2>
-          <p class="mb-6">A great idea can be lost if it's not communicated clearly and confidently. Investors on Shark Tank and in real life invest in people as much as ideas. Your delivery can make or break your pitch.</p>
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Key Elements of Effective Delivery</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li><strong>Confidence:</strong> Stand tall, make eye contact, and project your voice.</li>
-                <li><strong>Clarity:</strong> Speak at a measured pace, avoid jargon, and use simple language.</li>
-                <li><strong>Passion:</strong> Show genuine enthusiasm for your business.</li>
-                <li><strong>Body Language:</strong> Use purposeful gestures, avoid fidgeting, and smile.</li>
-                <li><strong>Engagement:</strong> Involve your audience with questions or stories.</li>
-              </ul>
-            </div>
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Common Mistakes to Avoid</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li>Reading slides word-for-word</li>
-                <li>Speaking too quickly or too softly</li>
-                <li>Overloading with data or technical details</li>
-                <li>Ignoring time limits</li>
-                <li>Failing to practice or anticipate questions</li>
-              </ul>
-            </div>
-          </div>
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Perspective</h4>
-            <ul class="list-disc pl-6">
-              <li>Sharks often comment on the entrepreneur's confidence and communication style.</li>
-              <li>Clear, concise, and passionate delivery stands out.</li>
-              <li>Practice and preparation are always evident to investors.</li>
-            </ul>
-          </div>
-        `
-      },
-      {
-        title: "Practical Tips & Checklist",
-        content: `
-          <h2 class="text-2xl font-bold mb-4">How to Prepare for a Winning Presentation</h2>
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Before the Pitch</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li>Rehearse your pitch out loud, ideally in front of others</li>
-                <li>Record yourself and review your delivery</li>
-                <li>Time your presentation and adjust to fit limits</li>
-                <li>Prepare for likely questions and objections</li>
-                <li>Visualize success and manage nerves with deep breathing</li>
-              </ul>
-            </div>
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">During the Pitch</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li>Start with a strong opening (hook, story, or bold statement)</li>
-                <li>Maintain eye contact and positive body language</li>
-                <li>Use pauses for emphasis and to let key points sink in</li>
-                <li>Adapt to your audience's reactions and questions</li>
-                <li>End with a clear, confident ask or call to action</li>
-              </ul>
-            </div>
-          </div>
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Quick Checklist</h4>
-            <ul class="list-disc pl-6">
-              <li>✔ Practiced and timed your pitch</li>
-              <li>✔ Prepared for tough questions</li>
-              <li>✔ Slides are clear and support your story</li>
-              <li>✔ Confident, authentic delivery</li>
-              <li>✔ Strong opening and closing</li>
-            </ul>
+          <h2 class="text-2xl font-bold mb-4">Debt vs. Equity Financing</h2>
+          <p class="mb-4">Debt financing means borrowing money that must be repaid with interest. Equity financing means selling ownership in your company in exchange for capital. Each has pros and cons for startups, and the right choice depends on your goals, risk tolerance, and growth plans.</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Debt: No ownership dilution, but must repay principal and interest</li>
+            <li>Equity: No repayment required, but you give up some control and future profits</li>
+            <li>Debt is often cheaper but riskier if cash flow is uncertain</li>
+            <li>Equity brings partners and expertise, but dilutes your stake</li>
+          </ul>
+          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Example</h4>
+            <p>Sharks may offer debt, equity, or a mix (convertible notes, SAFE, royalties). Be ready to explain why you prefer one over the other and how it fits your business plan.</p>
           </div>
         `
       }
     ]
   },
-  "unit-economics": {
-    title: "Unit Economics",
-    description: "Understanding cost and revenue per unit",
+  "depreciation": {
+    title: "Depreciation",
+    description: "Spread out the cost of assets over their useful life. Learn methods, tax implications, and how depreciation affects your financials.",
     sections: [
       {
-        title: "Unit Economics Basics",
+        title: "What is Depreciation?",
         content: `
-          <h2 class="text-2xl font-bold mb-4">Understanding Unit Economics</h2>
-          <p class="mb-6">Unit economics examines the revenues and costs associated with a single unit of your business model, helping you determine if your core business is fundamentally profitable.</p>
-
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">What Is a "Unit"?</h3>
-              <p class="mb-3">The definition of a "unit" varies by business model:</p>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li><strong>E-commerce:</strong> A single order or transaction</li>
-                <li><strong>SaaS:</strong> One customer for one month/year</li>
-                <li><strong>Marketplace:</strong> A single transaction on the platform</li>
-                <li><strong>Consumer app:</strong> One user or one user-month</li>
-                <li><strong>Hardware:</strong> One device sold</li>
-              </ul>
-            </div>
-
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Core Unit Economics Formulas</h3>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Unit Revenue</h4>
-                  <p class="text-sm">The average revenue generated from a single unit</p>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">Unit Revenue = Total Revenue ÷ Number of Units</p>
-                  </div>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Unit Cost</h4>
-                  <p class="text-sm">The direct costs associated with producing and delivering a single unit</p>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">Unit Cost = Total Variable Costs ÷ Number of Units</p>
-                  </div>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Unit Margin</h4>
-                  <p class="text-sm">The profit earned on each unit</p>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">Unit Margin = Unit Revenue - Unit Cost</p>
-                  </div>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Unit Margin Percentage</h4>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">Unit Margin % = (Unit Margin ÷ Unit Revenue) × 100</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Why Unit Economics Matter</h4>
-            <ul class="list-disc pl-6">
-              <li>Demonstrates the fundamental viability of your business model</li>
-              <li>Helps identify when you'll reach profitability</li>
-              <li>Shows whether scaling will improve or worsen your financial position</li>
-              <li>Guides pricing, cost-cutting, and marketing decisions</li>
-              <li>Critical for investor presentations and fundraising</li>
-            </ul>
-          </div>
+          <h2 class="text-2xl font-bold mb-4">What is Depreciation?</h2>
+          <p class="mb-4">Depreciation is the process of allocating the cost of a tangible asset over its useful life. It reduces taxable income and reflects the asset's declining value. Depreciation is a non-cash expense, but it impacts your profit and tax liability.</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Common for equipment, vehicles, buildings</li>
+            <li>Not used for land or intangible assets</li>
+            <li>Reduces reported profit, but not cash flow</li>
+            <li>Required for GAAP and tax reporting</li>
+          </ul>
         `
       },
       {
-        title: "Advanced Unit Economics",
+        title: "Depreciation Methods",
         content: `
-          <h2 class="text-2xl font-bold mb-4">Beyond Basic Unit Economics</h2>
-          <p class="mb-6">Advanced unit economics incorporates customer acquisition costs and lifetime value to provide a more complete picture of business sustainability.</p>
-
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Customer Acquisition Cost (CAC) Integration</h3>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">CAC Per Unit</h4>
-                  <p class="text-sm">For businesses with repeat customers, you need to amortize CAC across multiple units:</p>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">CAC Per Unit = Customer Acquisition Cost ÷ Average Units Per Customer</p>
-                  </div>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Fully-Loaded Unit Economics</h4>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">Fully-Loaded Unit Margin = Unit Revenue - Unit Cost - CAC Per Unit</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Payback Period Analysis</h3>
-              <p class="mb-3">How long it takes to recover the cost of acquiring a customer:</p>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Simple Payback Period</h4>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">Payback Period (in units) = CAC ÷ Unit Margin</p>
-                  </div>
-                  <p class="mt-2 text-sm">Example: If CAC is $300 and unit margin is $30, it takes 10 units to recover CAC</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Time-Based Payback Period</h4>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">Payback Period (in months) = CAC ÷ (Unit Margin × Units Per Month)</p>
-                  </div>
-                  <p class="mt-2 text-sm">Example: If a customer purchases 2 units per month, payback period is 5 months</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Unit Economics Evaluation</h4>
-            <p class="mb-3">Sharks typically evaluate businesses using unit economics:</p>
-            <ul class="list-disc pl-6">
-              <li>They want to see positive unit economics (profit per unit)</li>
-              <li>They look for CAC payback periods under 12 months</li>
-              <li>They analyze whether unit economics improve with scale</li>
-              <li>They question businesses with negative unit economics</li>
-              <li>They evaluate whether you understand your own unit economics</li>
-            </ul>
-          </div>
-        `
-      }
-    ]
-  },
-  "visual-design": {
-    title: "Visual Design",
-    description: "Create compelling visuals for your presentations",
-    sections: [
-      {
-        title: "Principles of Great Visual Design",
-        content: `
-          <h2 class="text-2xl font-bold mb-4">Why Visuals Matter in a Pitch</h2>
-          <p class="mb-6">Investors see hundreds of presentations. Clean, clear, and visually appealing slides help your message stand out and make complex ideas easy to grasp.</p>
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Core Design Principles</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li><strong>Simplicity:</strong> One idea per slide, minimal text</li>
-                <li><strong>Contrast:</strong> Use color and size to highlight key points</li>
-                <li><strong>Alignment:</strong> Keep elements visually organized</li>
-                <li><strong>Consistency:</strong> Use a unified color palette and fonts</li>
-                <li><strong>Whitespace:</strong> Give your content room to breathe</li>
-              </ul>
-            </div>
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Common Visual Mistakes</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li>Overcrowded slides with too much text or data</li>
-                <li>Low-contrast colors that are hard to read</li>
-                <li>Inconsistent fonts, colors, or layouts</li>
-                <li>Poor-quality images or graphics</li>
-                <li>Distracting animations or transitions</li>
-              </ul>
-            </div>
-          </div>
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank & Real-World Examples</h4>
-            <ul class="list-disc pl-6">
-              <li>Winning pitches use visuals to clarify—not clutter—their story</li>
-              <li>Charts, product photos, and infographics are more memorable than text</li>
-              <li>Consistent branding builds trust and professionalism</li>
-            </ul>
-          </div>
-        `
-      },
-      {
-        title: "Slide Design Best Practices",
-        content: `
-          <h2 class="text-2xl font-bold mb-4">How to Design Slides That Impress</h2>
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Slide-by-Slide Tips</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li><strong>Title Slide:</strong> Company name, logo, and a tagline or value prop</li>
-                <li><strong>Problem Slide:</strong> Use a bold statement or image to illustrate the pain point</li>
-                <li><strong>Solution Slide:</strong> Visuals of your product/service in action</li>
-                <li><strong>Market Slide:</strong> Simple charts or infographics, not dense tables</li>
-                <li><strong>Financials Slide:</strong> Use graphs, not spreadsheets</li>
-                <li><strong>Team Slide:</strong> Photos and short bios, not paragraphs</li>
-              </ul>
-            </div>
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Resources for Better Visuals</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li>Use free tools like Canva, Figma, or Google Slides for design</li>
-                <li>Leverage high-quality stock images and icons (Unsplash, Noun Project)</li>
-                <li>Test your slides on different screens for readability</li>
-                <li>Ask for feedback from peers before presenting</li>
-              </ul>
-            </div>
-          </div>
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Quick Visual Design Checklist</h4>
-            <ul class="list-disc pl-6">
-              <li>✔ Slides are clean and uncluttered</li>
-              <li>✔ Key points are visually highlighted</li>
-              <li>✔ Consistent branding and style</li>
-              <li>✔ Images and charts are high quality</li>
-              <li>✔ Every slide supports your story</li>
-            </ul>
+          <h2 class="text-2xl font-bold mb-4">Depreciation Methods</h2>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Straight-line: Equal expense each year</li>
+            <li>Declining balance: Higher expense in early years</li>
+            <li>Units of production: Based on usage</li>
+            <li>Bonus depreciation: Accelerated write-off for tax purposes</li>
+          </ul>
+          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>Work with an accountant to choose the best depreciation method for your business and maximize tax benefits.</p>
           </div>
         `
       }
