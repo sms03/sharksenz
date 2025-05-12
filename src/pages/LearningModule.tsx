@@ -326,426 +326,6 @@ const moduleContent = {
       }
     ]
   },
-  "unit-economics": {
-    title: "Unit Economics",
-    description: "Understanding cost and revenue per unit",
-    sections: [
-      {
-        title: "Unit Economics Basics",
-        content: `
-          <h2 class="text-2xl font-bold mb-4">Understanding Unit Economics</h2>
-          <p class="mb-6">Unit economics examines the revenues and costs associated with a single unit of your business model, helping you determine if your core business is fundamentally profitable.</p>
-
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">What Is a "Unit"?</h3>
-              <p class="mb-3">The definition of a "unit" varies by business model:</p>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li><strong>E-commerce:</strong> A single order or transaction</li>
-                <li><strong>SaaS:</strong> One customer for one month/year</li>
-                <li><strong>Marketplace:</strong> A single transaction on the platform</li>
-                <li><strong>Consumer app:</strong> One user or one user-month</li>
-                <li><strong>Hardware:</strong> One device sold</li>
-              </ul>
-            </div>
-
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Core Unit Economics Formulas</h3>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Unit Revenue</h4>
-                  <p class="text-sm">The average revenue generated from a single unit</p>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">Unit Revenue = Total Revenue ÷ Number of Units</p>
-                  </div>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Unit Cost</h4>
-                  <p class="text-sm">The direct costs associated with producing and delivering a single unit</p>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">Unit Cost = Total Variable Costs ÷ Number of Units</p>
-                  </div>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Unit Margin</h4>
-                  <p class="text-sm">The profit earned on each unit</p>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">Unit Margin = Unit Revenue - Unit Cost</p>
-                  </div>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Unit Margin Percentage</h4>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">Unit Margin % = (Unit Margin ÷ Unit Revenue) × 100</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Why Unit Economics Matter</h4>
-            <ul class="list-disc pl-6">
-              <li>Demonstrates the fundamental viability of your business model</li>
-              <li>Helps identify when you'll reach profitability</li>
-              <li>Shows whether scaling will improve or worsen your financial position</li>
-              <li>Guides pricing, cost-cutting, and marketing decisions</li>
-              <li>Critical for investor presentations and fundraising</li>
-            </ul>
-          </div>
-        `
-      },
-      {
-        title: "Advanced Unit Economics",
-        content: `
-          <h2 class="text-2xl font-bold mb-4">Beyond Basic Unit Economics</h2>
-          <p class="mb-6">Advanced unit economics incorporates customer acquisition costs and lifetime value to provide a more complete picture of business sustainability.</p>
-
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Customer Acquisition Cost (CAC) Integration</h3>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">CAC Per Unit</h4>
-                  <p class="text-sm">For businesses with repeat customers, you need to amortize CAC across multiple units:</p>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">CAC Per Unit = Customer Acquisition Cost ÷ Average Units Per Customer</p>
-                  </div>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Fully-Loaded Unit Economics</h4>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">Fully-Loaded Unit Margin = Unit Revenue - Unit Cost - CAC Per Unit</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Payback Period Analysis</h3>
-              <p class="mb-3">How long it takes to recover the cost of acquiring a customer:</p>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Simple Payback Period</h4>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">Payback Period (in units) = CAC ÷ Unit Margin</p>
-                  </div>
-                  <p class="mt-2 text-sm">Example: If CAC is $300 and unit margin is $30, it takes 10 units to recover CAC</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Time-Based Payback Period</h4>
-                  <div class="bg-shark-50 p-2 rounded-md mt-2">
-                    <p class="font-mono text-sm">Payback Period (in months) = CAC ÷ (Unit Margin × Units Per Month)</p>
-                  </div>
-                  <p class="mt-2 text-sm">Example: If a customer purchases 2 units per month, payback period is 5 months</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Unit Economics Evaluation</h4>
-            <p class="mb-3">Sharks typically evaluate businesses using unit economics:</p>
-            <ul class="list-disc pl-6">
-              <li>They want to see positive unit economics (profit per unit)</li>
-              <li>They look for CAC payback periods under 12 months</li>
-              <li>They analyze whether unit economics improve with scale</li>
-              <li>They question businesses with negative unit economics</li>
-              <li>They evaluate whether you understand your own unit economics</li>
-            </ul>
-          </div>
-        `
-      }
-    ]
-  },
-  "presentation-skills": {
-    title: "Presentation Skills",
-    description: "Deliver your pitch with confidence",
-    sections: [
-      {
-        title: "The Power of Delivery",
-        content: `
-          <h2 class="text-2xl font-bold mb-4">Why Presentation Skills Matter</h2>
-          <p class="mb-6">A great idea can be lost if it's not communicated clearly and confidently. Investors on Shark Tank and in real life invest in people as much as ideas. Your delivery can make or break your pitch.</p>
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Key Elements of Effective Delivery</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li><strong>Confidence:</strong> Stand tall, make eye contact, and project your voice.</li>
-                <li><strong>Clarity:</strong> Speak at a measured pace, avoid jargon, and use simple language.</li>
-                <li><strong>Passion:</strong> Show genuine enthusiasm for your business.</li>
-                <li><strong>Body Language:</strong> Use purposeful gestures, avoid fidgeting, and smile.</li>
-                <li><strong>Engagement:</strong> Involve your audience with questions or stories.</li>
-              </ul>
-            </div>
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Common Mistakes to Avoid</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li>Reading slides word-for-word</li>
-                <li>Speaking too quickly or too softly</li>
-                <li>Overloading with data or technical details</li>
-                <li>Ignoring time limits</li>
-                <li>Failing to practice or anticipate questions</li>
-              </ul>
-            </div>
-          </div>
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Perspective</h4>
-            <ul class="list-disc pl-6">
-              <li>Sharks often comment on the entrepreneur's confidence and communication style.</li>
-              <li>Clear, concise, and passionate delivery stands out.</li>
-              <li>Practice and preparation are always evident to investors.</li>
-            </ul>
-          </div>
-        `
-      },
-      {
-        title: "Practical Tips & Checklist",
-        content: `
-          <h2 class="text-2xl font-bold mb-4">How to Prepare for a Winning Presentation</h2>
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Before the Pitch</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li>Rehearse your pitch out loud, ideally in front of others</li>
-                <li>Record yourself and review your delivery</li>
-                <li>Time your presentation and adjust to fit limits</li>
-                <li>Prepare for likely questions and objections</li>
-                <li>Visualize success and manage nerves with deep breathing</li>
-              </ul>
-            </div>
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">During the Pitch</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li>Start with a strong opening (hook, story, or bold statement)</li>
-                <li>Maintain eye contact and positive body language</li>
-                <li>Use pauses for emphasis and to let key points sink in</li>
-                <li>Adapt to your audience's reactions and questions</li>
-                <li>End with a clear, confident ask or call to action</li>
-              </ul>
-            </div>
-          </div>
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Quick Checklist</h4>
-            <ul class="list-disc pl-6">
-              <li>✔ Practiced and timed your pitch</li>
-              <li>✔ Prepared for tough questions</li>
-              <li>✔ Slides are clear and support your story</li>
-              <li>✔ Confident, authentic delivery</li>
-              <li>✔ Strong opening and closing</li>
-            </ul>
-          </div>
-        `
-      }
-    ]
-  },
-  "visual-design": {
-    title: "Visual Design",
-    description: "Create compelling visuals for your presentations",
-    sections: [
-      {
-        title: "Principles of Great Visual Design",
-        content: `
-          <h2 class="text-2xl font-bold mb-4">Why Visuals Matter in a Pitch</h2>
-          <p class="mb-6">Investors see hundreds of presentations. Clean, clear, and visually appealing slides help your message stand out and make complex ideas easy to grasp.</p>
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Core Design Principles</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li><strong>Simplicity:</strong> One idea per slide, minimal text</li>
-                <li><strong>Contrast:</strong> Use color and size to highlight key points</li>
-                <li><strong>Alignment:</strong> Keep elements visually organized</li>
-                <li><strong>Consistency:</strong> Use a unified color palette and fonts</li>
-                <li><strong>Whitespace:</strong> Give your content room to breathe</li>
-              </ul>
-            </div>
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Common Visual Mistakes</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li>Overcrowded slides with too much text or data</li>
-                <li>Low-contrast colors that are hard to read</li>
-                <li>Inconsistent fonts, colors, or layouts</li>
-                <li>Poor-quality images or graphics</li>
-                <li>Distracting animations or transitions</li>
-              </ul>
-            </div>
-          </div>
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank & Real-World Examples</h4>
-            <ul class="list-disc pl-6">
-              <li>Winning pitches use visuals to clarify—not clutter—their story</li>
-              <li>Charts, product photos, and infographics are more memorable than text</li>
-              <li>Consistent branding builds trust and professionalism</li>
-            </ul>
-          </div>
-        `
-      },
-      {
-        title: "Slide Design Best Practices",
-        content: `
-          <h2 class="text-2xl font-bold mb-4">How to Design Slides That Impress</h2>
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Slide-by-Slide Tips</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li><strong>Title Slide:</strong> Company name, logo, and a tagline or value prop</li>
-                <li><strong>Problem Slide:</strong> Use a bold statement or image to illustrate the pain point</li>
-                <li><strong>Solution Slide:</strong> Visuals of your product/service in action</li>
-                <li><strong>Market Slide:</strong> Simple charts or infographics, not dense tables</li>
-                <li><strong>Financials Slide:</strong> Use graphs, not spreadsheets</li>
-                <li><strong>Team Slide:</strong> Photos and short bios, not paragraphs</li>
-              </ul>
-            </div>
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Resources for Better Visuals</h3>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li>Use free tools like Canva, Figma, or Google Slides for design</li>
-                <li>Leverage high-quality stock images and icons (Unsplash, Noun Project)</li>
-                <li>Test your slides on different screens for readability</li>
-                <li>Ask for feedback from peers before presenting</li>
-              </ul>
-            </div>
-          </div>
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Quick Visual Design Checklist</h4>
-            <ul class="list-disc pl-6">
-              <li>✔ Slides are clean and uncluttered</li>
-              <li>✔ Key points are visually highlighted</li>
-              <li>✔ Consistent branding and style</li>
-              <li>✔ Images and charts are high quality</li>
-              <li>✔ Every slide supports your story</li>
-            </ul>
-          </div>
-        `
-      }
-    ]
-  },
-  "conversion-rates": {
-    title: "Conversion Rates",
-    description: "Tracking how prospects become customers",
-    sections: [
-      {
-        title: "Understanding Conversion Rates",
-        content: `
-          <h2 class="text-2xl font-bold mb-4">Conversion Rate Fundamentals</h2>
-          <p class="mb-6">Conversion rates measure the percentage of potential customers who complete a desired action. They're crucial metrics for evaluating marketing effectiveness and sales funnel efficiency.</p>
-
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Basic Conversion Rate Formula</h3>
-              <div class="bg-shark-50 p-3 rounded-md mb-4">
-                <p class="font-mono text-center">Conversion Rate (%) = (Number of Conversions ÷ Total Visitors or Opportunities) × 100</p>
-              </div>
-              <p class="mb-3"><strong>Examples:</strong></p>
-              <ul class="list-disc pl-6 space-y-1 text-sm">
-                <li>Website: 500 purchases ÷ 10,000 visitors = 5% conversion rate</li>
-                <li>Sales: 20 closed deals ÷ 200 leads = 10% conversion rate</li>
-                <li>Email: 150 clicks ÷ 5,000 recipients = 3% conversion rate</li>
-              </ul>
-            </div>
-
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Common Conversion Metrics</h3>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">E-commerce Conversions</h4>
-                  <ul class="list-disc pl-6 text-sm">
-                    <li>Product Page to Add-to-Cart</li>
-                    <li>Cart to Checkout</li>
-                    <li>Checkout to Purchase (Cart Abandonment Rate)</li>
-                    <li>Overall Visitor to Purchase</li>
-                  </ul>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">SaaS Conversions</h4>
-                  <ul class="list-disc pl-6 text-sm">
-                    <li>Visitor to Free Trial/Signup</li>
-                    <li>Free Trial to Paid Conversion</li>
-                    <li>Basic Plan to Premium Upgrade</li>
-                  </ul>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">B2B Sales Conversions</h4>
-                  <ul class="list-disc pl-6 text-sm">
-                    <li>Lead to Qualified Lead</li>
-                    <li>Qualified Lead to Meeting</li>
-                    <li>Meeting to Proposal</li>
-                    <li>Proposal to Closed Deal</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Industry Benchmarks</h4>
-            <p class="mb-3">Average conversion rates vary by industry:</p>
-            <ul class="list-disc pl-6">
-              <li><strong>E-commerce:</strong> 1-4% overall visitor-to-purchase</li>
-              <li><strong>B2B:</strong> 3-5% visitor-to-lead, 10-20% lead-to-customer</li>
-              <li><strong>SaaS:</strong> 3-5% visitor-to-trial, 15-25% trial-to-paid</li>
-              <li><strong>Email marketing:</strong> 2-5% clickthrough rate, 0.5-3% conversion</li>
-            </ul>
-          </div>
-        `
-      },
-      {
-        title: "Improving Conversion Rates",
-        content: `
-          <h2 class="text-2xl font-bold mb-4">Optimization Strategies</h2>
-          <p class="mb-6">Improving conversion rates can dramatically impact your business growth while maintaining the same level of traffic or leads.</p>
-
-          <div class="space-y-6 mb-6">
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Sales Funnel Analysis</h3>
-              <p class="mb-3">Identifying where prospects drop off in your funnel:</p>
-              <img src="/images/conversion-funnel.png" alt="Sales Funnel" class="mb-4 mx-auto max-w-xs rounded-lg shadow-md"/>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Customer Journey Mapping</h4>
-                  <p class="text-sm">Document each touchpoint in your customer journey and measure conversion at each step. This reveals bottlenecks and opportunities.</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Funnel Visualization</h4>
-                  <p class="text-sm">Create visual representations of your conversion funnel to spot significant drop-offs that need attention.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="border rounded-lg p-4">
-              <h3 class="text-xl font-semibold mb-2">Testing & Optimization</h3>
-              <div class="space-y-4">
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">A/B Testing</h4>
-                  <p class="text-sm">Systematically test different versions of landing pages, emails, ads, and other touchpoints to identify which performs better.</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">User Testing</h4>
-                  <p class="text-sm">Observe how real users interact with your website or product to identify confusion, friction, or barriers to conversion.</p>
-                </div>
-                <div class="border-l-4 border-shark-300 pl-4">
-                  <h4 class="font-medium mb-1">Conversion Rate Optimization (CRO)</h4>
-                  <p class="text-sm">Implement methodical processes for improving conversion through hypotheses, tests, and iterations.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Conversion Insight</h4>
-            <p class="mb-3">In Shark Tank presentations, investors focus on these conversion metrics:</p>
-            <ul class="list-disc pl-6">
-              <li>Customer acquisition channels and their conversion rates</li>
-              <li>Sales conversion rate (leads to purchases)</li>
-              <li>Customer retention and repeat purchase rates</li>
-              <li>Upsell and cross-sell conversion rates</li>
-              <li>Evidence of improving conversion over time</li>
-            </ul>
-          </div>
-        `
-      }
-    ]
-  },
   "cohort-analysis": {
     title: "Cohort Analysis",
     description: "Analyze user behavior over time",
@@ -889,6 +469,132 @@ const moduleContent = {
               <li>They look for increasing LTV across cohorts as a sign of business health</li>
               <li>They're interested in channel cohort analysis to identify scalable acquisition sources</li>
               <li>They value businesses with predictable cohort behavior for forecasting</li>
+            </ul>
+          </div>
+        `
+      }
+    ]
+  },
+  "conversion-rates": {
+    title: "Conversion Rates",
+    description: "Tracking how prospects become customers",
+    sections: [
+      {
+        title: "Understanding Conversion Rates",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Conversion Rate Fundamentals</h2>
+          <p class="mb-6">Conversion rates measure the percentage of potential customers who complete a desired action. They're crucial metrics for evaluating marketing effectiveness and sales funnel efficiency.</p>
+
+          <div class="space-y-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Basic Conversion Rate Formula</h3>
+              <div class="bg-shark-50 p-3 rounded-md mb-4">
+                <p class="font-mono text-center">Conversion Rate (%) = (Number of Conversions ÷ Total Visitors or Opportunities) × 100</p>
+              </div>
+              <p class="mb-3"><strong>Examples:</strong></p>
+              <ul class="list-disc pl-6 space-y-1 text-sm">
+                <li>Website: 500 purchases ÷ 10,000 visitors = 5% conversion rate</li>
+                <li>Sales: 20 closed deals ÷ 200 leads = 10% conversion rate</li>
+                <li>Email: 150 clicks ÷ 5,000 recipients = 3% conversion rate</li>
+              </ul>
+            </div>
+
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Common Conversion Metrics</h3>
+              <div class="space-y-4">
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">E-commerce Conversions</h4>
+                  <ul class="list-disc pl-6 text-sm">
+                    <li>Product Page to Add-to-Cart</li>
+                    <li>Cart to Checkout</li>
+                    <li>Checkout to Purchase (Cart Abandonment Rate)</li>
+                    <li>Overall Visitor to Purchase</li>
+                  </ul>
+                </div>
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">SaaS Conversions</h4>
+                  <ul class="list-disc pl-6 text-sm">
+                    <li>Visitor to Free Trial/Signup</li>
+                    <li>Free Trial to Paid Conversion</li>
+                    <li>Basic Plan to Premium Upgrade</li>
+                  </ul>
+                </div>
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">B2B Sales Conversions</h4>
+                  <ul class="list-disc pl-6 text-sm">
+                    <li>Lead to Qualified Lead</li>
+                    <li>Qualified Lead to Meeting</li>
+                    <li>Meeting to Proposal</li>
+                    <li>Proposal to Closed Deal</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Industry Benchmarks</h4>
+            <p class="mb-3">Average conversion rates vary by industry:</p>
+            <ul class="list-disc pl-6">
+              <li><strong>E-commerce:</strong> 1-4% overall visitor-to-purchase</li>
+              <li><strong>B2B:</strong> 3-5% visitor-to-lead, 10-20% lead-to-customer</li>
+              <li><strong>SaaS:</strong> 3-5% visitor-to-trial, 15-25% trial-to-paid</li>
+              <li><strong>Email marketing:</strong> 2-5% clickthrough rate, 0.5-3% conversion</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        title: "Improving Conversion Rates",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Optimization Strategies</h2>
+          <p class="mb-6">Improving conversion rates can dramatically impact your business growth while maintaining the same level of traffic or leads.</p>
+
+          <div class="space-y-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Sales Funnel Analysis</h3>
+              <p class="mb-3">Identifying where prospects drop off in your funnel:</p>
+              <img src="/images/conversion-funnel.png" alt="Sales Funnel" class="mb-4 mx-auto max-w-xs rounded-lg shadow-md"/>
+              <div class="space-y-4">
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">Customer Journey Mapping</h4>
+                  <p class="text-sm">Document each touchpoint in your customer journey and measure conversion at each step. This reveals bottlenecks and opportunities.</p>
+                </div>
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">Funnel Visualization</h4>
+                  <p class="text-sm">Create visual representations of your conversion funnel to spot significant drop-offs that need attention.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Testing & Optimization</h3>
+              <div class="space-y-4">
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">A/B Testing</h4>
+                  <p class="text-sm">Systematically test different versions of landing pages, emails, ads, and other touchpoints to identify which performs better.</p>
+                </div>
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">User Testing</h4>
+                  <p class="text-sm">Observe how real users interact with your website or product to identify confusion, friction, or barriers to conversion.</p>
+                </div>
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">Conversion Rate Optimization (CRO)</h4>
+                  <p class="text-sm">Implement methodical processes for improving conversion through hypotheses, tests, and iterations.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Conversion Insight</h4>
+            <p class="mb-3">In Shark Tank presentations, investors focus on these conversion metrics:</p>
+            <ul class="list-disc pl-6">
+              <li>Customer acquisition channels and their conversion rates</li>
+              <li>Sales conversion rate (leads to purchases)</li>
+              <li>Customer retention and repeat purchase rates</li>
+              <li>Upsell and cross-sell conversion rates</li>
+              <li>Evidence of improving conversion over time</li>
             </ul>
           </div>
         `
@@ -1055,6 +761,300 @@ const moduleContent = {
               <li>They appreciate evidence of responding to customer feedback</li>
               <li>They look for improving trends in satisfaction metrics over time</li>
               <li>Customer testimonials and case studies can reinforce satisfaction claims</li>
+            </ul>
+          </div>
+        `
+      }
+    ]
+  },
+  "presentation-skills": {
+    title: "Presentation Skills",
+    description: "Deliver your pitch with confidence",
+    sections: [
+      {
+        title: "The Power of Delivery",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Why Presentation Skills Matter</h2>
+          <p class="mb-6">A great idea can be lost if it's not communicated clearly and confidently. Investors on Shark Tank and in real life invest in people as much as ideas. Your delivery can make or break your pitch.</p>
+          <div class="space-y-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Key Elements of Effective Delivery</h3>
+              <ul class="list-disc pl-6 space-y-1 text-sm">
+                <li><strong>Confidence:</strong> Stand tall, make eye contact, and project your voice.</li>
+                <li><strong>Clarity:</strong> Speak at a measured pace, avoid jargon, and use simple language.</li>
+                <li><strong>Passion:</strong> Show genuine enthusiasm for your business.</li>
+                <li><strong>Body Language:</strong> Use purposeful gestures, avoid fidgeting, and smile.</li>
+                <li><strong>Engagement:</strong> Involve your audience with questions or stories.</li>
+              </ul>
+            </div>
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Common Mistakes to Avoid</h3>
+              <ul class="list-disc pl-6 space-y-1 text-sm">
+                <li>Reading slides word-for-word</li>
+                <li>Speaking too quickly or too softly</li>
+                <li>Overloading with data or technical details</li>
+                <li>Ignoring time limits</li>
+                <li>Failing to practice or anticipate questions</li>
+              </ul>
+            </div>
+          </div>
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Perspective</h4>
+            <ul class="list-disc pl-6">
+              <li>Sharks often comment on the entrepreneur's confidence and communication style.</li>
+              <li>Clear, concise, and passionate delivery stands out.</li>
+              <li>Practice and preparation are always evident to investors.</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        title: "Practical Tips & Checklist",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">How to Prepare for a Winning Presentation</h2>
+          <div class="space-y-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Before the Pitch</h3>
+              <ul class="list-disc pl-6 space-y-1 text-sm">
+                <li>Rehearse your pitch out loud, ideally in front of others</li>
+                <li>Record yourself and review your delivery</li>
+                <li>Time your presentation and adjust to fit limits</li>
+                <li>Prepare for likely questions and objections</li>
+                <li>Visualize success and manage nerves with deep breathing</li>
+              </ul>
+            </div>
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">During the Pitch</h3>
+              <ul class="list-disc pl-6 space-y-1 text-sm">
+                <li>Start with a strong opening (hook, story, or bold statement)</li>
+                <li>Maintain eye contact and positive body language</li>
+                <li>Use pauses for emphasis and to let key points sink in</li>
+                <li>Adapt to your audience's reactions and questions</li>
+                <li>End with a clear, confident ask or call to action</li>
+              </ul>
+            </div>
+          </div>
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Quick Checklist</h4>
+            <ul class="list-disc pl-6">
+              <li>✔ Practiced and timed your pitch</li>
+              <li>✔ Prepared for tough questions</li>
+              <li>✔ Slides are clear and support your story</li>
+              <li>✔ Confident, authentic delivery</li>
+              <li>✔ Strong opening and closing</li>
+            </ul>
+          </div>
+        `
+      }
+    ]
+  },
+  "unit-economics": {
+    title: "Unit Economics",
+    description: "Understanding cost and revenue per unit",
+    sections: [
+      {
+        title: "Unit Economics Basics",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Understanding Unit Economics</h2>
+          <p class="mb-6">Unit economics examines the revenues and costs associated with a single unit of your business model, helping you determine if your core business is fundamentally profitable.</p>
+
+          <div class="space-y-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">What Is a "Unit"?</h3>
+              <p class="mb-3">The definition of a "unit" varies by business model:</p>
+              <ul class="list-disc pl-6 space-y-1 text-sm">
+                <li><strong>E-commerce:</strong> A single order or transaction</li>
+                <li><strong>SaaS:</strong> One customer for one month/year</li>
+                <li><strong>Marketplace:</strong> A single transaction on the platform</li>
+                <li><strong>Consumer app:</strong> One user or one user-month</li>
+                <li><strong>Hardware:</strong> One device sold</li>
+              </ul>
+            </div>
+
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Core Unit Economics Formulas</h3>
+              <div class="space-y-4">
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">Unit Revenue</h4>
+                  <p class="text-sm">The average revenue generated from a single unit</p>
+                  <div class="bg-shark-50 p-2 rounded-md mt-2">
+                    <p class="font-mono text-sm">Unit Revenue = Total Revenue ÷ Number of Units</p>
+                  </div>
+                </div>
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">Unit Cost</h4>
+                  <p class="text-sm">The direct costs associated with producing and delivering a single unit</p>
+                  <div class="bg-shark-50 p-2 rounded-md mt-2">
+                    <p class="font-mono text-sm">Unit Cost = Total Variable Costs ÷ Number of Units</p>
+                  </div>
+                </div>
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">Unit Margin</h4>
+                  <p class="text-sm">The profit earned on each unit</p>
+                  <div class="bg-shark-50 p-2 rounded-md mt-2">
+                    <p class="font-mono text-sm">Unit Margin = Unit Revenue - Unit Cost</p>
+                  </div>
+                </div>
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">Unit Margin Percentage</h4>
+                  <div class="bg-shark-50 p-2 rounded-md mt-2">
+                    <p class="font-mono text-sm">Unit Margin % = (Unit Margin ÷ Unit Revenue) × 100</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Why Unit Economics Matter</h4>
+            <ul class="list-disc pl-6">
+              <li>Demonstrates the fundamental viability of your business model</li>
+              <li>Helps identify when you'll reach profitability</li>
+              <li>Shows whether scaling will improve or worsen your financial position</li>
+              <li>Guides pricing, cost-cutting, and marketing decisions</li>
+              <li>Critical for investor presentations and fundraising</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        title: "Advanced Unit Economics",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Beyond Basic Unit Economics</h2>
+          <p class="mb-6">Advanced unit economics incorporates customer acquisition costs and lifetime value to provide a more complete picture of business sustainability.</p>
+
+          <div class="space-y-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Customer Acquisition Cost (CAC) Integration</h3>
+              <div class="space-y-4">
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">CAC Per Unit</h4>
+                  <p class="text-sm">For businesses with repeat customers, you need to amortize CAC across multiple units:</p>
+                  <div class="bg-shark-50 p-2 rounded-md mt-2">
+                    <p class="font-mono text-sm">CAC Per Unit = Customer Acquisition Cost ÷ Average Units Per Customer</p>
+                  </div>
+                </div>
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">Fully-Loaded Unit Economics</h4>
+                  <div class="bg-shark-50 p-2 rounded-md mt-2">
+                    <p class="font-mono text-sm">Fully-Loaded Unit Margin = Unit Revenue - Unit Cost - CAC Per Unit</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Payback Period Analysis</h3>
+              <p class="mb-3">How long it takes to recover the cost of acquiring a customer:</p>
+              <div class="space-y-4">
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">Simple Payback Period</h4>
+                  <div class="bg-shark-50 p-2 rounded-md mt-2">
+                    <p class="font-mono text-sm">Payback Period (in units) = CAC ÷ Unit Margin</p>
+                  </div>
+                  <p class="mt-2 text-sm">Example: If CAC is $300 and unit margin is $30, it takes 10 units to recover CAC</p>
+                </div>
+                <div class="border-l-4 border-shark-300 pl-4">
+                  <h4 class="font-medium mb-1">Time-Based Payback Period</h4>
+                  <div class="bg-shark-50 p-2 rounded-md mt-2">
+                    <p class="font-mono text-sm">Payback Period (in months) = CAC ÷ (Unit Margin × Units Per Month)</p>
+                  </div>
+                  <p class="mt-2 text-sm">Example: If a customer purchases 2 units per month, payback period is 5 months</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Unit Economics Evaluation</h4>
+            <p class="mb-3">Sharks typically evaluate businesses using unit economics:</p>
+            <ul class="list-disc pl-6">
+              <li>They want to see positive unit economics (profit per unit)</li>
+              <li>They look for CAC payback periods under 12 months</li>
+              <li>They analyze whether unit economics improve with scale</li>
+              <li>They question businesses with negative unit economics</li>
+              <li>They evaluate whether you understand your own unit economics</li>
+            </ul>
+          </div>
+        `
+      }
+    ]
+  },
+  "visual-design": {
+    title: "Visual Design",
+    description: "Create compelling visuals for your presentations",
+    sections: [
+      {
+        title: "Principles of Great Visual Design",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Why Visuals Matter in a Pitch</h2>
+          <p class="mb-6">Investors see hundreds of presentations. Clean, clear, and visually appealing slides help your message stand out and make complex ideas easy to grasp.</p>
+          <div class="space-y-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Core Design Principles</h3>
+              <ul class="list-disc pl-6 space-y-1 text-sm">
+                <li><strong>Simplicity:</strong> One idea per slide, minimal text</li>
+                <li><strong>Contrast:</strong> Use color and size to highlight key points</li>
+                <li><strong>Alignment:</strong> Keep elements visually organized</li>
+                <li><strong>Consistency:</strong> Use a unified color palette and fonts</li>
+                <li><strong>Whitespace:</strong> Give your content room to breathe</li>
+              </ul>
+            </div>
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Common Visual Mistakes</h3>
+              <ul class="list-disc pl-6 space-y-1 text-sm">
+                <li>Overcrowded slides with too much text or data</li>
+                <li>Low-contrast colors that are hard to read</li>
+                <li>Inconsistent fonts, colors, or layouts</li>
+                <li>Poor-quality images or graphics</li>
+                <li>Distracting animations or transitions</li>
+              </ul>
+            </div>
+          </div>
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank & Real-World Examples</h4>
+            <ul class="list-disc pl-6">
+              <li>Winning pitches use visuals to clarify—not clutter—their story</li>
+              <li>Charts, product photos, and infographics are more memorable than text</li>
+              <li>Consistent branding builds trust and professionalism</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        title: "Slide Design Best Practices",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">How to Design Slides That Impress</h2>
+          <div class="space-y-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Slide-by-Slide Tips</h3>
+              <ul class="list-disc pl-6 space-y-1 text-sm">
+                <li><strong>Title Slide:</strong> Company name, logo, and a tagline or value prop</li>
+                <li><strong>Problem Slide:</strong> Use a bold statement or image to illustrate the pain point</li>
+                <li><strong>Solution Slide:</strong> Visuals of your product/service in action</li>
+                <li><strong>Market Slide:</strong> Simple charts or infographics, not dense tables</li>
+                <li><strong>Financials Slide:</strong> Use graphs, not spreadsheets</li>
+                <li><strong>Team Slide:</strong> Photos and short bios, not paragraphs</li>
+              </ul>
+            </div>
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Resources for Better Visuals</h3>
+              <ul class="list-disc pl-6 space-y-1 text-sm">
+                <li>Use free tools like Canva, Figma, or Google Slides for design</li>
+                <li>Leverage high-quality stock images and icons (Unsplash, Noun Project)</li>
+                <li>Test your slides on different screens for readability</li>
+                <li>Ask for feedback from peers before presenting</li>
+              </ul>
+            </div>
+          </div>
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Quick Visual Design Checklist</h4>
+            <ul class="list-disc pl-6">
+              <li>✔ Slides are clean and uncluttered</li>
+              <li>✔ Key points are visually highlighted</li>
+              <li>✔ Consistent branding and style</li>
+              <li>✔ Images and charts are high quality</li>
+              <li>✔ Every slide supports your story</li>
             </ul>
           </div>
         `
