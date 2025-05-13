@@ -189,124 +189,122 @@ export default function Learning() {
           </p>
         </div>
         
-        {!user ? (
-          <div className="mx-auto max-w-2xl py-12 text-center">
-            <Lock className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-            <h2 className="mb-4 text-2xl font-bold">Learning Hub Content Locked</h2>
-            <p className="mb-6 text-lg text-muted-foreground">Please sign in to access our comprehensive learning modules.</p>
-            <Button asChild variant="default">
-              <Link to="/auth">Sign In</Link>
-            </Button>
-          </div>
-        ) : (
-          <>
-            <SlideUpInView>
-              <div className="mb-8 rounded-xl border bg-card p-6">
-                <div className="mb-4 grid gap-4 md:grid-cols-3">
-                  <div className="col-span-2">
-                    <h2 className="text-xl font-semibold">Your Learning Progress</h2>
-                    <p className="text-muted-foreground">
-                      Complete all modules to master the essentials
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-center md:justify-end">
-                    <div className="rounded-lg bg-shark-100 px-4 py-2 text-center">
-                      <div className="text-3xl font-bold text-shark-700">
-                        {completedModules.length}/{userModules.length}
-                      </div>
-                      <div className="text-sm text-shark-600">modules completed</div>
+        {user ? (
+          <SlideUpInView>
+            <div className="mb-8 rounded-xl border bg-card p-6">
+              <div className="mb-4 grid gap-4 md:grid-cols-3">
+                <div className="col-span-2">
+                  <h2 className="text-xl font-semibold">Your Learning Progress</h2>
+                  <p className="text-muted-foreground">
+                    Complete all modules to master the essentials
+                  </p>
+                </div>
+                <div className="flex items-center justify-center md:justify-end">
+                  <div className="rounded-lg bg-shark-100 px-4 py-2 text-center">
+                    <div className="text-3xl font-bold text-shark-700">
+                      {completedModules.length}/{userModules.length}
                     </div>
+                    <div className="text-sm text-shark-600">modules completed</div>
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">Overall Progress</span>
-                    <span className="text-sm font-medium">{Math.round(completionPercentage)}%</span>
-                  </div>
-                  <Progress value={completionPercentage} className="h-2" />
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium">Overall Progress</span>
+                  <span className="text-sm font-medium">{Math.round(completionPercentage)}%</span>
                 </div>
-              </div>
-            </SlideUpInView>
-        
-            <Tabs defaultValue="fundamentals" className="mb-8">
-              <TabsList className="w-full grid grid-cols-4">
-                {categories.map((category) => (
-                  <TabsTrigger key={category.id} value={category.id}>
-                    {category.name}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-              {categories.map((category) => {
-                const modules = userModules.filter((module) => module.category === category.id);
-                const visibleModules = plan === "free" ? modules.slice(0, 5) : modules;
-                return (
-                  <TabsContent key={category.id} value={category.id} className="mt-6">
-                    {visibleModules.length === 0 ? (
-                      <div className="text-center text-muted-foreground py-12">
-                        <p>No modules available in this category.</p>
-                        <Button asChild variant="default" className="mt-4">
-                          <a href="#" onClick={() => { localStorage.removeItem(`modules_${user?.email}`); window.location.reload(); }}>
-                            Reset Modules
-                          </a>
-                        </Button>
-                      </div>
-                    ) : (
-                      <FadeInStagger>
-                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                          {visibleModules.map((module) => (
-                            <FadeIn key={module.title}>
-                              <ModuleCard
-                                title={module.title}
-                                description={module.description}
-                                icon={module.icon}
-                                href={module.href}
-                                duration={module.duration}
-                                completed={module.completed}
-                              />
-                              {!module.completed && (
-                                <Button
-                                  onClick={() => completeModule(module.title)}
-                                  className="mt-2 w-full"
-                                >
-                                  Complete
-                                </Button>
-                              )}
-                            </FadeIn>
-                          ))}
-                          {plan === "free" && modules.length > 5 && (
-                            <div className="col-span-full flex flex-col items-center justify-center p-6 border rounded-lg bg-muted/50">
-                              <p className="mb-2 font-semibold text-shark-700">Unlock more modules with Starter or Professional plan!</p>
-                              <Button asChild variant="default">
-                                <a href="/pricing">Upgrade Now</a>
-                              </Button>
-                            </div>
-                          )}
-                        </div>
-                      </FadeInStagger>
-                    )}
-                  </TabsContent>
-                );
-              })}
-            </Tabs>
-        
-            <div className="rounded-xl border bg-card p-6 md:p-8">
-              <div className="mb-6 text-center">
-                <h2 className="mb-2 text-2xl font-bold">Ready to test your knowledge?</h2>
-                <p className="mx-auto max-w-2xl text-muted-foreground">
-                  Take quizzes, earn badges, and track your progress on our leaderboard.
-                </p>
-              </div>
-              <div className="flex justify-center">
-                <Link
-                  to="/achievements"
-                  className="rounded-lg bg-shark-500 px-6 py-3 font-medium text-white shadow-sm transition-colors hover:bg-shark-600"
-                >
-                  View Achievement Center
-                </Link>
+                <Progress value={completionPercentage} className="h-2" />
               </div>
             </div>
-          </>
-        )}
+          </SlideUpInView>
+        ) : null}
+        
+        <Tabs defaultValue="fundamentals" className="mb-8">
+          <TabsList className="w-full grid grid-cols-4">
+            {categories.map((category) => (
+              <TabsTrigger key={category.id} value={category.id}>
+                {category.name}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          {categories.map((category) => {
+            const modules = userModules.filter((module) => module.category === category.id);
+            const visibleModules = plan === "free" ? modules.slice(0, 5) : modules;
+            return (
+              <TabsContent key={category.id} value={category.id} className="mt-6">
+                {visibleModules.length === 0 ? (
+                  <div className="text-center text-muted-foreground py-12">
+                    <p>No modules available in this category.</p>
+                    <Button asChild variant="default" className="mt-4">
+                      <a href="#" onClick={() => { localStorage.removeItem(`modules_${user?.email}`); window.location.reload(); }}>
+                        Reset Modules
+                      </a>
+                    </Button>
+                  </div>
+                ) : (
+                  <FadeInStagger>
+                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                      {visibleModules.map((module) => (
+                        <FadeIn key={module.title}>
+                          <ModuleCard
+                            title={module.title}
+                            description={module.description}
+                            icon={module.icon}
+                            href={user ? module.href : "/auth"}
+                            duration={module.duration}
+                            completed={user ? module.completed : false}
+                          />
+                          {user && !module.completed && (
+                            <Button
+                              onClick={() => completeModule(module.title)}
+                              className="mt-2 w-full"
+                            >
+                              Complete
+                            </Button>
+                          )}
+                        </FadeIn>
+                      ))}
+                      {plan === "free" && modules.length > 5 && (
+                        <div className="col-span-full flex flex-col items-center justify-center p-6 border rounded-lg bg-muted/50">
+                          <p className="mb-2 font-semibold text-shark-700">Unlock more modules with Starter or Professional plan!</p>
+                          <Button asChild variant="default">
+                            <a href="/pricing">Upgrade Now</a>
+                          </Button>
+                        </div>
+                      )}
+                    </div>
+                  </FadeInStagger>
+                )}
+              </TabsContent>
+            );
+          })}
+        </Tabs>
+        
+        <div className="rounded-xl border bg-card p-6 md:p-8">
+          <div className="mb-6 text-center">
+            <h2 className="mb-2 text-2xl font-bold">Ready to test your knowledge?</h2>
+            <p className="mx-auto max-w-2xl text-muted-foreground">
+              Take quizzes, earn badges, and track your progress on our leaderboard.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            {user ? (
+              <Link
+                to="/achievements"
+                className="rounded-lg bg-shark-500 px-6 py-3 font-medium text-white shadow-sm transition-colors hover:bg-shark-600"
+              >
+                View Achievement Center
+              </Link>
+            ) : (
+              <Button asChild>
+                <Link to="/auth">
+                  <Lock className="mr-2 h-4 w-4" />
+                  Sign In to Access
+                </Link>
+              </Button>
+            )}
+          </div>
+        </div>
       </div>
     </MainLayout>
   );

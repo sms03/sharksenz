@@ -195,7 +195,9 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         <Sidebar>
           <SidebarHeader>
             <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="SharkSenz Logo" className="h-8 w-auto" />
+              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-shark-500 text-white">
+                <BarChart3 className="h-5 w-5" />
+              </div>
               <span className="text-xl font-bold text-shark-500">SharkSenz</span>
             </div>
           </SidebarHeader>
