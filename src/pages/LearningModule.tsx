@@ -9,6 +9,8 @@ import { FadeIn, SlideUpInView } from "@/components/ui/motion";
 import { useAuth } from "@/components/AuthProvider";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
+import { XP_VALUES, addXP } from "@/utils/userProgress";
+import { XPIndicator } from "@/components/ui/xp-indicator";
 
 // Sample module content (would come from database in real app)
 const moduleContent = {
@@ -699,7 +701,18 @@ export default function LearningModule() {
     } else {
       // Module completed
       setIsCompleting(true);
-      toast.success("Module completed! Your progress has been saved. Redirecting to Learning Hub...");
+      const moduleXP = XP_VALUES.MODULE_COMPLETION;
+      
+      toast.success(
+        <div className="flex items-center gap-2">
+          <span>Module completed!</span>
+          <XPIndicator value={moduleXP} size="sm" showLabel={false} />
+        </div>, 
+        {
+          description: "Your progress has been saved. Redirecting to Learning Hub...",
+          duration: 3000
+        }
+      );
       
       // Mark module as completed in localStorage (similar to completeModule in Learning.tsx)
       if (user && user.email && moduleId) {
@@ -790,6 +803,14 @@ export default function LearningModule() {
               } catch (e) {
                 console.error("Failed to update badges in localStorage", e);
               }
+            }
+            
+            // Award XP for completing the module if not already completed
+            // Check first if this is a new completion to avoid duplicate XP
+            if (moduleIndex === -1 || userModules[moduleIndex].completed === false) {
+              const xpAwarded = XP_VALUES.MODULE_COMPLETION;
+              const newTotalXP = addXP(user.email, xpAwarded);
+              console.log(`Added ${xpAwarded} XP for completing module. New total: ${newTotalXP} XP`);
             }
             
             // Navigate back to Learning page to show updated progress
@@ -950,6 +971,14 @@ export default function LearningModule() {
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Great job! Your progress has been saved.
               </p>
+              <div className="bg-yellow-50 p-3 mb-4 rounded-md">
+                <p className="text-lg font-semibold text-yellow-600">
+                  +{XP_VALUES.MODULE_COMPLETION} XP Earned
+                </p>
+                <p className="text-sm text-yellow-700">
+                  Keep learning to level up your profile!
+                </p>
+              </div>
               <p className="text-sm text-gray-500 dark:text-gray-400">
                 Redirecting to Learning Hub...
               </p>

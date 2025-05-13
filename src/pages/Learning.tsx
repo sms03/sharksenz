@@ -11,7 +11,8 @@ import {
   Target, 
   TrendingUp, 
   Users, 
-  Lock
+  Lock,
+  Trophy
 } from "lucide-react";
 import MainLayout from "@/layouts/MainLayout";
 import { ModuleCard } from "@/components/ui/module-card";
@@ -26,6 +27,8 @@ import { useAuth } from "@/components/AuthProvider";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { XP_VALUES, addXP, getUserXP, saveUserXP, checkAndUpdateBadges } from "@/utils/userProgress";
+import { toast } from "@/components/ui/sonner";
 
 // Learning path categories
 const categories = [
@@ -105,14 +108,14 @@ const getInitialProgress = () => {
 
 // Helper: get initial badges (all locked)
 const getInitialBadges = () => [
-  { id: 1, name: "Shark Apprentice", unlocked: false },
-  { id: 2, name: "Valuation Expert", unlocked: false },
-  { id: 3, name: "Metrics Master", unlocked: false },
-  { id: 4, name: "Pitching Pro", unlocked: false },
-  { id: 5, name: "Encyclopedia Scholar", unlocked: false },
-  { id: 6, name: "Quiz Champion", unlocked: false },
-  { id: 7, name: "Shark Tank Ready", unlocked: false },
-  { id: 8, name: "Negotiation Ninja", unlocked: false },
+  { id: 1, name: "Shark Apprentice", unlocked: false, difficulty: "beginner" },
+  { id: 2, name: "Valuation Expert", unlocked: false, difficulty: "intermediate" },
+  { id: 3, name: "Metrics Master", unlocked: false, difficulty: "intermediate" },
+  { id: 4, name: "Pitching Pro", unlocked: false, difficulty: "intermediate" },
+  { id: 5, name: "Encyclopedia Scholar", unlocked: false, difficulty: "advanced" },
+  { id: 6, name: "Quiz Champion", unlocked: false, difficulty: "advanced" },
+  { id: 7, name: "Shark Tank Ready", unlocked: false, difficulty: "expert" },
+  { id: 8, name: "Negotiation Ninja", unlocked: false, difficulty: "expert" },
 ];
 
 export default function Learning() {
@@ -223,63 +226,205 @@ export default function Learning() {
       } catch (error) {
         console.error("Failed to save progress to localStorage:", error);
       }
-    }
-  }, [user, userModules, userBadges, loading]);
-
-  // Effect to update badges based on module completion
-  useEffect(() => {
-    if (!user || loading || !Array.isArray(userModules) || userModules.length === 0) {
-      return;
-    }
-
-    const anyModuleCompleted = userModules.some(m => m.completed);
-    const allModulesCompleted = userModules.every(m => m.completed);
-
-    setUserBadges(prevBadges => {
-      const safePrevBadges = Array.isArray(prevBadges) ? prevBadges : getInitialBadges();
-      let changed = false;
-      const newBadges = safePrevBadges.map(badge => {
-        let newBadgeState = { ...badge };
-        if (badge.id === 1 && anyModuleCompleted && !badge.unlocked) {
-          newBadgeState.unlocked = true;
-          changed = true;
-        }
-        if (badge.id === 7 && allModulesCompleted && !badge.unlocked) {
-          newBadgeState.unlocked = true;
-          changed = true;
-        }
-        return newBadgeState;
-      });
-      return changed ? newBadges : safePrevBadges;
-    });
-  }, [user, userModules, loading]);
-
+    }  }, [user, userModules, userBadges, loading]);
 
   const completeModule = (title: string) => {
     if (!user || loading) return;
+    
+    // Check if the module is already completed to avoid duplicate XP
+    const moduleAlreadyCompleted = safeUserModules.find(m => m.title === title)?.completed;
+    
     setUserModules((prevModules) => {
       const safePrevModules = Array.isArray(prevModules) ? prevModules : getInitialProgress();
-      return safePrevModules.map((m) => (m.title === title ? { ...m, completed: true } : m));
+      const updatedModules = safePrevModules.map((m) => (m.title === title ? { ...m, completed: true } : m));
+      
+      // Check if any badges need to be updated after completing the module
+      try {
+        if (user && user.email) {
+          // Get user quizzes for badge evaluation
+          let userQuizzes = [];
+          try {
+            const savedQuizzesString = localStorage.getItem(`quizzes_${user.email}`);
+            if (savedQuizzesString) {
+              userQuizzes = JSON.parse(savedQuizzesString);
+            }
+          } catch (e) {
+            console.error("Failed to load quizzes for badge evaluation:", e);
+          }
+          
+          // Get updated badge status
+          const updatedBadges = checkAndUpdateBadges(updatedModules, userBadges, userQuizzes);
+          
+          // Find any badges that were newly unlocked
+          const newlyUnlockedBadges = updatedBadges.filter((newBadge) => {
+            const oldBadge = userBadges.find(b => b.id === newBadge.id);
+            return newBadge.unlocked && oldBadge && !oldBadge.unlocked;
+          });
+          
+          // Update badges in state and localStorage
+          if (newlyUnlockedBadges.length > 0) {
+            setUserBadges(updatedBadges);
+            localStorage.setItem(`badges_${user.email}`, JSON.stringify(updatedBadges));
+            
+            // Notify user about new badges
+            newlyUnlockedBadges.forEach(badge => {
+              toast.success(
+                <div className="flex items-center gap-2">
+                  <span>Badge unlocked!</span>
+                  <Trophy className="h-4 w-4 text-yellow-500" />
+                </div>,
+                {
+                  description: `You've earned the "${badge.name}" achievement!`,
+                  duration: 4000
+                }
+              );
+            });
+          }
+        }
+      } catch (error) {
+        console.error("Error updating badges after completing module:", error);
+      }
+      
+      return updatedModules;
     });
+    
+    // Only award XP if this is the first time completing
+    if (!moduleAlreadyCompleted && user.email) {
+      // Award XP for module completion
+      const moduleXP = XP_VALUES.MODULE_COMPLETION;
+      const newTotalXP = addXP(user.email, moduleXP);
+      
+      // Show toast with XP gain
+      toast.success(`Module completed! +${moduleXP} XP`, {
+        description: "Keep learning to level up!",
+        duration: 3000
+      });
+    }
   };
-
+  // Function to mark module as incomplete and revert progress
+  const incompleteModule = (title: string) => {
+    if (!user || loading) return;
+    
+    // Mark the module as incomplete
+    setUserModules((prevModules) => {
+      const safePrevModules = Array.isArray(prevModules) ? prevModules : getInitialProgress();
+      const updatedModules = safePrevModules.map((m) => (m.title === title ? { ...m, completed: false } : m));
+      
+      // Check if any badges need to be revoked
+      try {
+        if (user && user.email) {
+          // Get user quizzes for badge evaluation
+          let userQuizzes = [];
+          try {
+            const savedQuizzesString = localStorage.getItem(`quizzes_${user.email}`);
+            if (savedQuizzesString) {
+              userQuizzes = JSON.parse(savedQuizzesString);
+            }
+          } catch (e) {
+            console.error("Failed to load quizzes for badge evaluation:", e);
+          }
+          
+          // Get updated badge status
+          const updatedBadges = checkAndUpdateBadges(updatedModules, userBadges, userQuizzes);
+          
+          // Find any badges that were revoked
+          const revokedBadges = userBadges.filter((oldBadge) => {
+            const newBadge = updatedBadges.find(b => b.id === oldBadge.id);
+            return oldBadge.unlocked && newBadge && !newBadge.unlocked;
+          });
+          
+          // Update badges in state and localStorage
+          if (revokedBadges.length > 0) {
+            setUserBadges(updatedBadges);
+            localStorage.setItem(`badges_${user.email}`, JSON.stringify(updatedBadges));
+            
+            // Notify user about revoked badges
+            revokedBadges.forEach(badge => {
+              toast.warning(
+                <div className="flex items-center gap-2">
+                  <span>Achievement lost</span>
+                </div>,
+                {
+                  description: `The "${badge.name}" badge has been revoked as you no longer meet the requirements.`,
+                  duration: 4000
+                }
+              );
+            });
+          }
+        }
+      } catch (error) {
+        console.error("Error updating badges after marking module incomplete:", error);
+      }
+      
+      return updatedModules;
+    });
+    
+    // Deduct XP for the module if the user has enough
+    if (user.email) {
+      const currentXP = getUserXP(user.email);
+      const moduleXP = XP_VALUES.MODULE_COMPLETION;
+      
+      // Only deduct if user has enough XP (don't go below 0)
+      if (currentXP >= moduleXP) {
+        const newXP = currentXP - moduleXP;
+        saveUserXP(user.email, newXP);
+        
+        // Show toast with XP deduction
+        toast.info(`Module marked for relearning. -${moduleXP} XP`, {
+          description: "You can now go through this module again.",
+          duration: 3000
+        });
+      } else {
+        // If user doesn't have enough XP, just reset the module without XP deduction
+        toast.info(`Module marked for relearning.`, {
+          description: "You can now go through this module again.",
+          duration: 3000
+        });
+      }
+    }
+  };
   const handleResetModules = () => {
     if (!user || !user.email || loading) return;
     setLoading(true); 
+    
+    // Reset all modules to initial state
     const initialModules = getInitialProgress();
+    
+    // Reset all badges to initial locked state
     const initialBadges = getInitialBadges();
+    
+    // Update state
     setUserModules(initialModules);
     setUserBadges(initialBadges);
+    
     try {
+      // Save reset modules to localStorage
       const progressToSave = initialModules.map(m => ({
         title: m.title,
         category: m.category,
         completed: m.completed
       }));
       localStorage.setItem(`module_progress_${user.email}`, JSON.stringify(progressToSave));
+      
+      // Save reset badges to localStorage
       localStorage.setItem(`badges_${user.email}`, JSON.stringify(initialBadges));
+      
+      // Reset XP to 0
+      localStorage.setItem(`user_xp_${user.email}`, "0");
+      
+      // Show success toast
+      toast.info("Progress has been reset", {
+        description: "All modules and achievements have been reset to default.",
+        duration: 3000
+      });
     } catch (error) {
       console.error("Failed to save reset progress to localStorage:", error);
+      
+      // Show error toast
+      toast.error("Error resetting progress", {
+        description: "There was a problem resetting your progress. Please try again.",
+        duration: 3000
+      });
     } finally {
       setLoading(false);
     }
@@ -400,6 +545,15 @@ export default function Learning() {
                               disabled={loading} // Disable if global loading
                             >
                               Complete
+                            </Button>
+                          )}
+                          {user && module.completed && (
+                            <Button
+                              onClick={() => incompleteModule(module.title)}
+                              className="mt-2 w-full"
+                              disabled={loading} // Disable if global loading
+                            >
+                              Mark Incomplete
                             </Button>
                           )}
                         </FadeIn>
