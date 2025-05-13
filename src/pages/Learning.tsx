@@ -117,71 +117,193 @@ const getInitialBadges = () => [
 
 export default function Learning() {
   const { user } = useAuth();
-  // Get user plan from localStorage (default to free)
-  const [plan] = useState(() => localStorage.getItem("user_plan") || "free");
-  // Per-user progress and badges (localStorage for demo)
-  const [userModules, setUserModules] = useState(() => {
-    if (!user) return getInitialProgress();
-    const saved = localStorage.getItem(`modules_${user.email}`);
-    let parsed = saved ? JSON.parse(saved) : [];
-    // If no modules or module count mismatch, re-initialize
-    if (!parsed.length || parsed.length !== getInitialProgress().length) {
-      parsed = getInitialProgress();
-      localStorage.setItem(`modules_${user.email}`, JSON.stringify(parsed));
+  const [plan, setPlan] = useState(() => { // setPlan is available if needed
+    try {
+      return localStorage.getItem("user_plan") || "free";
+    } catch (e) {
+      console.error("Failed to access localStorage for user_plan:", e);
+      return "free"; // Default if localStorage is inaccessible
     }
-    return parsed;
-  });
-  const [userBadges, setUserBadges] = useState(() => {
-    if (!user) return getInitialBadges();
-    const saved = localStorage.getItem(`badges_${user.email}`);
-    return saved ? JSON.parse(saved) : getInitialBadges();
   });
 
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem(`modules_${user.email}`, JSON.stringify(userModules));
-      localStorage.setItem(`badges_${user.email}`, JSON.stringify(userBadges));
-    }
-  }, [user, userModules, userBadges]);
+  const [userModules, setUserModules] = useState(() => getInitialProgress());
+  const [userBadges, setUserBadges] = useState(() => getInitialBadges());
+  const [loading, setLoading] = useState(true); // Start with loading true
 
-  // Track progress when a module is marked as completed (for logged in users)
+  // Effect to load user-specific data or reset to defaults when user changes
   useEffect(() => {
-    if (user) {
-      localStorage.setItem(`modules_${user.email}`, JSON.stringify(userModules));
-      // Optionally, send progress to backend here
-    }
-  }, [userModules, user]);
+    setLoading(true);
+    try {
+      if (user && user.email) {
+        const userEmail = user.email;
+        const freshModulesWithIcons = getInitialProgress(); // Always start with fresh modules that have correct icons
 
-  // Mark module as completed and unlock badge if needed
-  const completeModule = (title: string) => {
-    setUserModules((prev) => {
-      const updated = prev.map((m) => (m.title === title ? { ...m, completed: true } : m));
-      // Track progress in localStorage for logged in users
-      if (user) {
-        localStorage.setItem(`modules_${user.email}`, JSON.stringify(updated));
+        // Load Modules Progress
+        const savedProgressString = localStorage.getItem(`module_progress_${userEmail}`);
+        let modulesToSet = freshModulesWithIcons;
+
+        if (savedProgressString) {
+          try {
+            const parsedProgressArray = JSON.parse(savedProgressString);
+            // Expect parsedProgressArray to be [{title, category, completed}, ...]
+            if (Array.isArray(parsedProgressArray) &&
+                parsedProgressArray.every(p => 
+                  typeof p.title === 'string' && 
+                  typeof p.category === 'string' && 
+                  typeof p.completed === 'boolean'
+                )) {
+              
+              modulesToSet = freshModulesWithIcons.map(freshModule => {
+                const savedItem = parsedProgressArray.find(
+                  p => p.title === freshModule.title && p.category === freshModule.category
+                );
+                return savedItem ? { ...freshModule, completed: savedItem.completed } : freshModule;
+              });
+            } else {
+              console.warn("Invalid module progress data in localStorage for key `module_progress_${userEmail}`. Using default progress.");
+              // Optionally, remove the invalid item: localStorage.removeItem(`module_progress_${userEmail}`);
+            }
+          } catch (e) {
+            console.error("Failed to parse user module progress from localStorage for key `module_progress_${userEmail}`. Using default progress.", e);
+            // Optionally, remove the corrupt item: localStorage.removeItem(`module_progress_${userEmail}`);
+          }
+        }
+        setUserModules(modulesToSet);
+
+        // Load Badges
+        const savedBadgesString = localStorage.getItem(`badges_${userEmail}`);
+        let loadedBadges = getInitialBadges();
+        if (savedBadgesString) {
+          try {
+            const parsedBadges = JSON.parse(savedBadgesString);
+            if (Array.isArray(parsedBadges) && parsedBadges.length === getInitialBadges().length && parsedBadges.every(b => typeof b.unlocked === 'boolean' && 'id' in b)) {
+              loadedBadges = parsedBadges;
+            } else {
+              console.warn("Stale or corrupt badge data in localStorage. Re-initializing.");
+              localStorage.setItem(`badges_${userEmail}`, JSON.stringify(loadedBadges)); 
+            }
+          } catch (e) {
+            console.error("Failed to parse user badges from localStorage. Re-initializing.", e);
+            localStorage.setItem(`badges_${userEmail}`, JSON.stringify(loadedBadges)); 
+          }
+        } else {
+          localStorage.setItem(`badges_${userEmail}`, JSON.stringify(loadedBadges));
+        }
+        setUserBadges(loadedBadges);
+
+      } else { // No user
+        setUserModules(getInitialProgress());
+        setUserBadges(getInitialBadges());
       }
-      return updated;
-    });
-    // Unlock "Shark Apprentice" for first module
-    if (!userBadges.find((b) => b.id === 1)?.unlocked) {
-      setUserBadges((prev) => prev.map((b) => b.id === 1 ? { ...b, unlocked: true } : b));
+    } catch (error) {
+      console.error("Error during user data loading/initialization from localStorage:", error);
+      setUserModules(getInitialProgress());
+      setUserBadges(getInitialBadges());
+    } finally {
+      setLoading(false); 
     }
-    // Unlock "Shark Tank Ready" if all modules complete
-    if (
-      userModules.filter((m) => m.completed).length + 1 === userModules.length &&
-      !userBadges.find((b) => b.id === 7)?.unlocked
-    ) {
-      setUserBadges((prev) => prev.map((b) => b.id === 7 ? { ...b, unlocked: true } : b));
+  }, [user]); 
+
+  // Effect to save progress to localStorage
+  useEffect(() => {
+    if (user && user.email && !loading) {
+      try {
+        if (Array.isArray(userModules)) {
+            const progressToSave = userModules.map(m => ({
+              title: m.title,
+              category: m.category,
+              completed: m.completed
+            }));
+            localStorage.setItem(`module_progress_${user.email}`, JSON.stringify(progressToSave));
+        }
+
+        if (Array.isArray(userBadges)) {
+            localStorage.setItem(`badges_${user.email}`, JSON.stringify(userBadges));
+        }
+      } catch (error) {
+        console.error("Failed to save progress to localStorage:", error);
+      }
+    }
+  }, [user, userModules, userBadges, loading]);
+
+  // Effect to update badges based on module completion
+  useEffect(() => {
+    if (!user || loading || !Array.isArray(userModules) || userModules.length === 0) {
+      return;
+    }
+
+    const anyModuleCompleted = userModules.some(m => m.completed);
+    const allModulesCompleted = userModules.every(m => m.completed);
+
+    setUserBadges(prevBadges => {
+      const safePrevBadges = Array.isArray(prevBadges) ? prevBadges : getInitialBadges();
+      let changed = false;
+      const newBadges = safePrevBadges.map(badge => {
+        let newBadgeState = { ...badge };
+        if (badge.id === 1 && anyModuleCompleted && !badge.unlocked) {
+          newBadgeState.unlocked = true;
+          changed = true;
+        }
+        if (badge.id === 7 && allModulesCompleted && !badge.unlocked) {
+          newBadgeState.unlocked = true;
+          changed = true;
+        }
+        return newBadgeState;
+      });
+      return changed ? newBadges : safePrevBadges;
+    });
+  }, [user, userModules, loading]);
+
+
+  const completeModule = (title: string) => {
+    if (!user || loading) return;
+    setUserModules((prevModules) => {
+      const safePrevModules = Array.isArray(prevModules) ? prevModules : getInitialProgress();
+      return safePrevModules.map((m) => (m.title === title ? { ...m, completed: true } : m));
+    });
+  };
+
+  const handleResetModules = () => {
+    if (!user || !user.email || loading) return;
+    setLoading(true); 
+    const initialModules = getInitialProgress();
+    const initialBadges = getInitialBadges();
+    setUserModules(initialModules);
+    setUserBadges(initialBadges);
+    try {
+      const progressToSave = initialModules.map(m => ({
+        title: m.title,
+        category: m.category,
+        completed: m.completed
+      }));
+      localStorage.setItem(`module_progress_${user.email}`, JSON.stringify(progressToSave));
+      localStorage.setItem(`badges_${user.email}`, JSON.stringify(initialBadges));
+    } catch (error) {
+      console.error("Failed to save reset progress to localStorage:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Calculate total completed modules
-  const completedModules = userModules.filter((m) => m.completed);
-  const completionPercentage = (completedModules.length / userModules.length) * 100;
+  // Safeguard state variables for rendering
+  const safeUserModules = Array.isArray(userModules) ? userModules : getInitialProgress();
+
+  const completedModules = safeUserModules.filter((m) => m.completed);
+  const completionPercentage = safeUserModules.length > 0 ? (completedModules.length / safeUserModules.length) * 100 : 0;
+
+  // DEBUG LOGS START
+  useEffect(() => {
+    console.log('[Learning.tsx] State Update - Loading:', loading);
+    console.log('[Learning.tsx] State Update - User:', user ? user.email : 'No User');
+    console.log('[Learning.tsx] State Update - SafeUserModules Length:', safeUserModules.length);
+    console.log('[Learning.tsx] State Update - UserModules (raw) Length:', userModules.length);
+    console.log('[Learning.tsx] State Update - UserBadges (raw) Length:', userBadges.length);
+  }, [loading, user, safeUserModules, userModules, userBadges]);
+  // DEBUG LOGS END
 
   return (
     <MainLayout>
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl relative"> 
         <div className="mb-8">
           <h1 className="mb-2 text-3xl font-bold">Learning Hub</h1>
           <p className="text-lg text-muted-foreground">
@@ -189,7 +311,7 @@ export default function Learning() {
           </p>
         </div>
         
-        {user ? (
+        {user && !loading ? (
           <SlideUpInView>
             <div className="mb-8 rounded-xl border bg-card p-6">
               <div className="mb-4 grid gap-4 md:grid-cols-3">
@@ -202,7 +324,7 @@ export default function Learning() {
                 <div className="flex items-center justify-center md:justify-end">
                   <div className="rounded-lg bg-shark-100 px-4 py-2 text-center">
                     <div className="text-3xl font-bold text-shark-700">
-                      {completedModules.length}/{userModules.length}
+                      {completedModules.length}/{safeUserModules.length}
                     </div>
                     <div className="text-sm text-shark-600">modules completed</div>
                   </div>
@@ -217,10 +339,17 @@ export default function Learning() {
               </div>
             </div>
           </SlideUpInView>
+        ) : user && loading ? (
+          <div className="mb-8 rounded-xl border bg-card p-6 animate-pulse">
+            <div className="h-8 rounded bg-muted w-3/4 mb-3"></div>
+            <div className="h-4 rounded bg-muted w-1/2 mb-4"></div>
+            <div className="h-6 rounded bg-muted w-full mb-2"></div>
+            <div className="h-2 rounded bg-muted w-full"></div>
+          </div>
         ) : null}
         
         <Tabs defaultValue="fundamentals" className="mb-8">
-          <TabsList className="w-full grid grid-cols-4">
+          <TabsList className="w-full grid grid-cols-2 sm:grid-cols-4"> 
             {categories.map((category) => (
               <TabsTrigger key={category.id} value={category.id}>
                 {category.name}
@@ -228,18 +357,28 @@ export default function Learning() {
             ))}
           </TabsList>
           {categories.map((category) => {
-            const modules = userModules.filter((module) => module.category === category.id);
-            const visibleModules = plan === "free" ? modules.slice(0, 5) : modules;
+            const modulesInCategory = safeUserModules.filter((module) => module.category === category.id);
+            const visibleModules = plan === "free" ? modulesInCategory.slice(0, 5) : modulesInCategory;
+
             return (
               <TabsContent key={category.id} value={category.id} className="mt-6">
-                {visibleModules.length === 0 ? (
+                {loading && visibleModules.length === 0 && safeUserModules.length > 0 ? ( 
+                  <div className="text-center text-muted-foreground py-12">
+                    <p>Loading modules for {category.name}...</p>
+                  </div>
+                ) : visibleModules.length === 0 && !loading ? (
                   <div className="text-center text-muted-foreground py-12">
                     <p>No modules available in this category.</p>
-                    <Button asChild variant="default" className="mt-4">
-                      <a href="#" onClick={() => { localStorage.removeItem(`modules_${user?.email}`); window.location.reload(); }}>
-                        Reset Modules
-                      </a>
-                    </Button>
+                    {user && (
+                      <Button
+                        variant="default"
+                        className="mt-4"
+                        onClick={handleResetModules}
+                        disabled={!user || loading} // Disable if no user or global loading
+                      >
+                        Reset All Progress
+                      </Button>
+                    )}
                   </div>
                 ) : (
                   <FadeInStagger>
@@ -250,21 +389,22 @@ export default function Learning() {
                             title={module.title}
                             description={module.description}
                             icon={module.icon}
-                            href={user ? module.href : "/auth"}
+                            href={user ? module.href : "/auth"} 
                             duration={module.duration}
-                            completed={user ? module.completed : false}
+                            completed={user ? module.completed : false} 
                           />
                           {user && !module.completed && (
                             <Button
                               onClick={() => completeModule(module.title)}
                               className="mt-2 w-full"
+                              disabled={loading} // Disable if global loading
                             >
                               Complete
                             </Button>
                           )}
                         </FadeIn>
                       ))}
-                      {plan === "free" && modules.length > 5 && (
+                      {plan === "free" && modulesInCategory.length > 5 && (
                         <div className="col-span-full flex flex-col items-center justify-center p-6 border rounded-lg bg-muted/50">
                           <p className="mb-2 font-semibold text-shark-700">Unlock more modules with Starter or Professional plan!</p>
                           <Button asChild variant="default">
@@ -305,6 +445,15 @@ export default function Learning() {
             )}
           </div>
         </div>
+        
+        {loading && (
+          <div className="absolute inset-0 z-50 flex items-center justify-center bg-background/70 backdrop-blur-sm">
+            <div className="flex flex-col items-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-4 border-shark-500 border-t-transparent mb-4"></div>
+              <div className="text-lg font-semibold text-shark-700 dark:text-white">Loading Learning Hub...</div>
+            </div>
+          </div>
+        )}
       </div>
     </MainLayout>
   );
