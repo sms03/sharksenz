@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import MainLayout from "@/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -664,6 +664,8 @@ export default function LearningModule() {
   const { user } = useAuth();
   const [moduleData, setModuleData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [isCompleting, setIsCompleting] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!moduleId || !moduleContent[moduleId as keyof typeof moduleContent]) {
@@ -696,9 +698,110 @@ export default function LearningModule() {
       window.scrollTo(0, 0);
     } else {
       // Module completed
-      toast.success("Module completed! Great job!");
+      setIsCompleting(true);
+      toast.success("Module completed! Your progress has been saved. Redirecting to Learning Hub...");
       
-      // In a real app, would mark module as completed in the database
+      // Mark module as completed in localStorage (similar to completeModule in Learning.tsx)
+      if (user && user.email && moduleId) {
+        try {
+          // Get current progress from localStorage
+          const savedProgressString = localStorage.getItem(`module_progress_${user.email}`);
+          let userModules = [];
+          
+          if (savedProgressString) {
+            try {
+              const parsedProgressArray = JSON.parse(savedProgressString);
+              // Validate that it's actually an array
+              if (Array.isArray(parsedProgressArray)) {
+                userModules = parsedProgressArray;
+              } else {
+                console.warn("Saved progress is not an array, initializing empty array");
+                userModules = [];
+              }
+            } catch (e) {
+              console.error("Failed to parse user module progress from localStorage", e);
+              userModules = [];
+            }
+          }
+          
+          // Find the module by title in our local moduleContent data
+          const currentModule = moduleContent[moduleId as keyof typeof moduleContent];
+          
+          if (currentModule) {
+            // Find the module's category by checking which category contains this moduleId
+            // Default to the moduleId if we can't determine the category
+            let category = moduleId;
+            
+            // Look through all categories in hardcoded learningModules to find which one contains our module
+            // This would be unnecessary if the moduleData already had the category information
+            const allCategories = ['fundamentals', 'valuation', 'metrics', 'pitching'];
+            for (const cat of allCategories) {
+              if (Object.keys(moduleContent).some(key => 
+                key === moduleId && moduleContent[key as keyof typeof moduleContent].title === currentModule.title)) {
+                category = cat;
+                break;
+              }
+            }
+            
+            // Check if module exists in userModules
+            const moduleIndex = userModules.findIndex((m: any) => 
+              m.title === currentModule.title && 
+              (!m.category || m.category === category)
+            );
+            
+            if (moduleIndex !== -1) {
+              // Update existing module
+              userModules[moduleIndex].completed = true;
+              // Ensure category is set correctly
+              userModules[moduleIndex].category = category;
+            } else {
+              // Add module if it doesn't exist
+              userModules.push({
+                title: currentModule.title,
+                category: category,
+                completed: true
+              });
+            }
+            
+            // Save updated modules back to localStorage
+            localStorage.setItem(`module_progress_${user.email}`, JSON.stringify(userModules));
+            
+            // Check if we need to update any badges
+            // For example, the "Shark Apprentice" badge is unlocked when any module is completed
+            const savedBadgesString = localStorage.getItem(`badges_${user.email}`);
+            if (savedBadgesString) {
+              try {
+                const badges = JSON.parse(savedBadgesString);
+                if (Array.isArray(badges)) {
+                  let badgesChanged = false;
+                  const newBadges = badges.map((badge) => {
+                    // Badge ID 1 is "Shark Apprentice", unlocked with first completed module
+                    if (badge.id === 1 && !badge.unlocked) {
+                      badgesChanged = true;
+                      return { ...badge, unlocked: true };
+                    }
+                    return badge;
+                  });
+                  
+                  if (badgesChanged) {
+                    localStorage.setItem(`badges_${user.email}`, JSON.stringify(newBadges));
+                  }
+                }
+              } catch (e) {
+                console.error("Failed to update badges in localStorage", e);
+              }
+            }
+            
+            // Navigate back to Learning page to show updated progress
+            setTimeout(() => {
+              navigate('/learning');
+            }, 1500); // Short delay to allow the user to see the success toast
+          }
+        } catch (error) {
+          console.error("Failed to save module completion to localStorage:", error);
+          setIsCompleting(false); // Reset state if there's an error
+        }
+      }
     }
   };
 
@@ -794,21 +897,25 @@ export default function LearningModule() {
           <Button 
             variant="outline" 
             onClick={handlePreviousSection}
-            disabled={currentSection === 0}
+            disabled={currentSection === 0 || isCompleting}
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Previous
           </Button>
           
           {currentSection < moduleData.sections.length - 1 ? (
-            <Button onClick={handleNextSection}>
+            <Button onClick={handleNextSection} disabled={isCompleting}>
               Next
               <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
           ) : (
-            <Button onClick={handleNextSection}>
-              Complete Module
-              <CheckCircle className="h-4 w-4 ml-2" />
+            <Button 
+              onClick={handleNextSection} 
+              disabled={isCompleting}
+              className={isCompleting ? "bg-green-500 hover:bg-green-500" : ""}
+            >
+              {isCompleting ? "Completed!" : "Complete Module"}
+              <CheckCircle className={`h-4 w-4 ml-2 ${isCompleting ? "animate-pulse" : ""}`} />
             </Button>
           )}
         </div>
@@ -832,6 +939,23 @@ export default function LearningModule() {
             </div>
           </div>
         </div>
+        
+        {isCompleting && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 animate-in fade-in">
+            <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl text-center max-w-md mx-auto">
+              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="h-10 w-10 text-green-500" />
+              </div>
+              <h2 className="text-2xl font-bold mb-2">Module Completed!</h2>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Great job! Your progress has been saved.
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Redirecting to Learning Hub...
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </MainLayout>
   );
