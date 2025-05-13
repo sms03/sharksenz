@@ -20,15 +20,47 @@ import { useAuth } from "@/components/AuthProvider";
 
 // Helper: get initial badges (all locked)
 const getInitialBadges = () => [
-  { id: 1, name: "Shark Apprentice", unlocked: false },
-  { id: 2, name: "Valuation Expert", unlocked: false },
-  { id: 3, name: "Metrics Master", unlocked: false },
-  { id: 4, name: "Pitching Pro", unlocked: false },
-  { id: 5, name: "Encyclopedia Scholar", unlocked: false },
-  { id: 6, name: "Quiz Champion", unlocked: false },
-  { id: 7, name: "Shark Tank Ready", unlocked: false },
-  { id: 8, name: "Negotiation Ninja", unlocked: false },
+  { id: 1, name: "Shark Apprentice", unlocked: false, difficulty: "bronze" },
+  { id: 2, name: "Valuation Expert", unlocked: false, difficulty: "silver" },
+  { id: 3, name: "Metrics Master", unlocked: false, difficulty: "silver" },
+  { id: 4, name: "Pitching Pro", unlocked: false, difficulty: "gold" },
+  { id: 5, name: "Encyclopedia Scholar", unlocked: false, difficulty: "silver" },
+  { id: 6, name: "Quiz Champion", unlocked: false, difficulty: "gold" },
+  { id: 7, name: "Shark Tank Ready", unlocked: false, difficulty: "platinum" },
+  { id: 8, name: "Negotiation Ninja", unlocked: false, difficulty: "platinum" },
 ];
+
+// Helper: get trophy color based on badge difficulty
+const getTrophyColor = (difficulty: string) => {
+  switch (difficulty) {
+    case "bronze":
+      return "text-amber-600 drop-shadow-sm"; // Bronze
+    case "silver":
+      return "text-slate-400 drop-shadow-sm"; // Silver
+    case "gold":
+      return "text-yellow-500 drop-shadow-md"; // Gold
+    case "platinum":
+      return "text-cyan-400 drop-shadow-md"; // Platinum
+    default:
+      return "text-shark-700"; // Default
+  }
+};
+
+// Helper: get trophy background color based on badge difficulty
+const getTrophyBgColor = (difficulty: string) => {
+  switch (difficulty) {
+    case "bronze":
+      return "bg-amber-50"; 
+    case "silver":
+      return "bg-slate-50";
+    case "gold":
+      return "bg-yellow-50";
+    case "platinum":
+      return "bg-cyan-50";
+    default:
+      return "bg-shark-100"; 
+  }
+};
 
 // Helper: get initial quizzes (all not started)
 const getInitialQuizzes = () => [
@@ -137,8 +169,11 @@ export default function Achievements() {
                   {unlockedBadges.map((badge) => (
                     <FadeIn key={badge.id}>
                       <div className="flex flex-col items-center rounded-lg border bg-card p-4 text-center">
-                        <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-shark-100">
-                          <BookOpen className="h-7 w-7 text-shark-700" />
+                        <div className={`mb-3 flex h-14 w-14 items-center justify-center rounded-full ${getTrophyBgColor(badge.difficulty)} relative group`}>
+                          <Trophy className={`h-7 w-7 ${getTrophyColor(badge.difficulty)} transition-transform duration-300 group-hover:scale-110`} />
+                          <span className="absolute -bottom-1 -right-1 text-xs capitalize px-2 py-0.5 rounded-full bg-shark-200 text-shark-800 font-medium">
+                            {badge.difficulty}
+                          </span>
                         </div>
                         <h3 className="mb-1 font-semibold">{badge.name}</h3>
                         <p className="mb-2 text-xs text-muted-foreground">
@@ -160,8 +195,11 @@ export default function Achievements() {
                   {lockedBadges.map((badge) => (
                     <FadeIn key={badge.id}>
                       <div className="flex flex-col items-center rounded-lg border bg-card p-4 text-center">
-                        <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-muted/80">
-                          <BookOpen className="h-7 w-7 text-muted-foreground" />
+                        <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-muted/80 relative">
+                          <Trophy className="h-7 w-7 text-muted-foreground" />
+                          <span className="absolute -bottom-1 -right-1 text-xs capitalize px-2 py-0.5 rounded-full bg-muted text-muted-foreground font-medium">
+                            {badge.difficulty}
+                          </span>
                         </div>
                         <h3 className="mb-1 font-semibold">{badge.name}</h3>
                         <p className="mb-2 text-xs text-muted-foreground">
