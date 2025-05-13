@@ -515,16 +515,16 @@ export default function PitchSimulator() {
                       <div>
                         <div className="mb-1 flex items-center justify-between">
                           <span className="text-sm font-medium">Pitch Builder</span>
-                          <span className="text-xs text-muted-foreground">30%</span>
+                          <span className="text-xs text-muted-foreground">0%</span>
                         </div>
-                        <Progress value={30} className="h-2" />
+                        <Progress value={0} className="h-2" />
                       </div>
                       <div>
                         <div className="mb-1 flex items-center justify-between">
                           <span className="text-sm font-medium">Practice Sessions</span>
-                          <span className="text-xs text-muted-foreground">10%</span>
+                          <span className="text-xs text-muted-foreground">0%</span>
                         </div>
-                        <Progress value={10} className="h-2" />
+                        <Progress value={0} className="h-2" />
                       </div>
                       <div>
                         <div className="mb-1 flex items-center justify-between">
