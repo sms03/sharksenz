@@ -36,28 +36,29 @@ export function LevelUpAnimation({ open, onClose, level, levelName }: LevelUpPro
     if (!open) {
       setAnimationComplete(false);
       return;
-    }
-
-    const timer = setTimeout(() => {
+    }    const timer = setTimeout(() => {
       setAnimationComplete(true);
-    }, 5000);
+    }, 8000);
 
     return () => clearTimeout(timer);
   }, [open]);
-
   return (
-    <Dialog open={open} onOpenChange={() => animationComplete && onClose()}>
-      <DialogContent className="sm:max-w-md text-center">
-        {open && !animationComplete && (
+    <>      {/* Render confetti outside of dialog to cover the entire screen */}
+      {open && !animationComplete && (
+        <div className="fixed inset-0 z-[100] pointer-events-none">
           <ReactConfetti
             width={windowSize.width}
             height={windowSize.height}
-            numberOfPieces={200}
-            recycle={false}
-            tweenDuration={5000}
-            colors={["#FFD700", "#38bdf8", "#34d399", "#f87171"]}
+            numberOfPieces={300}
+            recycle={true}
+            gravity={0.25}
+            tweenDuration={8000}
+            colors={["#FFD700", "#38bdf8", "#34d399", "#f87171", "#c084fc", "#f97316", "#06b6d4"]}
           />
-        )}
+        </div>
+      )}
+      <Dialog open={open} onOpenChange={() => animationComplete && onClose()}>
+        <DialogContent className="sm:max-w-md text-center">
         
         <DialogHeader className="flex flex-col items-center gap-1">
           <div className="animate-bounce rounded-full bg-yellow-50 p-4 mb-2">
@@ -82,8 +83,8 @@ export function LevelUpAnimation({ open, onClose, level, levelName }: LevelUpPro
           <Button onClick={onClose} className="w-32">
             Continue
           </Button>
-        </div>
-      </DialogContent>
+        </div>      </DialogContent>
     </Dialog>
+  </>
   );
 }
