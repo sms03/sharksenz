@@ -102,17 +102,8 @@ export default function EncyclopediaPage() {
           </p>
         </div>
 
-        {!user ? (
-          <div className="mx-auto max-w-2xl py-12 text-center">
-            <Lock className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-            <h2 className="mb-4 text-2xl font-bold">Encyclopedia Content Locked</h2>
-            <p className="mb-6 text-lg text-muted-foreground">Please sign in to access our comprehensive business terms encyclopedia.</p>
-            <Button asChild variant="default">
-              <Link to="/auth">Sign In</Link>
-            </Button>
-          </div>
-        ) : (
-          <>
+        {/* Removed login gate to keep encyclopedia accessible to all users */}
+        <>
             <div className="mb-8 flex flex-col gap-4 md:flex-row">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
@@ -193,8 +184,7 @@ export default function EncyclopediaPage() {
                 </div>
               )}
             </SlideUpInView>
-          </>
-        )}
+        </div>
       </div>
     </MainLayout>
   );

@@ -61,11 +61,6 @@ const mainNavItems: NavItem[] = [
     icon: Home,
   },
   {
-    title: "Encyclopedia",
-    href: "/encyclopedia",
-    icon: BookOpen,
-  },
-  {
     title: "Dashboard",
     href: "/dashboard",
     icon: BarChart3,

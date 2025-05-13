@@ -6,8 +6,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/components/AuthProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Index from "./pages/Index";
-import Encyclopedia from "./pages/Encyclopedia";
-import TermDetail from "./pages/TermDetail";
 import Dashboard from "./pages/Dashboard";
 import PitchSimulator from "./pages/PitchSimulator";
 import Learning from "./pages/Learning";
@@ -44,8 +42,6 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/encyclopedia" element={<Encyclopedia />} />
-              <Route path="/encyclopedia/:termId" element={<TermDetail />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/dashboard/revenue" element={<Dashboard />} />
               <Route path="/dashboard/valuation" element={<Dashboard />} />
