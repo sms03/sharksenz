@@ -1,7 +1,3 @@
-/**
- * BadgeCard Component
- * Displays achievement badges with different difficulties and unlocked states
- */
 import { ReactNode } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
