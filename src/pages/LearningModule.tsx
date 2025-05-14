@@ -2817,7 +2817,7 @@ const moduleContent = {
       }
     ]
   },
-  "net-present-value": {
+  "npv": {
     title: "Net Present Value (NPV)",
     description: "Understand how to calculate the current value of future cash flows to make sound investment decisions for your business.",
     sections: [
@@ -3396,6 +3396,311 @@ const moduleContent = {
       }
     ]
   },
+  "profit-loss": {
+    title: "Profit and Loss Statement",
+    description: "Learn how to read, analyze, and create a profit and loss statement (income statement) to understand your business's financial performance over a specific period.",
+    sections: [
+      {
+        title: "What is a Profit and Loss Statement?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is a Profit and Loss Statement?</h2>
+          <p class="mb-4">A Profit and Loss (P&L) statement, also called an income statement, is a financial document that summarizes the revenues, costs, and expenses incurred during a specific period. It provides a clear picture of whether a company is generating profit or operating at a loss by showing the relationship between what a business earns and what it spends.</p>
+          <p class="mb-6">P&L statements are typically prepared monthly, quarterly, and annually, allowing business owners and investors to track financial performance over time and make informed decisions about operations, investments, and strategy.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Components of a P&L Statement</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Revenue</h4>
+              <p class="text-sm">The total income generated from selling products or services before any expenses are deducted.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>May include:</strong> Gross sales, less returns and allowances, service fees, subscription revenue, etc.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Cost of Goods Sold (COGS)</h4>
+              <p class="text-sm">The direct costs attributable to the production of goods or services sold.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>May include:</strong> Materials, direct labor, manufacturing overhead, shipping costs, etc.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Gross Profit</h4>
+              <p class="text-sm">Revenue minus COGS, representing the profit from core business operations.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Formula:</strong> Revenue - COGS = Gross Profit
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Operating Expenses</h4>
+              <p class="text-sm">Costs incurred through normal business operations that aren't directly tied to production.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>May include:</strong> Rent, utilities, salaries, marketing, research and development, etc.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Operating Income</h4>
+              <p class="text-sm">Gross profit minus operating expenses, showing profit from core operations.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Formula:</strong> Gross Profit - Operating Expenses = Operating Income
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Other Income/Expenses</h4>
+              <p class="text-sm">Income or expenses not related to the main operations of the business.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>May include:</strong> Interest income/expense, gains/losses on asset sales, one-time expenses, etc.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Net Income (Net Profit)</h4>
+              <p class="text-sm">The "bottom line" showing total profit or loss after all revenues and expenses.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Formula:</strong> Operating Income + Other Income - Other Expenses - Taxes = Net Income
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">The P&L Equation</h4>
+            <p>The basic structure of a P&L statement follows this progression:</p>
+            <div class="font-mono text-center my-2 text-sm">
+              Revenue - COGS = Gross Profit<br>
+              Gross Profit - Operating Expenses = Operating Income<br>
+              Operating Income + Other Income - Other Expenses - Taxes = Net Income
+            </div>
+          </div>
+        `
+      },
+      {
+        title: "Reading and Analyzing a P&L",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Reading and Analyzing a P&L Statement</h2>
+          <p class="mb-6">A P&L statement tells the story of your business's financial performance. Learning to read and analyze it effectively helps you identify strengths, weaknesses, and opportunities for improvement.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Sample P&L Statement</h3>
+          <div class="border rounded-lg p-5 mb-6">
+            <h4 class="font-semibold mb-3">ABC Company - Profit and Loss Statement</h4>
+            <p class="mb-2 italic">For the Quarter Ending March 31, 2025</p>
+            
+            <table class="min-w-full text-sm">
+              <tbody>
+                <tr class="border-b">
+                  <td class="py-2 font-medium">Revenue</td>
+                  <td class="text-right">$250,000</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="py-2 pl-4">Less: Returns and Allowances</td>
+                  <td class="text-right">($5,000)</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="py-2 font-medium">Net Revenue</td>
+                  <td class="text-right font-medium">$245,000</td>
+                </tr>
+                
+                <tr class="border-b">
+                  <td class="py-2 pl-4">Cost of Goods Sold</td>
+                  <td class="text-right">$98,000</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="py-2 font-medium">Gross Profit</td>
+                  <td class="text-right font-medium">$147,000</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="py-1 pl-4 text-sm text-shark-600">Gross Margin</td>
+                  <td class="text-right text-sm text-shark-600">60%</td>
+                </tr>
+                
+                <tr class="border-b">
+                  <td class="py-2 font-medium">Operating Expenses</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="py-1 pl-8">Salaries and Wages</td>
+                  <td class="text-right">$65,000</td>
+                </tr>
+                <tr>
+                  <td class="py-1 pl-8">Rent</td>
+                  <td class="text-right">$12,000</td>
+                </tr>
+                <tr>
+                  <td class="py-1 pl-8">Utilities</td>
+                  <td class="text-right">$4,500</td>
+                </tr>
+                <tr>
+                  <td class="py-1 pl-8">Marketing and Advertising</td>
+                  <td class="text-right">$18,000</td>
+                </tr>
+                <tr>
+                  <td class="py-1 pl-8">Insurance</td>
+                  <td class="text-right">$3,500</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="py-1 pl-8">Other Operating Expenses</td>
+                  <td class="text-right">$7,000</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="py-2 pl-4 font-medium">Total Operating Expenses</td>
+                  <td class="text-right font-medium">$110,000</td>
+                </tr>
+                
+                <tr class="border-b">
+                  <td class="py-2 font-medium">Operating Income</td>
+                  <td class="text-right font-medium">$37,000</td>
+                </tr>
+                
+                <tr>
+                  <td class="py-1 pl-4">Interest Expense</td>
+                  <td class="text-right">$2,500</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="py-1 pl-4">Other Income</td>
+                  <td class="text-right">$1,000</td>
+                </tr>
+                
+                <tr class="border-b">
+                  <td class="py-2 font-medium">Income Before Taxes</td>
+                  <td class="text-right font-medium">$35,500</td>
+                </tr>
+                
+                <tr class="border-b">
+                  <td class="py-2 pl-4">Income Taxes</td>
+                  <td class="text-right">$7,100</td>
+                </tr>
+                
+                <tr class="border-b">
+                  <td class="py-2 font-medium">Net Income</td>
+                  <td class="text-right font-medium">$28,400</td>
+                </tr>
+                <tr>
+                  <td class="py-1 pl-4 text-sm text-shark-600">Net Profit Margin</td>
+                  <td class="text-right text-sm text-shark-600">11.6%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Ratios and Metrics from the P&L</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Gross Margin:</strong> (Gross Profit ÷ Revenue) × 100
+              <p class="text-sm ml-4">Measures the efficiency of core operations; higher is generally better</p>
+            </li>
+            <li>
+              <strong>Operating Margin:</strong> (Operating Income ÷ Revenue) × 100
+              <p class="text-sm ml-4">Shows how well the business manages its operating expenses</p>
+            </li>
+            <li>
+              <strong>Net Profit Margin:</strong> (Net Income ÷ Revenue) × 100
+              <p class="text-sm ml-4">Indicates overall profitability after all expenses are considered</p>
+            </li>
+            <li>
+              <strong>Operating Expense Ratio:</strong> (Operating Expenses ÷ Revenue) × 100
+              <p class="text-sm ml-4">Helps identify if overhead costs are too high relative to sales</p>
+            </li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, entrepreneurs are frequently asked to share their P&L details. Sharks want to see consistency in revenue growth, healthy gross margins, and a path to profitability (if not already profitable).</p>
+            <p class="mt-2">When an entrepreneur says they've done $500,000 in sales with a 40% margin, the Sharks immediately want to know: Is that gross margin or net margin? What are the operating expenses? This helps them determine if the business model is truly viable at scale.</p>
+          </div>
+        `
+      },
+      {
+        title: "Creating and Improving Your P&L",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Creating and Improving Your P&L</h2>
+          <p class="mb-6">A well-prepared P&L statement provides critical insights for decision-making. Here's how to create one for your business and use it to drive improvements:</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Steps to Create a P&L Statement</h3>
+          <ol class="list-decimal pl-6 mb-6 space-y-2">
+            <li><strong>Gather Financial Data:</strong> Collect all revenue and expense information for the period</li>
+            <li><strong>Calculate Total Revenue:</strong> Add up all income from sales and services</li>
+            <li><strong>Determine COGS:</strong> Calculate all direct costs related to producing your goods or delivering services</li>
+            <li><strong>Calculate Gross Profit:</strong> Subtract COGS from Revenue</li>
+            <li><strong>List Operating Expenses:</strong> Categorize and total all overhead and operational costs</li>
+            <li><strong>Calculate Operating Income:</strong> Subtract Operating Expenses from Gross Profit</li>
+            <li><strong>Account for Other Income/Expenses:</strong> Add other income and subtract other expenses</li>
+            <li><strong>Calculate Pre-Tax Income:</strong> Operating Income plus Other Income minus Other Expenses</li>
+            <li><strong>Deduct Taxes:</strong> Subtract applicable income taxes</li>
+            <li><strong>Determine Net Income:</strong> Final profit or loss after all deductions</li>
+          </ol>
+          
+          <h3 class="text-xl font-semibold mb-3">Strategies to Improve Your P&L</h3>
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Increasing Revenue</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Raise prices strategically where market allows</li>
+                <li>Expand product or service offerings</li>
+                <li>Increase customer retention and lifetime value</li>
+                <li>Improve conversion rates in sales funnel</li>
+                <li>Enter new markets or customer segments</li>
+                <li>Implement upselling and cross-selling tactics</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Reducing COGS</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Negotiate better rates with suppliers</li>
+                <li>Buy in bulk to get volume discounts</li>
+                <li>Improve production efficiency to reduce waste</li>
+                <li>Optimize inventory management</li>
+                <li>Automate manual processes where possible</li>
+                <li>Review and refine quality control processes</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Controlling Operating Expenses</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Regularly review and audit all expenses</li>
+                <li>Eliminate underutilized subscriptions or services</li>
+                <li>Implement energy-efficient practices</li>
+                <li>Consider remote work to reduce office expenses</li>
+                <li>Focus marketing spend on highest-ROI channels</li>
+                <li>Review staffing needs and productivity</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Optimizing Financial Structure</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Refinance high-interest debt</li>
+                <li>Take advantage of tax deductions and credits</li>
+                <li>Consider leasing vs. buying equipment</li>
+                <li>Manage cash flow to minimize interest expenses</li>
+                <li>Time major purchases strategically</li>
+                <li>Review and optimize tax strategies</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Common P&L Mistakes to Avoid</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Inconsistent Categorization:</strong> Ensure expenses are consistently categorized from period to period</li>
+            <li><strong>Overlooking Accruals:</strong> Record revenue when earned and expenses when incurred, not just when cash changes hands</li>
+            <li><strong>Ignoring Seasonality:</strong> Consider seasonal variations when comparing performance across different periods</li>
+            <li><strong>Focusing Only on Revenue:</strong> Growth in top-line revenue means little if profitability is declining</li>
+            <li><strong>Neglecting Trends:</strong> Look for patterns and trends across multiple periods, not just absolute numbers</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>Daymond John often emphasizes the importance of understanding your numbers inside and out. He says, "If you don't know your numbers, you don't know your business."</p>
+            <p class="mt-2">Entrepreneurs who can confidently discuss their P&L and show they're actively managing it to improve profitability typically receive more favorable responses from the Sharks, even if their businesses are still growing and refining their models.</p>
+          </div>
+        `
+      }
+    ]
+  },
   "product-market-fit": {
     title: "Product-Market Fit",
     description: "Understand how to develop products that perfectly match market needs, creating customer demand that drives sustainable growth.",
@@ -3605,6 +3910,184 @@ const moduleContent = {
             <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
             <p>Many entrepreneurs come to Shark Tank after finding initial product-market fit but before having the resources to scale. When Robert Herjavec or Mark Cuban invests in a company with proven product-market fit, they typically focus on helping the entrepreneur scale through their distribution networks, operational expertise, and capital for expansion.</p>
             <p class="mt-2">As Daymond John often says, "I'm not just investing in a product, I'm investing in a person and their ability to evolve the product as the market changes."</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "retention-rate": {
+    title: "Retention Rate",
+    description: "Learn how to measure, analyze, and improve customer retention - a critical metric for sustainable business growth and profitability.",
+    sections: [
+      {
+        title: "What is Retention Rate?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Understanding Retention Rate</h2>
+          <p class="mb-4">Retention rate measures the percentage of customers who continue to do business with your company over a specified period. It reflects your ability to keep customers engaged and satisfied with your products or services after their initial purchase or interaction.</p>
+          <p class="mb-6">While acquiring new customers is important, retaining existing ones is often more cost-effective and leads to greater long-term profitability. Studies consistently show that increasing customer retention rates by just 5% can increase profits by 25% to 95%.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The Retention Rate Formula</h3>
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Basic Retention Rate Formula</h4>
+            <div class="font-mono text-center my-2 text-sm">
+              Retention Rate = ((CE - CN) / CS) × 100%
+            </div>
+            <p class="text-sm mt-2">Where:</p>
+            <ul class="list-disc pl-6 mt-1 text-sm">
+              <li><strong>CE</strong> = Number of customers at the end of the period</li>
+              <li><strong>CN</strong> = Number of new customers acquired during the period</li>
+              <li><strong>CS</strong> = Number of customers at the start of the period</li>
+            </ul>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Why Retention Rate Matters</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Cost Efficiency:</strong> Acquiring new customers typically costs 5-25 times more than retaining existing ones</li>
+            <li><strong>Revenue Growth:</strong> Existing customers tend to spend more over time as trust builds</li>
+            <li><strong>Referrals:</strong> Loyal customers are more likely to refer others to your business</li>
+            <li><strong>Feedback Value:</strong> Long-term customers provide more valuable product feedback</li>
+            <li><strong>Competitive Advantage:</strong> High retention creates a stable customer base that's harder for competitors to poach</li>
+          </ul>
+          
+          <div class="border-l-4 border-shark-300 pl-4">
+            <h4 class="font-medium mb-1">Retention vs. Churn</h4>
+            <p class="text-sm">Retention rate and churn rate are two sides of the same coin:</p>
+            <div class="mt-1 text-sm text-shark-600">
+              <strong>Relationship:</strong> Churn Rate = 100% - Retention Rate
+            </div>
+          </div>
+        `
+      },
+      {
+        title: "Measuring and Analyzing Retention",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Measuring and Analyzing Retention</h2>
+          <p class="mb-6">Different business models require different approaches to measuring and analyzing retention. Understanding how to properly track retention helps you identify patterns, spot issues, and make data-driven improvements.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Retention Metrics by Business Type</h3>
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border-collapse border border-shark-200">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border border-shark-200 px-4 py-2 text-left">Business Type</th>
+                  <th class="border border-shark-200 px-4 py-2 text-left">Key Retention Metrics</th>
+                  <th class="border border-shark-200 px-4 py-2 text-left">Typical Measurement Period</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="border border-shark-200 px-4 py-2">SaaS/Subscription</td>
+                  <td class="border border-shark-200 px-4 py-2">Monthly/Annual Retention, Logo Retention, Revenue Retention</td>
+                  <td class="border border-shark-200 px-4 py-2">Monthly, Quarterly, Annual</td>
+                </tr>
+                <tr>
+                  <td class="border border-shark-200 px-4 py-2">E-commerce</td>
+                  <td class="border border-shark-200 px-4 py-2">Repeat Purchase Rate, Purchase Frequency, Time Between Purchases</td>
+                  <td class="border border-shark-200 px-4 py-2">30/60/90 Days, Annual</td>
+                </tr>
+                <tr>
+                  <td class="border border-shark-200 px-4 py-2">Mobile Apps</td>
+                  <td class="border border-shark-200 px-4 py-2">Day 1/7/30 Retention, Daily Active Users (DAU)</td>
+                  <td class="border border-shark-200 px-4 py-2">Daily, Weekly, Monthly</td>
+                </tr>
+                <tr>
+                  <td class="border border-shark-200 px-4 py-2">Service Business</td>
+                  <td class="border border-shark-200 px-4 py-2">Client Retention Rate, Service Renewal Rate</td>
+                  <td class="border border-shark-200 px-4 py-2">Quarterly, Annual</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Cohort Analysis</h3>
+          <p class="mb-4">One of the most effective ways to analyze retention is through cohort analysis, which groups customers based on when they first became customers.</p>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Cohort Analysis Benefits</h4>
+            <ul class="list-disc pl-6">
+              <li>Identifies if retention is improving or declining over time</li>
+              <li>Shows how product changes impact different customer groups</li>
+              <li>Reveals patterns in when customers typically drop off</li>
+              <li>Helps isolate seasonal effects from true retention issues</li>
+            </ul>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Customer Lifetime Value (CLV) Connection</h3>
+          <p class="mb-4">Retention rate directly impacts Customer Lifetime Value, making it a critical financial metric.</p>
+          
+          <div class="border-l-4 border-shark-300 pl-4 mb-6">
+            <h4 class="font-medium mb-1">CLV Calculation</h4>
+            <p class="text-sm">A basic CLV formula incorporating retention:</p>
+            <div class="mt-1 text-sm text-shark-600">
+              <strong>CLV = (Average Revenue per Customer × Gross Margin %) ÷ (1 - Retention Rate)</strong>
+            </div>
+          </div>
+          
+          <p>This formula shows how even small improvements in retention can dramatically increase the lifetime value of your customer base.</p>
+        `
+      },
+      {
+        title: "Strategies to Improve Retention",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Strategies to Improve Retention</h2>
+          <p class="mb-6">Improving customer retention requires a systematic approach across multiple business functions. These strategies can help you build stronger customer relationships and reduce churn.</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Onboarding Excellence</h3>
+              <p>Create a smooth, educational onboarding experience that helps customers achieve value quickly.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Implementation:</strong> Welcome sequences, tutorial videos, onboarding checklists, early success milestones
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Proactive Customer Success</h3>
+              <p>Anticipate customer needs and reach out with help before they experience friction.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Examples:</strong> Usage monitoring, check-in calls, personalized training sessions, usage analytics with recommendations
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Continuous Value Delivery</h3>
+              <p>Regularly enhance your product/service and communicate these improvements to customers.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Tactics:</strong> Feature updates, product roadmap sharing, exclusive beta access, added-value services
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Community Building</h3>
+              <p>Foster connections between customers to create switching costs and community value.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Channels:</strong> User forums, customer events, ambassador programs, peer learning opportunities
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Responsive Feedback Loops</h3>
+              <p>Actively collect and act on customer feedback to show you value their input.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Process:</strong> Regular surveys, feedback implementation announcements, "you asked, we built" communications
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Churn Analysis and Prevention</h3>
+          <p class="mb-4">Identify and address warning signs before customers leave:</p>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Declining Usage:</strong> Monitor product usage trends and engage with customers showing decreased activity</li>
+            <li><strong>Missed Milestones:</strong> Track key product adoption milestones and follow up with customers who haven't reached them</li>
+            <li><strong>Support Interactions:</strong> Analyze support tickets for patterns that might indicate frustration or confusion</li>
+            <li><strong>NPS/CSAT Scores:</strong> Pay special attention to customers whose satisfaction scores are dropping</li>
+            <li><strong>Exit Interviews:</strong> Learn from departing customers to prevent similar issues with others</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, investors like Robert Herjavec often ask about customer retention metrics as a key indicator of business health. A high retention rate demonstrates product-market fit and sustainable growth potential.</p>
+            <p class="mt-2">Mark Cuban frequently emphasizes that the true value of a business lies not just in acquiring customers but in keeping them engaged over time. He looks for founders who understand their retention metrics and have strategies to improve them.</p>
           </div>
         `
       }
