@@ -6655,10 +6655,378 @@ const moduleContent = {
             <li><strong>Growth Stage:</strong> Early-stage companies often have low or negative ROE despite strong growth potential</li>
           </ul>
           
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+          <div class="bg-shark-50 p-4 rounded-lg">            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
             <p>On Shark Tank, Lori Greiner and Mark Cuban often look beyond current ROE to evaluate a company's potential future returns. They frequently invest in businesses with temporarily low ROE but strong fundamentals that point to higher future returns.</p>
             <p class="mt-2">Meanwhile, Kevin O'Leary typically focuses more on current ROE and immediate cash flow, as reflected in his preference for royalty deals that provide a clear path to recovering his investment with a specific return threshold.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "unit-economics": {
+    title: "Unit Economics",
+    description: "Learn how to analyze the revenue and costs associated with your business model on a per-unit basis, a critical framework for understanding profitability and scalability.",
+    sections: [
+      {
+        title: "Understanding Unit Economics",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What Are Unit Economics?</h2>
+          <p class="mb-4">Unit economics is the direct revenues and costs associated with a specific business model expressed on a per unit basis. In other words, it's a way to calculate how much value each individual unit (a product, customer, or transaction) brings to your business.</p>
+          <p class="mb-6">Understanding unit economics is crucial because it helps you determine if your business model is fundamentally sound and scalable. Even with impressive revenue growth, a business cannot succeed long-term if it loses money on each individual unit.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Defining Your Unit</h3>
+          <p class="mb-4">Before analyzing unit economics, you must define what your "unit" is. This varies by business model:</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-shark-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-shark-700 mb-2">For Product-Based Businesses</h4>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>Individual product</li>
+                <li>Bundle or package</li>
+                <li>Average basket/order</li>
+                <li>Customer (over lifetime)</li>
+              </ul>
+            </div>
+            <div class="bg-shark-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-shark-700 mb-2">For Service/Subscription Businesses</h4>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>Customer (monthly or annual)</li>
+                <li>Subscription (by tier)</li>
+                <li>Project or engagement</li>
+                <li>User or seat</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Unit Economics Metrics</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Customer Acquisition Cost (CAC)</h4>
+              <p class="text-sm">The total cost of acquiring a new customer, including marketing and sales expenses.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Formula:</strong> Total Sales & Marketing Costs ÷ Number of New Customers Acquired
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Customer Lifetime Value (LTV)</h4>
+              <p class="text-sm">The total revenue you can expect from a single customer throughout their relationship with your business.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Formula:</strong> Average Revenue Per Customer × Average Customer Lifespan
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">LTV:CAC Ratio</h4>
+              <p class="text-sm">The relationship between what you spend to acquire a customer and what you earn from them.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Formula:</strong> LTV ÷ CAC
+                <br><strong>Target:</strong> 3:1 or higher is generally considered healthy
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Contribution Margin</h4>
+              <p class="text-sm">The revenue from one unit minus all variable costs associated with that unit.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Formula:</strong> Revenue Per Unit - Variable Costs Per Unit
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Payback Period</h4>
+              <p class="text-sm">The time it takes to recover the cost of acquiring a customer.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Formula:</strong> CAC ÷ (Monthly Revenue Per Customer - Monthly Variable Costs Per Customer)
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Unit Economics Red Flags</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Negative contribution margin:</strong> You lose money on every unit sold regardless of scale
+              <p class="text-sm ml-4">Example: If it costs you $12 to make and sell a product that retails for $10</p>
+            </li>
+            <li>
+              <strong>LTV:CAC ratio below 1:1:</strong> You spend more to acquire a customer than you'll ever make from them
+              <p class="text-sm ml-4">Example: Spending $100 to acquire a customer who only generates $75 in lifetime revenue</p>
+            </li>
+            <li>
+              <strong>Excessively long payback period:</strong> You wait too long to recoup acquisition costs
+              <p class="text-sm ml-4">Example: A 24+ month payback period for a startup with limited runway</p>
+            </li>
+            <li>
+              <strong>Declining LTV over time:</strong> Indicates worsening customer retention or monetization
+              <p class="text-sm ml-4">Example: Average customer lifetime decreasing from 18 months to 12 months</p>
+            </li>
+          </ul>
+        `
+      },
+      {
+        title: "Analyzing Product Unit Economics",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Product-Based Unit Economics</h2>
+          <p class="mb-4">For businesses selling physical products, understanding the economics of each product unit is essential for pricing strategy, inventory management, and scaling decisions.</p>
+          <p class="mb-6">This analysis helps determine which products are most profitable, which may need repricing, and how to optimize your product mix.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Components of Product Unit Economics</h3>
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border border-shark-200 rounded-lg">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border-b p-3 text-left text-shark-700">Component</th>
+                  <th class="border-b p-3 text-left text-shark-700">Description</th>
+                  <th class="border-b p-3 text-left text-shark-700">Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Unit Revenue</td>
+                  <td class="p-3">The selling price of one product unit</td>
+                  <td class="p-3">$25 per item</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">COGS</td>
+                  <td class="p-3">Direct materials, labor, and manufacturing costs</td>
+                  <td class="p-3">$10 per item</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Fulfillment</td>
+                  <td class="p-3">Packaging, shipping, handling costs</td>
+                  <td class="p-3">$3 per item</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Payment Processing</td>
+                  <td class="p-3">Credit card fees, payment platform costs</td>
+                  <td class="p-3">$0.75 per item (3% of price)</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Returns/Refunds</td>
+                  <td class="p-3">Average cost of returns per unit sold</td>
+                  <td class="p-3">$1.25 per item (5% return rate)</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Unit Contribution</td>
+                  <td class="p-3">Revenue minus all variable costs</td>
+                  <td class="p-3">$10 per item</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Contribution Margin</td>
+                  <td class="p-3">Unit Contribution ÷ Unit Revenue</td>
+                  <td class="p-3">40%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Distribution Channel Impact</h3>
+          <p class="mb-4">Unit economics can vary dramatically across different sales channels:</p>
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Example: $25 Retail Product</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
+              <div class="bg-white p-3 rounded-lg shadow-sm">
+                <h5 class="font-semibold mb-2">Direct-to-Consumer</h5>
+                <ul class="text-sm space-y-1">
+                  <li>Selling Price: $25</li>
+                  <li>Variable Costs: $15</li>
+                  <li>Contribution: $10</li>
+                  <li>Margin: 40%</li>
+                </ul>
+              </div>
+              <div class="bg-white p-3 rounded-lg shadow-sm">
+                <h5 class="font-semibold mb-2">Wholesale</h5>
+                <ul class="text-sm space-y-1">
+                  <li>Selling Price: $12.50 (50% of retail)</li>
+                  <li>Variable Costs: $11</li>
+                  <li>Contribution: $1.50</li>
+                  <li>Margin: 12%</li>
+                </ul>
+              </div>
+              <div class="bg-white p-3 rounded-lg shadow-sm">
+                <h5 class="font-semibold mb-2">Marketplace (e.g., Amazon)</h5>
+                <ul class="text-sm space-y-1">
+                  <li>Selling Price: $25</li>
+                  <li>Variable Costs: $15</li>
+                  <li>Platform Fee: $3.75 (15%)</li>
+                  <li>Contribution: $6.25</li>
+                  <li>Margin: 25%</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Improving Product Unit Economics</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Optimize COGS</h4>
+              <p class="text-sm">Reduce manufacturing costs through volume discounts, supplier negotiations, or design changes.</p>
+              <div class="mt-2 text-xs font-medium text-shark-700">
+                <strong>Example:</strong> Reducing materials cost by 10% can increase unit contribution by 20-30%
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Streamline Fulfillment</h4>
+              <p class="text-sm">Optimize packaging, shipping methods, and warehouse operations.</p>
+              <div class="mt-2 text-xs font-medium text-shark-700">
+                <strong>Impact:</strong> Can improve contribution margin by 3-5 percentage points
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Reduce Return Rates</h4>
+              <p class="text-sm">Improve product quality, sizing information, and product descriptions.</p>
+              <div class="mt-2 text-xs font-medium text-shark-700">
+                <strong>Strategy:</strong> Decreasing return rate from 5% to 3% can improve margins by 1-2 percentage points
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Optimize Channel Mix</h4>
+              <p class="text-sm">Focus on channels with the strongest unit economics.</p>
+              <div class="mt-2 text-xs font-medium text-shark-700">
+                <strong>Example:</strong> Shifting 20% of wholesale sales to direct-to-consumer can significantly improve overall margins
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        title: "Scaling With Unit Economics",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Using Unit Economics for Growth Decisions</h2>
+          <p class="mb-4">Strong unit economics provide the foundation for sustainable business growth. Before scaling, ensure that your business makes money on each individual unit and that your unit economics improve (or at least remain stable) as you grow.</p>
+          <p class="mb-6">Many businesses have failed because they scaled prematurely with flawed unit economics, burning through capital and ultimately collapsing.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The Path to Scale</h3>
+          <div class="mb-6">
+            <ol class="space-y-4">
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">1</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Prove Unit Economics First</h4>
+                    <p class="text-sm">Before significant expansion, ensure you make money on each customer/product</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">2</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Test Scaling Effects</h4>
+                    <p class="text-sm">Gradually increase volume to verify economies of scale without risking the business</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">3</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Optimize Before Scaling</h4>
+                    <p class="text-sm">Address weak points in your unit economics before committing to major growth</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">4</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Scale With Confidence</h4>
+                    <p class="text-sm">Once unit economics are strong and proven, accelerate growth spending</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">5</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Monitor Continuously</h4>
+                    <p class="text-sm">Regularly review unit economics to ensure they remain strong as you scale</p>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Economies & Diseconomies of Scale</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-green-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-green-700 mb-2">Positive Scaling Effects</h4>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>Volume discounts from suppliers</li>
+                <li>Lower shipping costs per unit</li>
+                <li>More efficient manufacturing</li>
+                <li>Decreased CAC with brand recognition</li>
+                <li>Improved negotiating power</li>
+                <li>Ability to hire specialists</li>
+              </ul>
+            </div>
+            <div class="bg-red-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-red-700 mb-2">Negative Scaling Effects</h4>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>Diminishing returns on marketing spend</li>
+                <li>Increased competition for customers</li>
+                <li>Higher customer support costs</li>
+                <li>Increased organizational complexity</li>
+                <li>Supply chain complications</li>
+                <li>Market saturation effects</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Using Unit Economics to Make Scaling Decisions</h3>
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border border-shark-200 rounded-lg">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border-b p-3 text-left text-shark-700">Unit Economics Indicator</th>
+                  <th class="border-b p-3 text-left text-shark-700">Scaling Decision</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">LTV:CAC > 3:1 and improving</td>
+                  <td class="p-3">Accelerate growth spending; you're leaving money on the table</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">LTV:CAC = 2-3:1 and stable</td>
+                  <td class="p-3">Maintain current growth pace while working to improve ratio</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">LTV:CAC < 2:1 or declining</td>
+                  <td class="p-3">Slow growth spending and focus on improving unit economics</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Payback period < 6 months</td>
+                  <td class="p-3">Strong position to scale aggressively, especially if capital-constrained</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Payback period > 12 months</td>
+                  <td class="p-3">Caution needed; improve economics before accelerating growth</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Improving contribution margin with scale</td>
+                  <td class="p-3">Strong indicator that more scale will benefit unit economics</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, the Sharks frequently focus on unit economics when evaluating businesses. Mark Cuban often asks entrepreneurs, "What does it cost you to make? What do you sell it for?" This simple question gets at the heart of unit economics.</p>
+            <p class="mt-2">Kevin O'Leary is known for rejecting businesses with poor unit economics, regardless of their growth rate. As he puts it, "If you can't make money on a single unit, it doesn't matter how many you sell." This reflects the fundamental importance of sound unit economics before scaling a business.</p>
           </div>
         `
       }
