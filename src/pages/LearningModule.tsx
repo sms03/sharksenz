@@ -4820,11 +4820,369 @@ const moduleContent = {
                 <li>Lost sales opportunities</li>
               </ul>
             </div>
-          </div>
-            <div class="bg-shark-50 p-4 rounded-lg">
+          </div>          <div class="bg-shark-50 p-4 rounded-lg">
             <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
             <p>Barbara Corcoran often evaluates how entrepreneurs manage inventory cash flow. In one episode, she praised a founder who had negotiated 90-day payment terms with suppliers while turning inventory every 30 days, effectively allowing the business to grow using supplier financing rather than investor capital.</p>
             <p class="mt-2">She told them, "You've created a business that generates cash instead of consuming it. That's what makes you investable."</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "investor-meetings": {
+    title: "Investor Meeting Etiquette",
+    description: "Learn the protocols, expectations, and best practices for professional investor meetings that make a positive impression and maximize your chances of securing funding.",
+    sections: [
+      {
+        title: "Before the Meeting",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Preparing for Investor Meetings</h2>
+          <p class="mb-4">Successful investor meetings begin long before you enter the room. Thorough preparation demonstrates professionalism and respect for the investor's time, significantly improving your chances of a positive outcome.</p>
+          <p class="mb-6">Every aspect of your preparation sends signals about how you'll handle investor relationships and run your business.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Research Essentials</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Know Your Investors</h4>
+              <p class="text-sm">Research the investors, their portfolio, investment thesis, and typical check size.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Research points:</strong> Recent investments, industry focus, stage preference, portfolio successes and failures, personal background of the specific partner you're meeting
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Understand Their Decision Process</h4>
+              <p class="text-sm">Learn how they make investment decisions and the typical timeline.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Questions to answer:</strong> Do they make solo decisions or require partner consensus? How many meetings typically occur before a term sheet? What due diligence do they typically conduct?
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Anticipate Questions</h4>
+              <p class="text-sm">Prepare for likely questions based on your business model and their investment focus.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Preparation tip:</strong> Create a document with 25-30 anticipated questions and concise answers that you can review before the meeting
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Prepare Your Materials</h4>
+              <p class="text-sm">Have a polished pitch deck, executive summary, and any supporting materials ready.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Essential materials:</strong> Pitch deck (10-15 slides), one-page executive summary, demo access/materials, market analysis
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Logistics and Planning</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Meeting Confirmation</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Confirm date, time, and location 24-48 hours in advance</li>
+                <li>Verify who will be attending from their side</li>
+                <li>Confirm if you should bring additional team members</li>
+                <li>Ask about the expected meeting duration</li>
+                <li>Inquire about preferred meeting format</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Practical Preparation</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Visit location in advance if possible</li>
+                <li>Plan to arrive 15 minutes early</li>
+                <li>Test all presentation technology</li>
+                <li>Have backup copies of all materials</li>
+                <li>Prepare offline demo version if applicable</li>
+                <li>Check internet connectivity requirements</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Pre-Meeting Etiquette</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Send materials in advance:</strong> Provide requested materials 24-48 hours before the meeting
+              <p class="text-sm ml-4">Ask if they prefer to receive materials beforehand or during the meeting</p>
+            </li>
+            <li>
+              <strong>Be responsive to pre-meeting communications:</strong> Reply promptly to any questions or requests
+              <p class="text-sm ml-4">Quick, professional responses set the tone for your working relationship</p>
+            </li>
+            <li>
+              <strong>Notify about team changes:</strong> If team composition changes from what was agreed, inform them
+              <p class="text-sm ml-4">Explains reasons for any changes to avoid surprises</p>
+            </li>
+            <li>
+              <strong>Respect scheduling:</strong> Never reschedule unless absolutely necessary
+              <p class="text-sm ml-4">If unavoidable, provide as much notice as possible with a sincere apology</p>
+            </li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Investor Psychology</h4>
+            <p>Remember that investors begin evaluating you from the very first interaction. They're thinking: "Is this someone I can work with for the next 7-10 years? Do they demonstrate attention to detail? Are they respectful of my time?"</p>
+            <p class="mt-2">Every email, call, and preparation step shapes their impression of you as a founder and potential investment.</p>
+          </div>
+        `
+      },
+      {
+        title: "During the Meeting",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Professional Conduct During Investor Meetings</h2>
+          <p class="mb-6">How you conduct yourself during an investor meeting speaks volumes about your professionalism, business acumen, and potential as a founder. The meeting is as much about building a relationship as it is about conveying information.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">First Impressions</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Arrival and Introduction</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Arrive 10-15 minutes early, never late</li>
+                <li>Dress appropriately for your industry (when in doubt, business casual or one step above your normal)</li>
+                <li>Greet everyone with a firm handshake and eye contact</li>
+                <li>Have business cards ready but don't force them</li>
+                <li>Briefly introduce team members and their roles</li>
+                <li>Engage in brief small talk but follow the investor's lead</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Reading the Room</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Pay attention to office culture and dynamics</li>
+                <li>Notice if the investor is formal or casual</li>
+                <li>Identify the decision makers in the room</li>
+                <li>Observe who takes notes and who asks questions</li>
+                <li>Be aware of time cues and pacing signals</li>
+                <li>Adapt your style to mirror the investor's communication</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Presentation Etiquette</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Time Management</h4>
+              <p class="text-sm">Respect the scheduled meeting duration and pace your presentation accordingly.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Pro tip:</strong> A good rule of thumb is to prepare a presentation that takes 50% of the allotted time, leaving ample room for questions and discussion
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Active Listening</h4>
+              <p class="text-sm">Show genuine interest in the investor's questions, insights, and feedback.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Technique:</strong> Take notes on investor comments, nod appropriately, and refer back to their points later in the conversation
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Question Handling</h4>
+              <p class="text-sm">Answer questions directly and honestly, even difficult ones.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Approach:</strong> Acknowledge the question, provide a concise answer, support with evidence, and confirm if you've addressed their concern
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Manage Interruptions</h4>
+              <p class="text-sm">Be flexible with your presentation flow to accommodate the investor's style.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Strategy:</strong> If frequently interrupted with questions, gracefully pivot to a more conversational approach rather than forcing your way through slides
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Communication Do's and Don'ts</h3>
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border border-shark-200 rounded-lg">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border-b p-3 text-left text-shark-700">Do</th>
+                  <th class="border-b p-3 text-left text-shark-700">Don't</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3">Speak with passion but maintain professionalism</td>
+                  <td class="p-3">Oversell or use hyperbole ("revolutionary," "game-changing")</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3">Admit when you don't know something</td>
+                  <td class="p-3">Make up answers or provide inaccurate information</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3">Use industry terms appropriately</td>
+                  <td class="p-3">Overuse jargon or technical language</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3">Acknowledge competition respectfully</td>
+                  <td class="p-3">Disparage competitors or dismiss their significance</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3">Be confident about your vision and strategy</td>
+                  <td class="p-3">Appear arrogant or unwilling to consider feedback</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3">Share specific metrics and milestones</td>
+                  <td class="p-3">Talk only in generalities without concrete data</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3">Include your team in answers when appropriate</td>
+                  <td class="p-3">Interrupt or contradict team members</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, entrepreneurs who maintain composure when faced with tough questions often fare better than those who become defensive. Notice how successful pitchers acknowledge concerns raised by the Sharks rather than dismissing them.</p>
+            <p class="mt-2">For example, when entrepreneurs respond to Kevin O'Leary's challenging questions with respect and data-backed answers instead of emotional reactions, they're more likely to gain credibility with all the Sharks, even if Mr. Wonderful ultimately doesn't invest.</p>
+          </div>
+        `
+      },
+      {
+        title: "After the Meeting",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Post-Meeting Protocol</h2>
+          <p class="mb-6">What you do after an investor meeting is just as important as what happens during it. Proper follow-up demonstrates your professionalism, organizational skills, and genuine interest in building a relationship with the investor.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Immediate Follow-Up</h3>
+          <div class="mb-6">
+            <ol class="space-y-3">
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">1</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Same-Day Thank You Note</h4>
+                    <p class="text-sm">Send a brief, personalized thank you email within 24 hours (ideally same day)</p>
+                    <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                      <strong>Include:</strong> Expression of appreciation for their time, reference to a specific discussion point, and clear next steps if any were discussed
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">2</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Provide Requested Information</h4>
+                    <p class="text-sm">Send any materials or answers promised during the meeting promptly</p>
+                    <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                      <strong>Timeframe:</strong> Within 48 hours, or by the specific deadline discussed
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">3</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Update Your CRM/Notes</h4>
+                    <p class="text-sm">Document key points, questions, and feedback while fresh in your mind</p>
+                    <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                      <strong>Record:</strong> Who was present, topics discussed, expressed concerns, points of enthusiasm, next steps, and specific follow-up items
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">4</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Team Debrief</h4>
+                    <p class="text-sm">Meet with your team to discuss how the meeting went and next steps</p>
+                    <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                      <strong>Discuss:</strong> Investor reaction, tough questions faced, preparation for follow-up meetings, and any adjustments needed to pitch or materials
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Ongoing Relationship Management</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Respect Their Process</h4>
+              <p class="text-sm">Follow the investor's lead on timing and next steps in the process.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Approach:</strong> Ask about their typical decision timeline and follow up accordingly—don't push for decisions before their established process
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Provide Value Updates</h4>
+              <p class="text-sm">Send periodic updates with meaningful progress and milestones.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Frequency:</strong> Every 3-4 weeks if in active discussions; monthly or quarterly if maintaining a relationship for future funding
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Be Transparent About Other Investors</h4>
+              <p class="text-sm">Maintain appropriate transparency about your fundraising progress.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Balance:</strong> Share meaningful developments without applying artificial pressure; never fabricate interest from other investors
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Handle Rejection Gracefully</h4>
+              <p class="text-sm">Respond professionally if they decide not to invest.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Response:</strong> Thank them for their time and consideration, ask for specific feedback if appropriate, and keep the door open for future opportunities
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Common Follow-Up Mistakes to Avoid</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="border rounded-lg p-4 bg-red-50">
+              <h4 class="font-semibold mb-2 text-red-700">Common Mistakes</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Sending generic, templated thank you emails</li>
+                <li>Following up too frequently or aggressively</li>
+                <li>Missing deadlines for promised information</li>
+                <li>Sending excessive materials not requested</li>
+                <li>Going silent after initial contact</li>
+                <li>Taking rejection personally or responding negatively</li>
+                <li>Copying multiple investors on the same email</li>
+                <li>Sharing confidential feedback between investors</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4 bg-green-50">
+              <h4 class="font-semibold mb-2 text-green-700">Best Practices</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Personalize all communications</li>
+                <li>Follow up at appropriate intervals (ask their preference)</li>
+                <li>Deliver on promises promptly and completely</li>
+                <li>Send only relevant, requested information</li>
+                <li>Maintain consistent but respectful communication</li>
+                <li>View feedback as valuable input for improvement</li>
+                <li>Communicate with each investor individually</li>
+                <li>Maintain confidentiality between investor conversations</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>After getting a deal on Shark Tank, entrepreneurs enter a due diligence process where their professional follow-through is crucial. Barbara Corcoran once mentioned that approximately 30% of her handshake deals fall through during due diligence, often because entrepreneurs don't provide requested information promptly or accurately.</p>
+            <p class="mt-2">Similarly, in real-world investor meetings, your responsiveness and professionalism during the follow-up phase can make or break a potential investment, regardless of how well the initial meeting went.</p>
           </div>
         `
       }
@@ -5374,10 +5732,466 @@ const moduleContent = {
             <p class="mb-2">A visual tool plotting competitors along two key dimensions (e.g., price vs. quality) to identify gaps in the market.</p>
           </div>
           
-          <div class="bg-shark-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+          <div class="bg-shark-50 p-4 rounded-lg">            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
             <p>Mark Cuban often challenges entrepreneurs on their competitive awareness. In one memorable episode, he declined to invest in a business because the founder couldn't articulate how their product was differentiated from competitors'.</p>
             <p class="mt-2">Cuban said, "The biggest red flag is that you don't know your competition. If you don't know who you're up against, how can you possibly win?"</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "negotiation": {
+    title: "Negotiation Skills",
+    description: "Master the art and science of negotiation to secure better investment terms, strategic partnerships, and business deals that help your startup thrive.",
+    sections: [
+      {
+        title: "Negotiation Fundamentals",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Mastering Negotiation Fundamentals</h2>
+          <p class="mb-4">Negotiation is both an art and a science—a structured process of finding agreement when parties have both shared and competing interests. For entrepreneurs, strong negotiation skills can secure better investment terms, strategic partnerships, and business deals that significantly impact growth and success.</p>
+          <p class="mb-6">The most effective negotiators are prepared, flexible, and focused on creating value rather than just claiming it.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Core Negotiation Concepts</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">BATNA (Best Alternative To a Negotiated Agreement)</h4>
+              <p class="text-sm">Your fallback option if the current negotiation fails—your source of power.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Preparation tip:</strong> Always identify and strengthen your BATNA before entering negotiations. The stronger your alternatives, the more leverage you have.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Reservation Value (Walk-Away Point)</h4>
+              <p class="text-sm">The minimum acceptable outcome that would make you accept a deal.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Formula:</strong> Your reservation value should be slightly better than your BATNA, accounting for all associated costs and benefits.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">ZOPA (Zone of Possible Agreement)</h4>
+              <p class="text-sm">The range between parties' reservation values where deals are possible.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Key insight:</strong> A deal is only possible when there's overlap between what you're willing to accept and what they're willing to offer.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Value Creation vs. Value Claiming</h4>
+              <p class="text-sm">Finding ways to increase total value before dividing it.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Approach:</strong> First work together to "expand the pie" (value creation), then determine how to divide it (value claiming).
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Interests vs. Positions</h4>
+              <p class="text-sm">Focus on underlying needs rather than stated demands.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Example:</strong> An investor's position might be "I need 30% equity," but their interest might be "I need sufficient ownership to justify my time mentoring the company."
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Types of Negotiations</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="border rounded-lg p-4 bg-shark-50">
+              <h4 class="font-semibold mb-2">Distributive (Zero-Sum) Negotiation</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Fixed value to be divided</li>
+                <li>What one party gains, the other loses</li>
+                <li>Often price-focused</li>
+                <li>Competitive tactics common</li>
+                <li>Example: Simple price haggling</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4 bg-shark-50">
+              <h4 class="font-semibold mb-2">Integrative (Win-Win) Negotiation</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Value can be created and expanded</li>
+                <li>Multiple issues to negotiate</li>
+                <li>Different priorities between parties</li>
+                <li>Collaborative approach</li>
+                <li>Example: Complex investment deal</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Preparing for Negotiation</h3>
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border border-shark-200 rounded-lg">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border-b p-3 text-left text-shark-700">Step</th>
+                  <th class="border-b p-3 text-left text-shark-700">Action</th>
+                  <th class="border-b p-3 text-left text-shark-700">Example for Investor Negotiation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">1</td>
+                  <td class="p-3">Define your goals and priorities</td>
+                  <td class="p-3 text-sm">Rank what matters: valuation, board seats, liquidation preferences, etc.</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">2</td>
+                  <td class="p-3">Identify your BATNA and reservation value</td>
+                  <td class="p-3 text-sm">Alternative funding sources and minimum acceptable terms</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">3</td>
+                  <td class="p-3">Research the other party</td>
+                  <td class="p-3 text-sm">Investor's portfolio, typical terms, deal history, decision criteria</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">4</td>
+                  <td class="p-3">Anticipate their interests and priorities</td>
+                  <td class="p-3 text-sm">ROI targets, involvement level, exit timeline, risk tolerance</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">5</td>
+                  <td class="p-3">Generate creative options</td>
+                  <td class="p-3 text-sm">Equity/debt mix, performance-based structures, strategic value-adds</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">6</td>
+                  <td class="p-3">Develop objective criteria</td>
+                  <td class="p-3 text-sm">Industry valuation multiples, comparable deal terms</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">7</td>
+                  <td class="p-3">Plan your communication strategy</td>
+                  <td class="p-3 text-sm">Opening offer, concession strategy, framing of key points</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>Many Shark Tank entrepreneurs fail to negotiate effectively because they don't understand their BATNA or reservation value. Those who enter with multiple interested Sharks (a strong BATNA) or clear knowledge of their minimum acceptable terms typically secure better deals.</p>
+            <p class="mt-2">For example, when entrepreneurs receive multiple offers, savvy negotiators like Daymond John will often ask, "What would it take to get a deal done right now?" This is a direct attempt to determine the entrepreneur's reservation value and bypass a prolonged negotiation.</p>
+          </div>
+        `
+      },
+      {
+        title: "Negotiation Strategies & Tactics",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Effective Negotiation Strategies</h2>
+          <p class="mb-6">Armed with proper preparation, you need a strategic approach to guide your actions during negotiations. Different scenarios call for different strategies, and skilled negotiators adapt their approach based on the specific context, relationship, and desired outcomes.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Negotiation Strategies</h3>
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Anchoring</h3>
+              <p>Setting the initial reference point around which the negotiation will revolve.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>How it works:</strong> The first number mentioned creates a powerful psychological anchor that influences the entire negotiation.
+              </div>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Tactical approach:</p>
+                <ul class="list-disc pl-6 mt-1 text-sm">
+                  <li>Make the first offer when well-prepared and confident about market value</li>
+                  <li>Set an ambitious but justifiable anchor (backed by objective criteria)</li>
+                  <li>If they anchor first, counter with specific critiques of their reference points</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Trading Concessions</h3>
+              <p>Strategically exchanging items of different value to each party.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>How it works:</strong> Identify what's high-value to you but low-cost to them (and vice versa) to create trades that benefit both sides.
+              </div>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Tactical approach:</p>
+                <ul class="list-disc pl-6 mt-1 text-sm">
+                  <li>Never make unilateral concessions—always get something in return</li>
+                  <li>Make concessions in decreasing size to signal approaching your limit</li>
+                  <li>Label your concessions: "I'm making a significant concession by..."</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Package vs. Single-Issue Negotiation</h3>
+              <p>Negotiating multiple items together rather than sequentially.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>How it works:</strong> Package deals allow for value-creating tradeoffs across different issues, leading to better outcomes.
+              </div>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Tactical approach:</p>
+                <ul class="list-disc pl-6 mt-1 text-sm">
+                  <li>Present multiple package options of roughly equal value to you</li>
+                  <li>Include different combinations of terms to learn their priorities</li>
+                  <li>Avoid getting bogged down in sequential issue-by-issue haggling</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">MESOs (Multiple Equivalent Simultaneous Offers)</h3>
+              <p>Presenting several different offers at once, all equally acceptable to you.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>How it works:</strong> Gives the other party choice while maintaining your interests, and reveals their preferences.
+              </div>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Tactical approach:</p>
+                <ul class="list-disc pl-6 mt-1 text-sm">
+                  <li>Create 2-3 different packages with equivalent value to you</li>
+                  <li>Vary the components to appeal to different possible priorities</li>
+                  <li>Present them simultaneously: "Here are three options we'd be comfortable with"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Power Dynamics and Leverage</h3>
+          <div class="mb-6">
+            <p class="mb-3">Negotiation leverage comes from several sources. Understanding and managing these power dynamics is crucial to successful outcomes:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="bg-shark-50 p-3 rounded-lg">
+                <h4 class="font-semibold mb-1">Alternatives Power</h4>
+                <p class="text-sm">Strength of your BATNA relative to theirs</p>
+                <div class="mt-2 text-xs">
+                  <strong>Example:</strong> Multiple term sheets from different investors
+                </div>
+              </div>
+              
+              <div class="bg-shark-50 p-3 rounded-lg">
+                <h4 class="font-semibold mb-1">Information Power</h4>
+                <p class="text-sm">Knowledge about the market, their needs, or situation</p>
+                <div class="mt-2 text-xs">
+                  <strong>Example:</strong> Understanding investor's fund timeline pressures
+                </div>
+              </div>
+              
+              <div class="bg-shark-50 p-3 rounded-lg">
+                <h4 class="font-semibold mb-1">Time Power</h4>
+                <p class="text-sm">Ability to wait or deadline pressure on either side</p>
+                <div class="mt-2 text-xs">
+                  <strong>Example:</strong> Sufficient runway vs. urgent cash needs
+                </div>
+              </div>
+              
+              <div class="bg-shark-50 p-3 rounded-lg">
+                <h4 class="font-semibold mb-1">Legitimacy Power</h4>
+                <p class="text-sm">Standards, precedents, policies that support your position</p>
+                <div class="mt-2 text-xs">
+                  <strong>Example:</strong> Industry-standard term sheets and valuations
+                </div>
+              </div>
+              
+              <div class="bg-shark-50 p-3 rounded-lg">
+                <h4 class="font-semibold mb-1">Commitment Power</h4>
+                <p class="text-sm">Credible promises or constraints that limit flexibility</p>
+                <div class="mt-2 text-xs">
+                  <strong>Example:</strong> Board-approved limitations on deal terms
+                </div>
+              </div>
+              
+              <div class="bg-shark-50 p-3 rounded-lg">
+                <h4 class="font-semibold mb-1">Relationship Power</h4>
+                <p class="text-sm">Trust, reputation, and future opportunities</p>
+                <div class="mt-2 text-xs">
+                  <strong>Example:</strong> Strong relationship with the investor from previous ventures
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Handling Common Tactics</h3>
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border border-shark-200 rounded-lg">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border-b p-3 text-left text-shark-700">Tactic</th>
+                  <th class="border-b p-3 text-left text-shark-700">Description</th>
+                  <th class="border-b p-3 text-left text-shark-700">Counter-Strategy</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Extreme Anchoring</td>
+                  <td class="p-3 text-sm">Starting with an unreasonable offer</td>
+                  <td class="p-3 text-sm">Question the legitimacy, provide objective criteria, or walk away and reset</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Good Cop/Bad Cop</td>
+                  <td class="p-3 text-sm">Team negotiation where one person is tough, one is accommodating</td>
+                  <td class="p-3 text-sm">Name the tactic, address the team as a single entity, or request direct communication with decision-maker</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Limited Authority</td>
+                  <td class="p-3 text-sm">Claiming need for approval from someone not present</td>
+                  <td class="p-3 text-sm">Insist on negotiating with the actual decision-maker or gain equal approval rights</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Artificial Deadline</td>
+                  <td class="p-3 text-sm">Creating false time pressure</td>
+                  <td class="p-3 text-sm">Test the deadline by requesting more time, prepare to walk away if pressured</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Nibbling</td>
+                  <td class="p-3 text-sm">Asking for small concessions after agreement</td>
+                  <td class="p-3 text-sm">Establish all terms upfront, require reciprocity for any late additions</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Take-it-or-leave-it</td>
+                  <td class="p-3 text-sm">Ultimatum with no room for negotiation</td>
+                  <td class="p-3 text-sm">Test their commitment by careful temporary walk-away, explore underlying interests</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>Robert Herjavec often uses a negotiation tactic where he presents a different structure than what the entrepreneur requested. For example, if they ask for $100K for 10% equity, he might counter with $200K for 33%, changing both the investment amount and equity percentage.</p>
+            <p class="mt-2">This is a classic example of reframing the negotiation to shift focus away from valuation (which might be too high) to the total investment amount (which might be more attractive to the entrepreneur). Recognizing this tactic helps entrepreneurs maintain focus on their key priorities.</p>
+          </div>
+        `
+      },
+      {
+        title: "Closing Deals Successfully",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Successfully Closing Negotiations</h2>
+          <p class="mb-6">The final phase of negotiation is often the most critical—where tentative agreements become firm commitments and where deals can unexpectedly fall apart. Skilled negotiators pay careful attention to how they close deals to ensure mutual satisfaction and clear expectations.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Bridging Final Gaps</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Split the Difference</h4>
+              <p class="text-sm">When you're close but still separated on a specific term.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Best used when:</strong> The gap is relatively small and both parties have made good-faith moves toward compromise.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Contingent Agreements</h4>
+              <p class="text-sm">Using "if-then" statements to bridge different expectations.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Example:</strong> "If revenue reaches $2M by Q4, then the investor receives an additional 2% equity; if not, the founder receives warrants for 1%."
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Non-Monetary Value Adds</h4>
+              <p class="text-sm">Introducing additional elements beyond the core financial terms.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Possibilities:</strong> Strategic introductions, mentorship commitments, media exposure, operational support, or future funding priorities.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Post-Closing Adjustments</h4>
+              <p class="text-sm">Mechanisms to revisit certain terms after deal closing.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Examples:</strong> Earn-outs, milestone-based releases, performance ratchets, or scheduled re-evaluation points.
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Avoiding Last-Minute Breakdowns</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Common Deal-Breakers</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Introducing major new terms at the last minute</li>
+                <li>Misunderstandings about what was agreed to</li>
+                <li>Lack of internal alignment on either side</li>
+                <li>Deteriorating trust between parties</li>
+                <li>Changed circumstances or market conditions</li>
+                <li>Legal counsels identifying unaddressed risks</li>
+                <li>Hidden issues emerging during due diligence</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Prevention Strategies</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Use term sheets to document key points early</li>
+                <li>Summarize agreements in writing after each session</li>
+                <li>Involve key decision-makers and advisors early</li>
+                <li>Build relationship capital throughout the process</li>
+                <li>Discuss potential deal-breakers proactively</li>
+                <li>Get early legal input on complex structures</li>
+                <li>Be transparent about potential due diligence issues</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">When to Walk Away</h3>
+          <p class="mb-4">Sometimes the best negotiation outcome is no deal. Recognizing when to walk away is a crucial skill:</p>
+          
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border border-shark-200 rounded-lg">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border-b p-3 text-left text-shark-700">Signal to Walk Away</th>
+                  <th class="border-b p-3 text-left text-shark-700">Why It Matters</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Terms fall below your reservation value</td>
+                  <td class="p-3">A deal worse than your BATNA destroys value rather than creates it</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Fundamental misalignment of goals or values</td>
+                  <td class="p-3">Creates ongoing friction that will hurt the relationship long-term</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Repeated negotiation in bad faith</td>
+                  <td class="p-3">Indicates potential future problems even if current terms seem acceptable</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Terms create untenable constraints</td>
+                  <td class="p-3">Restrictions that would significantly hamper business operations or future options</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Personal instinct after thorough analysis</td>
+                  <td class="p-3">Sometimes gut feeling detects problems your conscious analysis hasn't articulated</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">From Agreement to Implementation</h3>
+          <p class="mb-4">A negotiation isn't truly complete until the agreement is executed. Consider these final-stage elements:</p>
+          
+          <ol class="list-decimal pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Document the agreement clearly:</strong> Ensure all terms are captured accurately
+              <p class="text-sm ml-4">Consider both legal documentation and a plain-language summary of key points</p>
+            </li>
+            <li>
+              <strong>Establish implementation milestones:</strong> Set clear timelines and responsibilities
+              <p class="text-sm ml-4">Identify who does what by when for all aspects of the agreement</p>
+            </li>
+            <li>
+              <strong>Create communication protocols:</strong> Decide how parties will stay in touch
+              <p class="text-sm ml-4">Establish points of contact, regular check-ins, and issue resolution mechanisms</p>
+            </li>
+            <li>
+              <strong>Plan for contingencies:</strong> Discuss how to handle potential changes
+              <p class="text-sm ml-4">Market shifts, personnel changes, missed milestones, or other unexpected events</p>
+            </li>
+            <li>
+              <strong>Preserve and build the relationship:</strong> End on a positive, forward-looking note
+              <p class="text-sm ml-4">Express appreciation, reaffirm mutual benefits, and demonstrate commitment to success</p>
+            </li>
+          </ol>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, many deals that are celebrated on the show never actually close after the episode. According to some reports, as many as 30-40% of deals fall apart during due diligence or final negotiations.</p>
+            <p class="mt-2">This highlights a crucial negotiation lesson: the handshake agreement is just the beginning. The most successful entrepreneurs approach the post-show negotiation with the same level of preparation and strategic thinking as the on-air pitch, ensuring that verbal agreements translate into final, signed deals.</p>
           </div>
         `
       }
