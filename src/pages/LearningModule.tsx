@@ -1496,6 +1496,369 @@ const moduleContent = {
       }
     ]
   },
+  "debt-equity": {
+    title: "Debt to Equity Ratio",
+    description: "Understand how to evaluate a company's financial leverage by comparing its total debt to shareholders' equity. Learn what this key ratio reveals about risk and financial strategy.",
+    sections: [
+      {
+        title: "What is Debt to Equity Ratio?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Debt to Equity Ratio?</h2>
+          <p class="mb-4">The debt to equity ratio is a financial metric that compares a company's total debt to its shareholders' equity. It indicates how much debt a company is using to finance its assets relative to the value of shareholders' equity. This ratio is a key indicator of financial leverage and risk.</p>
+          <p class="mb-6">A higher ratio suggests that a company has been aggressive in financing growth with debt, which can result in volatile earnings due to additional interest expense. A lower ratio indicates a company relies more on equity financing and may be more financially stable but could be missing opportunities to magnify returns through leverage.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The Debt to Equity Formula</h3>
+          <div class="bg-shark-50 p-3 rounded-md font-mono text-center mb-6">
+            Debt to Equity Ratio = Total Liabilities ÷ Shareholders' Equity
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Interpreting the Ratio</h3>
+          <div class="grid md:grid-cols-3 gap-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Low Ratio (<0.5)</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Conservative financial strategy</li>
+                <li>Lower financial risk</li>
+                <li>Strong financial cushion</li>
+                <li>May indicate underutilized capital</li>
+                <li>Potentially lower returns on equity</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Moderate Ratio (0.5-1.5)</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Balanced financial strategy</li>
+                <li>Acceptable level of risk for most industries</li>
+                <li>Reasonable use of leverage</li>
+                <li>Better returns than low-leverage firms</li>
+                <li>Generally sustainable long-term</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">High Ratio (>1.5)</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Aggressive financial strategy</li>
+                <li>Higher financial risk</li>
+                <li>Potentially higher ROE (when profitable)</li>
+                <li>Greater vulnerability during downturns</li>
+                <li>May indicate excessive borrowing</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Industry Variations</h4>
+            <p>Optimal debt to equity ratios vary significantly by industry. Capital-intensive industries like utilities or manufacturing typically have higher ratios, while tech companies often have lower ratios due to less reliance on physical assets and greater market volatility.</p>
+          </div>
+        `
+      },
+      {
+        title: "Calculating and Analyzing Debt to Equity",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Calculating and Analyzing Debt to Equity</h2>
+          <p class="mb-6">Let's walk through a practical example of calculating and analyzing a company's debt to equity ratio:</p>
+          
+          <div class="border rounded-lg p-5 mb-6">
+            <h3 class="text-xl font-semibold mb-3">Example Calculation</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="font-medium">Given:</p>
+                <ul class="list-none pl-4 space-y-1">
+                  <li>Total Liabilities: $500,000</li>
+                  <li>Shareholders' Equity: $250,000</li>
+                </ul>
+              </div>
+              
+              <div>
+                <p class="font-medium">Calculation:</p>
+                <p class="pl-4">Debt to Equity Ratio = $500,000 ÷ $250,000 = 2.0</p>
+              </div>
+              
+              <div>
+                <p class="font-medium">Analysis:</p>
+                <p class="pl-4">A debt to equity ratio of 2.0 means the company has $2 in debt for every $1 in equity. This indicates a relatively high level of leverage. The company is financing itself with twice as much debt as equity, which could be concerning depending on the industry and growth stage.</p>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Comprehensive Analysis Approach</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Compare to Industry Benchmarks:</strong>
+              <p class="text-sm ml-4">A 2.0 ratio might be normal for a utility company but concerning for a software company</p>
+            </li>
+            <li>
+              <strong>Examine Trend Over Time:</strong>
+              <p class="text-sm ml-4">An increasing ratio could signal growing financial risk; a decreasing ratio may indicate deleveraging</p>
+            </li>
+            <li>
+              <strong>Consider Debt Composition:</strong>
+              <p class="text-sm ml-4">Long-term vs. short-term debt, interest rates, debt covenants, and repayment schedules</p>
+            </li>
+            <li>
+              <strong>Assess Cash Flow Coverage:</strong>
+              <p class="text-sm ml-4">Can the company's operating cash flow comfortably cover interest and principal payments?</p>
+            </li>
+            <li>
+              <strong>Evaluate Growth Rate:</strong>
+              <p class="text-sm ml-4">High growth may justify higher leverage if that growth translates to increased cash flow</p>
+            </li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Perspective</h4>
+            <p>On Shark Tank, a high debt to equity ratio often raises red flags for investors. Kevin O'Leary frequently questions entrepreneurs about their debt levels, concerned about how additional investment would be used. Mark Cuban typically prefers businesses with cleaner balance sheets and lower leverage, particularly for early-stage companies where profitability may not yet be consistent.</p>
+          </div>
+        `
+      },
+      {
+        title: "Strategic Use of Leverage",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Strategic Use of Leverage</h2>
+          <p class="mb-6">Understanding when and how to use debt is a critical business skill. Strategic leverage can accelerate growth and increase returns, but it must be managed carefully.</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">When Higher Leverage Makes Sense</h3>
+              <p>There are situations where taking on more debt can be strategically advantageous:</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <ul class="list-disc pl-5 mt-1">
+                  <li>When interest rates are low relative to expected returns</li>
+                  <li>For companies with stable, predictable cash flows</li>
+                  <li>To finance acquisitions with clear synergies and integration plans</li>
+                  <li>For expansion into proven markets with established demand</li>
+                  <li>When tax benefits of debt interest are significant</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">When Lower Leverage Is Preferable</h3>
+              <p>Conservative debt levels are often better in these scenarios:</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <ul class="list-disc pl-5 mt-1">
+                  <li>During economic uncertainty or industry volatility</li>
+                  <li>For startups and early-stage companies with unproven models</li>
+                  <li>When cash flows are unpredictable or seasonal</li>
+                  <li>When interest rates are high or expected to rise</li>
+                  <li>If the business already has significant operational leverage</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Optimizing Capital Structure</h3>
+              <p>Finding the right debt to equity balance for your business:</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <ul class="list-disc pl-5 mt-1">
+                  <li>Calculate your weighted average cost of capital (WACC) at different debt levels</li>
+                  <li>Stress test your financial model with higher interest rates and lower revenues</li>
+                  <li>Consider the flexibility needed for future opportunities</li>
+                  <li>Evaluate the impact on credit ratings and borrowing costs</li>
+                  <li>Match debt maturities with the cash flow cycles of financed assets</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Warning Signs of Excessive Leverage</h3>
+          <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+            <ul class="list-disc pl-6 space-y-2">
+              <li><strong>Rising Interest Coverage Ratio:</strong> Operating income barely covers interest payments</li>
+              <li><strong>Reduced Financial Flexibility:</strong> Limited ability to raise additional capital when needed</li>
+              <li><strong>Restrictive Covenants:</strong> Debt terms that severely limit operational decisions</li>
+              <li><strong>Refinancing Difficulties:</strong> Struggling to roll over or refinance existing debt</li>
+              <li><strong>Debt Used for Operating Expenses:</strong> Borrowing to cover day-to-day costs rather than investments</li>
+            </ul>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>Sharks often advise a balanced approach to leverage. Barbara Corcoran has noted that "the best entrepreneurs know when to use other people's money and when to use their own." Robert Herjavec looks for entrepreneurs who understand that debt is a tool, not a solution, and who have a clear plan for how debt will create value rather than just sustain operations.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "depreciation": {
+    title: "Depreciation",
+    description: "Learn how to account for the decreasing value of physical assets over time and understand its impact on financial statements, taxes, and business decisions.",
+    sections: [
+      {
+        title: "What is Depreciation?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Depreciation?</h2>
+          <p class="mb-4">Depreciation is an accounting method that allocates the cost of a tangible asset over its useful life. It represents how much of an asset's value has been used up over time due to wear and tear, obsolescence, or other factors that reduce its value and utility.</p>
+          <p class="mb-6">Rather than recording the entire cost of an asset as an expense when it's purchased, depreciation allows businesses to spread that cost over the asset's useful life, which better matches expenses with the revenue those assets help generate.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Types of Assets That Are Depreciated</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Buildings and Structures:</strong> Offices, warehouses, manufacturing facilities</li>
+            <li><strong>Machinery and Equipment:</strong> Production machinery, office equipment, vehicles</li>
+            <li><strong>Furniture and Fixtures:</strong> Office furniture, retail displays, shelving</li>
+            <li><strong>Computers and Technology:</strong> Servers, computers, telecom equipment</li>
+            <li><strong>Vehicles:</strong> Company cars, trucks, delivery vehicles</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Key Concepts in Depreciation</h4>
+            <ul class="list-disc pl-6 space-y-1">
+              <li><strong>Asset Cost:</strong> The full purchase price plus any costs to get the asset ready for use</li>
+              <li><strong>Salvage Value:</strong> The estimated value of the asset at the end of its useful life</li>
+              <li><strong>Useful Life:</strong> The estimated period during which the asset will be productive</li>
+              <li><strong>Depreciable Base:</strong> The asset cost minus the salvage value</li>
+              <li><strong>Book Value:</strong> The original cost minus accumulated depreciation</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        title: "Depreciation Methods",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Depreciation Methods</h2>
+          <p class="mb-6">There are several methods of calculating depreciation, each with different applications and effects on financial statements. The choice of method can impact reported earnings, tax liability, and financial ratios.</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Straight-Line Depreciation</h3>
+              <p>The simplest and most common method, which spreads the cost evenly over the asset's useful life.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Formula:</strong> Annual Depreciation = (Cost - Salvage Value) ÷ Useful Life
+              </div>
+              <div class="mt-2 text-sm">
+                <strong>Example:</strong> For a $10,000 machine with a $1,000 salvage value and 5-year useful life:<br>
+                Annual Depreciation = ($10,000 - $1,000) ÷ 5 = $1,800 per year
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Declining Balance Method</h3>
+              <p>Accelerates depreciation by applying a fixed percentage to the asset's remaining book value each year.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Formula:</strong> Annual Depreciation = Book Value × Depreciation Rate
+              </div>
+              <div class="mt-2 text-sm">
+                <strong>Example:</strong> Using double-declining balance (2 × straight-line rate = 40%) on the same $10,000 machine:<br>
+                Year 1: $10,000 × 40% = $4,000<br>
+                Year 2: $6,000 × 40% = $2,400
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Units of Production Method</h3>
+              <p>Bases depreciation on the actual usage or output of the asset, rather than time.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Formula:</strong> Depreciation per Unit = (Cost - Salvage Value) ÷ Estimated Total Production<br>
+                Annual Depreciation = Depreciation per Unit × Units Produced in the Period
+              </div>
+              <div class="mt-2 text-sm">
+                <strong>Example:</strong> A machine expected to produce 100,000 units over its lifetime:<br>
+                Depreciation per Unit = ($10,000 - $1,000) ÷ 100,000 = $0.09 per unit<br>
+                If 15,000 units are produced in Year 1, depreciation is $0.09 × 15,000 = $1,350
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Sum-of-Years' Digits (SYD)</h3>
+              <p>Another accelerated method that applies a decreasing fraction to the depreciable base.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Formula:</strong> SYD = n(n+1) ÷ 2, where n is the useful life in years<br>
+                Annual Depreciation = (Remaining Life ÷ SYD) × Depreciable Base
+              </div>
+              <div class="mt-2 text-sm">
+                <strong>Example:</strong> For a 5-year asset: SYD = 5(5+1) ÷ 2 = 15<br>
+                Year 1: (5 ÷ 15) × $9,000 = $3,000<br>
+                Year 2: (4 ÷ 15) × $9,000 = $2,400
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Which Method to Use?</h4>
+            <p>The choice of depreciation method should reflect the pattern in which the asset's benefits are expected to be consumed:</p>
+            <ul class="list-disc pl-6 mt-2">
+              <li><strong>Straight-Line:</strong> Best for assets that provide benefits evenly over time (buildings, furniture)</li>
+              <li><strong>Accelerated Methods:</strong> Appropriate for assets that are more productive in early years (computers, technology)</li>
+              <li><strong>Units of Production:</strong> Ideal for assets whose use varies significantly year to year (manufacturing equipment)</li>
+            </ul>
+            <p class="mt-2">Tax considerations often lead businesses to use accelerated methods for tax returns and straight-line for financial statements.</p>
+          </div>
+        `
+      },
+      {
+        title: "Depreciation Impact and Strategy",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Depreciation Impact and Strategy</h2>
+          <p class="mb-6">Depreciation affects various aspects of business finance, from tax liability to reported profits. Understanding these effects allows for strategic decision-making around asset acquisition and financial reporting.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Financial Statement Impact</h3>
+          <div class="grid md:grid-cols-3 gap-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Income Statement</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Reduces reported net income</li>
+                <li>Affects profit margins</li>
+                <li>Non-cash expense (added back in cash flow)</li>
+                <li>Influences earnings-based metrics</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Balance Sheet</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Reduces asset carrying values</li>
+                <li>Accumulated depreciation increases</li>
+                <li>Affects asset turnover ratios</li>
+                <li>Impacts return on assets (ROA)</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Cash Flow Statement</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Added back to net income in operating activities</li>
+                <li>Helps reconcile profit to cash flow</li>
+                <li>No direct cash impact</li>
+                <li>Improves operating cash flow vs. net income</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Strategic Considerations</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Tax Planning:</strong>
+              <p class="text-sm ml-4">Accelerated depreciation methods can reduce current tax liability by increasing expenses in early years</p>
+            </li>
+            <li>
+              <strong>Capital Budgeting:</strong>
+              <p class="text-sm ml-4">Understanding depreciation's impact on financial statements helps evaluate investment decisions</p>
+            </li>
+            <li>
+              <strong>Asset Replacement Timing:</strong>
+              <p class="text-sm ml-4">Depreciation schedules can guide decisions about when to repair versus replace aging assets</p>
+            </li>
+            <li>
+              <strong>Section 179 Deduction (US):</strong>
+              <p class="text-sm ml-4">Allows businesses to deduct the full purchase price of qualifying equipment in the year it's placed in service</p>
+            </li>
+            <li>
+              <strong>Bonus Depreciation:</strong>
+              <p class="text-sm ml-4">Provides additional first-year depreciation deductions beyond normal depreciation schedules</p>
+            </li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, entrepreneurs must understand how depreciation affects their financials. When discussing capital-intensive businesses, Sharks often focus on EBITDA (Earnings Before Interest, Taxes, Depreciation, and Amortization) to assess the underlying operational performance without the accounting impact of depreciation.</p>
+            <p class="mt-2">Mark Cuban frequently asks about capital expenditure requirements and replacement cycles to understand the true cash needs of the business beyond reported profits, which are affected by non-cash expenses like depreciation.</p>
+          </div>
+        `
+      }
+    ]
+  },
   "ebitda": {
     title: "EBITDA",
     description: "Learn to calculate and interpret Earnings Before Interest, Taxes, Depreciation and Amortization as a measure of a company's operational performance.",
