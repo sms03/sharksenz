@@ -1859,6 +1859,314 @@ const moduleContent = {
       }
     ]
   },
+  "discounted-cash-flow": {
+    title: "Discounted Cash Flow (DCF)",
+    description: "Learn how to value businesses by projecting future cash flows and converting them to present value, a fundamental method for investment analysis and acquisition decisions.",
+    sections: [
+      {
+        title: "Understanding DCF Valuation",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Discounted Cash Flow (DCF) Analysis?</h2>
+          <p class="mb-4">Discounted Cash Flow (DCF) analysis is a valuation method used to estimate the value of an investment based on its expected future cash flows. By discounting projected cash flows back to the present value, DCF accounts for the time value of money—the concept that a dollar today is worth more than a dollar in the future due to its earning potential.</p>
+          <p class="mb-6">DCF is widely considered one of the most thorough and accurate valuation methods, particularly for businesses with predictable cash flows. It's used by investment bankers, private equity firms, and sophisticated investors to determine if a business is likely to be a good investment at a given price.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The Core Principle: Time Value of Money</h3>
+          <p class="mb-4">The fundamental concept behind DCF is the time value of money. Cash received in the future is worth less than the same amount received today because:</p>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Opportunity Cost:</strong> Money available now can be invested to generate returns</li>
+            <li><strong>Inflation:</strong> Purchasing power decreases over time</li>
+            <li><strong>Risk:</strong> Future cash flows are less certain than immediate ones</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">The Basic DCF Formula</h4>
+            <div class="font-mono text-center my-2 text-sm">
+              DCF Value = CF₁/(1+r)¹ + CF₂/(1+r)² + CF₃/(1+r)³ + ... + CFₙ/(1+r)ⁿ
+            </div>
+            <p class="text-sm mt-2">Where:</p>
+            <ul class="list-disc pl-6 mt-1 text-sm">
+              <li><strong>CF</strong> = Cash Flow in the period indicated by the subscript</li>
+              <li><strong>r</strong> = Discount Rate (often the Weighted Average Cost of Capital)</li>
+              <li><strong>n</strong> = Number of periods</li>
+            </ul>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">When to Use DCF Valuation</h3>
+          <p class="mb-4">DCF is particularly useful for:</p>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Established Businesses:</strong> Companies with predictable cash flows and growth</li>
+            <li><strong>Project Evaluation:</strong> Assessing the financial viability of new investments</li>
+            <li><strong>Acquisition Analysis:</strong> Determining a fair purchase price for a business</li>
+            <li><strong>Investor Pitches:</strong> Justifying valuation to potential investors</li>
+            <li><strong>Exit Planning:</strong> Estimating future business value for exit strategies</li>
+          </ul>
+          
+          <div class="border-l-4 border-shark-300 pl-4 mb-6">
+            <h4 class="font-medium mb-1">DCF Limitations</h4>
+            <p class="text-sm">Despite its strengths, DCF has some limitations:</p>
+            <div class="mt-1 text-sm text-shark-600">
+              <ul class="list-disc pl-6 mt-1">
+                <li>Highly sensitive to growth and discount rate assumptions</li>
+                <li>Challenging to apply to early-stage companies with unpredictable cash flows</li>
+                <li>Requires detailed forecasting, which becomes less reliable over longer periods</li>
+                <li>May not capture strategic value or synergies in acquisitions</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, Kevin O'Leary (Mr. Wonderful) frequently uses DCF-like thinking when evaluating businesses. His famous question, "How long will it take me to get my money back?" directly relates to discounting future returns to present value.</p>
+            <p class="mt-2">When entrepreneurs claim high valuations based on future potential, Sharks often challenge these by implicitly using DCF principles to show that even with optimistic growth projections, the current valuation may not be justified after accounting for time and risk.</p>
+          </div>
+        `
+      },
+      {
+        title: "Building a DCF Model",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Building a DCF Valuation Model</h2>
+          <p class="mb-6">Creating a robust Discounted Cash Flow model involves several key steps, each requiring careful analysis and informed assumptions. Let's walk through the process of building a DCF model for business valuation:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 1: Project Free Cash Flows</h3>
+              <p>Forecast the company's free cash flows (FCF) for a specific projection period (typically 5-10 years).</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Free Cash Flow Calculation:</strong>
+                <div class="font-mono mt-1">
+                  EBIT<br>
+                  - Taxes<br>
+                  + Depreciation & Amortization<br>
+                  - Capital Expenditures<br>
+                  - Changes in Working Capital<br>
+                  = Free Cash Flow
+                </div>
+                <p class="mt-2">Key drivers to consider when projecting FCF:</p>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Revenue growth rates</li>
+                  <li>Profit margins</li>
+                  <li>Tax rates</li>
+                  <li>Capital investment requirements</li>
+                  <li>Working capital needs</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 2: Determine the Terminal Value</h3>
+              <p>Calculate the business's value beyond the explicit forecast period using either:</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Perpetuity Growth Method:</strong>
+                <div class="font-mono mt-1">
+                  Terminal Value = FCF in Final Year × (1 + g) ÷ (r - g)
+                </div>
+                <p class="mt-1">Where g = perpetual growth rate (typically 2-3%) and r = discount rate</p>
+                
+                <strong class="mt-3 block">Exit Multiple Method:</strong>
+                <div class="font-mono mt-1">
+                  Terminal Value = FCF in Final Year × Exit Multiple
+                </div>
+                <p class="mt-1">Where Exit Multiple is often based on comparable company EV/EBITDA ratios</p>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 3: Calculate the Discount Rate</h3>
+              <p>Determine the appropriate discount rate, typically using the Weighted Average Cost of Capital (WACC).</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>WACC Calculation:</strong>
+                <div class="font-mono mt-1">
+                  WACC = (E/V × Re) + (D/V × Rd × (1-T))
+                </div>
+                <p class="mt-1">Where:</p>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>E = Market value of equity</li>
+                  <li>D = Market value of debt</li>
+                  <li>V = E + D (total market value)</li>
+                  <li>Re = Cost of equity</li>
+                  <li>Rd = Cost of debt</li>
+                  <li>T = Corporate tax rate</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 4: Discount the Cash Flows</h3>
+              <p>Calculate the present value of both the projected cash flows and the terminal value.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Present Value Formula:</strong>
+                <div class="font-mono mt-1">
+                  PV = FV ÷ (1 + r)ⁿ
+                </div>
+                <p class="mt-1">Where:</p>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>PV = Present Value</li>
+                  <li>FV = Future Value (the cash flow)</li>
+                  <li>r = Discount Rate (WACC)</li>
+                  <li>n = Number of periods into the future</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 5: Calculate Enterprise and Equity Value</h3>
+              <p>Sum the present values to find the Enterprise Value, then adjust for debt and cash.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Enterprise Value:</strong>
+                <div class="font-mono mt-1">
+                  Enterprise Value = PV of Projected Cash Flows + PV of Terminal Value
+                </div>
+                
+                <strong class="mt-3 block">Equity Value:</strong>
+                <div class="font-mono mt-1">
+                  Equity Value = Enterprise Value + Cash - Debt - Preferred Stock + Non-Operating Assets
+                </div>
+                
+                <strong class="mt-3 block">Value Per Share:</strong>
+                <div class="font-mono mt-1">
+                  Value Per Share = Equity Value ÷ Shares Outstanding
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">DCF Modeling Example</h3>
+          <div class="border rounded-lg p-5 mb-6">
+            <h4 class="font-semibold mb-3">Simplified DCF Valuation Example</h4>
+            <p class="mb-2">Assumptions:</p>
+            <ul class="list-none pl-4 space-y-1 mb-4">
+              <li>5-year projection period</li>
+              <li>Free Cash Flows: $1M (Year 1), $1.2M (Year 2), $1.4M (Year 3), $1.6M (Year 4), $1.8M (Year 5)</li>
+              <li>Terminal growth rate: 2%</li>
+              <li>Discount rate (WACC): 10%</li>
+              <li>Cash: $5M, Debt: $8M</li>
+            </ul>
+            
+            <div>
+              <p class="font-medium">1. Calculate Terminal Value:</p>
+              <p class="pl-4">Terminal Value = $1.8M × (1 + 2%) ÷ (10% - 2%) = $23.18M</p>
+            </div>
+            
+            <div class="mt-2">
+              <p class="font-medium">2. Discount all cash flows:</p>
+              <p class="pl-4">
+                PV of Year 1 CF: $1M ÷ (1 + 10%)¹ = $0.91M<br>
+                PV of Year 2 CF: $1.2M ÷ (1 + 10%)² = $0.99M<br>
+                PV of Year 3 CF: $1.4M ÷ (1 + 10%)³ = $1.05M<br>
+                PV of Year 4 CF: $1.6M ÷ (1 + 10%)⁴ = $1.09M<br>
+                PV of Year 5 CF: $1.8M ÷ (1 + 10%)⁵ = $1.12M<br>
+                PV of Terminal Value: $23.18M ÷ (1 + 10%)⁵ = $14.38M
+              </p>
+            </div>
+            
+            <div class="mt-2">
+              <p class="font-medium">3. Calculate Enterprise Value:</p>
+              <p class="pl-4">EV = $0.91M + $0.99M + $1.05M + $1.09M + $1.12M + $14.38M = $19.54M</p>
+            </div>
+            
+            <div class="mt-2">
+              <p class="font-medium">4. Calculate Equity Value:</p>
+              <p class="pl-4">Equity Value = $19.54M + $5M - $8M = $16.54M</p>
+            </div>
+          </div>
+        `
+      },
+      {
+        title: "DCF in Business Decisions",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Using DCF in Business Decisions</h2>
+          <p class="mb-6">Discounted Cash Flow analysis is a powerful tool that goes beyond simple business valuation. When applied strategically, it can inform a wide range of critical business decisions and help entrepreneurs make more informed choices about the future of their companies.</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Capital Allocation Decisions</h3>
+              <p>Use DCF to prioritize competing investment opportunities and capital projects.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Application:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Compare NPV (Net Present Value) across different potential investments</li>
+                  <li>Establish minimum IRR (Internal Rate of Return) thresholds for new projects</li>
+                  <li>Determine optimal timing for major capital expenditures</li>
+                  <li>Evaluate whether to build new capabilities in-house or acquire them</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Acquisition Analysis</h3>
+              <p>Determine appropriate purchase prices for target companies and evaluate synergies.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Strategy:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Establish maximum bid prices based on expected future cash flows</li>
+                  <li>Quantify potential synergies and their impact on valuation</li>
+                  <li>Model different integration scenarios and their financial implications</li>
+                  <li>Compare acquisition costs to organic growth alternatives</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Business Unit Evaluation</h3>
+              <p>Assess the value contribution of different business segments to inform portfolio decisions.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Applications:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Identify underperforming divisions that may be candidates for divestiture</li>
+                  <li>Allocate resources based on the present value of growth opportunities</li>
+                  <li>Support decisions about which product lines to expand or contract</li>
+                  <li>Evaluate whether to shut down, sell, or restructure struggling operations</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Strategic Planning</h3>
+              <p>Use DCF to evaluate different strategic paths and business models.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Approach:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Compare subscription vs. one-time purchase revenue models</li>
+                  <li>Evaluate expansion into new geographic markets or customer segments</li>
+                  <li>Assess vertical integration opportunities</li>
+                  <li>Analyze potential pivots or business model transformations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">DCF Sensitivity Analysis</h3>
+          <p class="mb-4">Because DCF relies on assumptions about the future, it's crucial to conduct sensitivity analysis to understand how changes in key variables affect valuation:</p>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Key Variables for Sensitivity Testing</h4>
+            <ul class="list-disc pl-6">
+              <li><strong>Growth Rates:</strong> Test how different revenue growth scenarios impact valuation</li>
+              <li><strong>Profit Margins:</strong> Vary margin assumptions to see effects on cash flow</li>
+              <li><strong>Discount Rates:</strong> Adjust WACC up and down to reflect different risk scenarios</li>
+              <li><strong>Terminal Value:</strong> Test different terminal growth rates and exit multiples</li>
+              <li><strong>Capital Requirements:</strong> Vary CapEx and working capital assumptions</li>
+            </ul>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Common DCF Mistakes to Avoid</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Overly Optimistic Projections:</strong> Being unrealistic about future growth or margins</li>
+            <li><strong>Inconsistent Assumptions:</strong> Using assumptions that contradict each other</li>
+            <li><strong>Incorrect Discount Rate:</strong> Failing to properly calculate WACC or adjust for project-specific risk</li>
+            <li><strong>Terminal Value Issues:</strong> Overestimating long-term growth or using inappropriate exit multiples</li>
+            <li><strong>Ignoring Working Capital:</strong> Forgetting that growth usually requires additional working capital</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>When entrepreneurs on Shark Tank present high valuations, Sharks like Mark Cuban often challenge their assumptions, essentially questioning the inputs to their implicit DCF calculations.</p>
+            <p class="mt-2">Kevin O'Leary frequently structures royalty deals instead of straight equity investments, which reflects his preference for more predictable cash flows. This approach allows him to create his own DCF model with more certainty around returns, reducing his risk as an investor.</p>
+          </div>
+        `
+      }
+    ]
+  },
   "ebitda": {
     title: "EBITDA",
     description: "Learn to calculate and interpret Earnings Before Interest, Taxes, Depreciation and Amortization as a measure of a company's operational performance.",
@@ -2009,6 +2317,665 @@ const moduleContent = {
           <div class="bg-shark-50 p-4 rounded-lg">
             <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
             <p>On Shark Tank, entrepreneurs sometimes present adjusted EBITDA figures to make their businesses look more profitable. Savvy Sharks like Mark Cuban often challenge these adjustments, asking, "What's your real EBITDA without all these add-backs?" They want to see the true operational performance without financial engineering.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "equity-dilution": {
+    title: "Equity Dilution",
+    description: "Understand how fundraising and issuing new shares impacts ownership percentages and control of your business. Learn to manage dilution while still growing your company.",
+    sections: [
+      {
+        title: "Understanding Equity Dilution",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Equity Dilution?</h2>
+          <p class="mb-4">Equity dilution occurs when a company issues new shares, causing existing shareholders to own a smaller percentage of the company than they did before the issuance. While the number of shares they own remains the same, their ownership percentage and control of the company decreases.</p>
+          <p class="mb-6">Dilution is a natural part of growing a business with outside capital, but understanding its mechanisms and implications is crucial for founders and early investors to make informed decisions about fundraising strategy and company governance.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">How Dilution Works</h3>
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Dilution Example</h4>
+            <p class="text-sm">Initial cap table: Founder owns 100,000 shares (100% of the company)</p>
+            <p class="text-sm mt-2">Series A funding: Company issues 25,000 new shares to investors</p>
+            <div class="mt-2 text-sm">
+              <strong>Post-investment ownership:</strong><br>
+              • Founder: 100,000 shares (80% ownership)<br>
+              • Investors: 25,000 shares (20% ownership)<br>
+              • Total shares: 125,000 shares
+            </div>
+            <p class="mt-2 text-sm">The founder's ownership has been diluted from 100% to 80%, though they still own the same number of shares.</p>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Common Causes of Dilution</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Equity Financing Rounds:</strong> Raising capital by selling shares to investors</li>
+            <li><strong>Employee Stock Option Pools:</strong> Creating or expanding equity compensation for employees</li>
+            <li><strong>Convertible Securities:</strong> Convertible notes or SAFEs converting to equity</li>
+            <li><strong>Stock Dividends:</strong> Issuing additional shares to existing shareholders</li>
+            <li><strong>Mergers & Acquisitions:</strong> Paying for acquisitions with newly issued shares</li>
+          </ul>
+          
+          <div class="border-l-4 border-shark-300 pl-4 mb-6">
+            <h4 class="font-medium mb-1">Economic vs. Control Dilution</h4>
+            <p class="text-sm">Dilution affects both economic interest and control:</p>
+            <div class="mt-1 text-sm text-shark-600">
+              <strong>Economic Dilution:</strong> Reduction in percentage of future profits and exit proceeds<br>
+              <strong>Control Dilution:</strong> Reduced voting power and decision-making authority
+            </div>
+            <p class="mt-1 text-sm">Control thresholds to watch: Over 50% (majority control), over 67% (supermajority for major decisions), below 50% (loss of control)</p>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">The Misconception of Dilution</h3>
+          <p class="mb-4">A common misconception is that dilution is always negative. However, when new capital enables the company to grow faster than it would have otherwise, everyone's smaller percentage can become worth significantly more in absolute terms. This concept is often called "growing the pie" rather than just dividing it differently.</p>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, entrepreneurs frequently struggle with the concept of dilution when Sharks make offers. A typical Shark might offer "$300,000 for 30% of your company," and entrepreneurs often counter with concerns about giving up too much ownership.</p>
+            <p class="mt-2">Mark Cuban often reminds entrepreneurs that "it's better to own a smaller piece of a big pie than a big piece of nothing." This captures the essence of productive dilution—accepting some reduction in percentage ownership in exchange for resources that significantly increase the company's overall value.</p>
+          </div>
+        `
+      },
+      {
+        title: "Managing and Calculating Dilution",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Managing and Calculating Equity Dilution</h2>
+          <p class="mb-6">As you raise capital across multiple rounds, understanding how to calculate, project, and manage dilution becomes increasingly important for maintaining appropriate control and economic interest in your company.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Calculating Dilution</h3>
+          <div class="space-y-4 mb-6">
+            <div>
+              <p class="font-medium">Basic Dilution Formula:</p>
+              <div class="font-mono text-sm bg-shark-50 p-2 rounded">
+                Post-money Ownership % = (Shares Owned ÷ Total Post-money Shares) × 100%
+              </div>
+              <p class="text-sm mt-1">Where: Total Post-money Shares = Pre-money Shares + Newly Issued Shares</p>
+            </div>
+            
+            <div>
+              <p class="font-medium">Dilution Percentage:</p>
+              <div class="font-mono text-sm bg-shark-50 p-2 rounded">
+                Dilution % = (Pre-money % - Post-money %) ÷ Pre-money % × 100%
+              </div>
+            </div>
+          </div>
+          
+          <div class="border rounded-lg p-5 mb-6">
+            <h4 class="font-semibold mb-3">Multi-Round Dilution Example</h4>
+            <p class="mb-2"><strong>Starting Point:</strong> Founder owns 100% with 1,000,000 shares</p>
+            
+            <div class="overflow-x-auto">
+              <table class="min-w-full border-collapse text-sm">
+                <thead class="bg-shark-50">
+                  <tr>
+                    <th class="border px-4 py-2">Round</th>
+                    <th class="border px-4 py-2">New Shares Issued</th>
+                    <th class="border px-4 py-2">Post-Round Total Shares</th>
+                    <th class="border px-4 py-2">Founder Shares</th>
+                    <th class="border px-4 py-2">Founder Ownership</th>
+                    <th class="border px-4 py-2">Dilution from Previous</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="border px-4 py-2">Initial</td>
+                    <td class="border px-4 py-2">-</td>
+                    <td class="border px-4 py-2">1,000,000</td>
+                    <td class="border px-4 py-2">1,000,000</td>
+                    <td class="border px-4 py-2">100.0%</td>
+                    <td class="border px-4 py-2">-</td>
+                  </tr>
+                  <tr>
+                    <td class="border px-4 py-2">Employee Option Pool</td>
+                    <td class="border px-4 py-2">150,000</td>
+                    <td class="border px-4 py-2">1,150,000</td>
+                    <td class="border px-4 py-2">1,000,000</td>
+                    <td class="border px-4 py-2">87.0%</td>
+                    <td class="border px-4 py-2">13.0%</td>
+                  </tr>
+                  <tr>
+                    <td class="border px-4 py-2">Seed Round</td>
+                    <td class="border px-4 py-2">250,000</td>
+                    <td class="border px-4 py-2">1,400,000</td>
+                    <td class="border px-4 py-2">1,000,000</td>
+                    <td class="border px-4 py-2">71.4%</td>
+                    <td class="border px-4 py-2">17.9%</td>
+                  </tr>
+                  <tr>
+                    <td class="border px-4 py-2">Series A</td>
+                    <td class="border px-4 py-2">400,000</td>
+                    <td class="border px-4 py-2">1,800,000</td>
+                    <td class="border px-4 py-2">1,000,000</td>
+                    <td class="border px-4 py-2">55.6%</td>
+                    <td class="border px-4 py-2">22.1%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="mt-4 text-sm">
+              Through these three funding events, the founder's ownership has decreased from 100% to 55.6%, despite maintaining the same number of shares. Each round dilutes previous shareholders proportionally.
+            </p>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Anti-Dilution Provisions</h3>
+          <p class="mb-4">Investors often negotiate anti-dilution protections to guard against future down rounds (fundraising at lower valuations). The most common provisions are:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Full Ratchet Anti-Dilution</h4>
+              <p class="text-sm">The most investor-friendly protection that adjusts the conversion price of preferred shares to the lowest price at which new stock is issued.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Impact:</strong> Significantly increases investor ownership in down rounds, highly dilutive to common shareholders
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Weighted Average Anti-Dilution</h4>
+              <p class="text-sm">Adjusts conversion price based on both the lower price and the relative number of shares issued.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Formula:</strong> New Conversion Price = Old Conversion Price × (A + B) ÷ (A + C)<br>
+                Where:<br>
+                A = Shares outstanding before new issuance<br>
+                B = Shares that would have been issued at old price to raise same amount<br>
+                C = Actual new shares issued
+              </div>
+              <p class="mt-1 text-sm">This is more founder-friendly than full ratchet but still provides investor protection.</p>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Pay-to-Play Provisions</h4>
+              <p class="text-sm">Requires investors to participate in future rounds to maintain their anti-dilution protection.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Benefit:</strong> Encourages continued investor support during challenging times
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Strategies to Minimize Harmful Dilution</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Raise Only What You Need:</strong> Take on only as much capital as required to reach key milestones</li>
+            <li><strong>Milestone-Based Fundraising:</strong> Stage investments to reduce dilution until value-creating milestones are achieved</li>
+            <li><strong>Negotiate Higher Valuations:</strong> Demonstrate traction and growth to justify higher valuations</li>
+            <li><strong>Non-Dilutive Funding:</strong> Utilize grants, venture debt, revenue-based financing when appropriate</li>
+            <li><strong>Customer Financing:</strong> Secure advance payments or favorable payment terms from customers</li>
+            <li><strong>Strategic Partnerships:</strong> Form partnerships that provide resources without equity dilution</li>
+          </ul>
+        `
+      },
+      {
+        title: "Strategic Dilution Decisions",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Making Strategic Dilution Decisions</h2>
+          <p class="mb-6">While dilution is often inevitable for growing companies, making thoughtful strategic decisions about when, how much, and from whom to raise capital can significantly impact long-term founder outcomes and company success.</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Value-Added vs. Pure Financial Capital</h3>
+              <p>Consider the non-financial value investors bring when evaluating dilution impact.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Beyond Money:</strong> The right investors can add significant value through:
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Strategic guidance and mentorship</li>
+                  <li>Industry connections and customer introductions</li>
+                  <li>Recruiting assistance for key roles</li>
+                  <li>Operational expertise in scaling</li>
+                  <li>Credibility in the market</li>
+                  <li>Support during future fundraising</li>
+                </ul>
+              </div>
+              <p class="mt-1 text-sm">A smaller stake in a company supercharged by the right investors can be worth more than a larger stake in a company that grows more slowly.</p>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Maintaining Control Thresholds</h3>
+              <p>Plan fundraising strategy to preserve key control positions through multiple rounds.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Critical Control Levels:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li><strong>Board Control:</strong> Structure the board composition to maintain founder influence</li>
+                  <li><strong>>50% Voting Power:</strong> Retention of majority voting control for ordinary decisions</li>
+                  <li><strong>>67% Voting Power:</strong> Protection against major corporate changes that require supermajority</li>
+                  <li><strong>Protective Provisions:</strong> Negotiate specific protective provisions on key decisions</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Capital Efficiency and Valuation Strategy</h3>
+              <p>Balance raising enough capital for growth while maximizing valuation efficiency.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Approaches:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Define clear, achievable milestones that will increase company valuation</li>
+                  <li>Raise just enough to achieve the next significant milestone plus a safety margin</li>
+                  <li>Demonstrate capital efficiency to increase investor confidence and valuations</li>
+                  <li>Consider alternative financing structures (convertible notes, SAFEs) for early stages</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Employee Equity Considerations</h3>
+              <p>Strategically allocate equity to attract and retain talent while managing dilution.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Best Practices:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Set aside option pools before fundraising rounds (typically 10-20%)</li>
+                  <li>Implement vesting schedules (typically 4 years with a 1-year cliff)</li>
+                  <li>Build a compensation philosophy that balances cash and equity</li>
+                  <li>Structure refresher grants to retain key talent after vesting</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Founder Re-Vesting and Retention</h3>
+          <p class="mb-4">As companies raise significant capital, investors often require founders to put some of their existing equity under new vesting schedules. While potentially concerning, these provisions serve important purposes:</p>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Founder Commitment:</strong> Ensures founders remain engaged through key growth phases</li>
+            <li><strong>Alignment:</strong> Keeps founder incentives aligned with the company's long-term success</li>
+            <li><strong>Protection:</strong> Safeguards against a founder departure creating too much "dead equity"</li>
+          </ul>
+          <p class="mb-4">Founders should negotiate fair terms, like accelerated vesting upon certain exit events or termination without cause.</p>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Dilution Planning Exercise</h4>
+            <p>To effectively plan for the impact of dilution, create a cap table projection that models:</p>
+            <ol class="list-decimal pl-6 mt-2">
+              <li>Current ownership distribution</li>
+              <li>Expected future fundraising rounds and amounts</li>
+              <li>Projected valuations at each round</li>
+              <li>Required employee option pools</li>
+              <li>Potential acquisition offers or exit scenarios</li>
+            </ol>
+            <p class="mt-2">This exercise helps visualize how various funding scenarios will affect ownership and control over time, allowing for more strategic decision-making.</p>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, equity negotiations are central to almost every deal. Sharks like Daymond John often test an entrepreneur's understanding of dilution by offering less money for the same equity percentage as the entrepreneur originally requested, to see if they understand the valuation implications.</p>
+            <p class="mt-2">Barbara Corcoran frequently emphasizes the value beyond money that she brings, essentially arguing that the dilution from her equity stake is offset by the expertise, connections, and growth acceleration she provides. This exemplifies the "smart money vs. pure financial capital" consideration that entrepreneurs must evaluate.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "financial-modeling": {
+    title: "Financial Modeling",
+    description: "Learn how to build powerful financial models that project your business's future performance, analyze scenarios, and inform strategic decisions.",
+    sections: [
+      {
+        title: "Financial Modeling Fundamentals",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Financial Modeling?</h2>
+          <p class="mb-4">Financial modeling is the process of creating a summary of a company's expenses and earnings in the form of a spreadsheet that can be used to calculate the impact of future events or decisions. A good financial model provides a mathematical representation of a business that allows you to test assumptions, analyze scenarios, and project future financial performance.</p>
+          <p class="mb-6">Whether you're starting a new venture, growing an existing business, raising capital, or considering strategic changes, financial modeling provides the quantitative foundation for sound decision-making.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Components of a Financial Model</h3>
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Assumptions and Inputs</h4>
+              <p class="text-sm">The variables and parameters that drive the model's calculations.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Examples:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Revenue growth rates</li>
+                  <li>Gross margin percentages</li>
+                  <li>Operating expense ratios</li>
+                  <li>Tax rates</li>
+                  <li>Capital expenditure requirements</li>
+                  <li>Working capital needs</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Financial Statements</h4>
+              <p class="text-sm">The core outputs that project the financial position and performance.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Three Key Statements:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li><strong>Income Statement:</strong> Revenue, expenses, and profits over time</li>
+                  <li><strong>Balance Sheet:</strong> Assets, liabilities, and equity at specific points in time</li>
+                  <li><strong>Cash Flow Statement:</strong> Cash inflows and outflows across operating, investing, and financing activities</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Calculations and Formulas</h4>
+              <p class="text-sm">The mathematical relationships that connect inputs to outputs.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Types of Calculations:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Revenue projections (units × price)</li>
+                  <li>Cost of goods sold calculations</li>
+                  <li>Depreciation schedules</li>
+                  <li>Debt service and interest calculations</li>
+                  <li>Tax computations</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Scenario Analysis</h4>
+              <p class="text-sm">The ability to test different assumptions and see their impact on outcomes.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Common Scenarios:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Base case (most likely)</li>
+                  <li>Upside case (optimistic)</li>
+                  <li>Downside case (pessimistic)</li>
+                  <li>Specific event scenarios (e.g., new product launch, expansion)</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Outputs and Metrics</h4>
+              <p class="text-sm">Key performance indicators and financial metrics derived from the model.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Common Metrics:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Profitability ratios (Gross Margin, EBITDA Margin, Net Margin)</li>
+                  <li>Return metrics (ROI, ROE, ROIC)</li>
+                  <li>Liquidity ratios (Current Ratio, Quick Ratio)</li>
+                  <li>Efficiency metrics (Inventory Turnover, Days Sales Outstanding)</li>
+                  <li>Valuation outputs (NPV, IRR, Payback Period)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Types of Financial Models</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Three-Statement Models:</strong> Integrated income statement, balance sheet, and cash flow projections</li>
+            <li><strong>DCF (Discounted Cash Flow) Models:</strong> Valuation models that discount future cash flows to present value</li>
+            <li><strong>Budget Models:</strong> Detailed projections of revenue and expenses for planning purposes</li>
+            <li><strong>Merger & Acquisition Models:</strong> Analysis of combining businesses and potential synergies</li>
+            <li><strong>LBO (Leveraged Buyout) Models:</strong> Evaluations of acquisitions using significant debt financing</li>
+            <li><strong>SaaS/Subscription Models:</strong> Specialized models for recurring revenue businesses</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, financial models take center stage as entrepreneurs present their projections to the Sharks. When Kevin O'Leary asks, "What are your sales and margins?", he's probing the assumptions in the entrepreneur's financial model.</p>
+            <p class="mt-2">Lori Greiner often challenges growth projections, essentially questioning whether the financial model is realistic. Mark Cuban frequently zeroes in on cash flow projections, understanding that even profitable businesses can fail if their financial model doesn't account for adequate working capital.</p>
+          </div>
+        `
+      },
+      {
+        title: "Building Your Financial Model",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Building a Robust Financial Model</h2>
+          <p class="mb-6">Creating an effective financial model requires a methodical approach, attention to detail, and a clear understanding of your business drivers. Follow these steps to build a model that provides valuable insights for decision-making:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 1: Define the Purpose and Scope</h3>
+              <p>Clarify why you're building the model and what decisions it will inform.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Key Questions:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>What specific business question are you trying to answer?</li>
+                  <li>Who will use the model and what is their financial sophistication?</li>
+                  <li>What time horizon should the model cover? (e.g., 3 years, 5 years, 10 years)</li>
+                  <li>What level of detail is appropriate? (monthly, quarterly, annual)</li>
+                  <li>What scenarios do you need to analyze?</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 2: Gather Historical Data</h3>
+              <p>Collect relevant historical financial information to inform your projections.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Data Sources:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Income statements and balance sheets from previous periods</li>
+                  <li>Sales data by product/service line</li>
+                  <li>Customer acquisition metrics and costs</li>
+                  <li>Expense breakdowns by category</li>
+                  <li>Industry benchmarks and comparables</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 3: Design Model Structure</h3>
+              <p>Create a clear, logical layout for your model that separates inputs, calculations, and outputs.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Best Practices:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Create separate sheets for assumptions, calculations, and outputs</li>
+                  <li>Use consistent color-coding (e.g., blue for inputs, black for formulas)</li>
+                  <li>Include a dashboard or summary page</li>
+                  <li>Create a table of contents for complex models</li>
+                  <li>Document assumptions and sources</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 4: Build the Revenue Model</h3>
+              <p>Create detailed projections of how your business will generate income.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Approach:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Break down revenue by product/service lines</li>
+                  <li>Model unit economics (customers × conversion rate × average purchase value)</li>
+                  <li>Account for seasonality and growth trends</li>
+                  <li>Consider customer cohorts and retention for subscription businesses</li>
+                  <li>Include price changes and new product introductions</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 5: Model Costs and Expenses</h3>
+              <p>Project all costs associated with generating revenue and running the business.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Categories:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li><strong>Cost of Goods Sold (COGS):</strong> Direct costs tied to revenue (materials, production labor, etc.)</li>
+                  <li><strong>Operating Expenses:</strong> Sales, marketing, R&D, G&A</li>
+                  <li><strong>Fixed vs. Variable Costs:</strong> Distinguish between costs that scale with revenue and those that don't</li>
+                  <li><strong>One-time Expenses:</strong> Non-recurring costs like setup or restructuring</li>
+                  <li><strong>Capital Expenditures:</strong> Long-term investments in assets</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 6: Build the Cash Flow Projection</h3>
+              <p>Model the timing of cash inflows and outflows, which often differ from accrual-based revenue and expenses.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Components:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Customer payment timing (accounts receivable)</li>
+                  <li>Supplier payment schedules (accounts payable)</li>
+                  <li>Inventory purchases and holding periods</li>
+                  <li>Tax payments</li>
+                  <li>Financing activities (debt repayments, equity raises)</li>
+                  <li>Capital expenditures</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 7: Incorporate Financing</h3>
+              <p>Model how the business will be funded and the impact of different financing structures.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Considerations:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Equity investments and associated dilution</li>
+                  <li>Debt financing and repayment schedules</li>
+                  <li>Interest calculations</li>
+                  <li>Convertible instruments (notes, SAFEs)</li>
+                  <li>Cash runway and funding requirements</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Financial Modeling Best Practices</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Use Consistent Formulas:</strong> Structure formulas consistently across rows and columns</li>
+            <li><strong>Avoid Hard-Coded Numbers:</strong> Reference assumption cells rather than embedding numbers in formulas</li>
+            <li><strong>Build in Flexibility:</strong> Allow for easy scenario testing and assumption changes</li>
+            <li><strong>Include Error Checks:</strong> Build in validation to catch calculation errors</li>
+            <li><strong>Document Thoroughly:</strong> Include notes, sources, and explanations of methodologies</li>
+            <li><strong>Format for Clarity:</strong> Use consistent formatting, clear labels, and appropriate number formatting</li>
+            <li><strong>Start Simple:</strong> Begin with a basic framework and add complexity as needed</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Common Financial Modeling Mistakes</h4>
+            <ul class="list-disc pl-6">
+              <li><strong>Circular References:</strong> Creating calculation loops that reference their own results</li>
+              <li><strong>Formula Inconsistency:</strong> Using different calculations for the same metric across periods</li>
+              <li><strong>Overly Optimistic Assumptions:</strong> Projecting unrealistic growth or margin improvements</li>
+              <li><strong>Ignoring Cash Flow Timing:</strong> Failing to account for the timing differences between revenue recognition and cash collection</li>
+              <li><strong>Excessive Detail:</strong> Building models that are too complex to maintain or understand</li>
+              <li><strong>Poor Documentation:</strong> Making it difficult for others (or yourself later) to understand assumptions</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        title: "Using Financial Models for Decisions",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Using Financial Models to Drive Decision-Making</h2>
+          <p class="mb-6">A financial model is only valuable if it informs better business decisions. Here's how to leverage your financial model to evaluate options, communicate plans, and drive strategic success.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Scenario Analysis and Sensitivity Testing</h3>
+          <p class="mb-4">Explore how different assumptions impact your financial outcomes to understand risks and opportunities.</p>
+          
+          <div class="border rounded-lg p-5 mb-6">
+            <h4 class="font-semibold mb-3">Effective Scenario Analysis Techniques</h4>
+            
+            <div class="space-y-4">
+              <div>
+                <p class="font-medium">1. Define Key Scenarios</p>
+                <ul class="list-disc pl-6 space-y-1">
+                  <li><strong>Base Case:</strong> Your most likely projection based on reasonable assumptions</li>
+                  <li><strong>Best Case:</strong> Optimistic but plausible scenario where key drivers exceed expectations</li>
+                  <li><strong>Worst Case:</strong> Conservative scenario accounting for significant challenges</li>
+                  <li><strong>Strategic Scenarios:</strong> Specific situations like new product launches, pricing changes, or market expansions</li>
+                </ul>
+              </div>
+              
+              <div>
+                <p class="font-medium">2. One-Variable Sensitivity Analysis</p>
+                <p class="pl-4">Test how changes to a single variable affect outcomes while holding all else constant.</p>
+                <p class="pl-4 text-sm">Example: How does a 10% increase or decrease in customer acquisition cost impact profitability?</p>
+              </div>
+              
+              <div>
+                <p class="font-medium">3. Multi-Variable Sensitivity</p>
+                <p class="pl-4">Examine how changes to multiple variables simultaneously affect key metrics.</p>
+                <p class="pl-4 text-sm">Example: Creating a matrix showing profit margins under different combinations of price points and production costs.</p>
+              </div>
+              
+              <div>
+                <p class="font-medium">4. Monte Carlo Simulation</p>
+                <p class="pl-4">For sophisticated models, run thousands of simulations with randomly varied inputs to understand probability distributions of outcomes.</p>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Business Decisions Informed by Financial Models</h3>
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-lg font-semibold mb-2">Fundraising Strategy</h3>
+              <p>Determine how much capital to raise and when based on cash flow projections.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Model Applications:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Calculate runway under different growth scenarios</li>
+                  <li>Identify optimal fundraising timing to maximize valuation</li>
+                  <li>Analyze dilution impact of different investment structures</li>
+                  <li>Determine use of funds allocation for maximum impact</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-lg font-semibold mb-2">Pricing Strategy</h3>
+              <p>Evaluate the financial impact of different pricing approaches.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Analysis Examples:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Price elasticity modeling (how volume changes with price)</li>
+                  <li>Contribution margin analysis by product/service</li>
+                  <li>Simulating freemium conversion metrics</li>
+                  <li>Evaluating subscription vs. one-time purchase models</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-lg font-semibold mb-2">Market Expansion</h3>
+              <p>Assess the financial viability of entering new markets or segments.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Model Considerations:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Market-specific customer acquisition costs</li>
+                  <li>Required local infrastructure and personnel</li>
+                  <li>Regulatory compliance costs</li>
+                  <li>Time to breakeven in new market</li>
+                  <li>Opportunity cost vs. deepening existing market presence</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-lg font-semibold mb-2">Product Development Investment</h3>
+              <p>Evaluate the ROI of new product initiatives or feature development.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Financial Analysis:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Development cost projections</li>
+                  <li>Revenue ramp timelines</li>
+                  <li>Cannibalization of existing product revenue</li>
+                  <li>Lifetime value of customers using new products</li>
+                  <li>NPV and IRR of product investment</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-lg font-semibold mb-2">Headcount Planning</h3>
+              <p>Model the financial impact of hiring decisions and team growth.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Model Elements:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Fully-loaded employee costs (salary, benefits, equipment, space)</li>
+                  <li>Productivity ramp timelines for new hires</li>
+                  <li>Revenue impact of additional sales/marketing staff</li>
+                  <li>R&D capacity and release timelines with different team sizes</li>
+                  <li>Optimal hiring sequence across departments</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Communicating Model Insights</h3>
+          <p class="mb-4">Effectively presenting the outputs of your financial model is crucial for influencing decisions:</p>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Focus on Key Metrics:</strong> Highlight the most important outputs rather than overwhelming with data</li>
+            <li><strong>Visual Presentation:</strong> Use charts and graphs to show trends and comparisons</li>
+            <li><strong>Tell the Story:</strong> Explain what the numbers mean for the business, not just what they are</li>
+            <li><strong>Address Assumptions:</strong> Be transparent about key assumptions and their rationale</li>
+            <li><strong>Highlight Risks:</strong> Clearly communicate potential downside scenarios and mitigation strategies</li>
+            <li><strong>Actionable Insights:</strong> Connect model outputs to specific recommendations</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>Financial models are central to how the Sharks evaluate businesses on Shark Tank. Entrepreneurs who demonstrate mastery of their financial models gain credibility and often secure better deals.</p>
+            <p class="mt-2">Daymond John frequently tests entrepreneurs on their unit economics, essentially probing their financial model's assumptions. Robert Herjavec often asks about cash flow projections to understand the sustainability of the business model.</p>
+            <p class="mt-2">When a Shark says, "I'm going to make you an offer, but it's structured differently than what you asked for," they're typically adjusting the deal based on their own financial modeling of the business's risk and potential.</p>
           </div>
         `
       }
