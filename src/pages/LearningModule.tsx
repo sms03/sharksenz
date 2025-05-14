@@ -4092,6 +4092,704 @@ const moduleContent = {
         `
       }
     ]
+  },
+  "roe": {
+    title: "Return on Equity (ROE)",
+    description: "Understand how efficiently a company generates profit relative to shareholder equity, a key metric for measuring management effectiveness and financial performance.",
+    sections: [
+      {
+        title: "What is Return on Equity?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Understanding Return on Equity (ROE)</h2>
+          <p class="mb-4">Return on Equity (ROE) measures a company's profitability by revealing how much profit a company generates with the money shareholders have invested. It's one of the most important financial metrics for evaluating how efficiently management is using a company's equity capital to generate profits.</p>
+          <p class="mb-6">ROE provides insight into a company's ability to generate profits without requiring additional capital, making it a favorite metric among investors like Warren Buffett, who looks for businesses with consistently high ROE.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The ROE Formula</h3>
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Basic ROE Calculation</h4>
+            <div class="font-mono text-center my-2 text-sm">
+              ROE = Net Income ÷ Shareholders' Equity × 100%
+            </div>
+            <p class="text-sm mt-2">Where:</p>
+            <ul class="list-disc pl-6 mt-1 text-sm">
+              <li><strong>Net Income</strong> = Total profit after all expenses and taxes are deducted</li>
+              <li><strong>Shareholders' Equity</strong> = Assets - Liabilities (what shareholders would theoretically receive if the company liquidated)</li>
+            </ul>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Interpreting ROE Values</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>High ROE (>20%):</strong> Generally indicates strong profitability and efficient use of equity</li>
+            <li><strong>Average ROE (10-20%):</strong> Typically considered solid performance in many industries</li>
+            <li><strong>Low ROE (&lt;10%):</strong> May suggest inefficient use of capital or industry-specific challenges</li>
+            <li><strong>Negative ROE:</strong> Indicates the company is losing money, requiring careful analysis</li>
+          </ul>
+          
+          <div class="border-l-4 border-shark-300 pl-4 mb-6">
+            <h4 class="font-medium mb-1">Industry Context</h4>
+            <p class="text-sm">ROE varies significantly by industry:</p>
+            <div class="mt-1 text-sm text-shark-600">
+              <strong>Example ROE by Industry:</strong> Technology (15-25%), Retail (15-20%), Utilities (8-12%), Banks (8-15%)
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>When entrepreneurs appear on Shark Tank, the Sharks often ask questions to determine the company's ROE, even if they don't explicitly use the term. Questions about current profit margins, capital requirements, and growth projections all help the Sharks estimate potential ROE.</p>
+            <p class="mt-2">Kevin O'Leary frequently emphasizes that he expects his investments to deliver at least a 15% annual return on his money, essentially stating his minimum ROE threshold.</p>
+          </div>
+        `
+      },
+      {
+        title: "Analyzing ROE Components",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">The DuPont Analysis: Breaking Down ROE</h2>
+          <p class="mb-6">To truly understand what drives a company's ROE, financial analysts use the DuPont Analysis, which breaks ROE into three key components. This decomposition helps identify whether a high ROE is the result of strong operational efficiency, effective asset utilization, or financial leverage.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The DuPont Formula</h3>
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <div class="font-mono text-center my-2 text-sm">
+              ROE = Profit Margin × Asset Turnover × Equity Multiplier
+            </div>
+            <p class="text-sm mt-2">Where:</p>
+            <ul class="list-disc pl-6 mt-1 text-sm">
+              <li><strong>Profit Margin</strong> = Net Income ÷ Revenue (measures operational efficiency)</li>
+              <li><strong>Asset Turnover</strong> = Revenue ÷ Total Assets (measures asset utilization efficiency)</li>
+              <li><strong>Equity Multiplier</strong> = Total Assets ÷ Shareholders' Equity (measures financial leverage)</li>
+            </ul>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Interpreting DuPont Components</h3>
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Profit Margin</h4>
+              <p class="text-sm">A high profit margin indicates the company efficiently controls costs and pricing.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Strategy Focus:</strong> Cost control, pricing power, operational efficiency, product mix
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Asset Turnover</h4>
+              <p class="text-sm">High asset turnover shows the company generates substantial revenue from its asset base.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Strategy Focus:</strong> Asset utilization, inventory management, receivables collection, capacity optimization
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Equity Multiplier</h4>
+              <p class="text-sm">A high equity multiplier indicates greater use of debt financing (leverage).</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Strategy Focus:</strong> Capital structure, debt management, financial risk, interest coverage
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">ROE Case Study</h3>
+          <div class="border rounded-lg p-5 mb-6">
+            <h4 class="font-semibold mb-3">Comparing Two Companies with 15% ROE</h4>
+            <div class="overflow-x-auto">
+              <table class="min-w-full border-collapse text-sm">
+                <thead class="bg-shark-50">
+                  <tr>
+                    <th class="border px-4 py-2">Company</th>
+                    <th class="border px-4 py-2">Profit Margin</th>
+                    <th class="border px-4 py-2">Asset Turnover</th>
+                    <th class="border px-4 py-2">Equity Multiplier</th>
+                    <th class="border px-4 py-2">ROE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="border px-4 py-2">Tech Co.</td>
+                    <td class="border px-4 py-2">15%</td>
+                    <td class="border px-4 py-2">0.8</td>
+                    <td class="border px-4 py-2">1.25</td>
+                    <td class="border px-4 py-2">15%</td>
+                  </tr>
+                  <tr>
+                    <td class="border px-4 py-2">Retail Co.</td>
+                    <td class="border px-4 py-2">3%</td>
+                    <td class="border px-4 py-2">2.5</td>
+                    <td class="border px-4 py-2">2.0</td>
+                    <td class="border px-4 py-2">15%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="mt-4 text-sm">
+              Both companies generate the same ROE, but through completely different business models. Tech Co. relies on high margins and low leverage, while Retail Co. operates with thin margins but high turnover and more leverage. Each faces different risks and opportunities.
+            </p>
+          </div>
+        `
+      },
+      {
+        title: "Strategic Applications of ROE",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Strategic Applications of ROE</h2>
+          <p class="mb-6">Return on Equity isn't just a financial metric for investors—it's a powerful strategic tool for business owners and managers to guide decision-making and improve company performance. Here's how to use ROE insights to drive business strategy:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Capital Allocation Decisions</h3>
+              <p>Use ROE to evaluate potential projects and initiatives to ensure they'll generate adequate returns.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Application:</strong> Set minimum ROE thresholds for new investments based on your cost of capital and growth objectives. Prioritize projects with the highest risk-adjusted ROE.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Dividend Policy</h3>
+              <p>Balance reinvestment needs with shareholder returns based on ROE performance.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Strategy:</strong> Companies with consistently high ROE may return more capital to shareholders when they lack high-return reinvestment opportunities. Companies with lower ROE but good growth prospects may retain more earnings.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Growth Strategy</h3>
+              <p>Align growth initiatives with ROE improvement goals.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Approach:</strong> Focus on sustainable growth that maintains or improves ROE rather than growth that dilutes returns. The sustainable growth rate (SGR = ROE × Retention Rate) indicates how fast a company can grow using only retained earnings.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Financial Structure Optimization</h3>
+              <p>Determine the ideal balance between debt and equity to optimize ROE without excessive risk.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Consideration:</strong> While increased leverage can boost ROE, it also increases financial risk. Find the optimal debt-to-equity ratio that maximizes ROE while maintaining financial stability.
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">ROE Limitations and Considerations</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Short-term Focus:</strong> High ROE achieved by cutting essential investments may hurt long-term performance</li>
+            <li><strong>Accounting Variations:</strong> Different accounting methods can affect ROE calculations</li>
+            <li><strong>Industry Specificity:</strong> Some industries naturally have higher or lower ROE due to capital intensity</li>
+            <li><strong>Risk Assessment:</strong> ROE doesn't directly account for business risk or volatility</li>
+            <li><strong>Growth Stage:</strong> Early-stage companies often have low or negative ROE despite strong growth potential</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, Lori Greiner and Mark Cuban often look beyond current ROE to evaluate a company's potential future returns. They frequently invest in businesses with temporarily low ROE but strong fundamentals that point to higher future returns.</p>
+            <p class="mt-2">Meanwhile, Kevin O'Leary typically focuses more on current ROE and immediate cash flow, as reflected in his preference for royalty deals that provide a clear path to recovering his investment with a specific return threshold.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "working-capital": {
+    title: "Working Capital",
+    description: "Learn how to manage the lifeblood of your business operations - the funds needed for day-to-day activities, inventory management, and short-term obligations.",
+    sections: [
+      {
+        title: "Understanding Working Capital",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Working Capital?</h2>
+          <p class="mb-4">Working capital represents the difference between a company's current assets and current liabilities. In simpler terms, it's the money available to fund a company's day-to-day operations and short-term obligations. Think of working capital as the operating liquidity available to run your business.</p>
+          <p class="mb-6">Effective working capital management ensures your business can maintain smooth operations, pay suppliers and employees on time, and avoid costly disruptions—all while minimizing the amount of capital tied up in low-return assets.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The Working Capital Formula</h3>
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Basic Working Capital Calculation</h4>
+            <div class="font-mono text-center my-2 text-sm">
+              Working Capital = Current Assets - Current Liabilities
+            </div>
+            <p class="text-sm mt-2">Where:</p>
+            <ul class="list-disc pl-6 mt-1 text-sm">
+              <li><strong>Current Assets</strong> = Cash + Accounts Receivable + Inventory + Prepaid Expenses + Other Liquid Assets (convertible to cash within one year)</li>
+              <li><strong>Current Liabilities</strong> = Accounts Payable + Short-term Debt + Accrued Expenses + Other Obligations due within one year</li>
+            </ul>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Components of Working Capital</h3>
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Current Assets</h4>
+              <p class="text-sm">Resources that are expected to be converted to cash or used up within one year.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Key Components:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Cash and Cash Equivalents</li>
+                  <li>Accounts Receivable (money owed by customers)</li>
+                  <li>Inventory (raw materials, work-in-progress, finished goods)</li>
+                  <li>Marketable Securities</li>
+                  <li>Prepaid Expenses</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Current Liabilities</h4>
+              <p class="text-sm">Obligations that must be paid within one year.</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Key Components:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Accounts Payable (money owed to suppliers)</li>
+                  <li>Short-term Loans and Current Portion of Long-term Debt</li>
+                  <li>Accrued Expenses (e.g., wages, taxes)</li>
+                  <li>Unearned Revenue (customer advances)</li>
+                  <li>Other Short-term Obligations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Interpreting Working Capital</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Positive Working Capital:</strong> The company has more current assets than liabilities, indicating good short-term financial health</li>
+            <li><strong>Negative Working Capital:</strong> The company has more short-term obligations than liquid assets, potentially signaling financial distress (though some business models operate successfully with negative working capital)</li>
+            <li><strong>Zero Working Capital:</strong> Current assets exactly equal current liabilities, leaving no buffer for unexpected expenses</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, Robert Herjavec and Daymond John often scrutinize entrepreneurs' working capital needs. They recognize that insufficient working capital is one of the primary reasons small businesses fail, even when they have a great product and growing sales.</p>
+            <p class="mt-2">Sharks frequently ask about inventory levels, payment terms with suppliers, and customer payment cycles—all key components of working capital management—to assess whether the business has adequate capital to support growth.</p>
+          </div>
+        `
+      },
+      {
+        title: "Working Capital Strategies",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Effective Working Capital Management</h2>
+          <p class="mb-6">Strategic management of working capital can dramatically improve a company's cash flow, profitability, and ability to weather economic challenges. Here are key strategies to optimize each component of your working capital:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Inventory Management</h3>
+              <p>Balance having enough stock to meet demand without tying up excessive capital in unsold goods.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Best Practices:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Implement just-in-time inventory systems</li>
+                  <li>Use accurate demand forecasting</li>
+                  <li>Identify and address slow-moving items</li>
+                  <li>Negotiate consignment arrangements with suppliers where possible</li>
+                  <li>Consider drop-shipping for certain products</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Accounts Receivable Optimization</h3>
+              <p>Accelerate the collection of payments from customers.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Techniques:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Offer early payment discounts (e.g., 2/10 net 30)</li>
+                  <li>Implement strict credit policies</li>
+                  <li>Use electronic invoicing and payment systems</li>
+                  <li>Follow up promptly on overdue accounts</li>
+                  <li>Consider factoring or receivables financing for large orders</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Accounts Payable Strategy</h3>
+              <p>Optimize the timing of payments to suppliers to maximize cash availability.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Approaches:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Negotiate longer payment terms with suppliers</li>
+                  <li>Take advantage of early payment discounts when they exceed your cost of capital</li>
+                  <li>Establish vendor-managed inventory arrangements</li>
+                  <li>Consolidate purchases to gain negotiating leverage</li>
+                  <li>Implement systematic approval processes to avoid premature payments</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Cash Management</h3>
+              <p>Ensure cash is working for the business while maintaining adequate liquidity.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Tactics:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Implement cash pooling across business units</li>
+                  <li>Invest idle cash in liquid, low-risk instruments</li>
+                  <li>Use cash flow forecasting to anticipate needs</li>
+                  <li>Establish lines of credit before they're needed</li>
+                  <li>Consider supply chain financing programs</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">The Working Capital Cycle</h3>
+          <p class="mb-4">The working capital cycle (also called the cash conversion cycle) measures how quickly a company converts its investments in inventory and other resources into cash. The shorter the cycle, the more efficient the company's working capital management.</p>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Working Capital Cycle Formula</h4>
+            <div class="font-mono text-center my-2 text-sm">
+              Working Capital Cycle = Inventory Days + Receivable Days - Payable Days
+            </div>
+            <p class="text-sm mt-2">Where:</p>
+            <ul class="list-disc pl-6 mt-1 text-sm">
+              <li><strong>Inventory Days</strong> = (Average Inventory ÷ Cost of Goods Sold) × 365</li>
+              <li><strong>Receivable Days</strong> = (Average Accounts Receivable ÷ Revenue) × 365</li>
+              <li><strong>Payable Days</strong> = (Average Accounts Payable ÷ Cost of Goods Sold) × 365</li>
+            </ul>
+          </div>
+          
+          <div class="border rounded-lg p-5 mb-6">
+            <h4 class="font-semibold mb-3">Working Capital Cycle Example</h4>
+            <p>Company A has the following metrics:</p>
+            <ul class="list-none pl-4 space-y-1 mt-2">
+              <li>Inventory Days: 60 days</li>
+              <li>Receivable Days: 45 days</li>
+              <li>Payable Days: 30 days</li>
+            </ul>
+            <p class="mt-2">Working Capital Cycle = 60 + 45 - 30 = 75 days</p>
+            <p class="mt-2">This means it takes 75 days from when the company pays for inventory until it collects cash from customers. During this time, the company needs to finance its operations.</p>
+          </div>
+        `
+      },
+      {
+        title: "Working Capital and Growth",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Working Capital and Business Growth</h2>
+          <p class="mb-6">One of the most common pitfalls for growing businesses is underestimating working capital needs. As your business scales, your working capital requirements typically increase—often faster than revenue growth. Understanding and planning for these needs is critical for sustainable expansion.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Why Growth Increases Working Capital Needs</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Inventory Expansion:</strong> More products, product lines, and locations require greater inventory investment</li>
+            <li><strong>Receivables Growth:</strong> Higher sales typically mean more outstanding customer invoices</li>
+            <li><strong>Operational Scaling:</strong> Increased staffing, facilities, and other resources require more cash</li>
+            <li><strong>Market Expansion:</strong> Entering new markets often requires longer cash cycles initially</li>
+            <li><strong>Supply Chain Complexity:</strong> More complex operations often extend the cash conversion cycle</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">The Working Capital Trap</h4>
+            <p>Many businesses fall into what's called the "working capital trap" during periods of growth. As sales increase, the business runs out of cash to fund operations—even while showing a profit on paper. This happens because the cash needed to support increased inventory and receivables outpaces the cash generated from sales.</p>
+            <p class="mt-2">Companies with 20%+ growth rates are particularly vulnerable to this trap if they don't plan their working capital needs carefully.</p>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Financing Working Capital for Growth</h3>
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-lg font-semibold mb-2">Short-term Financing Options</h3>
+              <p>Solutions for temporary or seasonal working capital needs.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Common Tools:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Business Lines of Credit</li>
+                  <li>Invoice Factoring/Financing</li>
+                  <li>Purchase Order Financing</li>
+                  <li>Trade Credit</li>
+                  <li>Credit Cards (for very short-term needs)</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-lg font-semibold mb-2">Long-term Working Capital Strategies</h3>
+              <p>Approaches for permanent increases in working capital requirements.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Strategic Options:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Equity Investment</li>
+                  <li>Term Loans</li>
+                  <li>SBA Loans</li>
+                  <li>Retained Earnings</li>
+                  <li>Venture Debt</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Working Capital Forecasting</h3>
+          <p class="mb-4">Developing a working capital forecast is essential for planning growth initiatives. A basic forecast should:</p>
+          <ol class="list-decimal pl-6 mb-6 space-y-2">
+            <li>Project monthly sales, cost of goods sold, and operating expenses</li>
+            <li>Estimate inventory requirements based on projected sales and lead times</li>
+            <li>Calculate expected accounts receivable based on sales and collection cycles</li>
+            <li>Project accounts payable based on purchasing needs and payment terms</li>
+            <li>Determine monthly working capital needs by combining these projections</li>
+          </ol>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, Barbara Corcoran often questions entrepreneurs about their cash flow cycle and working capital needs before making an investment. She understands that even profitable businesses can fail without adequate working capital.</p>
+            <p class="mt-2">Mark Cuban frequently discusses the importance of managing cash flow and working capital with entrepreneurs, especially those in inventory-heavy businesses. He's been known to structure deals specifically to address working capital constraints that would otherwise limit growth.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "working-capital-ratio": {
+    title: "Working Capital Ratio",
+    description: "Master the key metric for assessing your company's short-term financial health and operational efficiency. Learn to calculate, interpret, and optimize your working capital ratio.",
+    sections: [
+      {
+        title: "Understanding Working Capital Ratio",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is the Working Capital Ratio?</h2>
+          <p class="mb-4">The Working Capital Ratio (also known as the Current Ratio) is a financial metric that assesses a company's ability to pay its short-term obligations with its short-term assets. It provides a quick snapshot of a business's short-term financial health and liquidity position.</p>
+          <p class="mb-6">Unlike the simple working capital calculation (current assets minus current liabilities), the working capital ratio expresses the relationship as a proportion, making it easier to compare across companies of different sizes and industries.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The Working Capital Ratio Formula</h3>
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Basic Calculation</h4>
+            <div class="font-mono text-center my-2 text-sm">
+              Working Capital Ratio = Current Assets ÷ Current Liabilities
+            </div>
+            <p class="text-sm mt-2">Where:</p>
+            <ul class="list-disc pl-6 mt-1 text-sm">
+              <li><strong>Current Assets</strong> = Cash + Marketable Securities + Accounts Receivable + Inventory + Prepaid Expenses</li>
+              <li><strong>Current Liabilities</strong> = Accounts Payable + Short-term Debt + Accrued Expenses + Other Short-term Obligations</li>
+            </ul>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Interpreting the Working Capital Ratio</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Ratio > 1.0:</strong> The company has more current assets than current liabilities.
+              <ul class="list-disc pl-6 mt-1 text-sm">
+                <li>1.2 to 2.0: Generally considered healthy for most businesses</li>
+                <li>> 2.0: May indicate excess capital not being efficiently deployed</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Ratio = 1.0:</strong> Current assets exactly equal current liabilities, providing no buffer.
+            </li>
+            <li>
+              <strong>Ratio < 1.0:</strong> The company has more current liabilities than assets, potentially indicating liquidity problems.
+              <ul class="list-disc pl-6 mt-1 text-sm">
+                <li>0.8 to 1.0: May be manageable for businesses with predictable cash flows</li>
+                <li>< 0.8: Often signals financial distress, though some business models operate successfully with lower ratios</li>
+              </ul>
+            </li>
+          </ul>
+          
+          <div class="border-l-4 border-shark-300 pl-4 mb-6">
+            <h4 class="font-medium mb-1">Industry Context</h4>
+            <p class="text-sm">Working capital ratios vary significantly by industry:</p>
+            <div class="mt-1 text-sm text-shark-600">
+              <ul class="list-disc pl-6 mt-1">
+                <li><strong>Retail:</strong> Often 1.5-2.0 due to inventory requirements</li>
+                <li><strong>Technology:</strong> Often 2.0-4.0 due to high cash reserves and low inventory</li>
+                <li><strong>Utilities:</strong> Often 0.5-1.0 due to stable cash flows</li>
+                <li><strong>Fast Food:</strong> Often < 1.0 due to inventory turnover and customer prepayment</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Quick Ratio Comparison</h4>
+            <p>The Quick Ratio (also called the Acid-Test Ratio) is a more stringent liquidity measure that excludes inventory from current assets:</p>
+            <div class="font-mono text-center my-2 text-sm">
+              Quick Ratio = (Current Assets - Inventory) ÷ Current Liabilities
+            </div>
+            <p class="text-sm mt-2">The Quick Ratio acknowledges that inventory may not be quickly convertible to cash, making it a more conservative liquidity indicator.</p>
+          </div>
+        `
+      },
+      {
+        title: "Analyzing Working Capital Ratio",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Analyzing Working Capital Ratio Trends</h2>
+          <p class="mb-6">Looking at your working capital ratio at a single point in time provides limited insight. More valuable analysis comes from examining trends over time and comparing against industry benchmarks, competitors, and your own historical performance.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Trend Analysis</h3>
+          <p class="mb-4">Tracking your working capital ratio over successive periods can reveal important changes in your financial health:</p>
+          
+          <div class="border rounded-lg p-5 mb-6">
+            <h4 class="font-semibold mb-3">Sample Working Capital Ratio Trend</h4>
+            <div class="overflow-x-auto">
+              <table class="min-w-full border-collapse text-sm">
+                <thead class="bg-shark-50">
+                  <tr>
+                    <th class="border px-4 py-2">Quarter</th>
+                    <th class="border px-4 py-2">Current Assets</th>
+                    <th class="border px-4 py-2">Current Liabilities</th>
+                    <th class="border px-4 py-2">Working Capital Ratio</th>
+                    <th class="border px-4 py-2">Trend Implications</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="border px-4 py-2">Q1 2024</td>
+                    <td class="border px-4 py-2">$500,000</td>
+                    <td class="border px-4 py-2">$300,000</td>
+                    <td class="border px-4 py-2">1.67</td>
+                    <td class="border px-4 py-2">Healthy baseline</td>
+                  </tr>
+                  <tr>
+                    <td class="border px-4 py-2">Q2 2024</td>
+                    <td class="border px-4 py-2">$520,000</td>
+                    <td class="border px-4 py-2">$325,000</td>
+                    <td class="border px-4 py-2">1.60</td>
+                    <td class="border px-4 py-2">Slight decrease but still healthy</td>
+                  </tr>
+                  <tr>
+                    <td class="border px-4 py-2">Q3 2024</td>
+                    <td class="border px-4 py-2">$540,000</td>
+                    <td class="border px-4 py-2">$360,000</td>
+                    <td class="border px-4 py-2">1.50</td>
+                    <td class="border px-4 py-2">Continuing downward trend requires attention</td>
+                  </tr>
+                  <tr>
+                    <td class="border px-4 py-2">Q4 2024</td>
+                    <td class="border px-4 py-2">$530,000</td>
+                    <td class="border px-4 py-2">$420,000</td>
+                    <td class="border px-4 py-2">1.26</td>
+                    <td class="border px-4 py-2">Significant decrease - action needed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="mt-4 text-sm">
+              This example shows a steadily declining working capital ratio. While still above 1.0, the consistent downward trend suggests deteriorating liquidity that should be addressed before it becomes critical.
+            </p>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Component Analysis</h3>
+          <p class="mb-4">When you notice changes in your working capital ratio, drill down into the individual components to identify the root causes:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Declining Ratio Analysis</h4>
+              <p class="text-sm">Potential causes of a declining working capital ratio:</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Current Asset Decreases:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Cash used for long-term investments or asset purchases</li>
+                  <li>Declining sales leading to lower accounts receivable</li>
+                  <li>Inventory write-downs or obsolescence</li>
+                  <li>Increased efficiency in inventory management (potentially positive)</li>
+                </ul>
+                <strong>Current Liability Increases:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Increased short-term borrowing</li>
+                  <li>Growing accounts payable due to cash flow constraints</li>
+                  <li>Long-term debt becoming current as it approaches maturity</li>
+                  <li>Higher accrued expenses from expanding operations</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-medium mb-1">Rising Ratio Analysis</h4>
+              <p class="text-sm">Potential causes of an increasing working capital ratio:</p>
+              <div class="mt-1 text-sm text-shark-600">
+                <strong>Current Asset Increases:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Buildup of cash from profitable operations</li>
+                  <li>Growing accounts receivable from sales increases</li>
+                  <li>Increasing inventory levels (may signal slow turnover)</li>
+                  <li>Proceeds from financing activities held as cash</li>
+                </ul>
+                <strong>Current Liability Decreases:</strong>
+                <ul class="list-disc pl-6 mt-1">
+                  <li>Paying down short-term debt</li>
+                  <li>Faster payment of accounts payable (possibly foregoing discounts)</li>
+                  <li>Decreasing accrued expenses</li>
+                  <li>Conversion of short-term debt to long-term financing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Seasonal Considerations</h3>
+          <p class="mb-4">Many businesses experience natural fluctuations in their working capital ratio due to seasonal factors:</p>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Retail:</strong> Typically shows higher ratios in pre-holiday quarters as inventory builds, followed by lower ratios post-holiday</li>
+            <li><strong>Construction:</strong> Often experiences higher ratios during peak building seasons and lower ratios during off-seasons</li>
+            <li><strong>Agriculture:</strong> Working capital ratios frequently fluctuate with growing and harvest cycles</li>
+          </ul>
+          <p>When analyzing seasonal businesses, compare ratios to the same period in previous years rather than to sequential quarters.</p>
+        `
+      },
+      {
+        title: "Optimizing Working Capital Ratio",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Optimizing Your Working Capital Ratio</h2>
+          <p class="mb-6">Finding the optimal working capital ratio for your business involves balancing liquidity (having enough current assets to meet obligations) with efficiency (not tying up too much capital in low-return assets). Here are strategies to optimize your ratio based on your specific situation:</p>
+          
+          <h3 class="text-xl font-semibold mb-3">If Your Working Capital Ratio is Too Low</h3>
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-lg font-semibold mb-2">Increase Current Assets</h3>
+              <div class="mt-2 text-sm text-shark-600">
+                <ul class="list-disc pl-6 mt-1">
+                  <li><strong>Accelerate Collections:</strong> Implement more efficient billing processes, offer early payment discounts, or follow up more consistently on late payments</li>
+                  <li><strong>Liquidate Underutilized Assets:</strong> Convert non-essential long-term assets to cash</li>
+                  <li><strong>Attract Investment:</strong> Seek equity investment to increase cash reserves</li>
+                  <li><strong>Improve Profitability:</strong> Focus on higher-margin products/services to generate more cash from operations</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-lg font-semibold mb-2">Reduce Current Liabilities</h3>
+              <div class="mt-2 text-sm text-shark-600">
+                <ul class="list-disc pl-6 mt-1">
+                  <li><strong>Restructure Debt:</strong> Convert short-term loans to long-term financing</li>
+                  <li><strong>Negotiate Extended Terms:</strong> Work with suppliers to extend payment terms without penalties</li>
+                  <li><strong>Reduce Inventory Orders:</strong> Lower near-term purchase commitments</li>
+                  <li><strong>Manage Capital Expenditures:</strong> Lease rather than purchase equipment to preserve cash</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">If Your Working Capital Ratio is Too High</h3>
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-lg font-semibold mb-2">Reduce Excess Current Assets</h3>
+              <div class="mt-2 text-sm text-shark-600">
+                <ul class="list-disc pl-6 mt-1">
+                  <li><strong>Invest Idle Cash:</strong> Deploy excess cash into growth initiatives or long-term investments</li>
+                  <li><strong>Optimize Inventory:</strong> Implement just-in-time inventory systems to reduce stock levels</li>
+                  <li><strong>Consider Dividends/Distributions:</strong> Return excess capital to owners if no high-return investment opportunities exist</li>
+                  <li><strong>Tighten Credit Policies:</strong> Reduce accounts receivable by shortening payment terms for customers</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-lg font-semibold mb-2">Strategic Use of Liabilities</h3>
+              <div class="mt-2 text-sm text-shark-600">
+                <ul class="list-disc pl-6 mt-1">
+                  <li><strong>Leverage Supplier Financing:</strong> Take full advantage of available payment terms</li>
+                  <li><strong>Consider Growth Financing:</strong> Use debt financing for expansion rather than depleting current assets</li>
+                  <li><strong>Renegotiate Payment Terms:</strong> Ask suppliers for volume-based extended terms</li>
+                  <li><strong>Accelerate Planned Expenses:</strong> Make strategic prepayments that will benefit the business</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Finding Your Optimal Ratio</h3>
+          <p class="mb-4">The ideal working capital ratio varies by industry, business model, growth stage, and economic environment. Consider these factors when determining your optimal range:</p>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Factors Affecting Optimal Ratio</h4>
+            <ul class="list-disc pl-6">
+              <li><strong>Business Volatility:</strong> Higher volatility requires higher ratios as a buffer</li>
+              <li><strong>Growth Rate:</strong> Rapidly growing companies often need higher ratios to fund expansion</li>
+              <li><strong>Industry Norms:</strong> Benchmark against peers to ensure competitiveness</li>
+              <li><strong>Seasonality:</strong> Businesses with seasonal fluctuations may need higher ratios during certain periods</li>
+              <li><strong>Supply Chain Reliability:</strong> Uncertain supply chains may necessitate higher inventory and thus higher ratios</li>
+              <li><strong>Economic Climate:</strong> During economic uncertainty, higher ratios provide added security</li>
+            </ul>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, Kevin O'Leary often scrutinizes working capital metrics when evaluating businesses. He understands that a company with an optimal working capital ratio can respond quickly to market opportunities while maintaining financial stability.</p>
+            <p class="mt-2">Lori Greiner, with her extensive retail experience, frequently asks about inventory levels and payment terms—key components of the working capital ratio—to assess whether entrepreneurs can effectively manage growth without running into cash flow problems.</p>
+          </div>
+        `
+      }
+    ]
   }
 };
 
