@@ -9031,7 +9031,7 @@ const moduleContent = {
       }
     ]
   },
-  "storytelling-techniques": {
+  "storytelling": {
     title: "Storytelling Techniques",
     description: "Learn powerful storytelling techniques to enhance your business presentations and pitches. Master the art of connecting with your audience through compelling narratives.",
     sections: [
