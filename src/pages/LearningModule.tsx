@@ -7415,7 +7415,823 @@ const moduleContent = {
           <div class="bg-shark-50 p-4 rounded-lg">
             <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
             <p>Daymond John often emphasizes the importance of understanding your numbers inside and out. He says, "If you don't know your numbers, you don't know your business."</p>
-            <p class="mt-2">Entrepreneurs who can confidently discuss their P&L and show they're actively managing it to improve profitability typically receive more favorable responses from the Sharks, even if their businesses are still growing and refining their models.</p>
+            <p class="mt-2">Entrepreneurs who can confidently discuss their P&L and show they're actively managing it to improve profitability typically receive more favorable responses from the Sharks, even if their businesses are still growing and refining their models.</p>          </div>
+        `
+      }
+    ]
+  },
+  "pitch-deck": {
+    title: "Pitch Deck Structure",
+    description: "Learn how to create a powerful pitch deck that tells your business story, showcases your potential, and attracts investor interest by following proven structural principles.",
+    sections: [
+      {
+        title: "Pitch Deck Fundamentals",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What Makes a Great Pitch Deck?</h2>
+          <p class="mb-4">A pitch deck is a concise presentation that provides investors with a quick overview of your business. It's often the first impression investors have of your company, making it a critical tool in your fundraising efforts.</p>
+          <p class="mb-6">The best pitch decks tell a compelling story about your business while presenting key information investors need to make decisions. They balance narrative flow with data-driven insights and maintain visual clarity throughout.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The 10-12 Slide Framework</h3>
+          <p class="mb-4">While pitch decks vary by industry and company stage, the most effective ones typically follow a core structure of 10-12 slides. This framework ensures you cover all essential elements without overwhelming your audience.</p>
+          
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border border-shark-200 rounded-lg">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border-b p-3 text-left text-shark-700">Slide</th>
+                  <th class="border-b p-3 text-left text-shark-700">Purpose</th>
+                  <th class="border-b p-3 text-left text-shark-700">Key Elements</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">1. Cover</td>
+                  <td class="p-3">First impression and brand introduction</td>
+                  <td class="p-3">Company name, logo, tagline, your name/position</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">2. Problem</td>
+                  <td class="p-3">Establish market need and relevance</td>
+                  <td class="p-3">Clear statement of problem, who experiences it, its impact</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">3. Solution</td>
+                  <td class="p-3">Present your offering and its value</td>
+                  <td class="p-3">Product/service overview, key benefits, unique approach</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">4. Market Opportunity</td>
+                  <td class="p-3">Show potential scale and market size</td>
+                  <td class="p-3">TAM/SAM/SOM analysis, growth trends, target segments</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">5. Product</td>
+                  <td class="p-3">Demonstrate your solution in action</td>
+                  <td class="p-3">Screenshots, demo, features, product roadmap</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">6. Traction</td>
+                  <td class="p-3">Prove market validation and momentum</td>
+                  <td class="p-3">User metrics, revenue growth, partnerships, testimonials</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">7. Business Model</td>
+                  <td class="p-3">Explain how you make money</td>
+                  <td class="p-3">Revenue streams, pricing, unit economics, CAC/LTV</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">8. Competition</td>
+                  <td class="p-3">Show market awareness and differentiation</td>
+                  <td class="p-3">Competitive landscape, your advantages, barriers to entry</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">9. Team</td>
+                  <td class="p-3">Build credibility and expertise</td>
+                  <td class="p-3">Founder backgrounds, key hires, advisors, relevant experience</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">10. Financials</td>
+                  <td class="p-3">Demonstrate business viability</td>
+                  <td class="p-3">Key metrics, projections, historical performance</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">11. Fundraising</td>
+                  <td class="p-3">Clarify investment opportunity</td>
+                  <td class="p-3">Amount raising, use of funds, milestones, previous investors</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">12. Vision/Close</td>
+                  <td class="p-3">Inspire and create momentum</td>
+                  <td class="p-3">Big vision, impact, contact information, call to action</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Pitch Deck Golden Rules</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Keep It Concise</h4>
+              <p class="text-sm">Each slide should communicate one clear idea or piece of information.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Rule of thumb:</strong> No more than 20-30 words per slide, 5-7 bullet points maximum
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Prioritize Readability</h4>
+              <p class="text-sm">Design for people viewing from a distance or on small screens.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Guidelines:</strong> 24pt+ font size, high contrast colors, clean backgrounds
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Show, Don't Just Tell</h4>
+              <p class="text-sm">Use visuals, charts, and images to demonstrate points rather than just stating them.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Examples:</strong> Growth charts, product screenshots, user testimonial quotes
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Know Your Audience</h4>
+              <p class="text-sm">Customize your deck for each investor based on their portfolio and interests.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Strategy:</strong> Research investors beforehand and highlight aspects most relevant to them
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Prepare Backup Slides</h4>
+              <p class="text-sm">Create additional slides for Q&A that dive deeper into specific areas.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Topics to cover:</strong> Technical details, market research, customer acquisition strategy, detailed financials
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>Before entering the Shark Tank, entrepreneurs prepare a pitch deck that the producers and Sharks review. The most successful contestants have clear, compelling decks that highlight their traction, market opportunity, and unique selling proposition.</p>
+            <p class="mt-2">While viewers don't see the decks on the show, the entrepreneurs who receive investments typically have well-organized information that allows the Sharks to quickly understand the business and make confident decisions.</p>
+          </div>
+        `
+      },
+      {
+        title: "Key Slides in Detail",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Crafting Each Slide for Maximum Impact</h2>
+          <p class="mb-6">Each slide in your pitch deck serves a specific purpose and should be crafted to effectively communicate key information. Here's how to optimize the most critical slides:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">1. The Problem Slide</h3>
+              <p>This slide establishes why your business needs to exist by highlighting a significant pain point or opportunity.</p>
+              <div class="mt-3 text-sm space-y-2">
+                <div class="bg-shark-50 p-3 rounded-lg">
+                  <h4 class="font-semibold text-shark-700 mb-1">Best Practices:</h4>
+                  <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li>Describe 2-3 specific problems your target customers face</li>
+                    <li>Include relevant statistics that quantify the problem's scope</li>
+                    <li>Use simple visuals that communicate the pain point</li>
+                    <li>Share a brief customer story or quote that illustrates the problem</li>
+                  </ul>
+                </div>
+                <div class="bg-red-50 p-3 rounded-lg">
+                  <h4 class="font-semibold text-red-700 mb-1">Common Mistakes:</h4>
+                  <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li>Describing problems that aren't painful enough to drive adoption</li>
+                    <li>Focusing on problems that affect too small a market</li>
+                    <li>Being too technical or using industry jargon</li>
+                    <li>Failing to connect the problem to your specific solution</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">2. The Traction Slide</h3>
+              <p>Often the most important slide, this shows investors that your business is gaining momentum and reduces perceived risk.</p>
+              <div class="mt-3 text-sm space-y-2">
+                <div class="bg-shark-50 p-3 rounded-lg">
+                  <h4 class="font-semibold text-shark-700 mb-1">Best Practices:</h4>
+                  <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li>Highlight key growth metrics with a simple chart (revenue, users, etc.)</li>
+                    <li>Include logos of notable customers or partners</li>
+                    <li>Showcase impressive retention rates or engagement metrics</li>
+                    <li>Mention any significant milestones achieved (fundraising, partnerships, awards)</li>
+                  </ul>
+                </div>
+                <div class="bg-red-50 p-3 rounded-lg">
+                  <h4 class="font-semibold text-red-700 mb-1">Common Mistakes:</h4>
+                  <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li>Using vanity metrics instead of meaningful business metrics</li>
+                    <li>Showing cumulative data when month-over-month growth is flat</li>
+                    <li>Including too many metrics that dilute your strongest points</li>
+                    <li>Presenting data without context or benchmarks</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">3. The Market Slide</h3>
+              <p>This slide demonstrates the size of the opportunity and your understanding of the market landscape.</p>
+              <div class="mt-3 text-sm space-y-2">
+                <div class="bg-shark-50 p-3 rounded-lg">
+                  <h4 class="font-semibold text-shark-700 mb-1">Best Practices:</h4>
+                  <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li>Use the TAM/SAM/SOM approach to show market sizing</li>
+                    <li>Include market growth rates and key trends</li>
+                    <li>Highlight your specific target customer segments</li>
+                    <li>Use credible third-party sources for market data</li>
+                  </ul>
+                </div>
+                <div class="bg-red-50 p-3 rounded-lg">
+                  <h4 class="font-semibold text-red-700 mb-1">Common Mistakes:</h4>
+                  <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li>Claiming an unrealistically large addressable market</li>
+                    <li>Not clearly defining your serviceable obtainable market (SOM)</li>
+                    <li>Failing to explain your go-to-market strategy for this market</li>
+                    <li>Using outdated market data or unsupported claims</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">4. The Team Slide</h3>
+              <p>This slide builds credibility by showcasing why your team is uniquely positioned to solve this problem and execute the business.</p>
+              <div class="mt-3 text-sm space-y-2">
+                <div class="bg-shark-50 p-3 rounded-lg">
+                  <h4 class="font-semibold text-shark-700 mb-1">Best Practices:</h4>
+                  <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li>Include headshots and key roles of core team members</li>
+                    <li>Highlight relevant past experience and successes</li>
+                    <li>Mention notable advisors or board members</li>
+                    <li>Show domain expertise related to your specific market</li>
+                  </ul>
+                </div>
+                <div class="bg-red-50 p-3 rounded-lg">
+                  <h4 class="font-semibold text-red-700 mb-1">Common Mistakes:</h4>
+                  <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li>Including too many team members or irrelevant details</li>
+                    <li>Failing to highlight experience directly relevant to this venture</li>
+                    <li>Not addressing obvious gaps in your team composition</li>
+                    <li>Exaggerating accomplishments or credentials</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Slide Design Principles</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Visual Hierarchy</h4>
+              <p class="text-sm mb-2">Guide the viewer's eye to the most important information first.</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Use size contrast to emphasize key points</li>
+                <li>Place primary content in the top-left quadrant</li>
+                <li>Group related information visually</li>
+                <li>Create clear headline and subhead distinction</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Consistency</h4>
+              <p class="text-sm mb-2">Create a cohesive, professional look throughout your presentation.</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Use 2-3 complementary colors from your brand palette</li>
+                <li>Stick to 1-2 font families (one for headlines, one for body)</li>
+                <li>Maintain consistent spacing and alignment</li>
+                <li>Use the same style for similar elements across slides</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>Create two versions of your pitch deck: a presentation deck with minimal text for presenting in person, and a reading deck with more details for investors to review independently. The reading deck can include additional context that you would normally provide verbally.</p>
+          </div>
+        `
+      },
+      {
+        title: "Pitch Deck Examples & Resources",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Learning From Successful Pitch Decks</h2>
+          <p class="mb-6">Studying successful pitch decks can provide valuable insights for creating your own. While every business is unique, certain principles and approaches consistently appear in decks that have helped raise significant funding.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Notable Pitch Deck Elements</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Airbnb (Seed Round)</h4>
+              <p class="text-sm">Airbnb's early pitch deck effectively communicated a simple value proposition: "Book rooms with locals, rather than hotels."</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Standout elements:</strong> Clear problem statement, straightforward business model explanation, and early traction metrics despite being pre-revenue
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Uber (Series A)</h4>
+              <p class="text-sm">Uber's pitch focused on the broken taxi industry and their solution for creating a premium experience.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Standout elements:</strong> Market size analysis, competitive advantages, and detailed operational metrics showing how the business works
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">LinkedIn (Series B)</h4>
+              <p class="text-sm">LinkedIn presented a clear vision for becoming the professional identity platform of record.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Standout elements:</strong> Strong emphasis on network effects, clear explanation of virality, and multiple revenue streams beyond advertising
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Buffer (Seed Round)</h4>
+              <p class="text-sm">Buffer's deck demonstrated remarkable transparency with detailed metrics and growth strategies.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Standout elements:</strong> Specific traction metrics, clear unit economics, and detailed customer acquisition strategies
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Common Traits of Successful Pitch Decks</h3>
+          <div class="mb-6">
+            <ul class="list-disc pl-6 space-y-2">
+              <li>
+                <strong>Focused storytelling:</strong> Clear narrative arc from problem to solution to opportunity
+                <p class="text-sm ml-4">Makes complex businesses understandable and memorable</p>
+              </li>
+              <li>
+                <strong>Emphasis on traction:</strong> Leading with growth metrics when available
+                <p class="text-sm ml-4">Shows product-market fit and de-risks the investment</p>
+              </li>
+              <li>
+                <strong>Visual simplicity:</strong> Clean design with strategic use of visuals
+                <p class="text-sm ml-4">Makes information digestible and professional</p>
+              </li>
+              <li>
+                <strong>Memorable positioning:</strong> Clear articulation of what makes the company unique
+                <p class="text-sm ml-4">Helps investors understand the competitive advantage</p>
+              </li>
+              <li>
+                <strong>Future-focused vision:</strong> Bold but believable long-term potential
+                <p class="text-sm ml-4">Shows ambition and potential for significant returns</p>
+              </li>
+            </ul>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Pitch Deck Creation Resources</h3>
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border border-shark-200 rounded-lg">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border-b p-3 text-left text-shark-700">Resource Type</th>
+                  <th class="border-b p-3 text-left text-shark-700">Best For</th>
+                  <th class="border-b p-3 text-left text-shark-700">Considerations</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Design Templates</td>
+                  <td class="p-3">Quick creation with professional look</td>
+                  <td class="p-3">Can look generic if not customized well</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Professional Design Services</td>
+                  <td class="p-3">High-stakes presentations to major investors</td>
+                  <td class="p-3">Higher cost but potentially higher impact</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Pitch Deck Software</td>
+                  <td class="p-3">Interactive elements and tracking features</td>
+                  <td class="p-3">May require learning new tools</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Investor Feedback</td>
+                  <td class="p-3">Refining your messaging and approach</td>
+                  <td class="p-3">Consider source and relevance of feedback</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, entrepreneurs have limited time to make their pitch—similar to how investors may only spend a few minutes reviewing your deck. The most successful contestants, like Ring founder Jamie Siminoff, quickly establish the problem (home security concerns), the solution (video doorbell), market size (all homeowners), and business model (hardware sales).</p>
+            <p class="mt-2">Just like a good pitch deck, the best Shark Tank presentations are concise, visually demonstrate the product, show clear traction metrics, and end with a specific ask that seems reasonable based on the business's current stage.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "presentation-skills": {
+    title: "Presentation Skills",
+    description: "Master the art of delivering powerful business presentations that engage, persuade, and inspire your audience, whether you're pitching to investors or presenting to clients.",
+    sections: [
+      {
+        title: "Presentation Fundamentals",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">The Elements of Effective Presentations</h2>
+          <p class="mb-4">A truly effective presentation goes beyond good slides—it combines compelling content, confident delivery, and strategic audience engagement. The best presenters understand that they are delivering an experience, not just information.</p>
+          <p class="mb-6">Whether you're pitching to investors, presenting to clients, or speaking at an industry event, mastering these fundamental elements will help you deliver presentations that resonate and drive action.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The Presentation Trifecta</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-shark-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-shark-700 mb-2">Content</h4>
+              <p class="text-sm mb-2">What you say</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Clear message and purpose</li>
+                <li>Logical structure and flow</li>
+                <li>Compelling stories and examples</li>
+                <li>Relevant data and evidence</li>
+                <li>Memorable key points</li>
+              </ul>
+            </div>
+            
+            <div class="bg-shark-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-shark-700 mb-2">Delivery</h4>
+              <p class="text-sm mb-2">How you say it</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Confident voice and tone</li>
+                <li>Effective body language</li>
+                <li>Appropriate pace and pauses</li>
+                <li>Eye contact and engagement</li>
+                <li>Authentic presence</li>
+              </ul>
+            </div>
+            
+            <div class="bg-shark-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-shark-700 mb-2">Visual Support</h4>
+              <p class="text-sm mb-2">What your audience sees</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Clear, focused slides</li>
+                <li>Compelling visuals and data</li>
+                <li>Consistent design and branding</li>
+                <li>Appropriate use of multimedia</li>
+                <li>Seamless transitions</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Structuring Your Presentation</h3>
+          <p class="mb-4">A well-structured presentation guides your audience through your content in a way that maximizes understanding and retention. The classic structure follows this pattern:</p>
+          
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">1. Opening (10%)</h4>
+              <p class="text-sm">Capture attention, establish relevance, and preview main points.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Elements:</strong> Hook, relevance statement, credibility builder, roadmap
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">2. Body (75%)</h4>
+              <p class="text-sm">Present your main content organized in logical sections.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Structure:</strong> 3-5 main points, each with supporting evidence, examples, and transitions
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">3. Conclusion (15%)</h4>
+              <p class="text-sm">Reinforce key messages and provide clear next steps.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Components:</strong> Summary of key points, compelling call to action, memorable closing statement
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Opening Techniques That Grab Attention</h3>
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border border-shark-200 rounded-lg">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border-b p-3 text-left text-shark-700">Technique</th>
+                  <th class="border-b p-3 text-left text-shark-700">When to Use</th>
+                  <th class="border-b p-3 text-left text-shark-700">Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Startling Statistic</td>
+                  <td class="p-3">When data tells a compelling story</td>
+                  <td class="p-3">"Every year, 1.3 billion tons of food is wasted globally—enough to feed 3 billion people."</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Provocative Question</td>
+                  <td class="p-3">To make audience reflect on a problem</td>
+                  <td class="p-3">"What if you could reduce your customer acquisition costs by 40% while doubling conversion rates?"</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Relevant Story</td>
+                  <td class="p-3">To create emotional connection</td>
+                  <td class="p-3">"Three years ago, our founder missed his daughter's recital because he was stuck waiting for a delayed flight. That's when he had the idea for our app."</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Demonstration</td>
+                  <td class="p-3">For product-focused presentations</td>
+                  <td class="p-3">Immediately showing your product solving a problem live</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Contrast Statement</td>
+                  <td class="p-3">To highlight a gap or opportunity</td>
+                  <td class="p-3">"Companies spend $300 billion on digital advertising, yet 91% of consumers feel ads are more intrusive than ever before."</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, entrepreneurs have just 60 seconds to hook the Sharks' interest. The most successful contestants open with a clear statement of what their product does, followed by a compelling reason why it matters.</p>
+            <p class="mt-2">For example, the founder of Scrub Daddy immediately demonstrated the product's unique texture-changing properties, creating instant curiosity about how it worked. This hands-on, visual approach captured attention more effectively than simply describing the product's features.</p>
+          </div>
+        `
+      },
+      {
+        title: "Delivery Techniques",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Mastering Presentation Delivery</h2>
+          <p class="mb-6">How you deliver your presentation can be just as important as what you say. Your verbal and nonverbal communication significantly impacts how your message is received and remembered by your audience.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Verbal Communication Skills</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Voice Projection and Clarity</h4>
+              <p class="text-sm">Speak clearly and loudly enough for everyone to hear without straining.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Technique:</strong> Breathe from your diaphragm and aim to project to the back of the room
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Pacing and Pauses</h4>
+              <p class="text-sm">Vary your speaking pace and use strategic pauses for emphasis.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Guideline:</strong> Speak slightly slower than in normal conversation; pause for 2-3 seconds after important points
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Vocal Variety</h4>
+              <p class="text-sm">Use changes in pitch, tone, and volume to maintain interest and emphasize key points.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Practice:</strong> Record yourself and note where your voice becomes monotone
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Eliminating Filler Words</h4>
+              <p class="text-sm">Reduce use of "um," "uh," "like," and "you know" to sound more confident.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Technique:</strong> Replace fillers with a pause; practice with someone who counts your fillers
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Conversational Tone</h4>
+              <p class="text-sm">Speak naturally as if having a conversation, rather than reciting or performing.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Approach:</strong> Practice explaining your points to a friend before formal rehearsals
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Body Language and Nonverbal Communication</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Eye Contact</h4>
+              <p class="text-sm mb-2">Establish connection and build trust with your audience.</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Hold eye contact for 3-5 seconds with different audience members</li>
+                <li>In small groups, make eye contact with everyone</li>
+                <li>In large audiences, divide the room into sections and make eye contact with each section</li>
+                <li>Avoid staring at notes, slides, or a single person</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Posture and Movement</h4>
+              <p class="text-sm mb-2">Project confidence and energy through how you stand and move.</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Stand tall with shoulders back and weight evenly distributed</li>
+                <li>Move purposefully to different parts of the stage or room</li>
+                <li>Avoid swaying, pacing, or fidgeting</li>
+                <li>Step toward the audience to emphasize key points</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Gestures</h4>
+              <p class="text-sm mb-2">Enhance your message with natural hand movements.</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Use open, expansive gestures above waist level</li>
+                <li>Match gesture size to audience size (larger for bigger rooms)</li>
+                <li>Avoid repetitive or distracting gestures</li>
+                <li>Keep hands visible (not in pockets or behind back)</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Facial Expressions</h4>
+              <p class="text-sm mb-2">Convey enthusiasm and authenticity through your face.</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Smile genuinely when appropriate</li>
+                <li>Match expressions to content (serious for problems, optimistic for solutions)</li>
+                <li>Practice awareness of unconscious expressions (frowning, looking confused)</li>
+                <li>Increase expressiveness for virtual presentations</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Managing Presentation Anxiety</h3>
+          <p class="mb-4">Even experienced presenters feel nervous. The key is managing anxiety so it enhances rather than hinders your performance.</p>
+          
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-green-300 pl-4">
+              <h4 class="font-semibold mb-1">Before Your Presentation</h4>
+              <ul class="list-disc pl-6 space-y-1 text-sm">
+                <li><strong>Prepare thoroughly:</strong> Know your content inside and out</li>
+                <li><strong>Practice full run-throughs:</strong> 5-10 complete rehearsals, ideally in similar conditions</li>
+                <li><strong>Visualization:</strong> Mentally rehearse a successful presentation</li>
+                <li><strong>Progressive muscle relaxation:</strong> Tense and release muscle groups to reduce physical tension</li>
+                <li><strong>Arrive early:</strong> Get comfortable in the space and test technology</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-green-300 pl-4">
+              <h4 class="font-semibold mb-1">During Your Presentation</h4>
+              <ul class="list-disc pl-6 space-y-1 text-sm">
+                <li><strong>Deep breathing:</strong> Take slow, deep breaths from your diaphragm</li>
+                <li><strong>Focus on friendly faces:</strong> Find supportive audience members</li>
+                <li><strong>Pause and reset:</strong> If you lose your place, pause, breathe, and continue</li>
+                <li><strong>Reframe nervousness:</strong> Interpret it as excitement and energy</li>
+                <li><strong>Stay present:</strong> Focus on your current point, not what's coming next</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>Delivery quality is often the difference between success and failure on Shark Tank. Entrepreneurs who maintain strong eye contact with the Sharks, speak with confidence, and use purposeful gestures tend to receive more positive responses.</p>
+            <p class="mt-2">For example, when Bombas sock company presented, the founders displayed confident body language and maintained composure even during tough questioning. Their physical presence matched their message of professionalism and helped secure a deal with Daymond John.</p>
+          </div>
+        `
+      },
+      {
+        title: "Audience Engagement & Q&A",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Connecting With Your Audience</h2>
+          <p class="mb-6">Truly effective presentations create a connection with the audience, making them active participants rather than passive listeners. When people feel engaged, they're more likely to remember your message and take the action you desire.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Audience Engagement Techniques</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Strategic Questioning</h4>
+              <p class="text-sm">Ask thoughtful questions that prompt reflection or response.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Types:</strong> Rhetorical questions, polling questions, discussion questions
+                <br>
+                <strong>Example:</strong> "How many of you have experienced this challenge in your business?"
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Storytelling</h4>
+              <p class="text-sm">Share relevant stories that create emotional connection and illustrate key points.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Elements:</strong> Clear character(s), specific challenge, resolution that connects to your message
+                <br>
+                <strong>Sources:</strong> Personal experiences, customer stories, historical examples
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Interactive Elements</h4>
+              <p class="text-sm">Incorporate activities that involve audience participation.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Options:</strong> Live polling, brief paired discussions, hands-on demonstrations, volunteer participation
+                <br>
+                <strong>Guideline:</strong> Keep interactions brief and clearly connected to your message
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Localization and Personalization</h4>
+              <p class="text-sm">Tailor your content to the specific audience you're addressing.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Research:</strong> Learn about audience demographics, pain points, and priorities beforehand
+                <br>
+                <strong>Application:</strong> Reference industry-specific challenges, local context, or company situations
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Visual Engagement</h4>
+              <p class="text-sm">Use visuals that create impact and reinforce your message.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Elements:</strong> High-quality images, simple data visualizations, video clips, physical props
+                <br>
+                <strong>Principle:</strong> Show, don't just tell—let visuals bring concepts to life
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Mastering the Q&A Session</h3>
+          <p class="mb-4">The Q&A portion of your presentation is a critical opportunity to demonstrate expertise, address concerns, and deepen audience understanding. It requires preparation and skill to handle effectively.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Before the Q&A</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Anticipate likely questions based on your content</li>
+                <li>Prepare concise answers for complex topics</li>
+                <li>Create backup slides for detailed questions</li>
+                <li>Decide how you'll handle questions you can't answer</li>
+                <li>Determine how you'll manage time and question flow</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">During the Q&A</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Listen carefully to each question</li>
+                <li>Repeat/rephrase questions so everyone can hear</li>
+                <li>Keep answers concise (30-60 seconds)</li>
+                <li>Address the whole audience, not just the questioner</li>
+                <li>Be honest if you don't know an answer</li>
+                <li>Maintain positive body language throughout</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Handling Difficult Questions</h3>
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border border-shark-200 rounded-lg">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border-b p-3 text-left text-shark-700">Question Type</th>
+                  <th class="border-b p-3 text-left text-shark-700">Strategy</th>
+                  <th class="border-b p-3 text-left text-shark-700">Example Response</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Hostile or Critical</td>
+                  <td class="p-3">Stay calm, acknowledge the concern, respond factually</td>
+                  <td class="p-3">"I appreciate your concern. Here's how we've addressed that specific issue..."</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Overly Complex</td>
+                  <td class="p-3">Break it down, answer the most relevant part, offer follow-up</td>
+                  <td class="p-3">"There are several aspects to your question. Let me address the core issue first..."</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Off-Topic</td>
+                  <td class="p-3">Briefly acknowledge, redirect to presentation focus</td>
+                  <td class="p-3">"That's an interesting point, though it's beyond today's scope. I'd be happy to discuss it after the presentation."</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Question You Can't Answer</td>
+                  <td class="p-3">Be honest, offer to follow up, redirect if possible</td>
+                  <td class="p-3">"I don't have that specific data right now, but I'll find out and get back to you by tomorrow."</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Multiple Questions From One Person</td>
+                  <td class="p-3">Thank them, answer one question, invite them to ask others later</td>
+                  <td class="p-3">"Thanks for your questions. Let me address your first point about X, and perhaps we can connect after for the others."</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Closing Strong After Q&A</h3>
+          <p class="mb-4">Don't let your presentation end with a random question. Always reclaim control and finish with a planned closing statement.</p>
+          
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Transition From Q&A</h4>
+              <p class="text-sm">Signal that you're moving to your conclusion.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Example:</strong> "Those are excellent questions. Before we wrap up today, I'd like to leave you with a few key takeaways..."
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Reinforce Key Message</h4>
+              <p class="text-sm">Remind the audience of your most important point.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Technique:</strong> Restate your central message in a slightly different way than in your introduction
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Clear Call to Action</h4>
+              <p class="text-sm">Tell the audience exactly what you want them to do next.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Elements:</strong> Specific action, timeframe, benefit of taking action
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Memorable Final Statement</h4>
+              <p class="text-sm">End with something that will stick with the audience.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Options:</strong> Compelling quote, brief story, thought-provoking question, vision of the future
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, the most successful entrepreneurs masterfully handle the Sharks' tough questions. They listen carefully, respond directly, and maintain composure even when under pressure.</p>
+            <p class="mt-2">When entrepreneurs are asked about weaknesses in their business model, the ones who acknowledge the concerns while confidently explaining their strategy tend to fare better than those who become defensive or evasive. This demonstrates the importance of preparing for difficult questions and maintaining poise during intense Q&A sessions.</p>
           </div>
         `
       }
