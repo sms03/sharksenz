@@ -322,8 +322,7 @@ const moduleContent = {
         `
       }
     ]
-  },
-  "amortization": {
+  },  "amortization": {
     title: "Amortization",
     description: "Understand how to spread the cost of intangible assets and loans over time. Learn to calculate amortization schedules and analyze their impact on financial statements.",
     sections: [
@@ -9032,6 +9031,158 @@ const moduleContent = {
       }
     ]
   },
+  "storytelling-techniques": {
+    title: "Storytelling Techniques",
+    description: "Learn powerful storytelling techniques to enhance your business presentations and pitches. Master the art of connecting with your audience through compelling narratives.",
+    sections: [
+      {
+        title: "The Power of Business Storytelling",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">The Power of Business Storytelling</h2>
+          <p class="mb-4">Business storytelling is a strategic tool that helps you connect with audiences, make complex ideas memorable, and drive action. Understanding how to craft and deliver effective stories can significantly enhance your business communications.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Why Stories Matter in Business</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Engagement:</strong> Stories capture and maintain attention better than facts and figures alone</li>
+            <li><strong>Memory:</strong> Information wrapped in stories is 22 times more memorable than facts</li>
+            <li><strong>Connection:</strong> Stories build emotional connections with your audience</li>
+            <li><strong>Persuasion:</strong> Well-crafted stories can influence decisions and inspire action</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Key Elements of Business Stories</h4>
+            <ul class="list-disc pl-6 mt-2">
+              <li>Clear purpose and message</li>
+              <li>Relatable characters or situations</li>
+              <li>Conflict or challenge to overcome</li>
+              <li>Resolution or transformation</li>
+              <li>Relevant business context</li>
+            </ul>
+          </div>
+          
+          <div class="border-l-4 border-shark-300 pl-4 mb-6">
+            <h4 class="font-semibold mb-2">When to Use Business Stories</h4>
+            <ul class="space-y-2 text-sm">
+              <li>Pitching to investors or customers</li>
+              <li>Presenting company vision or strategy</li>
+              <li>Explaining complex products or services</li>
+              <li>Leading change initiatives</li>
+              <li>Building brand identity</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        title: "Story Structures for Business",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Story Structures for Business</h2>
+          <p class="mb-6">Effective business stories follow proven structures that help organize ideas and maintain audience engagement. Here are key storytelling frameworks you can use in different business contexts.</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">The Problem-Solution Framework</h3>
+              <p class="mb-2">Perfect for pitches and product presentations</p>
+              <ol class="list-decimal pl-6 space-y-1">
+                <li>Identify a compelling problem or pain point</li>
+                <li>Show the impact of the problem</li>
+                <li>Present your solution</li>
+                <li>Demonstrate the transformation</li>
+                <li>Call to action</li>
+              </ol>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">The Hero's Journey (Business Version)</h3>
+              <p class="mb-2">Ideal for case studies and customer success stories</p>
+              <ol class="list-decimal pl-6 space-y-1">
+                <li>Introduce the protagonist (customer/company)</li>
+                <li>Describe the challenge they faced</li>
+                <li>Show their search for a solution</li>
+                <li>Present the breakthrough moment</li>
+                <li>Share the results and lessons learned</li>
+              </ol>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">The Mountain Structure</h3>
+              <p class="mb-2">Great for vision and strategy presentations</p>
+              <ol class="list-decimal pl-6 space-y-1">
+                <li>Set the current scene</li>
+                <li>Build tension through challenges</li>
+                <li>Reach the climax (key insight or decision)</li>
+                <li>Show the path forward</li>
+                <li>Paint the picture of success</li>
+              </ol>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Tips for Using Story Structures</h4>
+            <ul class="list-disc pl-6 mt-2">
+              <li>Choose the structure that best fits your purpose</li>
+              <li>Adapt the framework to your time constraints</li>
+              <li>Keep the focus on your key message</li>
+              <li>Practice the transitions between sections</li>
+              <li>End with a clear call to action</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        title: "Storytelling in Your Pitch",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Storytelling in Your Pitch</h2>
+          <p class="mb-6">A pitch that incorporates storytelling elements is more likely to capture attention, build emotional connection, and lead to successful outcomes. Here's how to weave storytelling into your pitch effectively.</p>
+          
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Opening Hook</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Start with a surprising statistic</li>
+                <li>Share a personal anecdote</li>
+                <li>Paint a picture of the problem</li>
+                <li>Ask a thought-provoking question</li>
+                <li>Create a "what if" scenario</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Building Momentum</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Use data to support your story</li>
+                <li>Include customer testimonials</li>
+                <li>Show market validation</li>
+                <li>Demonstrate growth potential</li>
+                <li>Address key concerns proactively</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank-Style Pitch Elements</h4>
+            <ul class="list-disc pl-6 mt-2">
+              <li><strong>Problem Statement:</strong> Clear, relatable problem that affects many people</li>
+              <li><strong>Origin Story:</strong> How you discovered or experienced the problem</li>
+              <li><strong>Solution Demo:</strong> Show, don't just tell, how your product works</li>
+              <li><strong>Market Story:</strong> Paint the picture of the opportunity size</li>
+              <li><strong>Growth Story:</strong> Show the path to scaling the business</li>
+            </ul>
+          </div>
+          
+          <div class="border-l-4 border-shark-300 pl-4 mb-6">
+            <h4 class="font-semibold mb-2">Common Pitfalls to Avoid</h4>
+            <ul class="space-y-2 text-sm">
+              <li>Focusing too much on features instead of benefits</li>
+              <li>Using jargon or technical language</li>
+              <li>Making the story too long or complex</li>
+              <li>Forgetting to include a clear call to action</li>
+              <li>Not practicing the delivery</li>
+            </ul>
+          </div>
+        `
+      }
+    ]
+  },
   "unit-economics": {
     title: "Unit Economics",
     description: "Learn how to analyze the revenue and costs associated with your business model on a per-unit basis, a critical framework for understanding profitability and scalability.",
@@ -9668,6 +9819,146 @@ const moduleContent = {
             <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Valuation Defense</h4>
             <p>On Shark Tank, entrepreneurs who successfully defend their valuations typically come armed with specific metrics and comparables. When Mark Cuban challenges a valuation, successful entrepreneurs respond with concrete data points like customer acquisition costs, lifetime value, and specific industry benchmarks.</p>
             <p class="mt-2">As Daymond John once noted: "I'm not investing in your past; I'm investing in your future. But your past gives me confidence in what you can achieve." This encapsulates the balance entrepreneurs must strike - using historical data to create confidence in future projections that justify their valuation.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "visual-design": {
+    title: "Visual Design",
+    description: "Master the fundamentals of visual design to create compelling presentations, data visualizations, and business materials that effectively communicate your message.",
+    sections: [
+      {
+        title: "Visual Design Fundamentals",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Visual Design Fundamentals</h2>
+          <p class="mb-6">Understanding the basic principles of visual design is crucial for creating professional, effective business materials. These fundamentals help ensure your visuals communicate clearly and enhance your message.</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Color Theory</h3>
+              <ul class="space-y-2 text-sm">
+                <li><strong>Primary Colors:</strong> Red, Blue, Yellow - the foundation of all colors</li>
+                <li><strong>Secondary Colors:</strong> Green, Orange, Purple - created by mixing primaries</li>
+                <li><strong>Color Harmony:</strong> Complementary, Analogous, Triadic color schemes</li>
+                <li><strong>Color Psychology:</strong> How colors affect emotions and perceptions</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Typography</h3>
+              <ul class="space-y-2 text-sm">
+                <li><strong>Font Types:</strong> Serif, Sans-serif, Display, Script</li>
+                <li><strong>Hierarchy:</strong> Creating visual importance through size and weight</li>
+                <li><strong>Readability:</strong> Line height, letter spacing, and contrast</li>
+                <li><strong>Font Pairing:</strong> Combining fonts effectively</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Layout Principles</h3>
+              <ul class="space-y-2 text-sm">
+                <li><strong>Balance:</strong> Symmetrical vs. Asymmetrical</li>
+                <li><strong>Contrast:</strong> Creating visual interest and hierarchy</li>
+                <li><strong>Alignment:</strong> Creating order and organization</li>
+                <li><strong>Proximity:</strong> Grouping related elements</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Business Applications</h4>
+            <ul class="list-disc pl-6 mt-2">
+              <li>Creating consistent brand identity</li>
+              <li>Designing professional presentations</li>
+              <li>Developing marketing materials</li>
+              <li>Enhancing digital presence</li>
+              <li>Improving user interfaces</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        title: "Data Visualization",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Data Visualization</h2>
+          <p class="mb-6">Effective data visualization helps transform complex data into clear, actionable insights. Understanding how to choose and create the right visualizations is crucial for business communication.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Choosing the Right Chart Type</h3>
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Comparison</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Bar Charts:</strong> Compare quantities across categories</li>
+                <li><strong>Column Charts:</strong> Show changes over time</li>
+                <li><strong>Radar Charts:</strong> Compare multiple variables</li>
+                <li><strong>Bullet Charts:</strong> Compare actual vs. target</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Distribution</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Pie Charts:</strong> Show parts of a whole</li>
+                <li><strong>Histograms:</strong> Show data distribution</li>
+                <li><strong>Box Plots:</strong> Show data spread</li>
+                <li><strong>Heat Maps:</strong> Show patterns in matrix data</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Data Visualization Best Practices</h4>
+            <ul class="list-disc pl-6 mt-2">
+              <li>Keep it simple and focused</li>
+              <li>Use appropriate scales and axes</li>
+              <li>Label clearly and consistently</li>
+              <li>Choose accessible colors</li>
+              <li>Provide context when needed</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        title: "Presentation Design",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Presentation Design</h2>
+          <p class="mb-6">A well-designed presentation can significantly enhance your message and keep your audience engaged. Here's how to create visually compelling presentations that support your narrative.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Design Principles for Presentations</h3>
+          <div class="space-y-6 mb-8">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Slide Structure</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>One main point per slide</li>
+                <li>Clear visual hierarchy</li>
+                <li>Consistent layout templates</li>
+                <li>White space for clarity</li>
+                <li>Limited text (6x6 rule)</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Visual Elements</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>High-quality images</li>
+                <li>Simple icons and graphics</li>
+                <li>Consistent color scheme</li>
+                <li>Clear data visualizations</li>
+                <li>Branded elements</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Tips for Pitch Deck Design</h4>
+            <ul class="list-disc pl-6 mt-2">
+              <li>Start with a compelling cover slide</li>
+              <li>Use visuals to support key metrics</li>
+              <li>Keep branding consistent</li>
+              <li>Create visual flow between slides</li>
+              <li>End with a strong call to action</li>
+            </ul>
           </div>
         `
       }
