@@ -12,7 +12,7 @@ import { toast } from "@/components/ui/sonner";
 import { XP_VALUES, addXP } from "@/utils/userProgress";
 import { XPIndicator } from "@/components/ui/xp-indicator";
 
-// Sample module content (would come from database in real app)
+
 const moduleContent = {
   "accounts-payable": {
     title: "Accounts Payable",
@@ -2976,6 +2976,270 @@ const moduleContent = {
             <p>Financial models are central to how the Sharks evaluate businesses on Shark Tank. Entrepreneurs who demonstrate mastery of their financial models gain credibility and often secure better deals.</p>
             <p class="mt-2">Daymond John frequently tests entrepreneurs on their unit economics, essentially probing their financial model's assumptions. Robert Herjavec often asks about cash flow projections to understand the sustainability of the business model.</p>
             <p class="mt-2">When a Shark says, "I'm going to make you an offer, but it's structured differently than what you asked for," they're typically adjusting the deal based on their own financial modeling of the business's risk and potential.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "funding-rounds": {
+    title: "Funding Rounds",
+    description: "Understanding different stages of startup funding, from pre-seed to IPO. Learn about the typical investors, valuations, and expectations at each stage of the financing journey.",
+    sections: [
+      {
+        title: "Funding Stages Overview",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Understanding Startup Funding Rounds</h2>
+          <p class="mb-4">Startup funding follows a relatively predictable series of stages, each with different investors, investment sizes, and expectations. Understanding these stages helps founders prepare for fundraising and gives investors context for valuation and risk assessment.</p>
+          <p class="mb-6">Each funding round typically involves the company selling equity (ownership stake) in exchange for capital to reach specific growth milestones that increase the company's valuation for the next round.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The Funding Ladder</h3>
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Pre-Seed</h4>
+              <p class="text-sm">The earliest stage of funding, often used to validate ideas and build an initial product.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Typical investors:</strong> Founders, friends, family, angel investors<br>
+                <strong>Typical amount:</strong> $50,000 - $500,000<br>
+                <strong>Valuation range:</strong> $1M - $3M<br>
+                <strong>Common milestones:</strong> MVP development, early user testing, initial traction metrics
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Seed</h4>
+              <p class="text-sm">Supports further product development and early market testing.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Typical investors:</strong> Angel investors, seed funds, early-stage VCs, accelerators<br>
+                <strong>Typical amount:</strong> $500,000 - $2M<br>
+                <strong>Valuation range:</strong> $3M - $10M<br>
+                <strong>Common milestones:</strong> Complete product development, product-market fit validation, initial revenue
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Series A</h4>
+              <p class="text-sm">Focuses on optimizing the business model and accelerating user acquisition.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Typical investors:</strong> Venture capital firms, corporate VCs<br>
+                <strong>Typical amount:</strong> $2M - $15M<br>
+                <strong>Valuation range:</strong> $10M - $50M<br>
+                <strong>Common milestones:</strong> Proven scalable business model, significant user growth, clear unit economics
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Series B</h4>
+              <p class="text-sm">Enables scaling of the business and expansion into new markets.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Typical investors:</strong> Larger VC firms, growth equity investors<br>
+                <strong>Typical amount:</strong> $15M - $50M<br>
+                <strong>Valuation range:</strong> $50M - $200M<br>
+                <strong>Common milestones:</strong> Established market position, significant revenue growth, path to profitability
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Series C and Beyond</h4>
+              <p class="text-sm">Later-stage rounds focused on large-scale expansion, potential acquisitions, and preparing for an exit.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Typical investors:</strong> Later-stage VCs, private equity firms, hedge funds, corporate investors<br>
+                <strong>Typical amount:</strong> $50M - $300M+<br>
+                <strong>Valuation range:</strong> $200M - $10B+<br>
+                <strong>Common milestones:</strong> Market leadership, international expansion, potential acquisitions, profitability
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Context</h4>
+            <p>On Shark Tank, investments typically fall somewhere between the pre-seed and seed stages, though the structured deals often look different from traditional equity rounds. Sharks frequently offer funding in exchange for higher equity percentages than traditional VCs due to their added value, brand, connections, and the marketing exposure the show provides.</p>
+          </div>
+        `
+      },
+      {
+        title: "Investor Expectations & Terms",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Investor Expectations & Key Terms</h2>
+          <p class="mb-6">As companies progress through funding rounds, investor expectations evolve, and the terms of deals become more complex. Understanding what investors look for at each stage and the common deal terms helps founders prepare effective pitches and negotiate fair agreements.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Evolving Investor Focus</h3>
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border-collapse text-sm">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border px-4 py-2">Funding Stage</th>
+                  <th class="border px-4 py-2">Primary Investor Focus</th>
+                  <th class="border px-4 py-2">Risk Level</th>
+                  <th class="border px-4 py-2">Expected Return</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="border px-4 py-2">Pre-Seed/Seed</td>
+                  <td class="border px-4 py-2">Team quality, market size, product vision</td>
+                  <td class="border px-4 py-2">Extreme</td>
+                  <td class="border px-4 py-2">10-30x</td>
+                </tr>
+                <tr>
+                  <td class="border px-4 py-2">Series A</td>
+                  <td class="border px-4 py-2">Product-market fit, early traction, scalability</td>
+                  <td class="border px-4 py-2">Very High</td>
+                  <td class="border px-4 py-2">5-15x</td>
+                </tr>
+                <tr>
+                  <td class="border px-4 py-2">Series B</td>
+                  <td class="border px-4 py-2">Revenue growth, unit economics, market expansion</td>
+                  <td class="border px-4 py-2">High</td>
+                  <td class="border px-4 py-2">3-8x</td>
+                </tr>
+                <tr>
+                  <td class="border px-4 py-2">Series C+</td>
+                  <td class="border px-4 py-2">Profitability path, market leadership, exit strategy</td>
+                  <td class="border px-4 py-2">Moderate</td>
+                  <td class="border px-4 py-2">2-5x</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Investment Terms</h3>
+          <div class="space-y-6 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Valuation</h4>
+              <p class="text-sm">The agreed company value that determines how much equity investors receive for their capital.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Pre-money valuation:</strong> Company value before investment<br>
+                <strong>Post-money valuation:</strong> Pre-money valuation + investment amount<br>
+                <strong>Example:</strong> $5M pre-money + $1M investment = $6M post-money valuation<br>
+                <strong>Equity calculation:</strong> Investment ÷ Post-money valuation = Equity % ($1M ÷ $6M = 16.7%)
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Liquidation Preference</h4>
+              <p class="text-sm">Determines the order and amount investors receive in a liquidation event (acquisition or bankruptcy).</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>1x preference:</strong> Investors get their money back before common shareholders<br>
+                <strong>Multiple preferences (2x, 3x):</strong> Investors get 2-3x their investment before commons<br>
+                <strong>Participating preferred:</strong> Investors get their preference, then share pro-rata in remaining proceeds<br>
+                <strong>Non-participating:</strong> Investors choose either their preference OR their pro-rata share
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Pro-Rata Rights</h4>
+              <p class="text-sm">Allows investors to maintain their ownership percentage in future funding rounds.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Example:</strong> If an investor owns 10% after Series A, they can invest enough in Series B to maintain that 10% ownership.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Investor Control</h4>
+              <p class="text-sm">Provisions that give investors influence over company decisions.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Board seats:</strong> Representation on company's board of directors<br>
+                <strong>Protective provisions:</strong> Investor veto rights on key decisions (sale, new fundraising, etc.)<br>
+                <strong>Information rights:</strong> Access to financial statements and company updates
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Deal Structures</h4>
+            <p>On Shark Tank, deals often include unique terms rarely seen in traditional venture funding:</p>
+            <ul class="list-disc pl-6 mt-2">
+              <li><strong>Royalty arrangements:</strong> Investors receive a payment per unit sold until reaching a certain return</li>
+              <li><strong>Contingent equity:</strong> Ownership percentage changes based on achieving performance milestones</li>
+              <li><strong>Lines of credit:</strong> Investment structured as debt that converts to equity under certain conditions</li>
+              <li><strong>Split deals:</strong> Multiple Sharks collaborate, each taking a smaller equity piece for specialized contributions</li>
+            </ul>
+            <p class="mt-2">Kevin O'Leary frequently proposes royalty deals to reduce his risk while giving entrepreneurs a path to maintaining higher equity if successful.</p>
+          </div>
+        `
+      },
+      {
+        title: "Fundraising Strategy",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Developing Your Fundraising Strategy</h2>
+          <p class="mb-6">A successful fundraising strategy involves more than just pitching investors. It requires thoughtful preparation, timing, targeting the right investors, and understanding how to position your company for the specific funding stage.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Fundraising Preparation</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Define clear funding milestones:</strong> Specifically what you'll achieve with the money</li>
+            <li><strong>Develop a compelling story:</strong> Why your solution matters and why now is the right time</li>
+            <li><strong>Prepare a strong pitch deck:</strong> Concise, data-driven, addressing key investor questions</li>
+            <li><strong>Build a detailed financial model:</strong> Showing growth projections and cash runway</li>
+            <li><strong>Organize your data room:</strong> Financial statements, legal documents, customer metrics</li>
+            <li><strong>Practice your pitch:</strong> Refine your delivery and anticipate tough questions</li>
+          </ul>
+          
+          <h3 class="text-xl font-semibold mb-3">Targeting the Right Investors</h3>
+          <div class="space-y-6 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Investor Fit Considerations</h4>
+              <div class="mt-2 text-sm text-shark-600">
+                <ul class="list-disc pl-6 mt-1">
+                  <li><strong>Stage focus:</strong> Do they typically invest in your funding stage?</li>
+                  <li><strong>Industry expertise:</strong> Do they have experience in your sector?</li>
+                  <li><strong>Check size:</strong> Is your funding need within their typical investment range?</li>
+                  <li><strong>Value-add:</strong> Can they provide strategic guidance, connections, recruiting help?</li>
+                  <li><strong>Portfolio fit:</strong> Do they have complementary (not competitive) investments?</li>
+                  <li><strong>Follow-on capability:</strong> Can they participate in future funding rounds?</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Research Process</h4>
+              <div class="mt-2 text-sm text-shark-600">
+                <ol class="list-decimal pl-6 mt-1">
+                  <li>Create a list of potential investors using platforms like Crunchbase, PitchBook, AngelList</li>
+                  <li>Research their portfolio companies and investment themes</li>
+                  <li>Identify common connections who can make warm introductions</li>
+                  <li>Develop personalized outreach explaining why there's a potential fit</li>
+                  <li>Track all communications in a CRM system</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Fundraising Timeline</h3>
+          <div class="border rounded-lg p-5 mb-6">
+            <h4 class="font-semibold mb-3">Typical Process (3-6 months)</h4>
+            <div class="space-y-3">
+              <div>
+                <h5 class="font-medium">1. Preparation Phase (4-6 weeks)</h5>
+                <p class="text-sm">Develop materials, research investors, organize data room</p>
+              </div>
+              <div>
+                <h5 class="font-medium">2. Outreach Phase (2-4 weeks)</h5>
+                <p class="text-sm">Secure introductions, send teasers, schedule initial meetings</p>
+              </div>
+              <div>
+                <h5 class="font-medium">3. First Meetings (2-3 weeks)</h5>
+                <p class="text-sm">Pitch to partners, address initial questions, build interest</p>
+              </div>
+              <div>
+                <h5 class="font-medium">4. Due Diligence (3-6 weeks)</h5>
+                <p class="text-sm">Deeper investor analysis, team meetings, customer calls, financial review</p>
+              </div>
+              <div>
+                <h5 class="font-medium">5. Term Sheet (1-2 weeks)</h5>
+                <p class="text-sm">Negotiate key terms, align on valuation and investor rights</p>
+              </div>
+              <div>
+                <h5 class="font-medium">6. Closing (2-4 weeks)</h5>
+                <p class="text-sm">Legal documents, final due diligence, wire transfer</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank vs. Traditional Fundraising</h4>
+            <p>Shark Tank offers a dramatically compressed fundraising timeline—typically one pitch leading to an immediate decision. While this makes for great television, real-world fundraising usually involves dozens of meetings over several months.</p>
+            <p class="mt-2">However, the core elements of a successful Shark Tank pitch mirror those of effective VC pitches: clear problem statement, compelling solution, demonstrated traction, strong team, and realistic financials with a path to profitability.</p>
+            <p class="mt-2">Regardless of venue, investors fundamentally ask the same questions: "Is this a big opportunity?", "Is this the right team?", and "Is this the right time?"</p>
           </div>
         `
       }
