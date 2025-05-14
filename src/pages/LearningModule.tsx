@@ -328,6 +328,149 @@ const moduleContent = {
       }
     ]
   },
+  "break-even-analysis": {
+    title: "Break-Even Analysis",
+    description: "Calculate when your business becomes profitable by determining the point where total revenue equals total costs.",
+    sections: [
+      {
+        title: "What is Break-Even Analysis?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Break-Even Analysis?</h2>
+          <p class="mb-4">Break-even analysis is a financial calculation that determines the sales volume your business needs to achieve to cover all costs—the point where total revenue equals total expenses, resulting in neither profit nor loss. It's a crucial tool for business planning, pricing strategies, and investment decisions.</p>
+          <p class="mb-6">Understanding your break-even point helps answer critical questions like, "How many units must I sell to cover my costs?" or "What sales volume do I need before I start making a profit?"</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The Break-Even Formula</h3>
+          <div class="bg-shark-50 p-3 rounded-md font-mono mb-6">
+            <p class="mb-2">Break-Even Point (units) = Fixed Costs ÷ (Price per Unit - Variable Cost per Unit)</p>
+            <p>Break-Even Point (sales $) = Fixed Costs ÷ Contribution Margin Ratio</p>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Components</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Fixed Costs:</strong> Expenses that remain constant regardless of sales volume (rent, salaries, insurance)</li>
+            <li><strong>Variable Costs:</strong> Expenses that change directly with production volume (materials, direct labor, commissions)</li>
+            <li><strong>Contribution Margin:</strong> The amount each unit contributes to covering fixed costs (Price - Variable Cost)</li>
+            <li><strong>Contribution Margin Ratio:</strong> Contribution Margin ÷ Price</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Example</h4>
+            <p>On Shark Tank, entrepreneurs are frequently asked about their break-even point. For instance, when a food product entrepreneur says it costs $2 to make each unit and sells it for $5, with monthly fixed costs of $10,000, Sharks quickly calculate the break-even point: 10,000 ÷ (5 - 2) = 3,333 units per month.</p>
+          </div>
+        `
+      },
+      {
+        title: "Calculating Break-Even Point",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Calculating Break-Even Point</h2>
+          <p class="mb-6">Let's walk through a practical example of how to calculate your break-even point:</p>
+          
+          <div class="border rounded-lg p-5 mb-6">
+            <h3 class="text-xl font-semibold mb-3">Example: Coffee Shop</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="font-medium">Given:</p>
+                <ul class="list-disc pl-6 space-y-1">
+                  <li>Fixed monthly costs: $8,000 (rent, utilities, base salaries)</li>
+                  <li>Average price per coffee: $4.50</li>
+                  <li>Variable costs per coffee: $1.50 (coffee beans, milk, cup, lid, labor)</li>
+                </ul>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 1: Calculate the contribution margin per unit</p>
+                <p class="pl-4">Contribution Margin = $4.50 - $1.50 = $3.00 per coffee</p>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 2: Calculate the break-even point in units</p>
+                <p class="pl-4">Break-Even Point = $8,000 ÷ $3.00 = 2,667 coffees per month</p>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 3: Calculate the break-even point in sales dollars</p>
+                <p class="pl-4">Break-Even Point = 2,667 × $4.50 = $12,000 in revenue</p>
+              </div>
+            </div>
+            
+            <div class="mt-4 pt-4 border-t">
+              <p>This means the coffee shop must sell 2,667 coffees or generate $12,000 in revenue each month just to cover its costs. Any sales beyond this point contribute to profit.</p>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Break-Even Analysis Chart</h3>
+          <p class="mb-4">A break-even chart visually represents the relationship between costs, revenue, and profit or loss:</p>
+          <ul class="list-disc pl-6 mb-6 space-y-1">
+            <li>The x-axis shows sales volume in units</li>
+            <li>The y-axis shows dollars</li>
+            <li>The fixed cost line is horizontal</li>
+            <li>The total cost line starts at the fixed cost amount and increases with volume</li>
+            <li>The revenue line starts at zero and increases with volume</li>
+            <li>The break-even point is where the revenue and total cost lines intersect</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>Calculate your break-even point for different scenarios, such as higher pricing, lower costs, or different product mixes. This sensitivity analysis helps you understand how changes in your business model affect profitability.</p>
+          </div>
+        `
+      },
+      {
+        title: "Using Break-Even Analysis",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Strategic Uses of Break-Even Analysis</h2>
+          <p class="mb-6">Break-even analysis goes beyond just knowing when you'll start making a profit. It's a versatile tool that can inform many business decisions:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Pricing Decisions</h3>
+              <p>Break-even analysis helps determine how pricing changes affect the number of units you need to sell to break even.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Example:</strong> Raising your price from $10 to $12 might reduce your break-even point from 1,000 units to 750 units, making your goals more achievable.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">New Product Evaluation</h3>
+              <p>Evaluate whether a new product idea can reach its break-even point within a reasonable time frame.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Action item:</strong> Calculate the market size needed to reach break-even and assess if it's realistic.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Cost Management</h3>
+              <p>Identify which costs have the biggest impact on your break-even point and focus cost-reduction efforts there.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Strategy:</strong> Often, reducing fixed costs has a more dramatic effect on break-even than variable costs.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Sales Targets</h3>
+              <p>Set realistic sales goals based on breaking even and then achieving target profit levels.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Formula:</strong> Units to achieve target profit = (Fixed Costs + Target Profit) ÷ Contribution Margin
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Limitations of Break-Even Analysis</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-1">
+            <li>Assumes costs can be neatly categorized as fixed or variable</li>
+            <li>Assumes selling price remains constant at all volumes</li>
+            <li>Doesn't account for changing market conditions</li>
+            <li>Works best for businesses with a single product or simple product mix</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, Kevin O'Leary often asks, "How long until you break even?" He knows that the path to break-even indicates whether a business model is viable. Companies with clear, achievable break-even points are more attractive investments than those requiring massive scale to cover their costs.</p>
+          </div>
+        `
+      }
+    ]
+  },
   "cap-table": {
     title: "Cap Table (Capitalization Table)",
     description: "Track company ownership, equity distribution, and dilution through funding rounds. Learn how to read, build, and use a cap table for investor negotiations.",
@@ -599,59 +742,1752 @@ const moduleContent = {
       }
     ]
   },
-  "debt-equity": {
-    title: "Debt vs. Equity",
-    description: "Understand the difference between debt and equity financing. Learn when to use each, and how they impact control, risk, and growth.",
+  "ebitda": {
+    title: "EBITDA",
+    description: "Learn to calculate and interpret Earnings Before Interest, Taxes, Depreciation and Amortization as a measure of a company's operational performance.",
     sections: [
       {
-        title: "Debt vs. Equity Financing",
+        title: "What is EBITDA?",
         content: `
-          <h2 class="text-2xl font-bold mb-4">Debt vs. Equity Financing</h2>
-          <p class="mb-4">Debt financing means borrowing money that must be repaid with interest. Equity financing means selling ownership in your company in exchange for capital. Each has pros and cons for startups, and the right choice depends on your goals, risk tolerance, and growth plans.</p>
-          <ul class="list-disc pl-6 mb-4">
-            <li>Debt: No ownership dilution, but must repay principal and interest</li>
-            <li>Equity: No repayment required, but you give up some control and future profits</li>
-            <li>Debt is often cheaper but riskier if cash flow is uncertain</li>
-            <li>Equity brings partners and expertise, but dilutes your stake</li>
+          <h2 class="text-2xl font-bold mb-4">What is EBITDA?</h2>
+          <p class="mb-4">EBITDA stands for Earnings Before Interest, Taxes, Depreciation, and Amortization. It's a widely used measure of a company's operational performance that removes the effects of financing decisions, tax environments, and non-cash expenses.</p>
+          <p class="mb-6">EBITDA helps investors, analysts, and business owners assess a company's operating profitability and cash flow by focusing on the core business operations rather than factors that might vary due to accounting practices, capital structure, or tax strategies.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The EBITDA Formula</h3>
+          <div class="bg-shark-50 p-3 rounded-md font-mono mb-6">
+            <p>EBITDA = Net Income + Interest + Taxes + Depreciation + Amortization</p>
+          </div>
+          <p class="mb-4">Alternatively, you can calculate EBITDA from operating profit:</p>
+          <div class="bg-shark-50 p-3 rounded-md font-mono mb-6">
+            <p>EBITDA = Operating Profit + Depreciation + Amortization</p>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Why EBITDA Matters</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Operational Focus:</strong> Provides clarity on core business performance</li>
+            <li><strong>Comparability:</strong> Allows comparison between companies with different capital structures, tax situations, or depreciation policies</li>
+            <li><strong>Valuation Tool:</strong> Often used as a basis for business valuation (e.g., "5x EBITDA")</li>
+            <li><strong>Cash Flow Proxy:</strong> Serves as a rough approximation of cash flow generation capacity</li>
           </ul>
-          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
             <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Example</h4>
-            <p>Sharks may offer debt, equity, or a mix (convertible notes, SAFE, royalties). Be ready to explain why you prefer one over the other and how it fits your business plan.</p>
+            <p>When entrepreneurs appear on Shark Tank, investors like Kevin O'Leary often ask about EBITDA when discussing valuation. For instance, if a company has $500,000 in EBITDA and the entrepreneur values the company at $5 million, that's a 10x EBITDA multiple, which the Sharks might consider too high for certain industries.</p>
+          </div>
+        `
+      },
+      {
+        title: "Calculating and Using EBITDA",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Calculating and Using EBITDA</h2>
+          <p class="mb-6">Let's walk through a practical example of calculating EBITDA and understanding what the number tells us:</p>
+          
+          <div class="border rounded-lg p-5 mb-6">
+            <h3 class="text-xl font-semibold mb-3">EBITDA Calculation Example</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="font-medium">Company Financial Data:</p>
+                <ul class="list-none pl-4 space-y-1">
+                  <li>Revenue: $10,000,000</li>
+                  <li>Cost of Goods Sold: $6,000,000</li>
+                  <li>Operating Expenses: $2,500,000</li>
+                  <li>Depreciation: $500,000</li>
+                  <li>Amortization: $200,000</li>
+                  <li>Interest Expense: $300,000</li>
+                  <li>Tax Expense: $125,000</li>
+                </ul>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 1: Calculate Net Income</p>
+                <p class="pl-4">Revenue - COGS - Operating Expenses - Depreciation - Amortization - Interest - Taxes</p>
+                <p class="pl-4">$10,000,000 - $6,000,000 - $2,500,000 - $500,000 - $200,000 - $300,000 - $125,000 = $375,000</p>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 2: Calculate EBITDA</p>
+                <p class="pl-4">Net Income + Interest + Taxes + Depreciation + Amortization</p>
+                <p class="pl-4">$375,000 + $300,000 + $125,000 + $500,000 + $200,000 = $1,500,000</p>
+              </div>
+            </div>
+            
+            <div class="mt-4 pt-4 border-t">
+              <p>In this example, while the company's net income is $375,000, its EBITDA is $1,500,000, showing much stronger operational performance before accounting for non-operational factors.</p>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">EBITDA-Related Metrics</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>EBITDA Margin:</strong> EBITDA ÷ Revenue
+              <p class="text-sm ml-4">Shows what percentage of revenue is converted to EBITDA. Higher margins indicate operational efficiency.</p>
+            </li>
+            <li>
+              <strong>Enterprise Value (EV) to EBITDA:</strong> EV ÷ EBITDA
+              <p class="text-sm ml-4">A valuation multiple that compares a company's total value to its operational earnings.</p>
+            </li>
+            <li>
+              <strong>Debt to EBITDA:</strong> Total Debt ÷ EBITDA
+              <p class="text-sm ml-4">Measures leverage and shows how many years of EBITDA would be needed to pay off all debt.</p>
+            </li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>While EBITDA is useful, don't rely on it exclusively. It ignores capital expenditures required to maintain assets and working capital needs, which can lead to overestimating a company's actual cash generation capability.</p>
+          </div>
+        `
+      },
+      {
+        title: "EBITDA Limitations and Adjustments",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">EBITDA Limitations and Adjustments</h2>
+          <p class="mb-6">While EBITDA is a valuable metric, it has limitations and is often adjusted to provide a more accurate picture of a business's operational performance.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Limitations of EBITDA</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Ignores Capital Expenditures:</strong> Businesses eventually need to replace depreciated assets, which EBITDA doesn't account for</li>
+            <li><strong>Overlooks Working Capital:</strong> Changes in inventory or accounts receivable affect cash flow but aren't reflected in EBITDA</li>
+            <li><strong>Not Standardized:</strong> Not defined by Generally Accepted Accounting Principles (GAAP), allowing for manipulation</li>
+            <li><strong>Debt Blind:</strong> A company with high EBITDA might still struggle if it has significant debt obligations</li>
+            <li><strong>Tax Reality:</strong> Taxes are a real expense that EBITDA ignores</li>
+          </ul>
+          
+          <h3 class="text-xl font-semibold mb-3">Adjusted EBITDA</h3>
+          <p class="mb-4">Many companies report "Adjusted EBITDA," which removes unusual or non-recurring items to show a more normalized view of operations. Common adjustments include:</p>
+          
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Items Often Added Back</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>One-time restructuring costs</li>
+                <li>Litigation expenses or settlements</li>
+                <li>Stock-based compensation</li>
+                <li>Foreign exchange losses</li>
+                <li>Acquisition-related expenses</li>
+                <li>Non-recurring professional fees</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Items Often Deducted</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>One-time gains from asset sales</li>
+                <li>Insurance proceeds</li>
+                <li>Foreign exchange gains</li>
+                <li>Unusual income items</li>
+                <li>Benefits from legal settlements</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="border-l-4 border-shark-300 pl-4 mb-6">
+            <h3 class="text-xl font-semibold mb-2">Pro-Forma EBITDA</h3>
+            <p>In acquisition situations, companies often present "Pro-Forma EBITDA," which shows what EBITDA would have been if recent changes (like cost-cutting measures or new contracts) had been in place for the entire period.</p>
+            <div class="mt-2 text-sm text-shark-600">
+              <strong>Example:</strong> "We've just signed a $1M contract that will add $400K annually to our EBITDA going forward."
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, entrepreneurs sometimes present adjusted EBITDA figures to make their businesses look more profitable. Savvy Sharks like Mark Cuban often challenge these adjustments, asking, "What's your real EBITDA without all these add-backs?" They want to see the true operational performance without financial engineering.</p>
           </div>
         `
       }
     ]
   },
-  "depreciation": {
-    title: "Depreciation",
-    description: "Spread out the cost of assets over their useful life. Learn methods, tax implications, and how depreciation affects your financials.",
+  "gross-margin": {
+    title: "Gross Margin",
+    description: "Learn how to calculate and interpret gross margin, a key profitability metric that shows how efficiently a company converts sales into profit before operating expenses.",
     sections: [
       {
-        title: "What is Depreciation?",
+        title: "Understanding Gross Margin",
         content: `
-          <h2 class="text-2xl font-bold mb-4">What is Depreciation?</h2>
-          <p class="mb-4">Depreciation is the process of allocating the cost of a tangible asset over its useful life. It reduces taxable income and reflects the asset's declining value. Depreciation is a non-cash expense, but it impacts your profit and tax liability.</p>
-          <ul class="list-disc pl-6 mb-4">
-            <li>Common for equipment, vehicles, buildings</li>
-            <li>Not used for land or intangible assets</li>
-            <li>Reduces reported profit, but not cash flow</li>
-            <li>Required for GAAP and tax reporting</li>
+          <h2 class="text-2xl font-bold mb-4">What is Gross Margin?</h2>
+          <p class="mb-4">Gross margin (or gross profit margin) is the percentage of revenue that exceeds the cost of goods sold (COGS). It represents the profit a company makes after deducting the direct costs associated with producing its goods or services, but before accounting for overhead, payroll, taxes, and other operating expenses.</p>
+          <p class="mb-6">Gross margin is one of the most fundamental metrics for evaluating a business's financial health and pricing strategy. A healthy gross margin ensures there's enough money left over to cover operating expenses and still generate a net profit.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The Gross Margin Formula</h3>
+          <div class="space-y-2 mb-6">
+            <div class="bg-shark-50 p-3 rounded-md font-mono">
+              <p>Gross Profit = Revenue - Cost of Goods Sold (COGS)</p>
+            </div>
+            <div class="bg-shark-50 p-3 rounded-md font-mono">
+              <p>Gross Margin (%) = (Gross Profit ÷ Revenue) × 100</p>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">What's Included in COGS?</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>For Physical Products:</strong> Raw materials, direct labor, manufacturing overhead, packaging</li>
+            <li><strong>For Services:</strong> Direct labor, subcontractor costs, materials used in service delivery</li>
+            <li><strong>For Software:</strong> Server costs, support personnel, third-party licenses</li>
+            <li><strong>For Retail:</strong> Wholesale cost of goods, freight-in, customs/duties</li>
           </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Example</h4>
+            <p>On Shark Tank, gross margin is one of the first metrics the Sharks ask about. When an entrepreneur says, "Our product costs $10 to make and sells for $30," the Sharks immediately know the gross margin is 67% ($20 profit on $30 revenue). A high gross margin gives Sharks confidence that the business can scale profitably and weather competitive pressures.</p>
+          </div>
         `
       },
       {
-        title: "Depreciation Methods",
+        title: "Analyzing Gross Margin",
         content: `
-          <h2 class="text-2xl font-bold mb-4">Depreciation Methods</h2>
-          <ul class="list-disc pl-6 mb-4">
-            <li>Straight-line: Equal expense each year</li>
-            <li>Declining balance: Higher expense in early years</li>
-            <li>Units of production: Based on usage</li>
-            <li>Bonus depreciation: Accelerated write-off for tax purposes</li>
+          <h2 class="text-2xl font-bold mb-4">Analyzing Gross Margin</h2>
+          <p class="mb-6">Gross margin varies widely by industry, so it's important to understand what constitutes a "good" margin in your specific business context. Here's how to analyze and interpret gross margin:</p>
+          
+          <div class="border rounded-lg p-5 mb-6">
+            <h3 class="text-xl font-semibold mb-3">Gross Margin by Industry (Examples)</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div>
+                <h4 class="font-medium mb-1">High Margin (50%+)</h4>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                  <li>Software/SaaS: 70-90%</li>
+                  <li>Luxury Goods: 60-80%</li>
+                  <li>Pharmaceuticals: 70-90%</li>
+                  <li>Fashion: 40-60%</li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 class="font-medium mb-1">Medium Margin (20-50%)</h4>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                  <li>Restaurants: 30-45%</li>
+                  <li>Consumer Electronics: 20-40%</li>
+                  <li>Furniture: 30-45%</li>
+                  <li>Specialty Retail: 30-50%</li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 class="font-medium mb-1">Low Margin (<20%)</h4>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                  <li>Grocery Stores: 5-15%</li>
+                  <li>Discount Retail: 10-15%</li>
+                  <li>Auto Dealerships: 5-12%</li>
+                  <li>Transportation: 5-15%</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Gross Margin Calculation Example</h3>
+          <div class="border rounded-lg p-4 mb-6">
+            <div class="space-y-3">
+              <div>
+                <p class="font-medium">Company Financial Data:</p>
+                <ul class="list-none pl-4 space-y-1">
+                  <li>Annual Revenue: $1,000,000</li>
+                  <li>Cost of Goods Sold: $400,000</li>
+                </ul>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 1: Calculate Gross Profit</p>
+                <p class="pl-4">Gross Profit = $1,000,000 - $400,000 = $600,000</p>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 2: Calculate Gross Margin</p>
+                <p class="pl-4">Gross Margin = ($600,000 ÷ $1,000,000) × 100 = 60%</p>
+              </div>
+              
+              <div>
+                <p class="font-medium">Analysis:</p>
+                <p class="pl-4">This company converts 60% of its sales revenue into gross profit, which is strong for most industries. If operating expenses are managed well, this should lead to healthy net profits.</p>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">What Gross Margin Tells You</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Pricing Power:</strong> High margins often indicate strong brand value or unique offerings</li>
+            <li><strong>Production Efficiency:</strong> Improving margins over time may reflect better cost management</li>
+            <li><strong>Competitive Position:</strong> Higher margins than competitors suggest a competitive advantage</li>
+            <li><strong>Scalability:</strong> Businesses with high gross margins often scale more easily</li>
           </ul>
-          <div class="bg-shark-50 p-4 rounded-lg mb-4">
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
             <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
-            <p>Work with an accountant to choose the best depreciation method for your business and maximize tax benefits.</p>
+            <p>Track your gross margin over time and for each product line. Declining margins might indicate increasing competition, rising costs, or pricing pressure—all of which require strategic responses.</p>
+          </div>
+        `
+      },
+      {
+        title: "Improving Gross Margin",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Improving Gross Margin</h2>
+          <p class="mb-6">Enhancing your gross margin is one of the most effective ways to increase profitability. Even small improvements can significantly impact your bottom line. Here are strategies to consider:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Pricing Strategies</h3>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>Implement value-based pricing instead of cost-plus pricing</li>
+                <li>Test price elasticity to find optimal price points</li>
+                <li>Create premium versions or add-ons with higher margins</li>
+                <li>Reduce discounting or make discounts more strategic</li>
+                <li>Bundle high-margin products with lower-margin ones</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Cost Reduction</h3>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>Negotiate better terms with suppliers for volume discounts</li>
+                <li>Optimize production processes to reduce waste</li>
+                <li>Implement just-in-time inventory to reduce carrying costs</li>
+                <li>Evaluate make-vs-buy decisions for components</li>
+                <li>Redesign products to use less expensive materials without sacrificing quality</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Product Mix Optimization</h3>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>Promote higher-margin products more aggressively</li>
+                <li>Consider phasing out lowest-margin products</li>
+                <li>Train sales team to upsell higher-margin options</li>
+                <li>Focus marketing budget on products with better margins</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Operational Efficiency</h3>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>Invest in automation to reduce labor costs</li>
+                <li>Optimize supply chain and logistics</li>
+                <li>Reduce defect rates and returns</li>
+                <li>Implement economies of scale through higher volume</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">The Impact of Margin Improvements</h3>
+          <div class="border rounded-lg p-4 mb-6">
+            <p class="mb-3">Consider a company with:</p>
+            <ul class="list-none pl-4 space-y-1 mb-4">
+              <li>Revenue: $2,000,000</li>
+              <li>COGS: $1,000,000</li>
+              <li>Gross Profit: $1,000,000</li>
+              <li>Gross Margin: 50%</li>
+              <li>Operating Expenses: $800,000</li>
+              <li>Net Profit: $200,000</li>
+            </ul>
+            
+            <p class="mb-3">If they improve gross margin by just 5 percentage points to 55%:</p>
+            <ul class="list-none pl-4 space-y-1 mb-4">
+              <li>Revenue: $2,000,000</li>
+              <li>COGS: $900,000 (reduced by $100,000)</li>
+              <li>Gross Profit: $1,100,000</li>
+              <li>Operating Expenses: $800,000 (unchanged)</li>
+              <li>Net Profit: $300,000</li>
+            </ul>
+            
+            <p class="font-medium">Result: A 5 percentage point improvement in gross margin increased net profit by 50%!</p>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>Lori Greiner, known as the "Queen of QVC," often focuses on gross margins when evaluating products. She knows that retail partners will demand significant discounts, so she typically looks for products with at least 65-70% gross margins to ensure there's enough room for wholesale pricing while maintaining profitability.</p>
+            <p class="mt-2">She once told an entrepreneur, "I need those margins to be higher if we're going to sell through retail channels. Can you get your manufacturing costs down?"</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "inventory-management": {
+    title: "Inventory Management",
+    description: "Learn best practices for controlling inventory costs, optimizing stock levels, and improving cash flow in your business.",
+    sections: [
+      {
+        title: "Inventory Management Basics",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Inventory Management?</h2>
+          <p class="mb-4">Inventory management is the process of ordering, storing, tracking, and controlling inventory. Effective inventory management ensures your business has the right products in the right quantities at the right time while minimizing costs.</p>
+          <p class="mb-6">Good inventory management is crucial for both product-based businesses and service businesses that maintain supplies. It directly impacts cash flow, customer satisfaction, and profitability.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Inventory Management Concepts</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Stock Levels:</strong> Minimum, maximum, and reorder points for each product</li>
+            <li><strong>Lead Time:</strong> Time between ordering and receiving inventory</li>
+            <li><strong>Safety Stock:</strong> Extra inventory kept to prevent stockouts</li>
+            <li><strong>Carrying Costs:</strong> Expenses associated with holding inventory (storage, insurance, etc.)</li>
+            <li><strong>Stockout Costs:</strong> Lost sales and damaged customer relationships from inventory shortages</li>
+            <li><strong>Deadstock:</strong> Inventory that hasn't sold and likely won't sell</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Example</h4>
+            <p>On Shark Tank, entrepreneurs are frequently asked about inventory management. Mark Cuban often inquires about inventory turnover and working capital requirements, while Lori Greiner wants to know about manufacturing lead times and minimum order quantities.</p>
+            <p class="mt-2">In one memorable episode, an entrepreneur lost a deal because they had $500,000 tied up in slow-moving inventory, prompting Kevin O'Leary to say, "That's not a business, that's a warehouse!"</p>
+          </div>
+        `
+      },
+      {
+        title: "Inventory Control Methods",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Inventory Control Methods</h2>
+          <p class="mb-6">Several proven inventory control methods can help businesses maintain optimal inventory levels. The right approach depends on your business model, industry, and specific needs.</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Economic Order Quantity (EOQ)</h3>
+              <p>A formula that calculates the ideal order quantity to minimize total inventory costs, including ordering and holding costs.</p>
+              <div class="mt-3 p-2 bg-shark-50 rounded-md">
+                <p class="text-sm font-medium">Formula:</p>
+                <p class="font-mono">EOQ = √(2DS/H)</p>
+                <p class="text-sm">Where: D = Annual demand, S = Order cost, H = Annual holding cost per unit</p>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Just-in-Time (JIT)</h3>
+              <p>Receiving inventory only as needed for production or sales, minimizing storage costs and waste.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Benefits:</strong> Reduced holding costs, less warehouse space needed, fresher inventory
+              </div>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Risks:</strong> Vulnerable to supply chain disruptions, requires reliable suppliers
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">ABC Analysis</h3>
+              <p>Categorizing inventory items based on their value and importance:</p>
+              <ul class="list-disc pl-6 space-y-1 text-sm mt-2">
+                <li><strong>A Items:</strong> High-value items (70-80% of value, 10-20% of inventory)</li>
+                <li><strong>B Items:</strong> Medium-value items (15-25% of value, 30% of inventory)</li>
+                <li><strong>C Items:</strong> Low-value items (5% of value, 50-60% of inventory)</li>
+              </ul>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Strategy:</strong> Focus most control efforts on "A" items
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">FIFO, LIFO, and Weighted Average</h3>
+              <p>Methods for valuing inventory and determining cost of goods sold:</p>
+              <ul class="list-disc pl-6 space-y-1 text-sm mt-2">
+                <li><strong>FIFO (First In, First Out):</strong> Oldest inventory sold first</li>
+                <li><strong>LIFO (Last In, First Out):</strong> Newest inventory sold first</li>
+                <li><strong>Weighted Average:</strong> Average cost of all similar inventory items</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>Don't apply the same inventory control method to all products. Use ABC analysis to identify your most valuable inventory, then apply more rigorous controls to those items while using simpler approaches for less valuable stock.</p>
+          </div>
+        `
+      },
+      {
+        title: "Inventory Management Technology",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Inventory Management Technology</h2>
+          <p class="mb-6">Modern technology has transformed inventory management, making it more accurate, efficient, and data-driven. These tools can help businesses of all sizes optimize their inventory processes.</p>
+          
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Inventory Management Software</h4>
+              <p class="mb-2">Dedicated systems for tracking inventory levels, orders, sales, and deliveries.</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Automatically calculate reorder points</li>
+                <li>Generate purchase orders</li>
+                <li>Track inventory across multiple locations</li>
+                <li>Forecast demand based on sales history</li>
+                <li>Integrate with accounting and e-commerce</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Barcode and RFID Systems</h4>
+              <p class="mb-2">Technologies for quickly and accurately tracking inventory movement.</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Reduce human error in data entry</li>
+                <li>Speed up receiving and shipping processes</li>
+                <li>Enable real-time inventory visibility</li>
+                <li>Improve accuracy of inventory counts</li>
+                <li>Reduce labor costs for inventory handling</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Metrics to Track</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Inventory Turnover Ratio:</strong> How many times inventory is sold and replaced in a period
+              <p class="text-sm ml-4">Formula: Cost of Goods Sold ÷ Average Inventory</p>
+            </li>
+            <li>
+              <strong>Days of Inventory on Hand:</strong> Average number of days it takes to sell inventory
+              <p class="text-sm ml-4">Formula: (Average Inventory ÷ Cost of Goods Sold) × 365</p>
+            </li>
+            <li>
+              <strong>Stockout Rate:</strong> Percentage of time items are out of stock
+              <p class="text-sm ml-4">Formula: (Number of Stockouts ÷ Total Number of Items) × 100</p>
+            </li>
+            <li>
+              <strong>Carrying Cost:</strong> Total cost of holding inventory
+              <p class="text-sm ml-4">Typically 15-30% of inventory value annually</p>
+            </li>
+            <li>
+              <strong>Perfect Order Rate:</strong> Percentage of orders delivered on time, complete, and damage-free
+            </li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>Daymond John, who built FUBU into a fashion empire, often emphasizes the importance of inventory management. In the fashion industry, having too much inventory of last season's styles can quickly erode profits, while stockouts of popular items mean missed sales opportunities.</p>
+            <p class="mt-2">He frequently asks entrepreneurs, "What happens if this doesn't sell as quickly as you expect? How will you manage that inventory without draining your cash?"</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "inventory-turnover": {
+    title: "Inventory Turnover",
+    description: "Measure how efficiently your business manages inventory by calculating how many times inventory is sold and replaced in a given period.",
+    sections: [
+      {
+        title: "Understanding Inventory Turnover",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Inventory Turnover?</h2>
+          <p class="mb-4">Inventory turnover is a financial ratio that measures how many times a company sells and replaces its inventory during a specific period, typically a year. It indicates how efficiently a business is managing its inventory and generating sales from its investment in goods.</p>
+          <p class="mb-6">A high inventory turnover generally indicates efficient inventory management, strong sales, and good liquidity. A low turnover might suggest overstocking, obsolescence, or weak sales.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The Inventory Turnover Formula</h3>
+          <div class="bg-shark-50 p-3 rounded-md font-mono mb-2">
+            <p>Inventory Turnover Ratio = Cost of Goods Sold ÷ Average Inventory</p>
+          </div>
+          <p class="mb-4 text-sm">Where Average Inventory = (Beginning Inventory + Ending Inventory) ÷ 2</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Related Metric: Days Sales of Inventory (DSI)</h3>
+          <p class="mb-2">Days Sales of Inventory (also called Days Inventory Outstanding) converts the inventory turnover ratio into the average number of days it takes to sell inventory.</p>
+          <div class="bg-shark-50 p-3 rounded-md font-mono mb-6">
+            <p>Days Sales of Inventory = 365 ÷ Inventory Turnover Ratio</p>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Example</h4>
+            <p>When evaluating a retail business on Shark Tank, Robert Herjavec might ask about inventory turnover. If an entrepreneur reports an inventory turnover of 3 (meaning they sell through their inventory three times per year), Robert might point out that successful retailers often achieve turnover rates of 6-8, suggesting there's room for improvement in inventory management.</p>
+          </div>
+        `
+      },
+      {
+        title: "Calculating and Interpreting Inventory Turnover",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Calculating and Interpreting Inventory Turnover</h2>
+          <p class="mb-6">Let's walk through a practical example of calculating inventory turnover and understanding what the results mean for your business:</p>
+          
+          <div class="border rounded-lg p-5 mb-6">
+            <h3 class="text-xl font-semibold mb-3">Inventory Turnover Calculation Example</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="font-medium">Company Financial Data:</p>
+                <ul class="list-none pl-4 space-y-1">
+                  <li>Beginning Inventory (Jan 1): $250,000</li>
+                  <li>Ending Inventory (Dec 31): $350,000</li>
+                  <li>Cost of Goods Sold (Annual): $1,800,000</li>
+                </ul>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 1: Calculate Average Inventory</p>
+                <p class="pl-4">Average Inventory = ($250,000 + $350,000) ÷ 2 = $300,000</p>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 2: Calculate Inventory Turnover Ratio</p>
+                <p class="pl-4">Inventory Turnover = $1,800,000 ÷ $300,000 = 6</p>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 3: Calculate Days Sales of Inventory</p>
+                <p class="pl-4">DSI = 365 ÷ 6 = 60.83 days</p>
+              </div>
+            </div>
+            
+            <div class="mt-4 pt-4 border-t">
+              <p>Interpretation: This company sells through its entire inventory 6 times per year, or roughly once every 61 days. Whether this is good or not depends on the industry.</p>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Benchmarking Inventory Turnover by Industry</h3>
+          <p class="mb-4">Inventory turnover varies dramatically by industry. Here are some typical ranges:</p>
+          
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full text-sm">
+              <thead>
+                <tr>
+                  <th class="pr-4 text-left">Industry</th>
+                  <th class="pr-4 text-left">Typical Inventory Turnover</th>
+                  <th class="text-left">Typical DSI (Days)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Grocery/Supermarkets</td>
+                  <td>12-18</td>
+                  <td>20-30</td>
+                </tr>
+                <tr>
+                  <td>Fashion Retail</td>
+                  <td>4-6</td>
+                  <td>60-90</td>
+                </tr>
+                <tr>
+                  <td>Consumer Electronics</td>
+                  <td>5-8</td>
+                  <td>45-73</td>
+                </tr>
+                <tr>
+                  <td>Furniture</td>
+                  <td>3-5</td>
+                  <td>73-122</td>
+                </tr>
+                <tr>
+                  <td>Automotive Parts</td>
+                  <td>2-4</td>
+                  <td>91-183</td>
+                </tr>
+                <tr>
+                  <td>Jewelry</td>
+                  <td>1-2</td>
+                  <td>183-365</td>
+                </tr>
+                <tr>
+                  <td>Fast Food</td>
+                  <td>20-40</td>
+                  <td>9-18</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>When analyzing inventory turnover, don't just look at the aggregate number. Calculate it for different product categories or SKUs to identify which items are moving quickly and which are tying up capital with slow sales.</p>
+          </div>
+        `
+      },
+      {
+        title: "Improving Inventory Turnover",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Improving Inventory Turnover</h2>
+          <p class="mb-6">Improving inventory turnover can free up cash, reduce storage costs, and minimize the risk of obsolescence. Here are strategies to optimize your inventory turnover:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Improve Demand Forecasting</h3>
+              <p>Use historical sales data, trend analysis, and seasonality factors to better predict future inventory needs.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Action item:</strong> Implement inventory forecasting software that considers multiple variables like seasonality, promotions, and market trends.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Implement Just-in-Time Inventory</h3>
+              <p>Receive goods only as they are needed in the production process or for sales.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Example:</strong> A restaurant that receives fresh ingredients three times a week instead of stocking up for two weeks at once.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Optimize Product Mix</h3>
+              <p>Identify and focus on fast-moving products while reducing investment in slow movers.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Strategy:</strong> Use ABC analysis to classify inventory and adjust stocking levels accordingly.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Establish Min-Max Inventory Levels</h3>
+              <p>Set minimum and maximum inventory levels for each product to prevent both stockouts and overstocking.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Technique:</strong> Use reorder point formulas that account for lead time and safety stock requirements.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Clear Obsolete Inventory</h3>
+              <p>Regularly identify and liquidate slow-moving, obsolete, or excess inventory.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Options:</strong> Clearance sales, bundle deals, return to vendors, or donate for tax benefits.
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Balancing Act: Turnover vs. Stockouts</h3>
+          <p class="mb-4">While higher inventory turnover is generally better, pushing it too high can lead to stockouts and lost sales. The key is finding the optimal balance that maximizes cash flow without sacrificing customer satisfaction.</p>
+          
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Signs of Too-Low Turnover</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Large amounts of capital tied up in inventory</li>
+                <li>Increasing storage costs</li>
+                <li>Product obsolescence or spoilage</li>
+                <li>Significant discounting needed to move stock</li>
+                <li>Cash flow constraints despite good sales</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Signs of Too-High Turnover</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Frequent stockouts of popular items</li>
+                <li>Rush shipping costs for emergency orders</li>
+                <li>Loss of bulk purchase discounts</li>
+                <li>Decreased customer satisfaction</li>
+                <li>Lost sales opportunities</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>Barbara Corcoran often evaluates how entrepreneurs manage inventory cash flow. In one episode, she praised a founder who had negotiated 90-day payment terms with suppliers while turning inventory every 30 days, effectively allowing the business to grow using supplier financing rather than investor capital.</p>
+            <p class="mt-2">She told them, "You've created a business that generates cash instead of consuming it. That's what makes you investable."</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "market-research": {
+    title: "Market Research",
+    description: "Learn how to collect, analyze, and interpret information about your target market, competitors, and industry to make informed business decisions.",
+    sections: [
+      {
+        title: "Market Research Fundamentals",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Market Research?</h2>
+          <p class="mb-4">Market research is the process of gathering, analyzing, and interpreting information about a market, a product or service, and potential customers. It provides critical insights that help businesses identify opportunities, minimize risks, and make data-driven decisions.</p>
+          <p class="mb-6">Effective market research answers key questions like: Who are my customers? What do they want? How much will they pay? Who are my competitors? How big is my market? How is the market evolving?</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Types of Market Research</h3>
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Primary Research</h4>
+              <p class="mb-2">Original research you conduct yourself to gather new data.</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Customer surveys and questionnaires</li>
+                <li>Focus groups and interviews</li>
+                <li>Field trials and observations</li>
+                <li>User testing</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Secondary Research</h4>
+              <p class="mb-2">Using existing data collected by others.</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Industry reports and market studies</li>
+                <li>Government data and statistics</li>
+                <li>Trade association publications</li>
+                <li>Competitor analysis and benchmarking</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Benefits of Market Research</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Reduces Business Risks:</strong> Testing ideas before full investment</li>
+            <li><strong>Identifies Opportunities:</strong> Discovering unmet needs or emerging trends</li>
+            <li><strong>Establishes Benchmarks:</strong> Setting realistic goals based on market standards</li>
+            <li><strong>Solves Business Challenges:</strong> Diagnosing issues with marketing, products, or pricing</li>
+            <li><strong>Enhances Communication:</strong> Understanding how to speak to target customers</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Example</h4>
+            <p>On Shark Tank, entrepreneurs who can back up their business plans with solid market research typically fare better. When an entrepreneur says, "The market size is $1 billion," Sharks immediately ask, "How do you know that? What research supports your claim?"</p>
+            <p class="mt-2">Those who respond with specific data from credible sources gain credibility, while those who admit they're just guessing often lose investor interest.</p>
+          </div>
+        `
+      },
+      {
+        title: "Conducting Market Research",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Conducting Market Research</h2>
+          <p class="mb-6">Whether you're launching a new business or expanding an existing one, following a structured approach to market research will yield more reliable insights.</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 1: Define Your Research Objectives</h3>
+              <p>Start by clearly articulating what you want to learn and why.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Example questions:</strong>
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>Is there demand for my product/service?</li>
+                  <li>Who are my ideal customers and what motivates them?</li>
+                  <li>What pricing strategy will optimize sales and profits?</li>
+                  <li>How does my offering compare to competitors?</li>
+                  <li>What marketing messages resonate with my target audience?</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 2: Identify Your Target Market</h3>
+              <p>Define the specific segment of the market you want to research.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Consider factors like:</strong>
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>Demographics: Age, gender, income, education, location</li>
+                  <li>Psychographics: Values, interests, lifestyle, attitudes</li>
+                  <li>Behavior: Purchasing habits, brand loyalty, usage patterns</li>
+                  <li>Needs and pain points: Problems they're trying to solve</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 3: Choose Your Research Methods</h3>
+              <p>Select techniques that align with your objectives, timeline, and budget.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Quantitative methods</strong> (for numerical data):
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>Online surveys</li>
+                  <li>Phone questionnaires</li>
+                  <li>Website analytics</li>
+                </ul>
+                
+                <strong>Qualitative methods</strong> (for insights and opinions):
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>Focus groups</li>
+                  <li>In-depth interviews</li>
+                  <li>Observation studies</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 4: Collect and Analyze Data</h3>
+              <p>Gather information systematically and look for patterns, trends, and insights.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Tips:</strong>
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>Use a mix of methods for more comprehensive results</li>
+                  <li>Ensure sample sizes are adequate for reliable conclusions</li>
+                  <li>Look for both statistical significance and practical relevance</li>
+                  <li>Consider segmenting data to find patterns within subgroups</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 5: Draw Conclusions and Take Action</h3>
+              <p>Transform insights into strategic decisions and concrete plans.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Applications:</strong>
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>Refine your product or service offering</li>
+                  <li>Adjust pricing strategy</li>
+                  <li>Target marketing efforts more effectively</li>
+                  <li>Prioritize features or benefits in messaging</li>
+                  <li>Identify new market opportunities</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>For startups with limited budgets, consider these cost-effective research approaches:</p>
+            <ul class="list-disc pl-6 mt-2">
+              <li>Use Google Trends to analyze search volumes and patterns</li>
+              <li>Conduct competitor analysis by reviewing their websites, pricing, and customer reviews</li>
+              <li>Create landing pages to test interest in concepts before building them</li>
+              <li>Join relevant social media groups to observe discussions and pain points</li>
+              <li>Offer pre-sales to gauge willingness to pay</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        title: "Competitive Analysis",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Competitive Analysis</h2>
+          <p class="mb-6">A thorough competitive analysis helps you understand your market position, identify opportunities, and develop strategies to differentiate your business. Here's how to conduct an effective analysis of your competition:</p>
+          
+          <div class="border rounded-lg overflow-hidden mb-6">
+            <div class="bg-shark-100 p-3">
+              <h3 class="font-semibold">Competitive Analysis Framework</h3>
+            </div>
+            <div class="p-4">
+              <h4 class="font-medium mb-2">1. Identify Your Competitors</h4>
+              <ul class="list-disc pl-6 mb-4 space-y-1 text-sm">
+                <li><strong>Direct competitors:</strong> Offer similar products/services to the same target market</li>
+                <li><strong>Indirect competitors:</strong> Solve the same customer problem differently</li>
+                <li><strong>Potential competitors:</strong> Could enter your market in the future</li>
+              </ul>
+              
+              <h4 class="font-medium mb-2">2. Analyze Competitor Offerings</h4>
+              <ul class="list-disc pl-6 mb-4 space-y-1 text-sm">
+                <li>Product/service features and benefits</li>
+                <li>Quality level and positioning</li>
+                <li>Pricing strategies and models</li>
+                <li>Unique selling propositions (USPs)</li>
+                <li>Target customer segments</li>
+              </ul>
+              
+              <h4 class="font-medium mb-2">3. Evaluate Market Presence</h4>
+              <ul class="list-disc pl-6 mb-4 space-y-1 text-sm">
+                <li>Market share and growth trajectory</li>
+                <li>Brand reputation and customer loyalty</li>
+                <li>Marketing strategies and messaging</li>
+                <li>Distribution channels and partnerships</li>
+                <li>Online presence and digital strategy</li>
+              </ul>
+              
+              <h4 class="font-medium mb-2">4. Assess Strengths and Weaknesses</h4>
+              <ul class="list-disc pl-6 mb-4 space-y-1 text-sm">
+                <li>What do they do exceptionally well?</li>
+                <li>Where are they vulnerable or underperforming?</li>
+                <li>What resources or capabilities do they have?</li>
+                <li>How do customers review or rate them?</li>
+                <li>What are their limitations or constraints?</li>
+              </ul>
+              
+              <h4 class="font-medium mb-2">5. Identify Your Competitive Advantage</h4>
+              <ul class="list-disc pl-6 space-y-1 text-sm">
+                <li>How can you differentiate from competitors?</li>
+                <li>What unique value can you offer customers?</li>
+                <li>Which competitor weaknesses can you address?</li>
+                <li>What market segments are underserved?</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Competitive Analysis Tools</h3>
+          <div class="mb-6">
+            <h4 class="font-medium mb-2">SWOT Analysis</h4>
+            <p class="mb-2">Examining Strengths, Weaknesses, Opportunities, and Threats for your business and competitors.</p>
+            <div class="grid grid-cols-2 gap-3 mb-4">
+              <div class="bg-green-50 p-3 rounded">
+                <p class="font-medium text-green-700">Strengths</p>
+                <p class="text-sm">Internal factors giving you advantage</p>
+              </div>
+              <div class="bg-red-50 p-3 rounded">
+                <p class="font-medium text-red-700">Weaknesses</p>
+                <p class="text-sm">Internal factors putting you at disadvantage</p>
+              </div>
+              <div class="bg-blue-50 p-3 rounded">
+                <p class="font-medium text-blue-700">Opportunities</p>
+                <p class="text-sm">External factors you could leverage</p>
+              </div>
+              <div class="bg-orange-50 p-3 rounded">
+                <p class="font-medium text-orange-700">Threats</p>
+                <p class="text-sm">External factors that could cause problems</p>
+              </div>
+            </div>
+            
+            <h4 class="font-medium mb-2">Competitive Positioning Map</h4>
+            <p class="mb-2">A visual tool plotting competitors along two key dimensions (e.g., price vs. quality) to identify gaps in the market.</p>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>Mark Cuban often challenges entrepreneurs on their competitive awareness. In one memorable episode, he declined to invest in a business because the founder couldn't articulate how their product was differentiated from competitors'.</p>
+            <p class="mt-2">Cuban said, "The biggest red flag is that you don't know your competition. If you don't know who you're up against, how can you possibly win?"</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "net-present-value": {
+    title: "Net Present Value (NPV)",
+    description: "Understand how to calculate the current value of future cash flows to make sound investment decisions for your business.",
+    sections: [
+      {
+        title: "What is Net Present Value?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Net Present Value?</h2>
+          <p class="mb-4">Net Present Value (NPV) is a financial metric that calculates the current value of all future cash flows expected from an investment or project, minus the initial investment. It accounts for the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to its potential earning capacity.</p>
+          <p class="mb-6">NPV is a powerful decision-making tool that helps businesses determine whether a project or investment will add value. A positive NPV indicates a potentially profitable investment, while a negative NPV suggests the investment may result in a net loss.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The NPV Formula</h3>
+          <div class="bg-shark-50 p-3 rounded-md font-mono mb-4">
+            <p>NPV = Initial Investment + Σ (Cash Flow_t / (1 + r)^t)</p>
+          </div>
+          <p class="mb-6 text-sm">Where:<br>
+          • Initial Investment is a negative number (cash outflow)<br>
+          • Cash Flow_t is the net cash flow during period t<br>
+          • r is the discount rate (often the company's cost of capital)<br>
+          • t is the time period</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Why NPV Matters</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Time Value of Money:</strong> Accounts for the fact that money received in the future is worth less than money received today</li>
+            <li><strong>Investment Comparison:</strong> Provides a standardized way to compare different investment opportunities</li>
+            <li><strong>Risk Assessment:</strong> Incorporates risk through the discount rate</li>
+            <li><strong>Shareholder Value:</strong> Helps determine if an investment will increase company value</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Example</h4>
+            <p>When entrepreneurs present their businesses on Shark Tank, the Sharks are implicitly calculating NPV. They weigh the amount they're investing today against the future returns they expect to receive, discounted for risk and time.</p>
+            <p class="mt-2">Kevin O'Leary, in particular, often discusses the "present value of future cash flows" when evaluating whether a company's valuation makes sense.</p>
+          </div>
+        `
+      },
+      {
+        title: "Calculating NPV",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Calculating NPV</h2>
+          <p class="mb-6">Let's walk through a practical example of calculating the Net Present Value of a business investment:</p>
+          
+          <div class="border rounded-lg p-5 mb-6">
+            <h3 class="text-xl font-semibold mb-3">NPV Calculation Example</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="font-medium">Scenario:</p>
+                <p>A small business is considering purchasing a new piece of equipment for $50,000. The equipment is expected to generate the following cash flows:</p>
+                <ul class="list-none pl-4 space-y-1 mt-2">
+                  <li>Year 1: $15,000</li>
+                  <li>Year 2: $20,000</li>
+                  <li>Year 3: $25,000</li>
+                  <li>Year 4: $15,000</li>
+                  <li>Year 5: $10,000</li>
+                </ul>
+                <p class="mt-2">The business has a cost of capital (discount rate) of 10%.</p>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 1: Calculate the Present Value of Each Cash Flow</p>
+                <ul class="list-none pl-4 space-y-1">
+                  <li>Year 1: $15,000 ÷ (1 + 0.10)^1 = $13,636</li>
+                  <li>Year 2: $20,000 ÷ (1 + 0.10)^2 = $16,529</li>
+                  <li>Year 3: $25,000 ÷ (1 + 0.10)^3 = $18,783</li>
+                  <li>Year 4: $15,000 ÷ (1 + 0.10)^4 = $10,245</li>
+                  <li>Year 5: $10,000 ÷ (1 + 0.10)^5 = $6,209</li>
+                </ul>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 2: Calculate the Sum of Present Values</p>
+                <p class="pl-4">$13,636 + $16,529 + $18,783 + $10,245 + $6,209 = $65,402</p>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 3: Calculate NPV by Subtracting Initial Investment</p>
+                <p class="pl-4">$65,402 - $50,000 = $15,402</p>
+              </div>
+            </div>
+            
+            <div class="mt-4 pt-4 border-t">
+              <p class="font-medium">Conclusion:</p>
+              <p>The NPV of this investment is positive at $15,402, which suggests the investment is likely to add value to the business and should be accepted.</p>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">NPV Decision Rules</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>NPV > 0:</strong> The investment is expected to add value; accept the project</li>
+            <li><strong>NPV = 0:</strong> The investment is expected to break even; neutral stance</li>
+            <li><strong>NPV < 0:</strong> The investment is expected to lose value; reject the project</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>When comparing multiple projects with positive NPVs, generally choose the one with the highest NPV. However, also consider non-financial factors and resource constraints that might affect implementation.</p>
+          </div>
+        `
+      },
+      {
+        title: "NPV in Business Decisions",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">NPV in Business Decisions</h2>
+          <p class="mb-6">Net Present Value is a versatile tool that can be applied to various business decisions beyond simple equipment purchases. Here's how NPV can guide different types of business decisions:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">New Product Development</h3>
+              <p>Calculate whether the expected future revenues from a new product line will justify the research, development, and marketing costs.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Consideration:</strong> Include all costs (development, production, marketing) and be realistic about revenue projections and time to market.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Business Expansion</h3>
+              <p>Evaluate whether opening a new location or entering a new market will create shareholder value.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Consideration:</strong> Factor in the time it takes for new locations to reach maturity and profitability, which often takes longer than anticipated.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Lease vs. Buy Decisions</h3>
+              <p>Determine whether it's more financially beneficial to lease or purchase assets like equipment, vehicles, or real estate.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Consideration:</strong> Include tax implications, maintenance costs, and residual value in the analysis.
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Company Valuation</h3>
+              <p>Estimate the value of an entire business by discounting its projected future cash flows.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Consideration:</strong> This is the discounted cash flow (DCF) method, which requires careful forecasting of future revenue, expenses, and appropriate terminal value.
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Limitations of NPV</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Cash Flow Projections:</strong> NPV is only as good as the accuracy of your future cash flow estimates</li>
+            <li><strong>Discount Rate Selection:</strong> The choice of discount rate significantly affects the calculation</li>
+            <li><strong>Inflexibility:</strong> Standard NPV doesn't account for management's ability to adapt to changing conditions</li>
+            <li><strong>Non-Financial Factors:</strong> NPV doesn't capture strategic benefits, competitive advantages, or other qualitative factors</li>
+          </ul>
+          
+          <h3 class="text-xl font-semibold mb-3">NPV vs. IRR</h3>
+          <p class="mb-4">Internal Rate of Return (IRR) is a related metric that calculates the discount rate at which the NPV equals zero. While IRR is useful, NPV is generally preferred for decision-making because:</p>
+          <ul class="list-disc pl-6 mb-6 space-y-1">
+            <li>NPV assumes reinvestment at the cost of capital (more realistic)</li>
+            <li>NPV provides an actual dollar value of wealth created, not just a percentage</li>
+            <li>NPV avoids the mathematical issues that can arise with IRR calculations</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>When an entrepreneur on Shark Tank asks for $300,000 for 10% of their business (implying a $3 million valuation), the Sharks immediately evaluate whether the present value of future cash flows justifies that price tag.</p>
+            <p class="mt-2">Mark Cuban often pushes entrepreneurs to explain exactly how his investment will generate returns that exceed what he could get elsewhere with similar risk. In essence, he's asking if the NPV of investing in their business is positive compared to his alternative investment opportunities.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "operating-margin": {
+    title: "Operating Margin",
+    description: "Understand how to calculate and improve your company's operating profitability as a percentage of revenue.",
+    sections: [
+      {
+        title: "What is Operating Margin?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Operating Margin?</h2>
+          <p class="mb-4">Operating margin (also called operating profit margin) measures how much profit a company makes from its core business operations per dollar of sales, before accounting for interest and taxes. It's calculated by dividing operating income by total revenue and expressing the result as a percentage.</p>
+          <p class="mb-6">Operating margin is a key indicator of a company's operational efficiency and pricing strategy. It reveals how well a business converts sales into profits from its core activities, irrespective of its capital structure (debt levels) or tax situation.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The Operating Margin Formula</h3>
+          <div class="bg-shark-50 p-3 rounded-md font-mono mb-2">
+            <p>Operating Margin = (Operating Income ÷ Revenue) × 100%</p>
+          </div>
+          <p class="mb-4 text-sm">Where:<br>
+          • Operating Income = Revenue - Cost of Goods Sold - Operating Expenses</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Components of Operating Margin</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Revenue:</strong> Total income generated from sales of goods or services</li>
+            <li><strong>Cost of Goods Sold (COGS):</strong> Direct costs associated with producing goods or services sold</li>
+            <li><strong>Operating Expenses:</strong> Costs related to running the business, including:
+              <ul class="list-disc pl-6 mt-1 text-sm">
+                <li>Selling expenses (sales salaries, commissions, advertising)</li>
+                <li>General and administrative expenses (office rent, utilities, admin salaries)</li>
+                <li>Research and development expenses</li>
+                <li>Depreciation and amortization</li>
+              </ul>
+            </li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Example</h4>
+            <p>When entrepreneurs present their businesses on Shark Tank, operating margin is one of the key metrics the Sharks use to evaluate profitability. If a business has $1 million in revenue but only $100,000 in operating income, the operating margin is 10%.</p>
+            <p class="mt-2">Sharks like Kevin O'Leary often compare this to industry standards to determine if the business is performing efficiently. If competitors average 20% margins, the Sharks will want to understand why the entrepreneur's business is underperforming.</p>
+          </div>
+        `
+      },
+      {
+        title: "Calculating and Interpreting Operating Margin",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Calculating and Interpreting Operating Margin</h2>
+          <p class="mb-6">Let's walk through a practical example of calculating operating margin and understanding what it reveals about a business:</p>
+          
+          <div class="border rounded-lg p-5 mb-6">
+            <h3 class="text-xl font-semibold mb-3">Operating Margin Calculation Example</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="font-medium">Company Financial Data:</p>
+                <ul class="list-none pl-4 space-y-1">
+                  <li>Revenue: $1,000,000</li>
+                  <li>Cost of Goods Sold: $600,000</li>
+                  <li>Gross Profit: $400,000</li>
+                  <li>Operating Expenses: $250,000</li>
+                </ul>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 1: Calculate Operating Income</p>
+                <p class="pl-4">Operating Income = Gross Profit - Operating Expenses</p>
+                <p class="pl-4">Operating Income = $400,000 - $250,000 = $150,000</p>
+              </div>
+              
+              <div>
+                <p class="font-medium">Step 2: Calculate Operating Margin</p>
+                <p class="pl-4">Operating Margin = (Operating Income ÷ Revenue) × 100%</p>
+                <p class="pl-4">Operating Margin = ($150,000 ÷ $1,000,000) × 100% = 15%</p>
+              </div>
+            </div>
+            
+            <div class="mt-4 pt-4 border-t">
+              <p class="font-medium">Interpretation:</p>
+              <p>This company keeps $0.15 of every dollar in sales as operating profit, before considering interest and taxes. Whether this is good depends on the industry benchmarks and the company's historical performance.</p>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Operating Margin Benchmarks by Industry</h3>
+          <p class="mb-4">Operating margins vary widely across industries due to differences in business models, capital intensity, and competitive landscapes:</p>
+          
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full text-sm">
+              <thead>
+                <tr>
+                  <th class="pr-4 text-left">Industry</th>
+                  <th class="text-left">Typical Operating Margin</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Software/SaaS</td>
+                  <td>20-30%</td>
+                </tr>
+                <tr>
+                  <td>Pharmaceuticals</td>
+                  <td>15-25%</td>
+                </tr>
+                <tr>
+                  <td>Luxury Goods</td>
+                  <td>15-20%</td>
+                </tr>
+                <tr>
+                  <td>Consumer Electronics</td>
+                  <td>10-15%</td>
+                </tr>
+                <tr>
+                  <td>Restaurants</td>
+                  <td>8-12%</td>
+                </tr>
+                <tr>
+                  <td>Retail</td>
+                  <td>3-8%</td>
+                </tr>
+                <tr>
+                  <td>Airlines</td>
+                  <td>5-10%</td>
+                </tr>
+                <tr>
+                  <td>Grocery Stores</td>
+                  <td>1-3%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">What Operating Margin Reveals</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Operational Efficiency:</strong> How well the company controls production and operating costs</li>
+            <li><strong>Pricing Power:</strong> Ability to charge premium prices relative to costs</li>
+            <li><strong>Competitive Position:</strong> Higher margins may indicate competitive advantages</li>
+            <li><strong>Management Effectiveness:</strong> Reflects leadership's ability to generate profit from operations</li>
+            <li><strong>Scalability:</strong> Improving margins with growing revenue suggests scalable operations</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>Always analyze operating margin trends over time, not just a single period. An improving operating margin is often more significant than a high but stagnant or declining margin.</p>
+          </div>
+        `
+      },
+      {
+        title: "Improving Operating Margin",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Improving Operating Margin</h2>
+          <p class="mb-6">Enhancing operating margin is a key objective for businesses looking to increase profitability. Here are strategic approaches to improve your operating margin:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Revenue Enhancement Strategies</h3>
+              <ul class="list-disc pl-6 space-y-1">
+                <li><strong>Optimize Pricing:</strong> Test price elasticity and implement value-based pricing</li>
+                <li><strong>Product Mix Shift:</strong> Focus marketing and sales efforts on higher-margin products</li>
+                <li><strong>Cross-selling and Upselling:</strong> Increase average transaction value</li>
+                <li><strong>New Revenue Streams:</strong> Introduce complementary products or services</li>
+                <li><strong>Customer Targeting:</strong> Focus on customer segments with higher profit potential</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Cost of Goods Sold Reduction</h3>
+              <ul class="list-disc pl-6 space-y-1">
+                <li><strong>Supplier Negotiation:</strong> Secure better pricing through volume commitments or longer contracts</li>
+                <li><strong>Material Optimization:</strong> Reduce waste and improve yields</li>
+                <li><strong>Process Improvement:</strong> Streamline production for greater efficiency</li>
+                <li><strong>Automation:</strong> Reduce labor costs through appropriate technology</li>
+                <li><strong>Make vs. Buy Analysis:</strong> Determine if in-house production is more cost-effective</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Operating Expense Management</h3>
+              <ul class="list-disc pl-6 space-y-1">
+                <li><strong>Overhead Review:</strong> Eliminate unnecessary expenses and renegotiate fixed costs</li>
+                <li><strong>Marketing Efficiency:</strong> Focus on channels with highest ROI</li>
+                <li><strong>Technology Adoption:</strong> Implement systems that improve operational efficiency</li>
+                <li><strong>Remote Work:</strong> Reduce office space costs where appropriate</li>
+                <li><strong>Outsourcing:</strong> Consider outsourcing non-core functions</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Economies of Scale</h3>
+              <ul class="list-disc pl-6 space-y-1">
+                <li><strong>Volume Purchasing:</strong> Secure better unit costs through higher volumes</li>
+                <li><strong>Fixed Cost Absorption:</strong> Spread fixed costs over larger revenue base</li>
+                <li><strong>Specialization:</strong> Allow employees to focus on specific functions for greater efficiency</li>
+                <li><strong>Learning Curve Benefits:</strong> Improve efficiency through experience and best practices</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">The Impact of Margin Improvements</h3>
+          <div class="border rounded-lg p-4 mb-6">
+            <p class="mb-3">Consider a company with:</p>
+            <ul class="list-none pl-4 space-y-1 mb-4">
+              <li>Revenue: $5,000,000</li>
+              <li>Operating Income: $500,000</li>
+              <li>Operating Margin: 10%</li>
+            </ul>
+            
+            <p class="mb-3">If they improve operating margin by just 2 percentage points to 12%:</p>
+            <ul class="list-none pl-4 space-y-1 mb-4">
+              <li>Revenue: $5,000,000 (unchanged)</li>
+              <li>Operating Income: $600,000 (increased by $100,000)</li>
+              <li>Operating Margin: 12%</li>
+            </ul>
+            
+            <p class="font-medium">Result: A 2 percentage point improvement in operating margin increased operating profit by 20%!</p>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, entrepreneurs who demonstrate a clear path to improving operating margins often receive more favorable investment terms. When Daymond John asks, "How will you use my investment?" savvy entrepreneurs respond with specific strategies to enhance margins, such as automating production, negotiating better supplier terms with increased order volumes, or developing higher-margin product lines.</p>
+            <p class="mt-2">This approach shows the Sharks that the entrepreneur understands the levers that drive profitability and has a plan to increase the return on investment.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "pitch-basics": {
+    title: "Pitch Basics",
+    description: "Master the fundamentals of creating and delivering compelling business pitches to investors, customers, and partners.",
+    sections: [
+      {
+        title: "Pitch Fundamentals",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What Makes a Great Pitch?</h2>
+          <p class="mb-4">A business pitch is a brief presentation that provides an overview of your business, product, or idea, designed to persuade the audience to take a specific action—whether that's investing, purchasing, or forming a partnership. A great pitch combines clear communication, compelling storytelling, and convincing data to create a memorable and persuasive argument.</p>
+          <p class="mb-6">Whether you're seeking investment, selling to customers, or pitching partnerships, mastering the art of the pitch is essential for business success.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Elements of a Successful Pitch</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Clear Value Proposition:</strong> A concise explanation of how your product or service solves a problem</li>
+            <li><strong>Target Market Definition:</strong> Specific description of who your customers are and the size of the opportunity</li>
+            <li><strong>Business Model:</strong> Explanation of how you make money</li>
+            <li><strong>Competitive Advantage:</strong> What makes your solution unique or better than alternatives</li>
+            <li><strong>Traction and Milestones:</strong> Evidence of progress and validation</li>
+            <li><strong>Team Credentials:</strong> Why you and your team are the right people to execute the vision</li>
+            <li><strong>Clear Ask:</strong> Specific request for investment, partnership, or action</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Example</h4>
+            <p>The most successful pitches on Shark Tank quickly hook the Sharks with a clear problem statement, followed by a compelling demonstration of the solution. They include key metrics that matter to investors—market size, margins, customer acquisition costs, and current sales—and clearly articulate why their product will succeed against competition.</p>
+            <p class="mt-2">As Kevin O'Leary often says, "The best pitches tell me how I'm going to make money and when I'll get my investment back."</p>
+          </div>
+        `
+      },
+      {
+        title: "Crafting Your Pitch",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Crafting Your Pitch</h2>
+          <p class="mb-6">Different situations call for different types of pitches. Here's how to structure your pitch based on the context and time available:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">The Elevator Pitch (30 seconds)</h3>
+              <p>A concise overview that can be delivered in the time span of an elevator ride.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Structure:</strong>
+                <ol class="list-decimal pl-6 space-y-1 mt-1">
+                  <li>Problem statement (1 sentence)</li>
+                  <li>Your solution (1-2 sentences)</li>
+                  <li>Unique value proposition (1 sentence)</li>
+                  <li>Call to action (1 sentence)</li>
+                </ol>
+              </div>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Example:</strong> "40% of food in America is wasted, costing families $1,500 annually. Our app connects consumers with grocery stores to purchase near-expiration food at steep discounts. Unlike coupon apps, we reduce food waste while saving consumers money and helping stores recover costs. I'd love to show you our latest data on user growth."
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">The Pitch Deck (5-10 minutes)</h3>
+              <p>A presentation of 10-15 slides covering all aspects of your business, suitable for investor meetings.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Key slides to include:</strong>
+                <ol class="list-decimal pl-6 space-y-1 mt-1">
+                  <li>Problem/Opportunity</li>
+                  <li>Solution</li>
+                  <li>Market Size & Target Customer</li>
+                  <li>Business Model</li>
+                  <li>Technology/Product</li>
+                  <li>Competitive Landscape</li>
+                  <li>Traction & Milestones</li>
+                  <li>Marketing & Growth Strategy</li>
+                  <li>Team</li>
+                  <li>Financials (current & projections)</li>
+                  <li>Funding Ask & Use of Funds</li>
+                </ol>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">The Sales Pitch (2-3 minutes)</h3>
+              <p>A customer-focused presentation emphasizing benefits and value of your product or service.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Structure:</strong>
+                <ol class="list-decimal pl-6 space-y-1 mt-1">
+                  <li>Build rapport</li>
+                  <li>Identify pain points/needs</li>
+                  <li>Present solution with emphasis on benefits</li>
+                  <li>Provide evidence (testimonials, data)</li>
+                  <li>Handle objections</li>
+                  <li>Clear next steps</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Pitch Don'ts</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Don't be vague</strong> about your business model or market opportunity</li>
+            <li><strong>Don't use excessive jargon</strong> or technical language unless your audience is specialized</li>
+            <li><strong>Don't exaggerate</strong> claims or market size without supporting data</li>
+            <li><strong>Don't ignore competition</strong> or claim you have none</li>
+            <li><strong>Don't present unrealistic financial projections</strong> that you can't defend</li>
+            <li><strong>Don't focus only on features</strong> rather than benefits and outcomes</li>
+            <li><strong>Don't exceed your allotted time</strong> without reading audience cues</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>Tailor your pitch to your specific audience. Investors want to hear about return on investment, customers care about benefits and value, while potential partners are interested in synergies and mutual growth opportunities.</p>
+          </div>
+        `
+      },
+      {
+        title: "Delivering Your Pitch",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Delivering Your Pitch</h2>
+          <p class="mb-6">Even the best-crafted pitch can fall flat without effective delivery. Here's how to present your pitch with confidence and impact:</p>
+          
+          <div class="border rounded-lg overflow-hidden mb-6">
+            <div class="bg-shark-100 p-3">
+              <h3 class="font-semibold">Pitch Delivery Best Practices</h3>
+            </div>
+            <div class="p-4 grid gap-4 md:grid-cols-2">
+              <div>
+                <h4 class="font-medium mb-1">Body Language</h4>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                  <li>Stand tall with shoulders back</li>
+                  <li>Make consistent eye contact</li>
+                  <li>Use open, deliberate gestures</li>
+                  <li>Move with purpose, avoid fidgeting</li>
+                  <li>Smile genuinely when appropriate</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium mb-1">Voice and Speech</h4>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                  <li>Speak clearly and at a moderate pace</li>
+                  <li>Vary tone and volume for emphasis</li>
+                  <li>Pause after key points for impact</li>
+                  <li>Eliminate filler words (um, uh, like)</li>
+                  <li>Project enthusiasm and confidence</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium mb-1">Visual Aids</h4>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                  <li>Keep slides simple and uncluttered</li>
+                  <li>Use high-quality images and graphics</li>
+                  <li>Incorporate compelling data visualizations</li>
+                  <li>Ensure text is readable from a distance</li>
+                  <li>Don't read directly from slides</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium mb-1">Engagement Techniques</h4>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                  <li>Start with a hook or attention-grabber</li>
+                  <li>Tell relevant stories or anecdotes</li>
+                  <li>Use product demonstrations when possible</li>
+                  <li>Incorporate audience participation</li>
+                  <li>End with a clear, compelling call to action</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Handling Questions and Objections</h3>
+          <p class="mb-4">The Q&A portion often determines the success of your pitch. Here's how to handle it effectively:</p>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Anticipate questions</strong> and prepare thorough answers in advance</li>
+            <li><strong>Listen fully</strong> to each question before responding</li>
+            <li><strong>Keep answers concise</strong> and directly address the question asked</li>
+            <li><strong>View objections as opportunities</strong> to provide clarification</li>
+            <li><strong>Be honest</strong> if you don't know an answer, but offer to follow up</li>
+            <li><strong>Stay calm and positive</strong>, even with challenging questions</li>
+            <li><strong>Have backup slides or data</strong> ready for common questions</li>
+          </ul>
+          
+          <h3 class="text-xl font-semibold mb-3">Practice Makes Perfect</h3>
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <p class="mb-2">Effective practice strategies for your pitch:</p>
+            <ul class="list-disc pl-6 space-y-1">
+              <li>Record yourself and review your performance</li>
+              <li>Practice in front of friends or colleagues who will give honest feedback</li>
+              <li>Rehearse answers to difficult questions</li>
+              <li>Time your delivery to ensure you stay within limits</li>
+              <li>Practice in conditions similar to the actual pitch environment</li>
+              <li>Memorize key data points and your opening/closing statements</li>
+            </ul>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>The most memorable Shark Tank pitches combine solid business fundamentals with authentic passion and personality. Entrepreneurs who genuinely believe in their products and can clearly articulate why they matter often receive offers even when their businesses have challenges.</p>
+            <p class="mt-2">As Lori Greiner says, "Entrepreneurs are the only people who will work 80 hours a week to avoid working 40 hours a week." Let your genuine enthusiasm and commitment shine through in your pitch.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "product-market-fit": {
+    title: "Product-Market Fit",
+    description: "Understand how to develop products that perfectly match market needs, creating customer demand that drives sustainable growth.",
+    sections: [
+      {
+        title: "Understanding Product-Market Fit",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Product-Market Fit?</h2>
+          <p class="mb-4">Product-market fit occurs when a product satisfies a strong market demand. It's the degree to which a product meets market needs so well that customers are willing to buy it, use it, and tell others about it. Achieving product-market fit is often considered the first significant milestone for a startup and a prerequisite for sustainable growth.</p>
+          <p class="mb-6">As Marc Andreessen, co-founder of Andreessen Horowitz, famously said: "Product-market fit means being in a good market with a product that can satisfy that market."</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Why Product-Market Fit Matters</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Efficient Growth:</strong> With product-market fit, customer acquisition becomes easier and less expensive</li>
+            <li><strong>Customer Retention:</strong> Products that truly meet needs have lower churn rates</li>
+            <li><strong>Word-of-Mouth:</strong> Satisfied customers become advocates, reducing marketing costs</li>
+            <li><strong>Investment Readiness:</strong> Investors are more willing to fund businesses with demonstrated product-market fit</li>
+            <li><strong>Strategic Focus:</strong> Clear product-market fit guides product development and marketing strategies</li>
+          </ul>
+          
+          <h3 class="text-xl font-semibold mb-3">Signs of Product-Market Fit</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Organic Growth:</strong> Customers are finding you without excessive marketing</li>
+            <li><strong>High Engagement:</strong> Users are actively using your product and returning</li>
+            <li><strong>Customer Enthusiasm:</strong> Users are recommending your product to others</li>
+            <li><strong>Sustainable Unit Economics:</strong> Customer lifetime value exceeds acquisition cost</li>
+            <li><strong>Manageable Churn:</strong> Low customer loss rate compared to industry standards</li>
+            <li><strong>Repeatable Sales Process:</strong> Consistent conversion from leads to customers</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Example</h4>
+            <p>On Shark Tank, a clear indicator of product-market fit is when entrepreneurs share impressive sales numbers achieved with minimal marketing spend. When Barbara Corcoran hears that a product has generated $500,000 in sales primarily through word of mouth, she recognizes that customers are responding enthusiastically to a product that solves a real problem.</p>
+            <p class="mt-2">Conversely, the Sharks are skeptical when an entrepreneur has spent significant money on marketing but has minimal sales, suggesting a lack of product-market fit.</p>
+          </div>
+        `
+      },
+      {
+        title: "Finding Product-Market Fit",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Finding Product-Market Fit</h2>
+          <p class="mb-6">Achieving product-market fit is an iterative process that requires deep customer understanding, flexibility, and persistence. Here's a systematic approach to finding your product-market fit:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 1: Identify Target Customer Segment</h3>
+              <p>Begin by defining exactly who your ideal customers are and what problems they face.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Key activities:</strong>
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>Create detailed customer personas</li>
+                  <li>Conduct customer interviews to understand pain points</li>
+                  <li>Observe customers in their natural environment</li>
+                  <li>Analyze competitors' customers and their feedback</li>
+                  <li>Narrow your focus to a specific customer segment initially</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 2: Define the Value Proposition</h3>
+              <p>Clearly articulate how your product solves customer problems better than alternatives.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Questions to answer:</strong>
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>What specific problem does your product solve?</li>
+                  <li>How is your solution different from existing alternatives?</li>
+                  <li>What unique value do you deliver that customers can't get elsewhere?</li>
+                  <li>Why should customers care about your solution?</li>
+                  <li>How does your solution fit into customers' lives or workflows?</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 3: Build a Minimum Viable Product (MVP)</h3>
+              <p>Create the simplest version of your product that delivers the core value proposition.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>MVP principles:</strong>
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>Focus on solving one core problem exceptionally well</li>
+                  <li>Include only essential features that address the main pain point</li>
+                  <li>Emphasize speed to market over perfection</li>
+                  <li>Design the MVP to test key assumptions about customer needs</li>
+                  <li>Ensure the MVP delivers enough value to generate meaningful feedback</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 4: Get the Product into Users' Hands</h3>
+              <p>Release your MVP to early adopters and collect qualitative and quantitative feedback.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Approaches:</strong>
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>Beta testing programs with ideal customer profiles</li>
+                  <li>Friends and family testing for initial feedback</li>
+                  <li>Limited geographic or segment-specific launches</li>
+                  <li>Pre-sales or crowdfunding campaigns</li>
+                  <li>Free trials with conversion goals</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Step 5: Listen, Measure, and Iterate</h3>
+              <p>Collect data, analyze results, and make improvements based on user feedback.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Key metrics to track:</strong>
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>Customer acquisition cost and conversion rates</li>
+                  <li>Activation rate (users completing key actions)</li>
+                  <li>Retention and churn rates</li>
+                  <li>Net Promoter Score (NPS) or other satisfaction metrics</li>
+                  <li>Feature usage and engagement patterns</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Sean Ellis Test</h4>
+            <p>Product-market fit pioneer Sean Ellis developed a simple test: Ask users "How would you feel if you could no longer use our product?" If more than 40% say "very disappointed," you've likely found product-market fit.</p>
+            <p class="mt-2">This single question can provide powerful insight into how essential your product has become to your customers' lives.</p>
+          </div>
+        `
+      },
+      {
+        title: "After Finding Product-Market Fit",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">After Finding Product-Market Fit</h2>
+          <p class="mb-6">Finding product-market fit is not the end goal—it's the beginning of a new phase focused on growth and scaling. Here's what to do once you've achieved initial product-market fit:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Optimize Your Business Model</h3>
+              <p>Refine your pricing strategy, sales process, and customer acquisition channels.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Key actions:</strong>
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>Test different pricing tiers and models</li>
+                  <li>Identify the most profitable customer segments</li>
+                  <li>Calculate and optimize unit economics</li>
+                  <li>Develop a repeatable and scalable sales process</li>
+                  <li>Formalize your customer success approach</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Scale Marketing and Distribution</h3>
+              <p>Expand your reach by investing in marketing channels that deliver proven results.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Growth strategies:</strong>
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>Double down on channels with the best customer acquisition cost</li>
+                  <li>Implement customer referral programs</li>
+                  <li>Develop content marketing around proven pain points</li>
+                  <li>Explore partnerships and integrations</li>
+                  <li>Consider geographic or market segment expansion</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Expand Product Capabilities</h3>
+              <p>Enhance your product with features that address additional customer needs or adjacent problems.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Product development approach:</strong>
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>Prioritize features based on customer feedback and usage data</li>
+                  <li>Focus on improvements that increase retention first</li>
+                  <li>Consider adjacent problems your customers are facing</li>
+                  <li>Develop for different customer segments or use cases</li>
+                  <li>Build deeper integration with customer workflows</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Build Operational Capacity</h3>
+              <p>Develop the systems, processes, and team needed to support growth.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Scaling priorities:</strong>
+                <ul class="list-disc pl-6 space-y-1 mt-1">
+                  <li>Hire key roles to support growth (sales, marketing, customer success)</li>
+                  <li>Implement scalable technology infrastructure</li>
+                  <li>Develop formal onboarding and training processes</li>
+                  <li>Create documentation and standardized operating procedures</li>
+                  <li>Establish KPIs and reporting systems</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Preserving Product-Market Fit</h3>
+          <p class="mb-4">Markets and customer needs evolve over time. To maintain product-market fit:</p>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Continuous Customer Feedback:</strong> Maintain open channels with users</li>
+            <li><strong>Competitor Monitoring:</strong> Stay aware of new entrants and innovations</li>
+            <li><strong>Regular Market Research:</strong> Track changing trends and preferences</li>
+            <li><strong>Innovation Pipeline:</strong> Continuously improve your core offering</li>
+            <li><strong>Customer Success Metrics:</strong> Regularly measure satisfaction and engagement</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>Many entrepreneurs come to Shark Tank after finding initial product-market fit but before having the resources to scale. When Robert Herjavec or Mark Cuban invests in a company with proven product-market fit, they typically focus on helping the entrepreneur scale through their distribution networks, operational expertise, and capital for expansion.</p>
+            <p class="mt-2">As Daymond John often says, "I'm not just investing in a product, I'm investing in a person and their ability to evolve the product as the market changes."</p>
           </div>
         `
       }
