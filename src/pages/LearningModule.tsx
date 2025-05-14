@@ -4804,6 +4804,346 @@ const moduleContent = {
             <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
             <p>When an entrepreneur on Shark Tank asks for $300,000 for 10% of their business (implying a $3 million valuation), the Sharks immediately evaluate whether the present value of future cash flows justifies that price tag.</p>
             <p class="mt-2">Mark Cuban often pushes entrepreneurs to explain exactly how his investment will generate returns that exceed what he could get elsewhere with similar risk. In essence, he's asking if the NPV of investing in their business is positive compared to his alternative investment opportunities.</p>
+            </div>
+        `
+      }
+    ]
+  },
+  "nps": {
+    title: "NPS & Customer Satisfaction",
+    description: "Learn how to measure, interpret, and improve customer satisfaction using Net Promoter Score (NPS) and other key metrics to build customer loyalty.",
+    sections: [
+      {
+        title: "Understanding NPS",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Net Promoter Score: The Ultimate Customer Loyalty Metric</h2>
+          <p class="mb-4">Net Promoter Score (NPS) is a widely used customer loyalty metric that measures how likely your customers are to recommend your business to others. Introduced by Fred Reichheld in 2003, it has become one of the most important indicators of customer satisfaction and business growth potential.</p>
+          <p class="mb-6">The power of NPS lies in its simplicity: it's based on a single question that provides actionable insights into customer sentiment and helps predict business growth.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The NPS Question & Calculation</h3>
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">The Core NPS Question</h4>
+            <p class="italic mb-2">"On a scale of 0-10, how likely are you to recommend [company/product/service] to a friend or colleague?"</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+              <div class="bg-red-50 p-3 rounded-lg">
+                <h5 class="font-semibold text-red-700 mb-1">Detractors (0-6)</h5>
+                <p class="text-sm">Unhappy customers who may damage your brand through negative word-of-mouth</p>
+              </div>
+              <div class="bg-yellow-50 p-3 rounded-lg">
+                <h5 class="font-semibold text-yellow-700 mb-1">Passives (7-8)</h5>
+                <p class="text-sm">Satisfied but unenthusiastic customers vulnerable to competitive offerings</p>
+              </div>
+              <div class="bg-green-50 p-3 rounded-lg">
+                <h5 class="font-semibold text-green-700 mb-1">Promoters (9-10)</h5>
+                <p class="text-sm">Loyal enthusiasts who will fuel growth through referrals</p>
+              </div>
+            </div>
+            
+            <div class="mt-4">
+              <h5 class="font-semibold mb-1">NPS Calculation:</h5>
+              <div class="font-mono bg-white p-2 rounded my-2 text-center">
+                NPS = % of Promoters - % of Detractors
+              </div>
+              <p class="text-sm">This gives you a score between -100 (all detractors) and +100 (all promoters)</p>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Interpreting NPS Scores</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">What's a Good NPS?</h4>
+              <p class="text-sm">While any positive score means you have more promoters than detractors:</p>
+              <ul class="list-disc pl-6 mt-2 text-sm">
+                <li><strong>0-30:</strong> Needs improvement but acceptable in competitive industries</li>
+                <li><strong>30-50:</strong> Good - you're doing well compared to most businesses</li>
+                <li><strong>50-70:</strong> Excellent - you have significantly more promoters than detractors</li>
+                <li><strong>70+:</strong> World-class - achieved by only the most customer-centric businesses</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Industry Benchmarks</h4>
+              <p class="text-sm">NPS varies significantly by industry. For context:</p>
+              <ul class="list-disc pl-6 mt-2 text-sm">
+                <li><strong>Technology:</strong> Average 26-35</li>
+                <li><strong>Retail:</strong> Average 30-40</li>
+                <li><strong>Financial Services:</strong> Average 20-30</li>
+                <li><strong>Telecommunications:</strong> Average 15-25</li>
+                <li><strong>E-commerce:</strong> Average 35-45</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Economic Impact</h4>
+              <p class="text-sm">Research shows that industry leaders in NPS outperform competitors in revenue growth by an average of 2x. A 7-point improvement in NPS correlates with a 1% increase in revenue growth for many businesses.</p>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">NPS Beyond the Score</h3>
+          <p class="mb-4">While the numerical score is valuable, the real power of NPS comes from understanding the "why" behind the ratings. Follow-up questions are critical:</p>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>For Detractors:</strong> "We're sorry we've disappointed you. What specifically caused you to give this rating?"
+              <p class="text-sm ml-4">Focus on identifying and fixing problems</p>
+            </li>
+            <li>
+              <strong>For Passives:</strong> "Thank you for your feedback. What would it take for us to earn a 9 or 10 from you?"
+              <p class="text-sm ml-4">Identify opportunities to convert to promoters</p>
+            </li>
+            <li>
+              <strong>For Promoters:</strong> "Thank you for your support! What specifically did we do that earned your high rating?"
+              <p class="text-sm ml-4">Identify strengths to replicate and amplify</p>
+            </li>
+          </ul>
+        `
+      },
+      {
+        title: "Customer Satisfaction Metrics",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Beyond NPS: A Comprehensive View of Customer Satisfaction</h2>
+          <p class="mb-4">While NPS provides a powerful high-level metric, it works best as part of a broader customer satisfaction measurement strategy. Different metrics offer unique insights into various aspects of the customer experience.</p>
+          <p class="mb-6">A multi-metric approach allows you to triangulate customer sentiment and identify specific areas for improvement throughout the customer journey.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Customer Satisfaction Metrics</h3>
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border border-shark-200 rounded-lg">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border-b p-3 text-left text-shark-700">Metric</th>
+                  <th class="border-b p-3 text-left text-shark-700">Question Format</th>
+                  <th class="border-b p-3 text-left text-shark-700">Best For Measuring</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Customer Satisfaction Score (CSAT)</td>
+                  <td class="p-3">"How would you rate your satisfaction with [experience]?" (1-5 scale)</td>
+                  <td class="p-3">Specific interactions or touchpoints</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Customer Effort Score (CES)</td>
+                  <td class="p-3">"How easy was it to [complete action]?" (Very difficult - Very easy)</td>
+                  <td class="p-3">Ease of using your product/service</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Net Promoter Score (NPS)</td>
+                  <td class="p-3">"How likely are you to recommend?" (0-10 scale)</td>
+                  <td class="p-3">Overall loyalty and growth potential</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Customer Health Score</td>
+                  <td class="p-3">Composite of usage, engagement, and support metrics</td>
+                  <td class="p-3">Predicting retention and expansion</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">User Happiness Index</td>
+                  <td class="p-3">"How happy are you with [product/feature]?" (Emoji scale)</td>
+                  <td class="p-3">Emotional connection to product</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">When to Use Each Metric</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">CSAT (Customer Satisfaction Score)</h4>
+              <p class="text-sm">Best for measuring satisfaction with specific interactions or transactions.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Example:</strong> After a support call, purchase, or onboarding session
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">CES (Customer Effort Score)</h4>
+              <p class="text-sm">Best for measuring how easy it is for customers to accomplish their goals.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Example:</strong> After a customer completes a key workflow or tries to resolve an issue
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">NPS (Net Promoter Score)</h4>
+              <p class="text-sm">Best for measuring overall customer loyalty and relationship strength.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Example:</strong> Quarterly relationship surveys or after key milestones in the customer journey
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Creating a Comprehensive Measurement Framework</h3>
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">The Customer Satisfaction Pyramid</h4>
+            <div class="space-y-3">
+              <div class="bg-shark-100 p-3 rounded">
+                <strong>Level 1: Transactional Metrics (CSAT, CES)</strong>
+                <p class="text-sm mt-1">Measure specific interactions and touchpoints</p>
+              </div>
+              <div class="bg-shark-100 p-3 rounded">
+                <strong>Level 2: Relationship Metrics (NPS)</strong>
+                <p class="text-sm mt-1">Measure overall relationship quality and loyalty</p>
+              </div>
+              <div class="bg-shark-100 p-3 rounded">
+                <strong>Level 3: Behavioral Metrics (Retention, Usage, LTV)</strong>
+                <p class="text-sm mt-1">Measure what customers actually do (not just what they say)</p>
+              </div>
+            </div>
+            <p class="mt-3 text-sm">A robust customer satisfaction program includes metrics from all three levels, creating a complete picture of customer experience.</p>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Common Pitfalls to Avoid</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Survey Fatigue:</strong> Over-surveying customers leads to lower response rates and skewed data
+              <p class="text-sm ml-4">Solution: Implement a coordinated survey strategy with appropriate frequency</p>
+            </li>
+            <li>
+              <strong>Focusing Only on the Score:</strong> Treating NPS or CSAT as a vanity metric without acting on feedback
+              <p class="text-sm ml-4">Solution: Establish a closed-loop feedback process to address individual concerns</p>
+            </li>
+            <li>
+              <strong>Sampling Bias:</strong> Hearing only from your most passionate fans or critics
+              <p class="text-sm ml-4">Solution: Ensure representative sampling across customer segments</p>
+            </li>
+            <li>
+              <strong>Ignoring Cultural Differences:</strong> Not accounting for regional scoring tendencies
+              <p class="text-sm ml-4">Solution: Benchmark against industry/regional averages rather than absolute scores</p>
+            </li>
+          </ul>
+        `
+      },
+      {
+        title: "Improving Customer Satisfaction",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Turning Feedback into Action</h2>
+          <p class="mb-4">Collecting customer satisfaction data is only valuable if you use it to drive meaningful improvements. The most successful companies establish systematic processes for analyzing feedback and implementing changes based on customer insights.</p>
+          <p class="mb-6">By closing the feedback loop, you not only improve your products and services but also demonstrate to customers that their opinions matter—further enhancing loyalty.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The Closed-Loop Feedback System</h3>
+          <div class="mb-6">
+            <ol class="space-y-4">
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">1</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Collect Feedback</h4>
+                    <p class="text-sm">Gather NPS and other customer satisfaction data through multiple channels</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">2</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Categorize & Prioritize</h4>
+                    <p class="text-sm">Tag feedback by theme, impact, and affected customer segments</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">3</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Act on Individual Feedback</h4>
+                    <p class="text-sm">Reach out to unhappy customers to resolve specific issues (especially detractors)</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">4</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Implement Systemic Improvements</h4>
+                    <p class="text-sm">Address recurring themes through product, policy, or process changes</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">5</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Communicate Changes</h4>
+                    <p class="text-sm">Let customers know what improvements you've made based on their feedback</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">6</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Measure Impact</h4>
+                    <p class="text-sm">Track how changes affect satisfaction scores and business metrics over time</p>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Converting Detractors to Promoters</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Act Quickly</h4>
+              <p class="text-sm">Respond to negative feedback within 24-48 hours to show you're listening.</p>
+              <div class="mt-2 text-xs font-medium text-shark-700">
+                <strong>Impact:</strong> 70% of detractors who receive a prompt response report increased satisfaction
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Empower Your Team</h4>
+              <p class="text-sm">Give frontline employees the authority to resolve issues without escalation when possible.</p>
+              <div class="mt-2 text-xs font-medium text-shark-700">
+                <strong>Example:</strong> Ritz-Carlton empowers employees to spend up to $2,000 to resolve customer issues on the spot
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Follow Up After Resolution</h4>
+              <p class="text-sm">Check back to ensure the solution met their needs and expectations.</p>
+              <div class="mt-2 text-xs font-medium text-shark-700">
+                <strong>Strategy:</strong> A simple "How are things working for you now?" email can increase conversion rates from detractor to promoter by up to 20%
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Activating Promoters</h3>
+          <p class="mb-4">Your promoters are more than just satisfied customers—they're potential brand advocates who can drive growth through referrals and testimonials.</p>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Create Referral Programs:</strong> Make it easy and rewarding for promoters to refer new customers
+              <p class="text-sm ml-4">Example: Dropbox's referral program that offers additional storage for both parties</p>
+            </li>
+            <li>
+              <strong>Solicit Testimonials:</strong> Ask for reviews, case studies, or video testimonials
+              <p class="text-sm ml-4">Strategy: "You gave us a 10! Would you be willing to share your experience with others?"</p>
+            </li>
+            <li>
+              <strong>Build a Community:</strong> Create opportunities for promoters to connect with each other
+              <p class="text-sm ml-4">Example: Exclusive events, online forums, or advisory boards</p>
+            </li>
+            <li>
+              <strong>Preview New Features:</strong> Give promoters early access to new products or features
+              <p class="text-sm ml-4">Benefit: Get valuable feedback while making promoters feel special</p>
+            </li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, investors frequently ask entrepreneurs about customer satisfaction metrics and retention rates. When Barbara Corcoran invests in a business, she often emphasizes the importance of creating "raving fans" who will drive word-of-mouth marketing.</p>
+            <p class="mt-2">Kevin O'Leary regularly points out that acquiring new customers is 5-25 times more expensive than retaining existing ones, making customer satisfaction a critical factor in valuation. As he puts it, "Happy customers are repeat customers, and repeat customers are where the real profit is."</p>
           </div>
         `
       }
