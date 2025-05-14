@@ -14,6 +14,760 @@ import { XPIndicator } from "@/components/ui/xp-indicator";
 
 // Sample module content (would come from database in real app)
 const moduleContent = {
+  "accounts-payable": {
+    title: "Accounts Payable",
+    description: "Understand how accounts payable impacts cash flow and financial health for businesses. Learn best practices for managing what your company owes to suppliers and vendors.",
+    sections: [
+      {
+        title: "What is Accounts Payable?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Accounts Payable?</h2>
+          <p class="mb-4">Accounts payable (AP) represents money that a company owes to its vendors, suppliers, and creditors for goods or services purchased on credit. It's considered a short-term liability on a company's balance sheet, as most accounts payable are due within 30-90 days.</p>
+          <p class="mb-6">Effectively managing accounts payable is crucial for maintaining good relationships with suppliers, optimizing cash flow, and ensuring the financial health of your business.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Components of Accounts Payable</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Purchase Orders:</strong> Documents that formalize what you're ordering from suppliers</li>
+            <li><strong>Invoices:</strong> Bills from vendors requesting payment for goods or services</li>
+            <li><strong>Payment Terms:</strong> The timeframe and conditions for payment (e.g., Net 30, 2/10 Net 30)</li>
+            <li><strong>Vendor Credits:</strong> Reductions in amount owed due to returns or adjustments</li>
+            <li><strong>Payment Approvals:</strong> Internal process for validating invoices before payment</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Business Impact</h4>
+            <p>Managing accounts payable effectively impacts your:</p>
+            <ul class="list-disc pl-6 mt-2">
+              <li>Cash flow management and forecasting</li>
+              <li>Supplier relationships and negotiating power</li>
+              <li>Ability to capture early payment discounts</li>
+              <li>Credit rating and borrowing capacity</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        title: "Accounts Payable Best Practices",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Accounts Payable Best Practices</h2>
+          <p class="mb-6">Implementing efficient accounts payable processes can improve your company's financial management and strengthen vendor relationships. Here are key best practices:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Centralize and Digitize AP Processes</h3>
+              <p>Move from paper-based to digital systems that streamline invoice processing, approvals, and payments.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Benefits:</strong> Reduced processing costs, faster processing times, better tracking, fewer errors
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Establish Clear Approval Workflows</h3>
+              <p>Create a structured process for invoice verification, approval hierarchies, and payment authorization.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Implementation:</strong> Define approval thresholds, authorized approvers, and turnaround times
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Optimize Payment Timing</h3>
+              <p>Pay invoices at the optimal time - not too early (wasting cash) or too late (damaging relationships).</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Strategy:</strong> Take advantage of early payment discounts when they exceed your cost of capital; otherwise, pay close to the due date
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Negotiate Favorable Payment Terms</h3>
+              <p>Work with vendors to establish payment terms that benefit both parties.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Examples:</strong> Extended payment terms (Net 60 or Net 90), volume discounts, early payment incentives
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Common AP Metrics to Track</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Days Payable Outstanding (DPO):</strong> Average number of days taken to pay suppliers
+              <p class="text-sm ml-4">Formula: (Accounts Payable ÷ Cost of Goods Sold) × Number of Days in Period</p>
+            </li>
+            <li>
+              <strong>Invoice Processing Cost:</strong> Average cost to process a single invoice
+              <p class="text-sm ml-4">Includes labor, software, and overhead costs</p>
+            </li>
+            <li>
+              <strong>Invoice Processing Time:</strong> Average days from receipt to payment
+              <p class="text-sm ml-4">Lower is generally better, but not if you're paying too early</p>
+            </li>
+            <li>
+              <strong>Early Payment Discount Capture Rate:</strong> Percentage of available discounts actually taken
+              <p class="text-sm ml-4">Measures effectiveness in capturing cost-saving opportunities</p>
+            </li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, investors often ask about supplier relationships and payment terms. Favorable payment terms (like Net 60 or Net 90) can significantly improve cash flow and reduce the amount of working capital needed to operate the business, making it more attractive to investors.</p>
+          </div>
+        `
+      },
+      {
+        title: "AP and Cash Flow Management",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">AP and Cash Flow Management</h2>
+          <p class="mb-6">Accounts payable has a direct impact on your cash flow. Strategic management of when and how you pay vendors can help optimize your working capital and strengthen your financial position.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Cash Flow Optimization Strategies</h3>
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Payment Timing Strategies</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Align payment cycles with revenue cycles when possible</li>
+                <li>Batch payments to reduce processing time and costs</li>
+                <li>Create a payment calendar to visualize cash outflows</li>
+                <li>Consider using credit cards for smaller vendors to extend payment periods</li>
+                <li>Prioritize payments to critical vendors and those offering discounts</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">AP Financing Options</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Business lines of credit to manage timing mismatches</li>
+                <li>Supply chain financing/reverse factoring for extended terms</li>
+                <li>Procurement cards with grace periods</li>
+                <li>Early payment discount programs</li>
+                <li>Dynamic discounting platforms</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="border-l-4 border-shark-300 pl-4 mb-6">
+            <h3 class="text-xl font-semibold mb-2">Understanding Early Payment Terms</h3>
+            <p>Early payment discounts, like "2/10 Net 30," can provide significant savings.</p>
+            <div class="mt-2 text-sm text-shark-600">
+              <strong>What it means:</strong> 2% discount if paid within 10 days, otherwise full amount due in 30 days
+            </div>
+            <div class="mt-2">
+              <p class="text-sm font-medium">Calculating the annualized return:</p>
+              <p class="text-sm ml-4">2% discount for paying 20 days early = 36.5% annualized return (2% × 365/20)</p>
+              <p class="text-sm ml-4">If your cost of capital is less than the annualized return, taking the discount makes financial sense</p>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>Monitor your cash conversion cycle (CCC), which measures how long it takes to convert inventory investments into cash. A longer accounts payable period improves your CCC, while longer accounts receivable and inventory periods hurt it.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "accounts-receivable": {
+    title: "Accounts Receivable",
+    description: "Learn to effectively track and manage the money customers owe your business. Discover strategies to improve collections, reduce bad debt, and optimize cash flow from sales.",
+    sections: [
+      {
+        title: "What is Accounts Receivable?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Accounts Receivable?</h2>
+          <p class="mb-4">Accounts receivable (AR) represents money owed to your business by customers who have purchased goods or services on credit. It's recorded as a current asset on your balance sheet because it's expected to be converted to cash within a short period, typically 30-90 days.</p>
+          <p class="mb-6">Effective management of accounts receivable is critical for maintaining healthy cash flow, which is especially important for growing businesses that need working capital to fund operations and expansion.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Elements of Accounts Receivable</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Credit Terms:</strong> The conditions under which you allow customers to pay later (e.g., Net 30, Net 60)</li>
+            <li><strong>Invoicing:</strong> Detailed billing documents sent to customers</li>
+            <li><strong>Aging Reports:</strong> Tracking tools that show how long invoices have been outstanding</li>
+            <li><strong>Collections Process:</strong> Systematic approach to following up on unpaid invoices</li>
+            <li><strong>Bad Debt:</strong> Amounts unlikely to be collected that may need to be written off</li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Business Impact</h4>
+            <p>Accounts receivable directly impacts:</p>
+            <ul class="list-disc pl-6 mt-2">
+              <li>Cash flow and working capital</li>
+              <li>Ability to pay your own obligations (accounts payable)</li>
+              <li>Need for external financing</li>
+              <li>Overall business valuation</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        title: "Managing Accounts Receivable",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Managing Accounts Receivable Effectively</h2>
+          <p class="mb-6">Implementing a robust accounts receivable management system can significantly improve your cash flow and reduce the risk of bad debt. Here are key strategies and best practices:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Set Clear Credit Policies</h3>
+              <p>Establish and communicate clear credit terms to customers before making sales.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Elements to include:</strong> Credit application process, credit limits, payment terms, early payment incentives, late payment penalties
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Streamline Invoicing Process</h3>
+              <p>Create an efficient invoicing system that minimizes delays and errors.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Best practices:</strong> Invoice immediately after delivery, use electronic invoicing, include all relevant details, clearly state payment terms and methods
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Implement Proactive Collections</h3>
+              <p>Don't wait until invoices are overdue to begin the collections process.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Timeline example:</strong> Payment reminder 7 days before due date, follow-up on due date, escalating contact at 15, 30, and 45 days past due
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Offer Multiple Payment Options</h3>
+              <p>Make it as easy as possible for customers to pay you.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Payment methods:</strong> Credit cards, ACH transfers, online payment portals, mobile payment solutions
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Key AR Metrics to Track</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Days Sales Outstanding (DSO):</strong> Average number of days it takes to collect payment after a sale
+              <p class="text-sm ml-4">Formula: (Accounts Receivable ÷ Total Credit Sales) × Number of Days in Period</p>
+            </li>
+            <li>
+              <strong>AR Aging Schedule:</strong> Breakdown of receivables by age categories (e.g., current, 1-30 days, 31-60 days, etc.)
+              <p class="text-sm ml-4">Helps identify problematic accounts and prioritize collection efforts</p>
+            </li>
+            <li>
+              <strong>Collection Effectiveness Index (CEI):</strong> Measures how effectively you're collecting receivables
+              <p class="text-sm ml-4">Formula: [(Beginning AR + Credit Sales - Ending AR) ÷ (Beginning AR + Credit Sales - Current AR)] × 100</p>
+            </li>
+            <li>
+              <strong>Bad Debt to Sales Ratio:</strong> Percentage of credit sales that become uncollectible
+              <p class="text-sm ml-4">Formula: (Bad Debt Expense ÷ Total Credit Sales) × 100</p>
+            </li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, investors often scrutinize a company's accounts receivable management as it directly impacts cash flow. A business with a high DSO or significant bad debt may be seen as riskier, even if sales numbers look impressive on paper. Kevin O'Leary frequently reminds entrepreneurs that "cash is king" and receivables aren't the same as cash in the bank.</p>
+          </div>
+        `
+      },
+      {
+        title: "AR Financing and Optimization",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">AR Financing and Optimization Strategies</h2>
+          <p class="mb-6">Even with excellent AR management, businesses sometimes need faster access to cash tied up in receivables. Several financing options and optimization strategies can help bridge this gap:</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Accounts Receivable Financing Options</h3>
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Factoring</h4>
+              <p>Selling your receivables to a third party (factor) at a discount.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>How it works:</strong> You receive 70-90% of invoice value upfront; the factor collects from your customer and pays you the remainder minus their fee
+              </div>
+              <div class="mt-2 text-sm">
+                <strong>Pros:</strong> Immediate cash, outsourced collections<br>
+                <strong>Cons:</strong> Higher cost, potential customer relationship impact
+              </div>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">AR Line of Credit</h4>
+              <p>Using your receivables as collateral for a revolving credit line.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>How it works:</strong> Borrow up to 70-85% of eligible receivables; you maintain customer relationships and collections
+              </div>
+              <div class="mt-2 text-sm">
+                <strong>Pros:</strong> Lower cost than factoring, flexible borrowing<br>
+                <strong>Cons:</strong> Still requires collections effort, may have covenants
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Optimization Strategies</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Early Payment Discounts:</strong> Offer customers a discount for paying early
+              <p class="text-sm ml-4">Example: 2/10 Net 30 (2% discount if paid within 10 days, full amount due in 30 days)</p>
+            </li>
+            <li>
+              <strong>Customer Segmentation:</strong> Tailor credit terms based on customer value and payment history
+              <p class="text-sm ml-4">High-value reliable customers might get more favorable terms than new or high-risk ones</p>
+            </li>
+            <li>
+              <strong>Automated Dunning:</strong> Use software to send automated payment reminders at strategic intervals
+              <p class="text-sm ml-4">Reduces manual effort and ensures consistent follow-up</p>
+            </li>
+            <li>
+              <strong>Deposits and Progress Billing:</strong> For large orders or projects, collect partial payment upfront
+              <p class="text-sm ml-4">Reduces risk and improves cash flow throughout the delivery process</p>
+            </li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
+            <p>When calculating the true cost of extending credit to customers, consider not just the risk of non-payment, but also the time value of money and administrative costs of managing receivables. This helps determine whether offering discounts for early payment makes financial sense for your business.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "amortization": {
+    title: "Amortization",
+    description: "Understand how to spread the cost of intangible assets and loans over time. Learn to calculate amortization schedules and analyze their impact on financial statements.",
+    sections: [
+      {
+        title: "Understanding Amortization",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is Amortization?</h2>
+          <p class="mb-4">Amortization has two primary financial meanings: (1) the gradual reduction of a loan balance through regular payments of principal and interest, and (2) the process of spreading the cost of an intangible asset over its useful life for accounting and tax purposes.</p>
+          <p class="mb-6">Both types of amortization involve allocating costs over time, but they apply to different financial situations and appear differently in financial statements.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Loan Amortization vs. Asset Amortization</h3>
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Loan Amortization</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Applies to loans with scheduled repayments</li>
+                <li>Each payment covers interest and principal</li>
+                <li>Early payments are mostly interest</li>
+                <li>Later payments are mostly principal</li>
+                <li>Examples: Mortgages, car loans, term loans</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Asset Amortization</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Applies to intangible assets with finite lives</li>
+                <li>Similar to depreciation for tangible assets</li>
+                <li>Reduces asset value on balance sheet</li>
+                <li>Creates expense on income statement</li>
+                <li>Examples: Patents, copyrights, software licenses</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Key Difference</h4>
+            <p>The fundamental difference is that loan amortization involves actual cash flows (you're making payments), while asset amortization is an accounting concept that doesn't involve cash outflows when the amortization is recorded (the cash was spent when the asset was acquired).</p>
+          </div>
+        `
+      },
+      {
+        title: "Loan Amortization",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Loan Amortization Explained</h2>
+          <p class="mb-6">When you take out an amortizing loan, each payment you make goes toward both interest and principal. As the loan balance decreases, the interest portion of each payment decreases while the principal portion increases, even though the total payment remains the same.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Creating an Amortization Schedule</h3>
+          <p class="mb-4">An amortization schedule shows how each payment is split between interest and principal, and how the loan balance decreases over time.</p>
+          
+          <div class="border rounded-lg p-5 mb-6">
+            <h4 class="font-semibold mb-3">Amortization Schedule Example</h4>
+            <p class="mb-3">Loan details: $100,000 loan, 5% annual interest, 5-year term, monthly payments</p>
+            
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-sm">
+                <thead>
+                  <tr class="border-b">
+                    <th class="pr-4 text-left">Payment #</th>
+                    <th class="pr-4 text-left">Payment Amount</th>
+                    <th class="pr-4 text-left">Principal</th>
+                    <th class="pr-4 text-left">Interest</th>
+                    <th class="text-left">Remaining Balance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b">
+                    <td>Starting</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>$100,000.00</td>
+                  </tr>
+                  <tr class="border-b">
+                    <td>1</td>
+                    <td>$1,887.12</td>
+                    <td>$1,470.46</td>
+                    <td>$416.67</td>
+                    <td>$98,529.54</td>
+                  </tr>
+                  <tr class="border-b">
+                    <td>2</td>
+                    <td>$1,887.12</td>
+                    <td>$1,476.59</td>
+                    <td>$410.54</td>
+                    <td>$97,052.95</td>
+                  </tr>
+                  <tr class="border-b">
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                  </tr>
+                  <tr class="border-b">
+                    <td>59</td>
+                    <td>$1,887.12</td>
+                    <td>$1,871.76</td>
+                    <td>$15.36</td>
+                    <td>$1,879.43</td>
+                  </tr>
+                  <tr>
+                    <td>60</td>
+                    <td>$1,887.12</td>
+                    <td>$1,879.43</td>
+                    <td>$7.83</td>
+                    <td>$0.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="mt-4 pt-4 border-t">
+              <p><strong>Formula for monthly payment:</strong></p>
+              <p class="font-mono text-sm mb-2">Payment = P × [r(1+r)^n] ÷ [(1+r)^n - 1]</p>
+              <p class="text-sm mb-2">Where:</p>
+              <ul class="list-disc pl-6 text-sm">
+                <li>P = Principal (loan amount)</li>
+                <li>r = Monthly interest rate (annual rate ÷ 12)</li>
+                <li>n = Number of payments (months)</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Business Application</h4>
+            <p>Understanding loan amortization helps you:</p>
+            <ul class="list-disc pl-6 mt-2">
+              <li>Project future cash flows needed for debt service</li>
+              <li>Determine the true cost of financing</li>
+              <li>Make informed decisions about early payoff options</li>
+              <li>Compare different financing offers with varying terms</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        title: "Intangible Asset Amortization",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Intangible Asset Amortization</h2>
+          <p class="mb-6">In accounting, amortization is the systematic allocation of the cost of intangible assets over their useful lives. This process recognizes that intangible assets provide economic benefits over multiple periods and their costs should be matched with those periods.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Amortizable Intangible Assets</h3>
+          <div class="space-y-3 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Patents</h4>
+              <p class="text-sm">Typically amortized over the legal life (20 years) or expected useful life, whichever is shorter</p>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Copyrights</h4>
+              <p class="text-sm">Legal life can be author's life plus 70 years, but typically amortized over expected economic life</p>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Customer Lists/Relationships</h4>
+              <p class="text-sm">Amortized over the expected period of benefit, often 3-10 years</p>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Software (purchased)</h4>
+              <p class="text-sm">Typically amortized over 3-5 years</p>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Licenses and Franchises</h4>
+              <p class="text-sm">Amortized over the term of the agreement</p>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Calculating Amortization Expense</h3>
+          <div class="border rounded-lg p-5 mb-6">
+            <p class="mb-3"><strong>Straight-Line Method (most common)</strong></p>
+            <div class="bg-shark-50 p-3 rounded-md font-mono text-center mb-4">
+              Annual Amortization Expense = (Cost - Residual Value) ÷ Useful Life
+            </div>
+            <p class="mb-2"><strong>Example:</strong></p>
+            <ul class="list-none pl-2 space-y-1">
+              <li>Patent cost: $50,000</li>
+              <li>Expected useful life: 10 years</li>
+              <li>Residual value: $0 (typical for intangibles)</li>
+              <li>Annual amortization: $50,000 ÷ 10 = $5,000 per year</li>
+            </ul>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Financial Statement Impact</h3>
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Balance Sheet Effects</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Asset is recorded at cost initially</li>
+                <li>Accumulated amortization increases each period</li>
+                <li>Net carrying value decreases each period</li>
+                <li>Formula: Net Value = Cost - Accumulated Amortization</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Income Statement Effects</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Amortization expense reduces net income</li>
+                <li>Appears as operating expense or COGS</li>
+                <li>Non-cash expense (added back in cash flow statement)</li>
+                <li>Can impact key ratios and performance metrics</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>When pitching on Shark Tank, entrepreneurs who have valuable patents, trademarks, or other intangible assets should understand how these will be amortized. This affects financial projections and valuations. Sharks like Mark Cuban often look beyond GAAP earnings to understand the true cash generation potential of a business by adding back non-cash expenses like amortization.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "balance-sheet": {
+    title: "Balance Sheets",
+    description: "Learn to read and analyze this crucial financial statement that shows a company's assets, liabilities, and equity at a specific point in time.",
+    sections: [
+      {
+        title: "What is a Balance Sheet?",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">What is a Balance Sheet?</h2>
+          <p class="mb-4">A balance sheet is one of the three fundamental financial statements that provides a snapshot of a company's financial position at a specific point in time. It follows the accounting equation: Assets = Liabilities + Equity, which must always be in balance.</p>
+          <p class="mb-6">Unlike the income statement, which shows performance over a period, the balance sheet represents the financial position on a specific date. It's like a photograph of what a company owns, what it owes, and what remains for the owners.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">The Three Main Sections</h3>
+          <div class="grid md:grid-cols-3 gap-6 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Assets</h4>
+              <p class="mb-2">What the company owns or controls that has economic value.</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Current Assets:</strong> Cash, accounts receivable, inventory (convertible to cash within a year)</li>
+                <li><strong>Non-Current Assets:</strong> Property, equipment, intangibles (long-term investments)</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Liabilities</h4>
+              <p class="mb-2">What the company owes to others.</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Current Liabilities:</strong> Accounts payable, short-term debt, accrued expenses (due within a year)</li>
+                <li><strong>Non-Current Liabilities:</strong> Long-term debt, deferred taxes (due beyond a year)</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Equity</h4>
+              <p class="mb-2">The owners' stake in the company.</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Common Stock:</strong> Value of issued shares</li>
+                <li><strong>Retained Earnings:</strong> Accumulated profits not distributed to shareholders</li>
+                <li><strong>Additional Paid-in Capital:</strong> Money from investors above par value</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">The Balancing Act</h4>
+            <p>The fundamental equation that governs balance sheets is:</p>
+            <div class="font-mono text-center my-2">Assets = Liabilities + Equity</div>
+            <p>This equation must always balance, which is why it's called a balance sheet. If a transaction affects one side of the equation, it must affect the other side by an equal amount, or it must affect two components on the same side in opposite directions.</p>
+          </div>
+        `
+      },
+      {
+        title: "Reading and Analyzing Balance Sheets",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Reading and Analyzing Balance Sheets</h2>
+          <p class="mb-6">A balance sheet provides critical insights into a company's financial health and stability. Learning to interpret it helps you understand a business's liquidity, solvency, and overall financial position.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Sample Balance Sheet</h3>
+          <div class="border rounded-lg p-5 mb-6 overflow-x-auto">
+            <h4 class="font-semibold mb-3">XYZ Company Balance Sheet</h4>
+            <p class="mb-2 italic">As of December 31, 2023</p>
+            
+            <table class="min-w-full text-sm">
+              <thead>
+                <tr class="border-b">
+                  <th class="py-2 text-left" colspan="2">Assets</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="py-1 pr-4 font-medium">Current Assets</td><td></td></tr>
+                <tr><td class="py-1 pl-4 pr-4">Cash and Cash Equivalents</td><td class="text-right">$250,000</td></tr>
+                <tr><td class="py-1 pl-4 pr-4">Accounts Receivable</td><td class="text-right">$175,000</td></tr>
+                <tr><td class="py-1 pl-4 pr-4">Inventory</td><td class="text-right">$300,000</td></tr>
+                <tr><td class="py-1 pl-4 pr-4">Prepaid Expenses</td><td class="text-right">$25,000</td></tr>
+                <tr class="border-b"><td class="py-1 pl-4 pr-4 font-medium">Total Current Assets</td><td class="text-right font-medium">$750,000</td></tr>
+                
+                <tr><td class="py-1 pr-4 font-medium">Non-Current Assets</td><td></td></tr>
+                <tr><td class="py-1 pl-4 pr-4">Property and Equipment</td><td class="text-right">$900,000</td></tr>
+                <tr><td class="py-1 pl-4 pr-4">Less: Accumulated Depreciation</td><td class="text-right">($300,000)</td></tr>
+                <tr><td class="py-1 pl-4 pr-4">Intangible Assets</td><td class="text-right">$150,000</td></tr>
+                <tr class="border-b"><td class="py-1 pl-4 pr-4 font-medium">Total Non-Current Assets</td><td class="text-right font-medium">$750,000</td></tr>
+                
+                <tr class="border-b"><td class="py-2 pr-4 font-medium">Total Assets</td><td class="text-right font-medium">$1,500,000</td></tr>
+                
+                <tr class="border-b">
+                  <th class="py-2 text-left" colspan="2">Liabilities and Equity</th>
+                </tr>
+                
+                <tr><td class="py-1 pr-4 font-medium">Current Liabilities</td><td></td></tr>
+                <tr><td class="py-1 pl-4 pr-4">Accounts Payable</td><td class="text-right">$125,000</td></tr>
+                <tr><td class="py-1 pl-4 pr-4">Short-term Debt</td><td class="text-right">$75,000</td></tr>
+                <tr><td class="py-1 pl-4 pr-4">Accrued Expenses</td><td class="text-right">$50,000</td></tr>
+                <tr class="border-b"><td class="py-1 pl-4 pr-4 font-medium">Total Current Liabilities</td><td class="text-right font-medium">$250,000</td></tr>
+                
+                <tr><td class="py-1 pr-4 font-medium">Non-Current Liabilities</td><td></td></tr>
+                <tr><td class="py-1 pl-4 pr-4">Long-term Debt</td><td class="text-right">$400,000</td></tr>
+                <tr class="border-b"><td class="py-1 pl-4 pr-4 font-medium">Total Non-Current Liabilities</td><td class="text-right font-medium">$400,000</td></tr>
+                
+                <tr class="border-b"><td class="py-1 pr-4 font-medium">Total Liabilities</td><td class="text-right font-medium">$650,000</td></tr>
+                
+                <tr><td class="py-1 pr-4 font-medium">Shareholders' Equity</td><td></td></tr>
+                <tr><td class="py-1 pl-4 pr-4">Common Stock</td><td class="text-right">$500,000</td></tr>
+                <tr><td class="py-1 pl-4 pr-4">Retained Earnings</td><td class="text-right">$350,000</td></tr>
+                <tr class="border-b"><td class="py-1 pl-4 pr-4 font-medium">Total Equity</td><td class="text-right font-medium">$850,000</td></tr>
+                
+                <tr><td class="py-2 pr-4 font-medium">Total Liabilities and Equity</td><td class="text-right font-medium">$1,500,000</td></tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Key Financial Ratios from the Balance Sheet</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Current Ratio:</strong> Current Assets ÷ Current Liabilities
+              <p class="text-sm ml-4">Measures liquidity and ability to pay short-term obligations. Example: $750,000 ÷ $250,000 = 3.0</p>
+            </li>
+            <li>
+              <strong>Quick Ratio (Acid Test):</strong> (Current Assets - Inventory) ÷ Current Liabilities
+              <p class="text-sm ml-4">A more stringent liquidity measure. Example: ($750,000 - $300,000) ÷ $250,000 = 1.8</p>
+            </li>
+            <li>
+              <strong>Debt-to-Equity Ratio:</strong> Total Liabilities ÷ Total Equity
+              <p class="text-sm ml-4">Measures financial leverage and risk. Example: $650,000 ÷ $850,000 = 0.76</p>
+            </li>
+            <li>
+              <strong>Working Capital:</strong> Current Assets - Current Liabilities
+              <p class="text-sm ml-4">Shows operational liquidity. Example: $750,000 - $250,000 = $500,000</p>
+            </li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Perspective</h4>
+            <p>On Shark Tank, investors carefully examine balance sheets to assess a company's financial health. They look for red flags like:</p>
+            <ul class="list-disc pl-6 mt-2">
+              <li>Excessive debt relative to assets or equity</li>
+              <li>Insufficient working capital to fund operations</li>
+              <li>Bloated inventory levels that may indicate slow-moving products</li>
+              <li>Large accounts receivable balances that suggest collection problems</li>
+            </ul>
+            <p class="mt-2">Mark Cuban often says, "The numbers tell a story." The balance sheet is a critical chapter in that story.</p>
+          </div>
+        `
+      },
+      {
+        title: "Balance Sheet Strategies",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Balance Sheet Strategies for Businesses</h2>
+          <p class="mb-6">A strategic approach to managing your balance sheet can strengthen your company's financial position, improve investor confidence, and create a foundation for growth. Here are key strategies for optimizing your balance sheet:</p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Optimize Working Capital</h3>
+              <p>Manage the relationship between current assets and current liabilities to improve liquidity and operational efficiency.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Tactics:</strong>
+                <ul class="list-disc pl-5 mt-1">
+                  <li>Improve inventory management to reduce excess stock</li>
+                  <li>Accelerate accounts receivable collections</li>
+                  <li>Negotiate favorable payment terms with suppliers</li>
+                  <li>Maintain optimal cash reserves for operations</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Manage Debt Strategically</h3>
+              <p>Structure your debt to minimize cost while maintaining operational flexibility and acceptable risk levels.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Tactics:</strong>
+                <ul class="list-disc pl-5 mt-1">
+                  <li>Balance short-term and long-term debt appropriately</li>
+                  <li>Refinance high-interest debt when possible</li>
+                  <li>Match debt maturities with cash flow cycles</li>
+                  <li>Maintain debt ratios that support your growth strategy</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Evaluate Asset Efficiency</h3>
+              <p>Ensure assets are generating appropriate returns and divest underperforming ones.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Tactics:</strong>
+                <ul class="list-disc pl-5 mt-1">
+                  <li>Calculate return on assets for business segments</li>
+                  <li>Consider sale-leaseback for certain fixed assets</li>
+                  <li>Evaluate make-vs-buy decisions for capital-intensive processes</li>
+                  <li>Regularly review the value of intangible assets</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h3 class="text-xl font-semibold mb-2">Balance Growth with Financial Stability</h3>
+              <p>Structure your balance sheet to support growth initiatives while maintaining financial resilience.</p>
+              <div class="mt-2 text-sm text-shark-600">
+                <strong>Tactics:</strong>
+                <ul class="list-disc pl-5 mt-1">
+                  <li>Maintain adequate liquidity buffers for unexpected challenges</li>
+                  <li>Consider the optimal mix of debt and equity financing</li>
+                  <li>Reinvest retained earnings strategically</li>
+                  <li>Develop contingency plans for balance sheet stress scenarios</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Balance Sheet Red Flags</h3>
+          <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+            <ul class="list-disc pl-6 space-y-2">
+              <li><strong>Declining Current Ratio:</strong> May indicate deteriorating liquidity</li>
+              <li><strong>Rapidly Increasing Debt:</strong> Could signal unsustainable growth or operational problems</li>
+              <li><strong>Growing Inventory Without Proportional Sales Growth:</strong> Potential obsolescence or demand issues</li>
+              <li><strong>Shrinking Equity:</strong> May indicate ongoing losses or excessive distributions</li>
+              <li><strong>Significant Goodwill or Intangibles:</strong> Could be overvalued and subject to future impairment</li>
+            </ul>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p class="mb-3">On Shark Tank, entrepreneurs with strong balance sheets often receive better valuations and terms. Kevin O'Leary frequently emphasizes:</p>
+            <blockquote class="pl-4 border-l-4 border-shark-300 italic">
+              "A business with a clean balance sheet—low debt, strong working capital, and efficient asset utilization—is worth a premium because it reduces risk and increases strategic flexibility."
+            </blockquote>
+          </div>
+        `
+      }
+    ]
+  },
   "business-model": {
     title: "Business Model Basics",
     description: "Learn the core components of any successful business model",
@@ -328,7 +1082,7 @@ const moduleContent = {
       }
     ]
   },
-  "break-even-analysis": {
+  "break-even": {
     title: "Break-Even Analysis",
     description: "Calculate when your business becomes profitable by determining the point where total revenue equals total costs.",
     sections: [
