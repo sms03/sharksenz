@@ -1490,7 +1490,397 @@ const moduleContent = {
           </ul>
           <div class="bg-shark-50 p-4 rounded-lg mb-4">
             <h4 class="font-semibold text-shark-700 mb-2">Pro Tip</h4>
-            <p>Always balance CAC with LTV. If your CAC is too high, growth will not be sustainable.</p>
+            <p>Always balance CAC with LTV. If your CAC is too high, growth will not be sustainable.</p>          </div>
+        `
+      }
+    ]
+  },
+  "demo-day": {
+    title: "Demo Day Pitching",
+    description: "Master the art of pitching your startup at demo day events. Learn how to create a compelling narrative, structure your presentation, and deliver a pitch that captivates investors and showcases your business potential.",
+    sections: [
+      {
+        title: "Crafting Your Demo Day Pitch",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">The Art of Demo Day Pitching</h2>
+          <p class="mb-4">A demo day pitch is your opportunity to present your startup to a room full of investors, media, and industry professionals. Unlike a casual elevator pitch or a detailed investor meeting, a demo day pitch requires a specific approach that balances conciseness with impact.</p>
+          <p class="mb-6">Your goal is to generate enough interest that investors want to schedule follow-up meetings, not to close investment on the spot.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Essential Elements of a Demo Day Pitch</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">The Hook (30 seconds)</h4>
+              <p class="text-sm">Open with a powerful statement that captures attention and frames the problem.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Example:</strong> "Last year, Americans wasted 40% of all food produced—that's $165 billion thrown away while 1 in 8 people struggle with hunger. We're solving this massive inefficiency."
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Problem Statement (1 minute)</h4>
+              <p class="text-sm">Clearly articulate the pain point your startup addresses. Use data and relatable examples.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Key components:</strong> Size of the problem, who experiences it, why existing solutions fall short
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Your Solution (1 minute)</h4>
+              <p class="text-sm">Introduce your product/service and explain how it solves the problem in a unique way.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Focus on:</strong> Value proposition, key features, competitive advantages
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Demo/Product Showcase (1-2 minutes)</h4>
+              <p class="text-sm">Show, don't just tell. Demonstrate your product in action through live demo, video, or screenshots.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Pro tip:</strong> Focus on core functionality that showcases your unique value, not every feature
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Traction & Validation (1 minute)</h4>
+              <p class="text-sm">Prove demand with metrics that matter: revenue, user growth, engagement, partnerships.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Investors look for:</strong> Month-over-month growth, retention rates, customer testimonials
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Business Model (30 seconds)</h4>
+              <p class="text-sm">Explain how you make money in simple terms.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Include:</strong> Revenue streams, pricing strategy, unit economics
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Market Size (30 seconds)</h4>
+              <p class="text-sm">Quantify your addressable market and growth potential.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Structure:</strong> TAM (Total Addressable Market) → SAM (Serviceable Available Market) → SOM (Serviceable Obtainable Market)
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Team (30 seconds)</h4>
+              <p class="text-sm">Highlight why your team is uniquely qualified to solve this problem.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Focus on:</strong> Relevant expertise, past successes, complementary skills
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Ask & Vision (30 seconds)</h4>
+              <p class="text-sm">State how much you're raising, what the funds will achieve, and your big vision.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Formula:</strong> "We're raising $X to achieve Y milestones, bringing us closer to our vision of Z."
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Timing Your Pitch</h3>
+          <p class="mb-4">Most demo day pitches are strictly timed to 3-5 minutes. Practice until you can deliver confidently within the allotted time.</p>
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Time Distribution Guide</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <ul class="list-disc pl-6 space-y-1">
+                  <li><strong>Hook/Opener:</strong> 10%</li>
+                  <li><strong>Problem:</strong> 15%</li>
+                  <li><strong>Solution:</strong> 15%</li>
+                  <li><strong>Demo:</strong> 20-25%</li>
+                  <li><strong>Traction:</strong> 15%</li>
+                </ul>
+              </div>
+              <div>
+                <ul class="list-disc pl-6 space-y-1">
+                  <li><strong>Business Model:</strong> 5%</li>
+                  <li><strong>Market Size:</strong> 5%</li>
+                  <li><strong>Team:</strong> 5%</li>
+                  <li><strong>Ask & Vision:</strong> 5-10%</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        title: "Pitch Deck Design & Delivery",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Creating a Winning Demo Day Deck</h2>
+          <p class="mb-6">Your slide deck is a visual aid that supports—not replaces—your verbal pitch. The best demo day decks are visually striking, information-rich but not cluttered, and perfectly synchronized with your spoken narrative.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Slide Design Principles</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">What Works</h4>
+              <ul class="list-disc pl-5 space-y-1">
+                <li>One key message per slide</li>
+                <li>Large, readable text (24pt minimum)</li>
+                <li>High-contrast color schemes</li>
+                <li>Compelling visuals that enhance understanding</li>
+                <li>Charts and graphics that simplify complex data</li>
+                <li>Consistent branding and visual identity</li>
+                <li>Strong headline that conveys the main point</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">What Doesn't</h4>
+              <ul class="list-disc pl-5 space-y-1">
+                <li>Walls of text (anything over 30 words per slide)</li>
+                <li>Complex tables with tiny numbers</li>
+                <li>Low-resolution images or generic stock photos</li>
+                <li>Cluttered layouts with multiple focal points</li>
+                <li>Fancy animations or transitions</li>
+                <li>Inconsistent fonts or colors</li>
+                <li>Slides that don't match your spoken pitch</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Essential Slides for Demo Day</h3>
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border border-shark-200 rounded-lg">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border-b p-3 text-left text-shark-700">Slide</th>
+                  <th class="border-b p-3 text-left text-shark-700">Key Content</th>
+                  <th class="border-b p-3 text-left text-shark-700">Design Tip</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Title</td>
+                  <td class="p-3">Company name, logo, tagline</td>
+                  <td class="p-3">Clean, bold, memorable</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Problem</td>
+                  <td class="p-3">Clear statement of the pain point</td>
+                  <td class="p-3">Use compelling statistic or image</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Solution</td>
+                  <td class="p-3">Your value proposition</td>
+                  <td class="p-3">Show product image or screenshot</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Product Demo</td>
+                  <td class="p-3">Key features in action</td>
+                  <td class="p-3">Use annotated screenshots or demo video</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Traction</td>
+                  <td class="p-3">Key metrics and growth</td>
+                  <td class="p-3">Use simple charts with upward trends</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Business Model</td>
+                  <td class="p-3">How you make money</td>
+                  <td class="p-3">Use icons or simple illustrations</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Market Size</td>
+                  <td class="p-3">TAM, SAM, SOM figures</td>
+                  <td class="p-3">Use funnel or nested circles visual</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Competition</td>
+                  <td class="p-3">How you're different</td>
+                  <td class="p-3">2x2 matrix or comparison table</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Team</td>
+                  <td class="p-3">Key members and expertise</td>
+                  <td class="p-3">Professional photos, brief credentials</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Fundraising</td>
+                  <td class="p-3">Amount, use of funds, milestones</td>
+                  <td class="p-3">Clear, direct, future-focused</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Delivery Excellence</h3>
+          <p class="mb-4">How you deliver your pitch is just as important as its content. Great delivery can elevate average content, while poor delivery can sink even the best ideas.</p>
+          
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Master Your Opening</h4>
+              <p class="text-sm">The first 30 seconds set the tone. Memorize your opening word-for-word until it flows naturally.</p>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Speak With Conviction</h4>
+              <p class="text-sm">Use a confident tone and varied pace. Emphasize key points with strategic pauses.</p>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Mind Your Body Language</h4>
+              <p class="text-sm">Stand tall, use purposeful gestures, make eye contact with different sections of the audience.</p>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Practice Relentlessly</h4>
+              <p class="text-sm">Rehearse at least 20 times: alone, with friends, with mentors, on camera, while timing yourself.</p>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">Be Yourself</h4>
+              <p class="text-sm">Authenticity resonates. Don't try to mimic someone else's style—refine your own voice.</p>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>The opening moments of a Shark Tank pitch are crucial. Notice how successful entrepreneurs immediately grab attention with a clear, concise description of what their business does and a compelling hook—just like in a demo day presentation.</p>
+            <p class="mt-2">For example, Ring founder Jamie Siminoff opened with "I'm Jamie, and I'm here to revolutionize home security" followed immediately by a clear demonstration of the product, setting a strong foundation for his pitch.</p>
+          </div>
+        `
+      },
+      {
+        title: "Preparing for Success",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Before Demo Day: The Preparation Checklist</h2>
+          <p class="mb-6">The work you do before demo day is often more important than the pitch itself. Thorough preparation builds confidence and ensures you're ready for any scenario.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">One Week Before</h3>
+          <div class="mb-6">
+            <ol class="space-y-3">
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">1</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Finalize Your Pitch Deck</h4>
+                    <p class="text-sm">Lock in design and content; get feedback from advisors and mentors</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">2</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Research Attendees</h4>
+                    <p class="text-sm">Identify key investors who'll be present; research their portfolios and investment theses</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">3</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Prep Your Demo</h4>
+                    <p class="text-sm">Ensure your product demo works flawlessly; create a backup plan in case of technical issues</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">4</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Prepare One-Pager</h4>
+                    <p class="text-sm">Create a concise document with key information investors can take away</p>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">The Day Before</h3>
+          <div class="mb-6">
+            <ol class="space-y-3">
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">1</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Technical Checks</h4>
+                    <p class="text-sm">Test all equipment; verify slide transitions; check fonts and videos on presentation system</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">2</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Final Rehearsals</h4>
+                    <p class="text-sm">Practice full pitch 2-3 more times; time each run-through precisely</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">3</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Prepare Your Materials</h4>
+                    <p class="text-sm">Business cards, one-pagers, pitch deck backups (USB drive, cloud storage)</p>
+                  </div>
+                </div>
+              </li>
+              <li class="bg-shark-50 p-3 rounded-lg">
+                <div class="flex items-start">
+                  <div class="bg-shark-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 mt-0.5">
+                    <span class="font-semibold">4</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">Rest and Recharge</h4>
+                    <p class="text-sm">Get proper sleep; avoid last-minute major changes; set multiple alarms</p>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Post-Pitch Strategy</h3>
+          <p class="mb-4">Your work isn't done after the pitch. In fact, what you do immediately following your presentation can be just as important as the pitch itself.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">During the Event</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Position yourself strategically for networking after your pitch</li>
+                <li>Have your team spread out to engage with different investors</li>
+                <li>Prepare brief answers to common questions</li>
+                <li>Collect business cards and note key conversations</li>
+                <li>Schedule immediate follow-ups with interested investors</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Next 48 Hours</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Send personalized thank-you emails with requested information</li>
+                <li>Follow up with concrete next steps (call, meeting, etc.)</li>
+                <li>Update your CRM with all new contacts and notes</li>
+                <li>Review any recorded pitch footage to identify improvement areas</li>
+                <li>Prepare detailed materials for follow-up meetings</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, entrepreneurs who come prepared with answers to potential questions fare much better than those caught off guard. For example, when the Sharks ask about sales figures, customer acquisition costs, or manufacturing details, the most successful pitchers have those numbers ready immediately.</p>
+            <p class="mt-2">Similarly at demo days, being able to confidently answer follow-up questions from investors after your pitch demonstrates thorough preparation and business acumen, significantly increasing your chances of securing follow-up meetings and eventual investment.</p>
           </div>
         `
       }
@@ -3723,11 +4113,359 @@ const moduleContent = {
               </tbody>
             </table>
           </div>
-          
-          <div class="bg-shark-50 p-4 rounded-lg">
+            <div class="bg-shark-50 p-4 rounded-lg">
             <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
             <p>On Shark Tank, investors like Mark Cuban and Daymond John frequently probe entrepreneurs about their growth metrics to assess business health and potential. Cuban often asks, "What's your month-over-month growth rate?" while Lori Greiner wants to know, "How are you acquiring customers, and what's your acquisition cost?"</p>
             <p class="mt-2">Kevin O'Leary typically focuses on revenue growth and profitability, famously saying: "If you can't show me growth in revenue and a path to profitability in 36 months, you're dead to me." This reflects the importance of having clear, measurable growth metrics when seeking investment.</p>
+          </div>
+        `
+      }
+    ]
+  },
+  "handling-questions": {
+    title: "Handling Investor Questions",
+    description: "Master the art of answering tough investor questions with confidence and clarity. Learn preparation strategies and techniques for addressing concerns about your business during pitches and meetings.",
+    sections: [
+      {
+        title: "Preparing for Common Questions",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Anticipating Investor Questions</h2>
+          <p class="mb-4">The Q&A portion of your pitch or meeting can make or break investor interest. Investors use questions to test your knowledge, assess your thinking, and evaluate your ability to handle pressure.</p>
+          <p class="mb-6">Being well-prepared for common questions shows competence and builds credibility. It demonstrates that you've thought deeply about your business and considered potential challenges.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Most Common Investor Questions by Category</h3>
+          <div class="space-y-6 mb-8">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-2">Market & Competition</h4>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>How big is your addressable market, and how did you calculate it?</li>
+                <li>Who are your competitors, and why is your solution better?</li>
+                <li>What's preventing a large company from copying your idea?</li>
+                <li>Why is now the right time for this product/service?</li>
+                <li>What are the major market trends affecting your business?</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-2">Business Model & Finances</h4>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>What's your revenue model and pricing strategy?</li>
+                <li>What are your unit economics?</li>
+                <li>How long is your sales cycle?</li>
+                <li>What are your CAC and LTV? How do you calculate them?</li>
+                <li>What's your burn rate and runway?</li>
+                <li>When will you reach profitability?</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-2">Traction & Metrics</h4>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>What traction have you achieved so far?</li>
+                <li>What's your month-over-month growth rate?</li>
+                <li>What metrics do you track? Which ones matter most?</li>
+                <li>Who are your current customers?</li>
+                <li>How much revenue did you generate last month/quarter/year?</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-2">Team & Execution</h4>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>Why is your team uniquely qualified to solve this problem?</li>
+                <li>What key roles are you still looking to fill?</li>
+                <li>How do you make decisions as a founding team?</li>
+                <li>What's your biggest mistake so far and what did you learn?</li>
+                <li>What keeps you up at night?</li>
+              </ul>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-2">Funding & Vision</h4>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>How will you use the funds you're raising?</li>
+                <li>What milestones will this funding help you achieve?</li>
+                <li>How did you determine your valuation?</li>
+                <li>Who else are you talking to about investing?</li>
+                <li>What's your long-term vision? Exit strategy?</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Preparation Strategy</h3>
+          <p class="mb-4">Don't just memorize answers—develop a systematic approach to question preparation:</p>
+          
+          <ol class="list-decimal pl-6 space-y-2 mb-6">
+            <li>
+              <strong>Create a question bank:</strong> Compile 50-75 potential questions across all categories
+              <p class="text-sm ml-4">Include questions specific to your industry, business model, and potential red flags</p>
+            </li>
+            <li>
+              <strong>Develop concise answers:</strong> Craft 30-second responses for each question
+              <p class="text-sm ml-4">Follow a clear structure: direct answer → supporting evidence → forward-looking statement</p>
+            </li>
+            <li>
+              <strong>Prepare supporting data:</strong> Have key metrics and data points ready to reference
+              <p class="text-sm ml-4">Create a one-page "numbers sheet" with all critical metrics for quick reference</p>
+            </li>
+            <li>
+              <strong>Practice with tough critics:</strong> Role-play Q&A sessions with advisors, mentors, or team members
+              <p class="text-sm ml-4">Ask them to be deliberately challenging and interrupt you, simulating real conditions</p>
+            </li>
+            <li>
+              <strong>Record and review:</strong> Record practice sessions to identify weaknesses in your responses
+              <p class="text-sm ml-4">Pay attention to clarity, conciseness, body language, and filler words</p>
+            </li>
+          </ol>
+          
+          <div class="bg-shark-50 p-4 rounded-lg mb-6">
+            <h4 class="font-semibold text-shark-700 mb-2">Pro Tip: The Appendix Slide Strategy</h4>
+            <p>Create a comprehensive set of appendix slides that address common questions with detailed information and data. Include these after your main deck but don't present them unless needed.</p>
+            <p class="mt-2">When an investor asks a detailed question, you can say, "Great question. I actually have a slide that addresses that," and navigate directly to the relevant appendix slide. This demonstrates thorough preparation and helps you provide detailed, visual answers.</p>
+          </div>
+        `
+      },
+      {
+        title: "Question-Handling Techniques",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Techniques for Answering Difficult Questions</h2>
+          <p class="mb-6">Even with thorough preparation, you'll inevitably face unexpected or challenging questions. Having a toolkit of response techniques will help you maintain composure and provide thoughtful answers in any situation.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Essential Response Frameworks</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">The PREP Method</h4>
+              <p class="text-sm mb-2">A structured approach to concise, complete answers:</p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>P</strong>oint: State your main answer clearly</li>
+                <li><strong>R</strong>eason: Explain the rationale behind your answer</li>
+                <li><strong>E</strong>xample: Provide evidence or an example</li>
+                <li><strong>P</strong>oint: Restate your main point as a conclusion</li>
+              </ul>
+              <div class="mt-3 text-xs bg-shark-50 p-2 rounded">
+                <strong>Example:</strong> "We believe our CAC will decrease by 30% next quarter [Point]. This is because we've identified more efficient marketing channels [Reason]. In our recent tests, our Facebook conversion costs dropped from $20 to $14 per customer [Example]. So we're confident in achieving that 30% reduction [Point]."
+              </div>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">The Bridge Technique</h4>
+              <p class="text-sm mb-2">For transitioning to more favorable territory:</p>
+              <ol class="list-decimal pl-5 space-y-1 text-sm">
+                <li>Briefly address the original question</li>
+                <li>Create a verbal bridge ("What's also important...")</li>
+                <li>Move to a related point you want to emphasize</li>
+              </ol>
+              <div class="mt-3 text-xs bg-shark-50 p-2 rounded">
+                <strong>Example:</strong> "Our churn rate last quarter was 5% [Address]. What's also important to understand is that our net revenue retention is 120% [Bridge]. This means our expanding accounts are more than making up for the churn, resulting in strong overall growth [Emphasis]."
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Handling Specific Question Types</h3>
+          <div class="overflow-x-auto mb-6">
+            <table class="min-w-full border border-shark-200 rounded-lg">
+              <thead class="bg-shark-50">
+                <tr>
+                  <th class="border-b p-3 text-left text-shark-700">Question Type</th>
+                  <th class="border-b p-3 text-left text-shark-700">Strategy</th>
+                  <th class="border-b p-3 text-left text-shark-700">Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Hypothetical</td>
+                  <td class="p-3">Acknowledge it's hypothetical, explain your thinking process</td>
+                  <td class="p-3 text-sm">"If Amazon entered your space, what would you do?"</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Multi-part</td>
+                  <td class="p-3">Note all parts, address most important first, then ask which to elaborate on</td>
+                  <td class="p-3 text-sm">"What's your CAC, LTV, and how do they compare to competitors?"</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Criticism</td>
+                  <td class="p-3">Thank them, validate concern, explain your approach</td>
+                  <td class="p-3 text-sm">"Your pricing seems too high for this market."</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Knowledge gap</td>
+                  <td class="p-3">Be honest, explain what you do know, commit to follow-up</td>
+                  <td class="p-3 text-sm">"What's the impact of the new EU regulation on your product?"</td>
+                </tr>
+                <tr class="border-b border-shark-100">
+                  <td class="p-3 font-medium">Overly technical</td>
+                  <td class="p-3">Provide high-level answer, offer deep dive if they're interested</td>
+                  <td class="p-3 text-sm">"Explain your machine learning algorithm in detail."</td>
+                </tr>
+                <tr class="border-b border-shark-100 bg-shark-50/50">
+                  <td class="p-3 font-medium">Loaded/negative</td>
+                  <td class="p-3">Reframe it in neutral terms, then answer the reframed question</td>
+                  <td class="p-3 text-sm">"Why has your growth stalled in the last two quarters?"</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">What to Avoid</h3>
+          <div class="space-y-3 mb-6">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-5 h-5 rounded-full bg-red-500 flex items-center justify-center mt-0.5 mr-2">
+                <span class="text-white font-bold text-xs">✕</span>
+              </div>
+              <div>
+                <h4 class="font-semibold">Overcomplicated answers</h4>
+                <p class="text-sm">Keep responses clear and concise. If an investor wants more detail, they'll ask.</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-5 h-5 rounded-full bg-red-500 flex items-center justify-center mt-0.5 mr-2">
+                <span class="text-white font-bold text-xs">✕</span>
+              </div>
+              <div>
+                <h4 class="font-semibold">Defensive reactions</h4>
+                <p class="text-sm">View tough questions as opportunities to show your thinking, not as attacks.</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-5 h-5 rounded-full bg-red-500 flex items-center justify-center mt-0.5 mr-2">
+                <span class="text-white font-bold text-xs">✕</span>
+              </div>
+              <div>
+                <h4 class="font-semibold">Interrupting</h4>
+                <p class="text-sm">Let investors finish their questions completely before responding.</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-5 h-5 rounded-full bg-red-500 flex items-center justify-center mt-0.5 mr-2">
+                <span class="text-white font-bold text-xs">✕</span>
+              </div>
+              <div>
+                <h4 class="font-semibold">Making up answers</h4>
+                <p class="text-sm">If you don't know, say so, and offer to follow up with the information.</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-5 h-5 rounded-full bg-red-500 flex items-center justify-center mt-0.5 mr-2">
+                <span class="text-white font-bold text-xs">✕</span>
+              </div>
+              <div>
+                <h4 class="font-semibold">Dismissing concerns</h4>
+                <p class="text-sm">Acknowledge valid concerns rather than minimizing or ignoring them.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, entrepreneurs who directly address the Sharks' concerns tend to fare much better than those who evade questions or become defensive. For instance, when Kevin O'Leary asks about valuation, successful entrepreneurs don't just defend their number—they walk through their calculation methodology and demonstrate why it makes sense.</p>
+            <p class="mt-2">Mark Cuban often points out that how entrepreneurs handle tough questions is one of his key evaluation criteria, saying, "I'm as interested in how you respond to my questions as I am in your actual answers."</p>
+          </div>
+        `
+      },
+      {
+        title: "Reading the Room",
+        content: `
+          <h2 class="text-2xl font-bold mb-4">Reading Investor Signals and Adapting</h2>
+          <p class="mb-6">Investor meetings are not just about delivering information—they're dynamic conversations where reading body language, tone, and implicit signals can be as important as the content of your answers.</p>
+          
+          <h3 class="text-xl font-semibold mb-3">Recognizing Investor Signals</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Positive Signals</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Leaning forward</strong> - Indicates engagement and interest</li>
+                <li><strong>Taking notes</strong> - Shows they're capturing important details</li>
+                <li><strong>Building questions</strong> - Each question relates to your previous answer</li>
+                <li><strong>Specific questions about growth</strong> - Thinking about future potential</li>
+                <li><strong>Asking about team/hiring plans</strong> - Considering your execution capacity</li>
+                <li><strong>Introducing hypothetical scenarios</strong> - Mentally investing in your business</li>
+                <li><strong>Questions about other investors/fundraising</strong> - Gauging competition and timing</li>
+              </ul>
+            </div>
+            
+            <div class="border rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Concerning Signals</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Looking at phone/laptop frequently</strong> - Losing interest or distracted</li>
+                <li><strong>Crossed arms, leaning back</strong> - Skepticism or disengagement</li>
+                <li><strong>Changing subjects abruptly</strong> - Not satisfied with previous answers</li>
+                <li><strong>Repeating the same question differently</strong> - Not convinced by initial answer</li>
+                <li><strong>Short, minimal follow-ups</strong> - Potentially losing interest</li>
+                <li><strong>Glancing at colleagues/watches</strong> - Time consciousness, possibly wrapping up</li>
+                <li><strong>Only asking surface-level questions</strong> - May be going through the motions</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Adaptive Response Strategies</h3>
+          <div class="space-y-4 mb-6">
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">When You Sense Skepticism</h4>
+              <p class="text-sm">Acknowledge the concern directly and provide additional evidence.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Example:</strong> "I can see that our customer acquisition strategy might raise some questions. Let me share some specific results from our last three campaigns that demonstrate why we're confident in this approach..."
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">When Interest Is High</h4>
+              <p class="text-sm">Provide more depth and start building relationship foundations.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Strategy:</strong> Offer to share additional materials, suggest a follow-up with technical team members, or propose a product demonstration
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">When Attention Is Waning</h4>
+              <p class="text-sm">Shift to a more engaging format or your most compelling points.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Technique:</strong> "Let me show you something interesting..." then transition to a quick product demo, customer testimonial video, or striking visual data point
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">When Time Is Running Short</h4>
+              <p class="text-sm">Prioritize your remaining messages and accelerate pace appropriately.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Approach:</strong> "I know we're running short on time. Let me highlight the three most important points about our traction..." then deliver your key messages concisely
+              </div>
+            </div>
+            
+            <div class="border-l-4 border-shark-300 pl-4">
+              <h4 class="font-semibold mb-1">When Questions Are Getting Technical</h4>
+              <p class="text-sm">Assess whether this is interest or a test, and respond accordingly.</p>
+              <div class="mt-2 text-xs bg-shark-50 p-2 rounded">
+                <strong>Balance:</strong> Provide enough technical detail to demonstrate competence without overwhelming. Offer to arrange a deeper technical discussion with your CTO/technical co-founder if appropriate
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-3">Managing Group Dynamics</h3>
+          <p class="mb-4">When pitching to multiple investors, pay attention to group dynamics:</p>
+          
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Identify the decision makers</strong> - Note who others defer to or look at when questions are asked
+              <p class="text-sm ml-4">Direct complex answers to the most engaged listeners, but make eye contact with everyone</p>
+            </li>
+            <li>
+              <strong>Monitor the quiet ones</strong> - Sometimes the quietest person is the key decision maker
+              <p class="text-sm ml-4">Occasionally direct questions to less vocal participants: "I'd be interested in your perspective on this..."</p>
+            </li>
+            <li>
+              <strong>Balance attention</strong> - Don't focus exclusively on the friendliest or most senior investor
+              <p class="text-sm ml-4">Distribute your attention and eye contact across all participants</p>
+            </li>
+            <li>
+              <strong>Address conflicting signals</strong> - If investors seem to have different reactions, acknowledge it
+              <p class="text-sm ml-4">"I notice there might be different perspectives on our go-to-market strategy. I'd love to address any specific concerns."</p>
+            </li>
+          </ul>
+          
+          <div class="bg-shark-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+            <p>On Shark Tank, entrepreneurs must constantly read and adapt to multiple investors simultaneously. Notice how successful pitchers pivot their approach based on which Sharks show interest. They'll emphasize retail strategy when Lori seems engaged, manufacturing when Daymond perks up, or tech scalability when Mark asks questions.</p>
+            <p class="mt-2">The entrepreneurs who succeed are often those who can quickly identify which Shark is most aligned with their business and tailor their responses accordingly—while still maintaining authenticity and addressing concerns from the other Sharks. This same adaptability is crucial in any investor meeting.</p>
           </div>
         `
       }
@@ -6655,7 +7393,8 @@ const moduleContent = {
             <li><strong>Growth Stage:</strong> Early-stage companies often have low or negative ROE despite strong growth potential</li>
           </ul>
           
-          <div class="bg-shark-50 p-4 rounded-lg">            <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
+          <div class="bg-shark-50 p-4 rounded-lg">
+          <h4 class="font-semibold text-shark-700 mb-2">Shark Tank Connection</h4>
             <p>On Shark Tank, Lori Greiner and Mark Cuban often look beyond current ROE to evaluate a company's potential future returns. They frequently invest in businesses with temporarily low ROE but strong fundamentals that point to higher future returns.</p>
             <p class="mt-2">Meanwhile, Kevin O'Leary typically focuses more on current ROE and immediate cash flow, as reflected in his preference for royalty deals that provide a clear path to recovering his investment with a specific return threshold.</p>
           </div>
