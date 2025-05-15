@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="#features">Features</a> •
-  <a href="##tech-stack">Tech Stack</a> •
+  <a href="#tech-stack">Tech Stack</a> •
   <a href="#getting-started">Getting Started</a> •
   <a href="#key-modules">Key Modules</a> •
   <a href="#license">License</a>
