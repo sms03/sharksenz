@@ -30,6 +30,11 @@
 
 > *"In the tank of business, only those with the right data survive. SharkSenz gives you the edge to not just swim, but dominate."*
 
+<div align="center">
+  <img src="public/sharksz.png" alt="SharkSenz Screenshot" width="800" />
+  <p><em>SharkSenz Dashboard - Your business metrics at a glance</em></p>
+</div>
+
 ---
 
 ## ✨ Features
