@@ -32,7 +32,7 @@
 
 <div align="center">
   <img src="public/sharksz.png" alt="SharkSenz Screenshot" width="800" />
-  <p><em>SharkSenz Dashboard - Your business metrics at a glance</em></p>
+  <p><em>SharkSenz - Your business metrics and business basics learning hub at a glance</em></p>
 </div>
 
 ---
