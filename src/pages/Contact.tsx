@@ -153,19 +153,21 @@ export default function Contact() {
                   </div>
                 </div>
 
+                {/* 
                 <div className="rounded-lg border bg-card p-4 shadow-sm">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="mt-0.5 h-5 w-5 text-shark-500" />
-                    <div>
-                      <h3 className="font-medium">Address</h3>
-                      <p className="text-sm text-muted-foreground">
-                        123 Business Avenue<br />
-                        Suite 500<br />
-                        San Francisco, CA 94105
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                          <div className="flex items-start gap-3">
+                          <MapPin className="mt-0.5 h-5 w-5 text-shark-500" />
+                          <div>
+                            <h3 className="font-medium">Address</h3>
+                            <p className="text-sm text-muted-foreground">
+                            123 Business Avenue<br />
+                            Suite 500<br />
+                            San Francisco, CA 94105
+                            </p>
+                          </div>
+                          </div>
+                        </div>
+                */}
 
                 <div className="rounded-lg border bg-card p-4 shadow-sm">
                   <div className="flex items-start gap-3">
