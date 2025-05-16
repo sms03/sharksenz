@@ -45,8 +45,9 @@ export default function Profile() {
         }
 
         if (data) {
-          setUsername(data.username || "");
-          setAvatarUrl(data.avatar_url || "");
+          setUsername(data.username || user.user_metadata?.full_name || "");
+          // Use avatar from metadata if available (for OAuth users)
+          setAvatarUrl(data.avatar_url || user.user_metadata?.avatar_url || "");
         }
       } catch (error) {
         console.error("Error loading user data:", error);
@@ -99,6 +100,13 @@ export default function Profile() {
     }
     if (user?.email) {
       return user.email.substring(0, 2).toUpperCase();
+    }
+    if (user?.user_metadata?.full_name) {
+      const nameParts = user.user_metadata.full_name.split(" ");
+      if (nameParts.length > 1) {
+        return (nameParts[0][0] + nameParts[nameParts.length - 1][0]).toUpperCase();
+      }
+      return user.user_metadata.full_name.substring(0, 2).toUpperCase();
     }
     return "US";
   };

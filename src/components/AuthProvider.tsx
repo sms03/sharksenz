@@ -1,17 +1,29 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { Session, User } from '@supabase/supabase-js';
+import { Session, User, Provider } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 
 interface AuthContextType {
   session: Session | null;
   user: User | null;
+  signInWithOAuth: (provider: Provider) => Promise<void>;
 }
 
-const AuthContext = createContext<AuthContextType>({ session: null, user: null });
+const AuthContext = createContext<AuthContextType>({ 
+  session: null, 
+  user: null, 
+  signInWithOAuth: async () => {} 
+});
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<User | null>(null);
+
+  // Function to sign in with OAuth provider
+  const signInWithOAuth = async (provider: Provider) => {
+    await supabase.auth.signInWithOAuth({
+      provider,
+    });
+  };
 
   useEffect(() => {
     // Set up auth state listener
@@ -40,7 +52,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ session, user }}>
+    <AuthContext.Provider value={{ session, user, signInWithOAuth }}>
       {children}
     </AuthContext.Provider>
   );

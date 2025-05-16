@@ -7,7 +7,7 @@ import { toast } from '@/components/ui/sonner';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
-import { LogIn, UserPlus } from 'lucide-react';
+import { LogIn, UserPlus, Github } from 'lucide-react';
 import { useAuth } from '@/components/AuthProvider';
 import { gsap } from 'gsap';
 
@@ -18,7 +18,7 @@ const Auth = () => {
   const [activeTab, setActiveTab] = useState('login');
   const navigate = useNavigate();
   const location = useLocation();
-  const { user } = useAuth();
+  const { user, signInWithOAuth } = useAuth();
   
   // Refs for GSAP animations
   const cardRef = useRef(null);
@@ -175,7 +175,6 @@ const Auth = () => {
       });
     }
   };
-
   const handleSignUp = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -219,6 +218,17 @@ const Auth = () => {
       });
     }
   };
+  
+  // Handle Google Sign In
+  const handleGoogleSignIn = async () => {
+    try {
+      setLoading(true);
+      await signInWithOAuth('google');
+    } catch (error) {
+      toast.error('Failed to sign in with Google');
+      setLoading(false);
+    }
+  };
 
   // Button hover animations
   const buttonHoverEnter = (e) => {
@@ -259,8 +269,8 @@ const Auth = () => {
         </Button>
       </div>
       
-      <Card className="w-full max-w-md relative z-10 h-[500px]" ref={cardRef}>
-        <CardHeader className="text-center">
+      <Card className="w-full max-w-md relative z-10 h-auto min-h-[520px]" ref={cardRef}>
+        <CardHeader className="text-center pb-4">
           <CardTitle className="text-2xl">Welcome to SharkSenz</CardTitle>
           <CardDescription>
             Your gateway to mastering business concepts and financial literacy
@@ -268,7 +278,7 @@ const Auth = () => {
         </CardHeader>
         <CardContent>
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-6">
+            <TabsList className="grid w-full grid-cols-2 mb-4">
               <TabsTrigger 
                 value="login" 
                 ref={loginTabRef}
@@ -289,8 +299,8 @@ const Auth = () => {
             
             <div ref={formRef}>
               <TabsContent value="login" forceMount className={activeTab === 'login' ? 'block' : 'hidden'}>
-                <form onSubmit={handleLogin} className="space-y-4">
-                  <div className="space-y-2">
+                <form onSubmit={handleLogin} className="space-y-3">
+                  <div className="space-y-1.5">
                     <Label htmlFor="email-login">Email</Label>
                     <Input
                       id="email-login"
@@ -302,7 +312,7 @@ const Auth = () => {
                       className="h-10"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-1.5">
                     <div className="flex items-center justify-between">
                       <Label htmlFor="password-login">Password</Label>
                       <Button variant="link" className="px-0 text-xs" type="button">
@@ -321,14 +331,42 @@ const Auth = () => {
                   </div>
                   <Button 
                     type="submit" 
-                    className="w-full" 
+                    className="w-full h-10" 
+                    disabled={loading}
+                    onMouseEnter={buttonHoverEnter}
+                    onMouseLeave={buttonHoverLeave}                  >
+                    {loading ? "Logging in..." : "Sign In"}
+                  </Button>
+                  
+                  <div className="relative my-3">
+                    <div className="absolute inset-0 flex items-center">
+                      <span className="w-full border-t" />
+                    </div>
+                    <div className="relative flex justify-center text-xs uppercase">
+                      <span className="bg-background px-2 text-muted-foreground">
+                        Or continue with
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <Button 
+                    type="button" 
+                    className="w-full bg-[#4285F4] hover:bg-[#3367D6] text-white h-10" 
+                    onClick={handleGoogleSignIn}
                     disabled={loading}
                     onMouseEnter={buttonHoverEnter}
                     onMouseLeave={buttonHoverLeave}
                   >
-                    {loading ? "Logging in..." : "Sign In"}
+                    <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
+                      <path
+                        fill="currentColor"
+                        d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"
+                      />
+                    </svg>
+                    Sign in with Google
                   </Button>
-                  <div className="text-center text-sm text-muted-foreground">
+                  
+                  <div className="text-center text-sm text-muted-foreground mt-2">
                     <span>Don't have an account? </span>
                     <Button 
                       variant="link" 
@@ -343,8 +381,8 @@ const Auth = () => {
               </TabsContent>
               
               <TabsContent value="signup" forceMount className={activeTab === 'signup' ? 'block' : 'hidden'}>
-                <form onSubmit={handleSignUp} className="space-y-4">
-                  <div className="space-y-2">
+                <form onSubmit={handleSignUp} className="space-y-3">
+                  <div className="space-y-1.5">
                     <Label htmlFor="email-signup">Email</Label>
                     <Input
                       id="email-signup"
@@ -356,7 +394,7 @@ const Auth = () => {
                       className="h-10"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-1.5">
                     <Label htmlFor="password-signup">Password</Label>
                     <Input
                       id="password-signup"
@@ -373,14 +411,42 @@ const Auth = () => {
                   </div>
                   <Button 
                     type="submit" 
-                    className="w-full" 
+                    className="w-full h-10" 
+                    disabled={loading}
+                    onMouseEnter={buttonHoverEnter}
+                    onMouseLeave={buttonHoverLeave}                  >
+                    {loading ? "Creating account..." : "Create Account"}
+                  </Button>
+                  
+                  <div className="relative my-3">
+                    <div className="absolute inset-0 flex items-center">
+                      <span className="w-full border-t" />
+                    </div>
+                    <div className="relative flex justify-center text-xs uppercase">
+                      <span className="bg-background px-2 text-muted-foreground">
+                        Or continue with
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <Button 
+                    type="button" 
+                    className="w-full bg-[#4285F4] hover:bg-[#3367D6] text-white h-10" 
+                    onClick={handleGoogleSignIn}
                     disabled={loading}
                     onMouseEnter={buttonHoverEnter}
                     onMouseLeave={buttonHoverLeave}
                   >
-                    {loading ? "Creating account..." : "Create Account"}
+                    <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
+                      <path
+                        fill="currentColor"
+                        d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"
+                      />
+                    </svg>
+                    Sign up with Google
                   </Button>
-                  <div className="text-center text-sm text-muted-foreground">
+                  
+                  <div className="text-center text-sm text-muted-foreground mt-2">
                     <span>Already have an account? </span>
                     <Button 
                       variant="link" 

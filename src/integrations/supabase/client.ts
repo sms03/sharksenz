@@ -2,10 +2,11 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
-const SUPABASE_URL = "https://zxqlogakbyekgeekgexh.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp4cWxvZ2FrYnlla2dlZWtnZXhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ4MDk1NTgsImV4cCI6MjA2MDM4NTU1OH0.W3gSx5RvMoB5eKHrLmUDCo2Rx54vijSz866FxtPNick";
+// Use environment variables for the Supabase URL and API key
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || "https://zxqlogakbyekgeekgexh.supabase.co";
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp4cWxvZ2FrYnlla2dlZWtnZXhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ4MDk1NTgsImV4cCI6MjA2MDM4NTU1OH0.W3gSx5RvMoB5eKHrLmUDCo2Rx54vijSz866FxtPNick";
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
 
-export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_ANON_KEY);
