@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ReactConfetti from "react-confetti";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Trophy } from "lucide-react";
+import { Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface LevelUpProps {
@@ -59,10 +59,9 @@ export function LevelUpAnimation({ open, onClose, level, levelName }: LevelUpPro
       )}
       <Dialog open={open} onOpenChange={() => animationComplete && onClose()}>
         <DialogContent className="sm:max-w-md text-center">
-        
-        <DialogHeader className="flex flex-col items-center gap-1">
+          <DialogHeader className="flex flex-col items-center gap-1">
           <div className="animate-bounce rounded-full bg-yellow-50 p-4 mb-2">
-            <Trophy className="h-10 w-10 text-yellow-500" />
+            <Award className="h-10 w-10 text-yellow-500" />
           </div>
           <DialogTitle className="text-2xl font-bold text-center">
             Level Up!
@@ -73,9 +72,8 @@ export function LevelUpAnimation({ open, onClose, level, levelName }: LevelUpPro
           <div className="text-4xl font-bold text-shark-600">Level {level}</div>
           <div className="bg-gradient-to-r from-shark-500 to-shark-600 text-white px-4 py-2 rounded-md">
             {levelName}
-          </div>
-          <p className="text-muted-foreground text-center">
-            Congratulations on reaching Level {level}! Keep learning to unlock more achievements.
+          </div>          <p className="text-muted-foreground text-center">
+            Congratulations on reaching Level {level}! Keep learning to unlock more content.
           </p>
         </div>
         

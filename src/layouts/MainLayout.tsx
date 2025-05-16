@@ -7,7 +7,6 @@ import {
   Home,
   LucideIcon,
   Presentation,
-  Trophy,
   User,
   LogIn,
   Sun,
@@ -77,11 +76,6 @@ const learningNavItems: NavItem[] = [
     title: "Learning Hub",
     href: "/learning",
     icon: GraduationCap,
-  },
-  {
-    title: "Achievements",
-    href: "/achievements",
-    icon: Trophy,
   },
 ];
 
@@ -171,9 +165,15 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   };
 
   const getInitials = () => {
-    if (user?.email) {
-      return user.email.substring(0, 2).toUpperCase();
+    if (!user) return 'GU';
+    if (user.user_metadata?.full_name) {
+      const nameParts = user.user_metadata.full_name.split(" ");
+      if (nameParts.length > 1) {
+        return (nameParts[0][0] + nameParts[nameParts.length - 1][0]).toUpperCase();
+      }
+      return user.user_metadata.full_name.substring(0, 2).toUpperCase();
     }
+    if (user.email) return user.email.substring(0, 2).toUpperCase();
     return "US";
   };
 
@@ -276,7 +276,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" className="relative h-8 w-8 rounded-full transition-transform hover:scale-110">
                       <Avatar className="h-8 w-8">
-                        <AvatarImage src="" alt={user.email || ""} />
+                        <AvatarImage src={user.user_metadata?.avatar_url || ""} alt={user.email || ""} />
                         <AvatarFallback>{getInitials()}</AvatarFallback>
                       </Avatar>
                     </Button>
@@ -284,7 +284,9 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                   <DropdownMenuContent className="w-56" align="end" forceMount>
                     <DropdownMenuLabel className="font-normal">
                       <div className="flex flex-col space-y-1">
-                        <p className="text-sm font-medium leading-none">Account</p>
+                        <p className="text-sm font-medium leading-none">
+                          {user.user_metadata?.full_name || 'Account'}
+                        </p>
                         <p className="text-xs leading-none text-muted-foreground">
                           {user.email}
                         </p>

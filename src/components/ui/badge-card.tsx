@@ -11,7 +11,7 @@ interface BadgeCardProps {
   className?: string;
 }
 
-// Trophy background colors based on difficulty
+// Badge background colors based on difficulty
 const difficultyBgColors = {
   bronze: "bg-amber-50",
   silver: "bg-slate-50",
@@ -19,7 +19,7 @@ const difficultyBgColors = {
   platinum: "bg-cyan-50",
 };
 
-// Trophy text colors based on difficulty
+// Badge text colors based on difficulty
 const difficultyTextColors = {
   bronze: "text-amber-600 drop-shadow-sm",
   silver: "text-slate-400 drop-shadow-sm",

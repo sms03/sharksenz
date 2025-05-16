@@ -56,12 +56,9 @@ export function XPInfoTooltip() {
           </button>
         </TooltipTrigger>
         <TooltipContent className="max-w-sm" side="bottom">
-          <div>
-            <h4 className="font-medium mb-2">How to Earn XP</h4>
+          <div>            <h4 className="font-medium mb-2">How to Earn XP</h4>
             <ul className="text-xs space-y-1 list-disc pl-4">
               <li>Complete a learning module: <span className="font-medium">+25 XP</span></li>
-              <li>Complete a quiz: <span className="font-medium">+50 XP</span></li> 
-              <li>Perfect quiz score: <span className="font-medium">+25 XP bonus</span></li>
             </ul>
           </div>
         </TooltipContent>

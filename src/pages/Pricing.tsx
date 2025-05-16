@@ -19,12 +19,11 @@ const tiers = [
   },
   {
     name: "Starter",
-    price: { USD: "$19/mo", INR: "₹1,599/mo (incl. GST)" },
-    features: [
+    price: { USD: "$19/mo", INR: "₹1,599/mo (incl. GST)" },    features: [
       "All Free tier features",
       "Unlock all learning modules",
       "Full metrics dashboard",
-      "Basic quizzes & achievements",
+      "Advanced achievements system",
       "Email support"
     ],
     cta: "Upgrade to Starter",

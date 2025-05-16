@@ -11,7 +11,6 @@ import Dashboard from "./pages/Dashboard";
 import PitchSimulator from "./pages/PitchSimulator";
 import Learning from "./pages/Learning";
 import LearningModule from "./pages/LearningModule";
-import Achievements from "./pages/Achievements";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 import About from "./pages/About";
@@ -54,11 +53,6 @@ const App = () => (
               <Route path="/learning/:moduleId" element={
                 <ProtectedRoute>
                   <LearningModule />
-                </ProtectedRoute>
-              } />
-              <Route path="/achievements" element={
-                <ProtectedRoute>
-                  <Achievements />
                 </ProtectedRoute>
               } />
               <Route path="/auth" element={<Auth />} />

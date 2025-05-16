@@ -10761,16 +10761,15 @@ export default function LearningModule() {
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <div className="flex-shrink-0 bg-shark-100 text-shark-700 p-3 rounded-full">
               <PlayCircle className="h-6 w-6" />
-            </div>
-            <div>
+            </div>            <div>
               <h3 className="text-lg font-semibold mb-1">Ready to apply this knowledge?</h3>
               <p className="text-muted-foreground mb-4">
                 Test your understanding of {moduleData.title} with interactive exercises.
               </p>
               <Button asChild variant="outline">
-                <Link to="/achievements">
+                <Link to="/learning">
                   <BookOpen className="h-4 w-4 mr-2" />
-                  Take the Quiz
+                  Return to Modules
                 </Link>
               </Button>
             </div>

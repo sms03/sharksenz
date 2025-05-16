@@ -3,8 +3,6 @@
 // XP values for different activities
 export const XP_VALUES = {
   MODULE_COMPLETION: 25, // Base XP for completing a module
-  QUIZ_COMPLETION: 50,   // Base XP for completing a quiz
-  PERFECT_QUIZ: 25,      // Additional XP for 100% quiz score
 };
 
 // Level thresholds (XP needed for each level)
@@ -18,16 +16,14 @@ export const LEVEL_THRESHOLDS = [
   7500    // Level 7: Shark Tank Worthy (7500+ XP)
 ];
 
-// Badge requirements
+// Module completion requirements
 export const BADGE_REQUIREMENTS = {
-  "Shark Apprentice": "Complete any learning module",
+  "Business Fundamentals": "Complete any learning module",
   "Valuation Expert": "Complete all valuation modules",
   "Metrics Master": "Complete all metrics modules",
   "Pitching Pro": "Complete all pitching modules",
-  "Encyclopedia Scholar": "Complete 15 modules across all categories",
-  "Quiz Champion": "Score 90% or higher on all quizzes",
-  "Shark Tank Ready": "Complete all modules across all categories",
-  "Negotiation Ninja": "Complete the Negotiation Skills module and score 100% on the related quiz"
+  "Business Scholar": "Complete 15 modules across all categories",
+  "Advanced Business": "Complete all modules across all categories"
 };
 
 // Get level name based on current level
@@ -114,11 +110,10 @@ export const addXP = (userEmail: string, xpToAdd: number): number => {
   }
 };
 
-// Function to check if badges should be unlocked or revoked based on module completion
+// Function to check and track module completion
 export const checkAndUpdateBadges = (
   userModules: Array<{ title: string; category: string; completed: boolean }>,
-  userBadges: Array<{ id: number; name: string; unlocked: boolean; difficulty: string }>,
-  userQuizzes?: Array<{ id: number; title: string; completed: boolean; score: number }>
+  userBadges: Array<{ id: number; name: string; unlocked: boolean; difficulty: string }>
 ): Array<{ id: number; name: string; unlocked: boolean; difficulty: string }> => {
   if (!Array.isArray(userModules) || !Array.isArray(userBadges)) {
     return userBadges;
@@ -143,30 +138,18 @@ export const checkAndUpdateBadges = (
     return acc;
   }, {} as Record<string, { total: number; completed: number }>);
   
-  // Set badge conditions
+  // Set module completion conditions
   const valuationModulesAllCompleted = categoryCounts['valuation']?.completed === categoryCounts['valuation']?.total;
   const metricsModulesAllCompleted = categoryCounts['metrics']?.completed === categoryCounts['metrics']?.total;
   const pitchingModulesAllCompleted = categoryCounts['pitching']?.completed === categoryCounts['pitching']?.total;
-  const encyclopediaScholarCompleted = completedModules.length >= 15;
-  
-  // Negotiation Ninja specific condition
-  const negotiationModuleCompleted = completedModules.some(m => m.title === "Negotiation Skills");
-  const negotiationQuizPerfect = userQuizzes?.some(q => 
-    q.title === "Negotiation Skills" && q.completed && q.score === 100
-  ) || false;
-  
-  // Quiz Champion condition
-  const allQuizzesHighScore = userQuizzes?.every(q => 
-    q.completed && q.score >= 90
-  ) || false;
-  
-  // Update badge status (unlock or revoke)
+  const businessScholarCompleted = completedModules.length >= 15;
+    // Update completion status
   return userBadges.map(badge => {
     let shouldBeUnlocked = badge.unlocked; // Default to current state
 
     // Apply specific conditions for each badge
     switch(badge.name) {
-      case "Shark Apprentice":
+      case "Business Fundamentals":
         shouldBeUnlocked = anyModuleCompleted;
         break;
       case "Valuation Expert":
@@ -178,17 +161,11 @@ export const checkAndUpdateBadges = (
       case "Pitching Pro":
         shouldBeUnlocked = pitchingModulesAllCompleted;
         break;
-      case "Encyclopedia Scholar":
-        shouldBeUnlocked = encyclopediaScholarCompleted;
+      case "Business Scholar":
+        shouldBeUnlocked = businessScholarCompleted;
         break;
-      case "Quiz Champion":
-        shouldBeUnlocked = allQuizzesHighScore;
-        break;
-      case "Shark Tank Ready":
+      case "Advanced Business":
         shouldBeUnlocked = allModulesCompleted;
-        break;
-      case "Negotiation Ninja":
-        shouldBeUnlocked = negotiationModuleCompleted && negotiationQuizPerfect;
         break;
     }
 

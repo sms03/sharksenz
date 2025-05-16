@@ -11,8 +11,7 @@ import {
   Target, 
   TrendingUp, 
   Users, 
-  Lock,
-  Trophy
+  Lock
 } from "lucide-react";
 import MainLayout from "@/layouts/MainLayout";
 import { ModuleCard } from "@/components/ui/module-card";
@@ -108,14 +107,12 @@ const getInitialProgress = () => {
 
 // Helper: get initial badges (all locked)
 const getInitialBadges = () => [
-  { id: 1, name: "Shark Apprentice", unlocked: false, difficulty: "beginner" },
+  { id: 1, name: "Business Fundamentals", unlocked: false, difficulty: "beginner" },
   { id: 2, name: "Valuation Expert", unlocked: false, difficulty: "intermediate" },
   { id: 3, name: "Metrics Master", unlocked: false, difficulty: "intermediate" },
   { id: 4, name: "Pitching Pro", unlocked: false, difficulty: "intermediate" },
-  { id: 5, name: "Encyclopedia Scholar", unlocked: false, difficulty: "advanced" },
-  { id: 6, name: "Quiz Champion", unlocked: false, difficulty: "advanced" },
-  { id: 7, name: "Shark Tank Ready", unlocked: false, difficulty: "expert" },
-  { id: 8, name: "Negotiation Ninja", unlocked: false, difficulty: "expert" },
+  { id: 5, name: "Business Scholar", unlocked: false, difficulty: "advanced" },
+  { id: 7, name: "Advanced Business", unlocked: false, difficulty: "expert" },
 ];
 
 export default function Learning() {
@@ -237,23 +234,11 @@ export default function Learning() {
     setUserModules((prevModules) => {
       const safePrevModules = Array.isArray(prevModules) ? prevModules : getInitialProgress();
       const updatedModules = safePrevModules.map((m) => (m.title === title ? { ...m, completed: true } : m));
-      
-      // Check if any badges need to be updated after completing the module
+        // Check if any badges need to be updated after completing the module
       try {
         if (user && user.email) {
-          // Get user quizzes for badge evaluation
-          let userQuizzes = [];
-          try {
-            const savedQuizzesString = localStorage.getItem(`quizzes_${user.email}`);
-            if (savedQuizzesString) {
-              userQuizzes = JSON.parse(savedQuizzesString);
-            }
-          } catch (e) {
-            console.error("Failed to load quizzes for badge evaluation:", e);
-          }
-          
           // Get updated badge status
-          const updatedBadges = checkAndUpdateBadges(updatedModules, userBadges, userQuizzes);
+          const updatedBadges = checkAndUpdateBadges(updatedModules, userBadges);
           
           // Find any badges that were newly unlocked
           const newlyUnlockedBadges = updatedBadges.filter((newBadge) => {
@@ -270,11 +255,11 @@ export default function Learning() {
             newlyUnlockedBadges.forEach(badge => {
               toast.success(
                 <div className="flex items-center gap-2">
-                  <span>Badge unlocked!</span>
-                  <Trophy className="h-4 w-4 text-yellow-500" />
+                  <span>Module completed!</span>
+                  <Award className="h-4 w-4 text-yellow-500" />
                 </div>,
                 {
-                  description: `You've earned the "${badge.name}" achievement!`,
+                  description: `You've completed the "${badge.name}" module!`,
                   duration: 4000
                 }
               );
@@ -309,23 +294,11 @@ export default function Learning() {
     setUserModules((prevModules) => {
       const safePrevModules = Array.isArray(prevModules) ? prevModules : getInitialProgress();
       const updatedModules = safePrevModules.map((m) => (m.title === title ? { ...m, completed: false } : m));
-      
-      // Check if any badges need to be revoked
+        // Check if any badges need to be revoked
       try {
         if (user && user.email) {
-          // Get user quizzes for badge evaluation
-          let userQuizzes = [];
-          try {
-            const savedQuizzesString = localStorage.getItem(`quizzes_${user.email}`);
-            if (savedQuizzesString) {
-              userQuizzes = JSON.parse(savedQuizzesString);
-            }
-          } catch (e) {
-            console.error("Failed to load quizzes for badge evaluation:", e);
-          }
-          
           // Get updated badge status
-          const updatedBadges = checkAndUpdateBadges(updatedModules, userBadges, userQuizzes);
+          const updatedBadges = checkAndUpdateBadges(updatedModules, userBadges);
           
           // Find any badges that were revoked
           const revokedBadges = userBadges.filter((oldBadge) => {
@@ -573,21 +546,20 @@ export default function Learning() {
             );
           })}
         </Tabs>
-        
-        <div className="rounded-xl border bg-card p-6 md:p-8">
+          <div className="rounded-xl border bg-card p-6 md:p-8">
           <div className="mb-6 text-center">
-            <h2 className="mb-2 text-2xl font-bold">Ready to test your knowledge?</h2>
+            <h2 className="mb-2 text-2xl font-bold">Continue Your Learning Journey</h2>
             <p className="mx-auto max-w-2xl text-muted-foreground">
-              Take quizzes, earn badges, and track your progress on our leaderboard.
+              Track your progress as you complete learning modules.
             </p>
           </div>
           <div className="flex justify-center">
             {user ? (
               <Link
-                to="/achievements"
+                to="/learning"
                 className="rounded-lg bg-shark-500 px-6 py-3 font-medium text-white shadow-sm transition-colors hover:bg-shark-600"
               >
-                View Achievement Center
+                Explore More Modules
               </Link>
             ) : (
               <Button asChild>
