@@ -919,7 +919,7 @@ const moduleContent = {
   },
   "burn-rate": {
     title: "Burn Rate & Runway",
-    description: "Calculate how long your cash will last",
+    description: "Calculate how long your cash will last.",
     sections: [
       {
         title: "Understanding Burn Rate",
