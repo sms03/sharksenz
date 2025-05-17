@@ -1,4 +1,6 @@
 @import "./styles/fonts.css";
+@import "./styles/responsive-tabs.css";
+@import "./styles/mobile-header.css";
 
 @tailwind base;
 @tailwind components;

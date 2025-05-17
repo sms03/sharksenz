@@ -1,0 +1,70 @@
+/* Responsive tabs for mobile devices */
+.scrollable-tabs-container {
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+  scrollbar-width: thin;
+  margin-bottom: 4px; /* Add space for shadows */
+}
+
+.scrollable-tabs-container::-webkit-scrollbar {
+  height: 4px;
+}
+
+.scrollable-tabs-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.scrollable-tabs-list {
+  display: flex;
+  min-width: max-content;
+}
+
+/* Add shadow indicators to show there's more content to scroll */
+.scrollable-tabs-container::after,
+.scrollable-tabs-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+.scrollable-tabs-container::after {
+  right: 0;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8));
+  opacity: var(--right-shadow-opacity, 0);
+}
+
+.scrollable-tabs-container::before {
+  left: 0;
+  background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.8));
+  opacity: var(--left-shadow-opacity, 0);
+}
+
+/* Responsive utilities for tabs */
+@media (min-width: 768px) {
+  .md-grid-tabs {
+    display: grid;
+  }
+}
+
+/* Utility class for tab triggers on mobile */
+.tab-trigger-mobile {
+  padding: 8px 12px;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  flex-shrink: 0; /* Prevent tab shrinking */
+  min-width: max-content; /* Allow tab to take necessary width */
+}
+
+@media (max-width: 640px) {
+  .tab-trigger-mobile {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+}

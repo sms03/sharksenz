@@ -1,0 +1,41 @@
+/* Mobile header adjustments */
+
+/* Logo container size adaptations for very small screens */
+@media (max-width: 360px) {
+  .mobile-logo-text {
+    font-size: 0.95rem !important; /* Slightly smaller font on very small screens */
+  }
+}
+
+@media (max-width: 320px) {
+  .mobile-logo-text {
+    font-size: 0.85rem !important; /* Even smaller font for tiny screens */
+    max-width: 80px; /* Prevent text from taking too much space */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Animation for logo */
+.header-logo {
+  transition: transform 0.3s ease;
+}
+
+.header-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Space distribution in header */
+.mobile-header {
+  padding-left: max(0.5rem, env(safe-area-inset-left));
+  padding-right: max(0.5rem, env(safe-area-inset-right));
+}
+
+/* Specific styling for icons in header to ensure consistent spacing */
+.mobile-header .header-icon {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

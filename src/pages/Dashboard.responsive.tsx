@@ -7,7 +7,6 @@ import {
   CircleDollarSign,
   TrendingDown
 } from "lucide-react";
-import { updateTabShadows } from "@/utils/responsive-tabs";
 import MainLayout from "@/layouts/MainLayout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/components/AuthProvider";
@@ -58,22 +57,14 @@ export default function Dashboard() {
   // Add responsive state for mobile detection
   const [isMobile, setIsMobile] = useState(false);
   
-  // Add effect to check for mobile screen size and initialize responsive tabs
+  // Add effect to check for mobile screen size
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
-      // Update tab shadows on resize
-      updateTabShadows();
     };
     
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
-    // Initialize tab shadows after component mount
-    setTimeout(() => {
-      updateTabShadows();
-    }, 100);
-    
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
@@ -103,7 +94,7 @@ export default function Dashboard() {
 
   const [tab, setTab] = useState(initialTab);
 
-  // Sync tab with route and scroll into view
+  // Sync tab with route
   function handleTabChange(value: string) {
     setTab(value);
     if (value === "calculator") navigate("/dashboard");
@@ -112,23 +103,15 @@ export default function Dashboard() {
     else if (value === "runway") navigate("/dashboard/runway");
     else if (value === "market") navigate("/dashboard/market");
     else if (value === "profit") navigate("/dashboard/profit");
-    
-    // Scroll the selected tab into view on mobile
-    setTimeout(() => {
-      const selectedTab = document.querySelector(`[data-state="active"][role="tab"]`);
-      if (selectedTab && window.innerWidth < 768) {
-        selectedTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-    }, 10);
   }
   
   return (
     <MainLayout>
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="mb-4 sm:mb-6 md:mb-8 flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-2 sm:gap-4">
           <div>
-            <h1 className="font-heading mb-2 text-3xl font-bold">Metrics Dashboard</h1>
-            <p className="font-subheading-libre text-lg text-muted-foreground">
+            <h1 className="font-heading mb-1 sm:mb-2 text-xl sm:text-2xl md:text-3xl font-bold">Metrics Dashboard</h1>
+            <p className="font-subheading-libre text-sm sm:text-base md:text-lg text-muted-foreground">
               Calculate and visualize key business metrics
             </p>
           </div>
@@ -140,36 +123,36 @@ export default function Dashboard() {
         </div>
         
         <Tabs value={tab} onValueChange={handleTabChange} className="w-full">
-          <div className="scrollable-tabs-container">
-            <TabsList className="scrollable-tabs-list w-full md-grid-tabs md:grid-cols-6">
-              <TabsTrigger value="calculator" className="tab-trigger-mobile">
-                <Calculator className="mr-2 h-4 w-4" />
-                <span className="text-xs sm:text-sm">Metrics Calculator</span>
+          <div className="overflow-x-auto pb-2 -mx-3 px-3 scrollbar-thin">
+            <TabsList className={`grid w-full ${isMobile ? 'min-w-[800px]' : ''} grid-cols-2 sm:grid-cols-3 md:grid-cols-6`}>
+              <TabsTrigger value="calculator" className="text-xs sm:text-sm">
+                <Calculator className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="truncate">{isMobile ? "Metrics" : "Metrics Calculator"}</span>
               </TabsTrigger>
-              <TabsTrigger value="revenue" className="tab-trigger-mobile">
-                <BarChart className="mr-2 h-4 w-4" />
-                <span className="text-xs sm:text-sm">Revenue Calculator</span>
+              <TabsTrigger value="revenue" className="text-xs sm:text-sm">
+                <BarChart className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="truncate">{isMobile ? "Revenue" : "Revenue Calculator"}</span>
               </TabsTrigger>
-              <TabsTrigger value="market" className="tab-trigger-mobile">
-                <PieChart className="mr-2 h-4 w-4" />
-                <span className="text-xs sm:text-sm">Market Analysis</span>
+              <TabsTrigger value="market" className="text-xs sm:text-sm">
+                <PieChart className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="truncate">{isMobile ? "Market" : "Market Analysis"}</span>
               </TabsTrigger>
-              <TabsTrigger value="profit" className="tab-trigger-mobile">
-                <LineChart className="mr-2 h-4 w-4" />
-                <span className="text-xs sm:text-sm">Profit Projection</span>
+              <TabsTrigger value="profit" className="text-xs sm:text-sm">
+                <LineChart className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="truncate">{isMobile ? "Profit" : "Profit Projection"}</span>
               </TabsTrigger>
-              <TabsTrigger value="valuation" disabled={!isPaid} className="tab-trigger-mobile">
-                <CircleDollarSign className="mr-2 h-4 w-4" />
-                <span className="text-xs sm:text-sm">Valuation</span>
+              <TabsTrigger value="valuation" disabled={!isPaid} className="text-xs sm:text-sm">
+                <CircleDollarSign className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="truncate">Valuation</span>
               </TabsTrigger>
-              <TabsTrigger value="runway" disabled={!isPaid} className="tab-trigger-mobile">
-                <TrendingDown className="mr-2 h-4 w-4" />
-                <span className="text-xs sm:text-sm">Burn Rate & Runway</span>
+              <TabsTrigger value="runway" disabled={!isPaid} className="text-xs sm:text-sm">
+                <TrendingDown className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="truncate">{isMobile ? "Runway" : "Burn Rate & Runway"}</span>
               </TabsTrigger>
             </TabsList>
           </div>
           
-          <TabsContent value="calculator" className="mt-6 overflow-auto scrollbar-shark">
+          <TabsContent value="calculator" className="mt-4 sm:mt-6 overflow-auto scrollbar-shark">
             <CalculatorTabContent 
               revenue={revenue}
               setRevenue={setRevenue}

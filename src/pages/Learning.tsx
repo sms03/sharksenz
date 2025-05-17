@@ -28,6 +28,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { XP_VALUES, addXP, getUserXP, saveUserXP, checkAndUpdateBadges } from "@/utils/userProgress";
 import { toast } from "@/components/ui/sonner";
+import { updateTabShadows } from "@/utils/responsive-tabs";
 
 // Learning path categories
 const categories = [
@@ -130,7 +131,22 @@ export default function Learning() {
   const [userBadges, setUserBadges] = useState(() => getInitialBadges());
   const [loading, setLoading] = useState(true); // Start with loading true
 
-  // Effect to load user-specific data or reset to defaults when user changes
+  // Effect to load user-specific data or reset to defaults when user changes  // Initialize responsive tabs after component mount
+  useEffect(() => {
+    const handleResize = () => {
+      updateTabShadows();
+    };
+    
+    // Initial update
+    setTimeout(() => {
+      updateTabShadows();
+    }, 100);
+    
+    // Update on resize
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   useEffect(() => {
     setLoading(true);
     try {
@@ -464,16 +480,28 @@ export default function Learning() {
             <div className="h-6 rounded bg-muted w-full mb-2"></div>
             <div className="h-2 rounded bg-muted w-full"></div>
           </div>
-        ) : null}
-        
-        <Tabs defaultValue="fundamentals" className="mb-8">
-          <TabsList className="w-full grid grid-cols-2 sm:grid-cols-4"> 
-            {categories.map((category) => (
-              <TabsTrigger key={category.id} value={category.id}>
-                {category.name}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+        ) : null}          <Tabs 
+            defaultValue="fundamentals" 
+            className="mb-8"
+            onValueChange={(value) => {
+              // Scroll the selected tab into view on mobile
+              setTimeout(() => {
+                const selectedTab = document.querySelector(`[data-state="active"][role="tab"]`);
+                if (selectedTab && window.innerWidth < 768) {
+                  selectedTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+              }, 10);
+            }}
+          >
+          <div className="scrollable-tabs-container">
+            <TabsList className="scrollable-tabs-list w-full md-grid-tabs md:grid-cols-4">
+              {categories.map((category) => (
+                <TabsTrigger key={category.id} value={category.id} className="tab-trigger-mobile">
+                  {category.name}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
           {categories.map((category) => {
             const modulesInCategory = safeUserModules.filter((module) => module.category === category.id);
             const visibleModules = plan === "free" ? modulesInCategory.slice(0, 5) : modulesInCategory;
@@ -499,8 +527,7 @@ export default function Learning() {
                     )}
                   </div>
                 ) : (
-                  <FadeInStagger>
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  <FadeInStagger>                    <div className="grid gap-3 xs:gap-4 sm:gap-6 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                       {visibleModules.map((module) => (
                         <FadeIn key={module.title}>
                           <ModuleCard
@@ -514,8 +541,9 @@ export default function Learning() {
                           {user && !module.completed && (
                             <Button
                               onClick={() => completeModule(module.title)}
-                              className="mt-2 w-full"
+                              className="mt-2 w-full text-xs sm:text-sm"
                               disabled={loading} // Disable if global loading
+                              size={window.innerWidth < 640 ? "sm" : "default"}
                             >
                               Complete
                             </Button>
@@ -523,8 +551,9 @@ export default function Learning() {
                           {user && module.completed && (
                             <Button
                               onClick={() => incompleteModule(module.title)}
-                              className="mt-2 w-full"
+                              className="mt-2 w-full text-xs sm:text-sm"
                               disabled={loading} // Disable if global loading
+                              size={window.innerWidth < 640 ? "sm" : "default"}
                             >
                               Mark Incomplete
                             </Button>

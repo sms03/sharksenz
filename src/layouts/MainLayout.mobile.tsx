@@ -1,6 +1,5 @@
-// filepath: d:\GitHub\SharkSenz\src\layouts\MainLayout.tsx
 import { Link, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   BarChart3,
   BookOpen,
@@ -10,10 +9,10 @@ import {
   Presentation,
   User,
   LogIn,
+  LogOut,
   Sun,
   Moon,
 } from "lucide-react";
-import { useResponsive } from "@/hooks/use-mobile";
 import {
   Sidebar,
   SidebarContent,
@@ -28,7 +27,6 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { initializeViewportFix } from "@/utils/mobile-viewport-fix";
 import { useAuth } from "@/components/AuthProvider";
 import {
   DropdownMenu,
@@ -105,13 +103,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   const { user } = useAuth();
   const { theme, setTheme } = useTheme();
   const location = useLocation();
-  const { isMobile, isTablet } = useResponsive();
-  
-  // Initialize the viewport fix for mobile devices
-  useEffect(() => {
-    const cleanup = initializeViewportFix();
-    return cleanup;
-  }, []);
+  const [isSigningOut, setIsSigningOut] = useState(false);
 
   useEffect(() => {
     const activeMenuItem = document.querySelector(`a[href="${location.pathname}"]`);
@@ -156,22 +148,17 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     };
   }, [location.pathname]);
 
-  const handleLogout = async () => {
+  const handleSignOut = async () => {
+    setIsSigningOut(true);
     try {
-      gsap.to("body", {
-        opacity: 0.7,
-        duration: 0.3,
-        onComplete: async () => {
-          const { error } = await supabase.auth.signOut();
-          if (error) throw error;
-          toast.success("Logged out successfully");
-          gsap.to("body", { opacity: 1, duration: 0.3 });
-        },
-      });
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      toast.success("Signed out successfully");
     } catch (error) {
       console.error("Error signing out:", error);
       toast.error("Error signing out");
-      gsap.to("body", { opacity: 1, duration: 0.3 });
+    } finally {
+      setIsSigningOut(false);
     }
   };
 
@@ -189,93 +176,79 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   };
 
   const handleThemeToggle = () => {
-    const targetTheme = theme === "dark" ? "light" : "dark";
-
-    gsap.to("body", {
-      backgroundColor: targetTheme === "dark" ? "#121212" : "#ffffff",
-      color: targetTheme === "dark" ? "#ffffff" : "#121212",
-      duration: 0.5,
-      ease: "power2.inOut",
-      onComplete: () => setTheme(targetTheme),
-    });
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
     <SidebarProvider>
       <div className="flex min-h-screen w-full bg-background">
-        {/* Desktop Sidebar - hidden on mobile */}
-        {!isMobile && (
-          <Sidebar className="hidden lg:block">
-            <SidebarHeader>
-              <div className="flex items-center gap-2">
-                <img src="/logo.png" alt="SharkSenz Logo" className="h-8 w-8 rounded-md bg-white object-contain" />
-                <span className="text-xl font-bold text-shark-500">SharkSenz</span>
-              </div>
-            </SidebarHeader>
-            <SidebarContent>
-              <SidebarGroup>
-                <SidebarGroupLabel>Main</SidebarGroupLabel>
-                <SidebarGroupContent>
-                  <SidebarMenu>
-                    {mainNavItems.map((item) => (
-                      <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton asChild isActive={location.pathname === item.href}>
-                          <Link to={item.href} className="w-full">
-                            <item.icon className="h-5 w-5" />
-                            <span>{item.title}</span>
-                          </Link>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                    ))}
-                  </SidebarMenu>
-                </SidebarGroupContent>
-              </SidebarGroup>
-              <SidebarGroup>
-                <SidebarGroupLabel>Learning</SidebarGroupLabel>
-                <SidebarGroupContent>
-                  <SidebarMenu>
-                    {learningNavItems.map((item) => (
-                      <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton asChild isActive={location.pathname === item.href}>
-                          <Link to={item.href} className="w-full">
-                            <item.icon className="h-5 w-5" />
-                            <span>{item.title}</span>
-                          </Link>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                    ))}
-                  </SidebarMenu>
-                </SidebarGroupContent>
-              </SidebarGroup>
-              <SidebarGroup>
-                <SidebarGroupLabel>Information</SidebarGroupLabel>
-                <SidebarGroupContent>
-                  <SidebarMenu>
-                    {infoNavItems.map((item) => (
-                      <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton asChild isActive={location.pathname === item.href}>
-                          <Link to={item.href} className="w-full">
-                            <item.icon className="h-5 w-5" />
-                            <span>{item.title}</span>
-                          </Link>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                    ))}
-                  </SidebarMenu>
-                </SidebarGroupContent>
-              </SidebarGroup>
-            </SidebarContent>
-            <SidebarFooter>
-              <div className="text-xs text-gray-500">
-                &copy; {new Date().getFullYear()} SharkSenz
-              </div>
-            </SidebarFooter>
-          </Sidebar>
-        )}
-        
-        {/* Main Content Area */}
-        <div className="flex-1 overflow-auto scrollbar-shark">
-          {/* Header */}          <div className="sticky top-0 z-10 flex h-16 items-center justify-between border-b bg-background px-2 sm:px-4 mobile-header">
+        <Sidebar className="hidden lg:flex">
+          <SidebarHeader>
+            <div className="flex items-center gap-2">
+              <img src="/logo.png" alt="SharkSenz Logo" className="h-8 w-8 rounded-md bg-white object-contain" />
+              <span className="text-xl font-bold text-shark-500">SharkSenz</span>
+            </div>
+          </SidebarHeader>
+          <SidebarContent>
+            <SidebarGroup>
+              <SidebarGroupLabel>Main</SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {mainNavItems.map((item) => (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton asChild isActive={location.pathname === item.href}>
+                        <Link to={item.href} className="w-full">
+                          <item.icon className="h-5 w-5" />
+                          <span>{item.title}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+            <SidebarGroup>
+              <SidebarGroupLabel>Learning</SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {learningNavItems.map((item) => (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton asChild isActive={location.pathname === item.href}>
+                        <Link to={item.href} className="w-full">
+                          <item.icon className="h-5 w-5" />
+                          <span>{item.title}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+            <SidebarGroup>
+              <SidebarGroupLabel>Information</SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {infoNavItems.map((item) => (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton asChild isActive={location.pathname === item.href}>
+                        <Link to={item.href} className="w-full">
+                          <item.icon className="h-5 w-5" />
+                          <span>{item.title}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </SidebarContent>
+          <SidebarFooter>
+            <div className="text-xs text-gray-500">
+              &copy; {new Date().getFullYear()} SharkSenz
+            </div>
+          </SidebarFooter>
+        </Sidebar>
+        <div className="flex-1 overflow-auto scrollbar-shark">          <div className="sticky top-0 z-40 flex h-16 items-center justify-between border-b bg-background px-2 sm:px-4 mobile-header">
             <div className="flex items-center">
               <SidebarTrigger className="mr-4 hidden lg:flex" variant="outline" />            
               <Link to="/" className="flex items-center gap-2 font-semibold lg:hidden header-logo">
@@ -294,8 +267,6 @@ const MainLayout = ({ children }: MainLayoutProps) => {
               >
                 {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               </Button>
-              
-              {/* Desktop User Menu */}
               {user ? (
                 <div className="hidden lg:block">
                   <DropdownMenu>
@@ -332,25 +303,24 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuSeparator />
-                      <DropdownMenuItem onClick={handleLogout}>
-                        <LogIn className="mr-2 h-4 w-4" />
-                        <span>Log out</span>
+                      <DropdownMenuItem asChild variant="destructive" onClick={handleSignOut}>
+                        <Link to="/">
+                          <LogOut className="mr-2 h-4 w-4" />
+                          <span>{isSigningOut ? "Signing out..." : "Sign out"}</span>
+                        </Link>
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
               ) : (
-                <Button 
-                  asChild 
-                  variant="outline" 
-                  size="sm" 
-                  className="transition-transform hover:scale-105 hidden lg:flex"
-                >
-                  <Link to="/auth">
-                    <LogIn className="mr-2 h-4 w-4" />
-                    Login
-                  </Link>
-                </Button>
+                <div className="hidden lg:block">
+                  <Button asChild size="sm">
+                    <Link to="/auth">
+                      <LogIn className="mr-2 h-4 w-4" />
+                      <span>Sign in</span>
+                    </Link>
+                  </Button>
+                </div>
               )}
               
               {/* Mobile Navigation */}
@@ -359,12 +329,8 @@ const MainLayout = ({ children }: MainLayoutProps) => {
               </div>
             </div>
           </div>
-          
-          {/* Main Content */}
           <PageTransition>
-            <div className={`p-4 xs:p-5 sm:p-6 ${isMobile ? 'pb-20' : ''}`}>
-              {children}
-            </div>
+            <div className="p-4 sm:p-6">{children}</div>
           </PageTransition>
         </div>
       </div>

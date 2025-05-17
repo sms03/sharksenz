@@ -13,7 +13,6 @@ import Dashboard from "./pages/Dashboard";
 import PitchSimulator from "./pages/PitchSimulator";
 import Learning from "./pages/Learning";
 import LearningModule from "./pages/LearningModule";
-import MobileTabsTest from "./pages/MobileTabsTest";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 import About from "./pages/About";
@@ -36,7 +35,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 };
 
 const App = () => {
-  // Initialize mobile viewport fix
+  // Initialize mobile viewport fix for better mobile experience
   useEffect(() => {
     const cleanup = initializeViewportFix();
     return cleanup;
@@ -50,39 +49,39 @@ const App = () => {
             <Toaster />
             <Sonner />
             <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/dashboard/revenue" element={<Dashboard />} />
-              <Route path="/dashboard/valuation" element={<Dashboard />} />
-              <Route path="/dashboard/runway" element={<Dashboard />} />
-              <Route path="/dashboard/market" element={<Dashboard />} />
-              <Route path="/dashboard/profit" element={<Dashboard />} />
-              <Route path="/pitch-simulator" element={<PitchSimulator />} />
-              <Route path="/learning" element={<Learning />} />
-              <Route path="/learning/:moduleId" element={
-                <ProtectedRoute>
-                  <LearningModule />
-                </ProtectedRoute>
-              } />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/profile" element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              } />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/pricing" element={<Pricing />} />
-              <Route path="/tabs-test" element={<MobileTabsTest />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </ThemeProvider>
-    </AuthProvider>
-  </QueryClientProvider>
-);
-}
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/dashboard/revenue" element={<Dashboard />} />
+                <Route path="/dashboard/valuation" element={<Dashboard />} />
+                <Route path="/dashboard/runway" element={<Dashboard />} />
+                <Route path="/dashboard/market" element={<Dashboard />} />
+                <Route path="/dashboard/profit" element={<Dashboard />} />
+                <Route path="/pitch-simulator" element={<PitchSimulator />} />
+                <Route path="/learning" element={<Learning />} />
+                <Route path="/learning/:moduleId" element={
+                  <ProtectedRoute>
+                    <LearningModule />
+                  </ProtectedRoute>
+                } />
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/profile" element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                } />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/pricing" element={<Pricing />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+              <Analytics />
+            </BrowserRouter>
+          </TooltipProvider>
+        </ThemeProvider>
+      </AuthProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

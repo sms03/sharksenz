@@ -4,6 +4,7 @@ import { User, Settings, LogOut, Upload } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/components/AuthProvider";
 import { useTheme, Theme } from "@/components/ThemeProvider";
+import { useResponsive } from "@/hooks/use-mobile";
 import MainLayout from "@/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,6 +25,7 @@ export default function Profile() {
   const [uploading, setUploading] = useState(false);
   const [plan, setPlan] = useState(() => localStorage.getItem("user_plan") || "free");
   const { theme, setTheme } = useTheme();
+  const { isMobile, isTablet } = useResponsive();
 
   useEffect(() => {
     if (!user) {
@@ -129,24 +131,24 @@ export default function Profile() {
     <MainLayout>
       <div className="mx-auto max-w-4xl">
         {/* Subscription status banner */}
-        <div className={`mb-6 rounded-lg p-4 text-center font-semibold text-lg flex flex-col items-center justify-center shadow-md border ${
+        <div className={`mb-4 sm:mb-6 rounded-lg p-3 sm:p-4 text-center font-semibold text-base sm:text-lg flex flex-col items-center justify-center shadow-md border ${
           plan === "free"
             ? "bg-gray-50 text-gray-700 border-gray-200"
             : plan === "starter"
             ? "bg-blue-50 text-blue-800 border-blue-200"
             : "bg-yellow-50 text-yellow-900 border-yellow-200"
         }`}>
-          <div className="flex items-center gap-2 mb-1">
+          <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
             {plan === "free" && (
-              <span className="inline-block rounded-full bg-gray-300 text-xs px-3 py-1 font-bold uppercase tracking-wide">Free</span>
+              <span className="inline-block rounded-full bg-gray-300 text-xs px-2 sm:px-3 py-0.5 sm:py-1 font-bold uppercase tracking-wide">Free</span>
             )}
             {plan === "starter" && (
-              <span className="inline-block rounded-full bg-blue-400 text-white text-xs px-3 py-1 font-bold uppercase tracking-wide">Starter</span>
+              <span className="inline-block rounded-full bg-blue-400 text-white text-xs px-2 sm:px-3 py-0.5 sm:py-1 font-bold uppercase tracking-wide">Starter</span>
             )}
             {plan === "professional" && (
-              <span className="inline-block rounded-full bg-yellow-400 text-yellow-900 text-xs px-3 py-1 font-bold uppercase tracking-wide">Pro</span>
+              <span className="inline-block rounded-full bg-yellow-400 text-yellow-900 text-xs px-2 sm:px-3 py-0.5 sm:py-1 font-bold uppercase tracking-wide">Pro</span>
             )}
-            <span className="text-base font-bold">{plan.charAt(0).toUpperCase() + plan.slice(1)} Plan</span>
+            <span className="text-sm sm:text-base font-bold">{plan.charAt(0).toUpperCase() + plan.slice(1)} Plan</span>
           </div>
           <div className="text-sm font-normal">
             {plan === "free" && (
@@ -167,9 +169,9 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="mb-8">
-          <h1 className="mb-2 text-3xl font-bold">Your Profile</h1>
-          <p className="text-lg text-muted-foreground">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="mb-1.5 sm:mb-2 text-2xl xs:text-3xl font-bold">Your Profile</h1>
+          <p className="text-base sm:text-lg text-muted-foreground">
             Manage your account settings and preferences
           </p>
         </div>
@@ -177,43 +179,43 @@ export default function Profile() {
         <FadeIn>
           <Tabs defaultValue="profile" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="profile">
-                <User className="mr-2 h-4 w-4" />
+              <TabsTrigger value="profile" className="text-xs xs:text-sm sm:text-base">
+                <User className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                 Profile
               </TabsTrigger>
-              <TabsTrigger value="account">
-                <Settings className="mr-2 h-4 w-4" />
+              <TabsTrigger value="account" className="text-xs xs:text-sm sm:text-base">
+                <Settings className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                 Account
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="profile" className="mt-6">
+            <TabsContent value="profile" className="mt-4 sm:mt-6">
               <Card>
-                <CardHeader>
-                  <CardTitle>Profile Information</CardTitle>
-                  <CardDescription>
+                <CardHeader className="pb-2 sm:pb-6">
+                  <CardTitle className="text-lg sm:text-xl">Profile Information</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">
                     Update your profile details and preferences
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-4 sm:space-y-6">
                   <div className="flex flex-col items-center space-y-4 sm:flex-row sm:space-x-6 sm:space-y-0">
-                    <Avatar className="h-24 w-24">
+                    <Avatar className="h-16 w-16 sm:h-20 md:h-24 sm:w-20 md:w-24">
                       <AvatarImage src={avatarUrl} />
-                      <AvatarFallback className="text-lg">{getInitials()}</AvatarFallback>
+                      <AvatarFallback className="text-base sm:text-lg">{getInitials()}</AvatarFallback>
                     </Avatar>
-                    <div className="flex-1 space-y-2">
-                      <Label htmlFor="avatar-url">Profile Image</Label>
+                    <div className="flex-1 space-y-1 sm:space-y-2">
+                      <Label htmlFor="avatar-url" className="text-xs sm:text-sm">Profile Image</Label>
                       <div className="flex w-full items-center space-x-2">
                         <Input
                           id="avatar-url"
                           placeholder="https://example.com/avatar.jpg"
                           value={avatarUrl}
                           onChange={(e) => setAvatarUrl(e.target.value)}
-                          className="flex-1 h-10"
+                          className="flex-1 h-9 sm:h-10 text-xs sm:text-sm"
                         />
-                        <Button variant="outline" size="icon" disabled={uploading} asChild>
+                        <Button variant="outline" size="icon" disabled={uploading} asChild className="h-9 w-9 sm:h-10 sm:w-10">
                           <label>
-                            <Upload className="h-4 w-4 cursor-pointer" />
+                            <Upload className="h-3.5 w-3.5 sm:h-4 sm:w-4 cursor-pointer" />
                             <input
                               type="file"
                               accept="image/*"
@@ -223,7 +225,7 @@ export default function Profile() {
                           </label>
                         </Button>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-[10px] sm:text-xs text-muted-foreground">
                         Enter a URL for your profile image or upload a new one
                       </p>
                     </div>
@@ -256,53 +258,65 @@ export default function Profile() {
 
                 </CardContent>
                 <CardFooter className="flex justify-between">
-                  <Button variant="outline" onClick={() => navigate(-1)}>
+                  <Button 
+                    variant="outline" 
+                    onClick={() => navigate(-1)}
+                    size={isMobile ? "sm" : "default"}
+                    className="text-xs sm:text-sm"
+                  >
                     Cancel
                   </Button>
-                  <Button onClick={updateProfile} disabled={loading}>
+                  <Button 
+                    onClick={updateProfile} 
+                    disabled={loading}
+                    size={isMobile ? "sm" : "default"}
+                    className="text-xs sm:text-sm"
+                  >
                     {loading ? "Saving..." : "Save Changes"}
                   </Button>
                 </CardFooter>
               </Card>
             </TabsContent>
 
-            <TabsContent value="account" className="mt-6">
+            <TabsContent value="account" className="mt-4 sm:mt-6">
               <Card>
-                <CardHeader>
-                  <CardTitle>Account Settings</CardTitle>
-                  <CardDescription>
+                <CardHeader className="pb-2 sm:pb-6">
+                  <CardTitle className="text-lg sm:text-xl">Account Settings</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">
                     Manage your account preferences and settings
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-medium">Sign Out</h3>
-                    <p className="text-sm text-muted-foreground">
+                <CardContent className="space-y-4 sm:space-y-6">
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <h3 className="text-base sm:text-lg font-medium">Sign Out</h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground">
                       Sign out from your account on this device
                     </p>
                     <Button 
                       variant="destructive" 
-                      className="mt-2"
+                      className="mt-1.5 sm:mt-2"
+                      size={isMobile ? "sm" : "default"}
                       onClick={handleLogout}
                     >
-                      <LogOut className="mr-2 h-4 w-4" />
-                      Sign Out
+                      <LogOut className="mr-1.5 sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                      <span className="text-xs sm:text-sm">Sign Out</span>
                     </Button>
                   </div>
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-medium text-red-600">Disable/Deactivate Account</h3>
-                    <p className="text-sm text-muted-foreground">
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <h3 className="text-base sm:text-lg font-medium text-red-600">Disable/Deactivate Account</h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground">
                       Temporarily disable your account. You will not be able to log in or access any features until reactivated. Your data will be preserved.
                     </p>
                     <Button 
                       variant="destructive" 
-                      className="mt-2"
+                      className="mt-1.5 sm:mt-2"
+                      size={isMobile ? "sm" : "default"}
                       onClick={() => {
                         localStorage.setItem("account_disabled", "true");
                         window.location.href = "/auth";
                       }}
                     >
-                      Disable Account
+                      <span className="text-xs sm:text-sm">Disable Account</span>
                     </Button>
                   </div>
                 </CardContent>

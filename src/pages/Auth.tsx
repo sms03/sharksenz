@@ -4,6 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/sonner';
+import { useResponsive } from '@/hooks/use-mobile';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
@@ -19,6 +20,7 @@ const Auth = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, signInWithOAuth } = useAuth();
+  const { isMobile, isTablet } = useResponsive();
   
   // Refs for GSAP animations
   const cardRef = useRef(null);
@@ -268,40 +270,37 @@ const Auth = () => {
           <span className="text-xl font-bold">SharkSenz</span>
         </Button>
       </div>
-      
-      <Card className="w-full max-w-md relative z-10 h-auto min-h-[520px]" ref={cardRef}>
-        <CardHeader className="text-center pb-4">
-          <CardTitle className="text-2xl">Welcome to SharkSenz</CardTitle>
-          <CardDescription>
+        <Card className="w-full max-w-[350px] xs:max-w-md relative z-10 h-auto min-h-[480px] sm:min-h-[520px]" ref={cardRef}>
+        <CardHeader className="text-center pb-2 sm:pb-4">
+          <CardTitle className="text-xl sm:text-2xl">Welcome to SharkSenz</CardTitle>
+          <CardDescription className="text-xs sm:text-sm">
             Your gateway to mastering business concepts and financial literacy
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-4">
+          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">              <TabsList className="grid w-full grid-cols-2 mb-3 sm:mb-4">
               <TabsTrigger 
                 value="login" 
                 ref={loginTabRef}
-                className="h-10"
+                className="h-9 sm:h-10 text-xs sm:text-sm"
               >
-                <LogIn className="mr-2 h-4 w-4" />
+                <LogIn className="mr-1 sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 Login
               </TabsTrigger>
               <TabsTrigger 
                 value="signup" 
                 ref={signupTabRef}
-                className="h-10"
+                className="h-9 sm:h-10 text-xs sm:text-sm"
               >
-                <UserPlus className="mr-2 h-4 w-4" />
+                <UserPlus className="mr-1 sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 Sign Up
               </TabsTrigger>
             </TabsList>
             
             <div ref={formRef}>
               <TabsContent value="login" forceMount className={activeTab === 'login' ? 'block' : 'hidden'}>
-                <form onSubmit={handleLogin} className="space-y-3">
-                  <div className="space-y-1.5">
-                    <Label htmlFor="email-login">Email</Label>
+                <form onSubmit={handleLogin} className="space-y-3">                  <div className="space-y-1">
+                    <Label htmlFor="email-login" className="text-xs sm:text-sm">Email</Label>
                     <Input
                       id="email-login"
                       type="email"
@@ -309,13 +308,12 @@ const Auth = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      className="h-10"
+                      className="h-9 sm:h-10 text-xs sm:text-sm"
                     />
-                  </div>
-                  <div className="space-y-1.5">
+                  </div>                  <div className="space-y-1">
                     <div className="flex items-center justify-between">
-                      <Label htmlFor="password-login">Password</Label>
-                      <Button variant="link" className="px-0 text-xs" type="button">
+                      <Label htmlFor="password-login" className="text-xs sm:text-sm">Password</Label>
+                      <Button variant="link" className="px-0 text-[10px] sm:text-xs h-auto py-0" type="button">
                         Forgot password?
                       </Button>
                     </div>
@@ -326,12 +324,11 @@ const Auth = () => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
-                      className="h-10"
+                      className="h-9 sm:h-10 text-xs sm:text-sm"
                     />
-                  </div>
-                  <Button 
+                  </div>                  <Button 
                     type="submit" 
-                    className="w-full h-10" 
+                    className="w-full h-8 sm:h-10 text-xs sm:text-sm" 
                     disabled={loading}
                     onMouseEnter={buttonHoverEnter}
                     onMouseLeave={buttonHoverLeave}                  >
