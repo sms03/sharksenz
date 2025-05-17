@@ -32,9 +32,9 @@ import { toast } from "@/components/ui/sonner";
 // Learning path categories
 const categories = [
   { id: "fundamentals", name: "Fundamentals" },
-  { id: "valuation", name: "Valuation" },
   { id: "metrics", name: "Key Metrics" },
   { id: "pitching", name: "Pitching" },
+  { id: "valuation", name: "Valuation" }
 ];
 
 // Learning modules by category
