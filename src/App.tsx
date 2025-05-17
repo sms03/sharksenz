@@ -13,7 +13,6 @@ import Dashboard from "./pages/Dashboard";
 import PitchSimulator from "./pages/PitchSimulator";
 import Learning from "./pages/Learning";
 import LearningModule from "./pages/LearningModule";
-import MobileTabsTest from "./pages/MobileTabsTest";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 import About from "./pages/About";
@@ -74,7 +73,6 @@ const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/pricing" element={<Pricing />} />
-              <Route path="/tabs-test" element={<MobileTabsTest />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
