@@ -1,7 +1,7 @@
 // Helper function to detect horizontal scrolling in tabs and show appropriate shadows
 export function initializeResponsiveTabs() {
   // Find all scrollable tab containers in the document
-  const scrollContainers = document.querySelectorAll('.scrollable-tabs-container');
+  const scrollContainers = document.querySelectorAll<HTMLElement>('.scrollable-tabs-container');
   
   if (scrollContainers.length === 0) return;
   
@@ -36,7 +36,7 @@ export function initializeResponsiveTabs() {
     window.addEventListener('resize', updateShadows);
     
     // Provide keyboard navigation for accessibility
-    tabsList.addEventListener('keydown', (e) => {
+    tabsList.addEventListener('keydown', (e: KeyboardEvent) => {
       const tabs = Array.from(tabsList.querySelectorAll('[role="tab"]'));
       if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
         const direction = e.key === 'ArrowRight' ? 1 : -1;
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', initializeResponsiveTabs);
 
 // Expose the function for components to use after mount
 export function updateTabShadows() {
-  const scrollContainers = document.querySelectorAll('.scrollable-tabs-container');
+  const scrollContainers = document.querySelectorAll<HTMLElement>('.scrollable-tabs-container');
   
   scrollContainers.forEach(container => {
     const tabsList = container.querySelector('[role="tablist"]');
