@@ -66,15 +66,6 @@ const learningModules = {
     { title: "Working Capital", description: "Manage your short-term assets and liabilities", icon: TrendingUp, href: "/learning/working-capital", duration: "5 min", completed: false },
     { title: "Working Capital Ratio", description: "Liquidity indicator for your business", icon: TrendingUp, href: "/learning/working-capital-ratio", duration: "5 min", completed: false },
   ],
-  valuation: [
-    { title: "Cap Table & Equity", description: "Understanding equity structure and ownership", icon: Percent, href: "/learning/cap-table", duration: "7 min", completed: false },
-    { title: "Discounted Cash Flow", description: "Projecting future value in today's dollars", icon: TrendingUp, href: "/learning/discounted-cash-flow", duration: "8 min", completed: false },
-    { title: "Equity Dilution", description: "Understanding how investment affects ownership", icon: Percent, href: "/learning/equity-dilution", duration: "7 min", completed: false },
-    { title: "Financial Modeling", description: "Learn how to create financial models for your startup", icon: BarChart3, href: "/learning/financial-modeling", duration: "9 min", completed: false },
-    { title: "Funding Rounds", description: "Understanding different stages of startup funding", icon: LineChart, href: "/learning/funding-rounds", duration: "8 min", completed: false },
-    { title: "Revenue Multiples", description: "Using revenue to determine business valuation", icon: LineChart, href: "/learning/revenue-multiples", duration: "5 min", completed: false },
-    { title: "Valuation Fundamentals", description: "Learn how investors determine company value", icon: CircleDollarSign, href: "/learning/valuation-fundamentals", duration: "8 min", completed: false },
-  ],
   metrics: [
     { title: "Burn Rate & Runway", description: "Calculate how long your cash will last", icon: TrendingUp, href: "/learning/burn-rate", duration: "5 min", completed: false },
     { title: "Cohort Analysis", description: "Analyze user behavior over time", icon: Users, href: "/learning/cohort-analysis", duration: "8 min", completed: false },
@@ -94,6 +85,15 @@ const learningModules = {
     { title: "Presentation Skills", description: "Deliver your pitch with confidence", icon: Presentation, href: "/learning/presentation-skills", duration: "7 min", completed: false },
     { title: "Storytelling Techniques", description: "Craft a compelling narrative for your business", icon: Lightbulb, href: "/learning/storytelling", duration: "8 min", completed: false },
     { title: "Visual Design", description: "Create compelling visuals for your presentations", icon: Lightbulb, href: "/learning/visual-design", duration: "6 min", completed: false },
+  ],
+  valuation: [
+    { title: "Cap Table & Equity", description: "Understanding equity structure and ownership", icon: Percent, href: "/learning/cap-table", duration: "7 min", completed: false },
+    { title: "Discounted Cash Flow", description: "Projecting future value in today's dollars", icon: TrendingUp, href: "/learning/discounted-cash-flow", duration: "8 min", completed: false },
+    { title: "Equity Dilution", description: "Understanding how investment affects ownership", icon: Percent, href: "/learning/equity-dilution", duration: "7 min", completed: false },
+    { title: "Financial Modeling", description: "Learn how to create financial models for your startup", icon: BarChart3, href: "/learning/financial-modeling", duration: "9 min", completed: false },
+    { title: "Funding Rounds", description: "Understanding different stages of startup funding", icon: LineChart, href: "/learning/funding-rounds", duration: "8 min", completed: false },
+    { title: "Revenue Multiples", description: "Using revenue to determine business valuation", icon: LineChart, href: "/learning/revenue-multiples", duration: "5 min", completed: false },
+    { title: "Valuation Fundamentals", description: "Learn how investors determine company value", icon: CircleDollarSign, href: "/learning/valuation-fundamentals", duration: "8 min", completed: false },
   ]
 };
 
