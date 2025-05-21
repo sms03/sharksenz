@@ -8,25 +8,28 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ContentLibrary from "./pages/ContentLibrary";
 import ContentDetail from "./pages/ContentDetail";
+import MainLayout from "./layouts/MainLayout";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/content" element={<ContentLibrary />} />
-          <Route path="/content/:contentId" element={<ContentDetail />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<MainLayout><Index /></MainLayout>} />
+            <Route path="/content" element={<MainLayout><ContentLibrary /></MainLayout>} />
+            <Route path="/content/:contentId" element={<MainLayout><ContentDetail /></MainLayout>} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
