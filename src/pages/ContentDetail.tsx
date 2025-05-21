@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/sonner";
-import { ArrowLeft, Bookmark, CheckCircle, Edit, Save } from "lucide-react";
-import MainLayout from "@/layouts/MainLayout";
+import { ArrowLeft, Bookmark, CheckCircle, Save } from "lucide-react";
+import gsap from "gsap";
 
 type LearningContent = {
   id: string;
@@ -37,6 +37,10 @@ const ContentDetail = () => {
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [userProgressId, setUserProgressId] = useState<string | null>(null);
+  
+  // Refs for GSAP animations
+  const contentRef = useRef<HTMLDivElement>(null);
+  const notesRef = useRef<HTMLDivElement>(null);
   
   // Fetch content details
   const { data: content, isLoading: contentLoading, error: contentError } = useQuery({
@@ -86,6 +90,62 @@ const ContentDetail = () => {
     checkAuth();
   }, [contentId]);
 
+  // GSAP animations
+  useEffect(() => {
+    if (!contentLoading && content) {
+      const tl = gsap.timeline();
+      
+      // Main content animations
+      tl.from(".detail-back-button", { 
+        x: -20, 
+        opacity: 0, 
+        duration: 0.4,
+        ease: "power3.out" 
+      });
+      
+      tl.from(".detail-title", { 
+        y: 20, 
+        opacity: 0, 
+        duration: 0.5,
+        ease: "power3.out" 
+      }, "-=0.2");
+      
+      tl.from(".detail-meta", { 
+        y: 10, 
+        opacity: 0, 
+        duration: 0.4,
+        ease: "power3.out" 
+      }, "-=0.3");
+      
+      tl.from(".detail-complete-button", { 
+        scale: 0.9, 
+        opacity: 0, 
+        duration: 0.4,
+        ease: "back.out" 
+      }, "-=0.2");
+      
+      // Content body animation with staggered paragraphs
+      const contentElement = contentRef.current;
+      if (contentElement) {
+        tl.from(contentElement.querySelectorAll("p"), { 
+          y: 15, 
+          opacity: 0, 
+          stagger: 0.1,
+          duration: 0.4,
+          ease: "power2.out" 
+        }, "-=0.2");
+      }
+      
+      // Notes sidebar animation
+      tl.from(notesRef.current, { 
+        x: 30, 
+        opacity: 0, 
+        duration: 0.5,
+        ease: "power3.out" 
+      }, "-=0.5");
+    }
+  }, [contentLoading, content]);
+
   const handleSaveNotes = async () => {
     if (!isLoggedIn) {
       toast.error("You need to sign in to save notes", {
@@ -123,6 +183,15 @@ const ContentDetail = () => {
         if (data && data[0]) {
           setUserProgressId(data[0].id);
         }
+      }
+      
+      // Animate the save button
+      const saveButton = document.querySelector(".notes-save-button");
+      if (saveButton) {
+        gsap.fromTo(saveButton, 
+          { scale: 0.95 }, 
+          { scale: 1, duration: 0.3, ease: "back.out" }
+        );
       }
       
       toast.success("Notes saved successfully", {
@@ -181,6 +250,15 @@ const ContentDetail = () => {
         }
       }
       
+      // Animate the completion button
+      const completeButton = document.querySelector(".detail-complete-button");
+      if (completeButton) {
+        gsap.fromTo(completeButton, 
+          { scale: 0.95 }, 
+          { scale: 1, duration: 0.3, ease: "back.out" }
+        );
+      }
+      
       toast.success(
         newIsCompleted 
           ? "Marked as completed" 
@@ -202,127 +280,122 @@ const ContentDetail = () => {
 
   if (contentLoading) {
     return (
-      <MainLayout>
-        <div className="container mx-auto px-4 py-12 text-center">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mb-2"></div>
-          <p className="text-gray-600">Loading content...</p>
-        </div>
-      </MainLayout>
+      <div className="container mx-auto px-4 py-12 text-center">
+        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mb-2"></div>
+        <p className="text-gray-600">Loading content...</p>
+      </div>
     );
   }
 
   if (contentError || !content) {
     return (
-      <MainLayout>
-        <div className="container mx-auto px-4 py-12 text-center">
-          <h1 className="text-2xl font-bold text-red-600 mb-4">Content Not Found</h1>
-          <p className="text-gray-600 mb-6">The content you're looking for doesn't exist or has been removed.</p>
-          <Button onClick={() => navigate("/content")}>
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Content Library
-          </Button>
-        </div>
-      </MainLayout>
+      <div className="container mx-auto px-4 py-12 text-center">
+        <h1 className="text-2xl font-bold text-red-600 mb-4">Content Not Found</h1>
+        <p className="text-gray-600 mb-6">The content you're looking for doesn't exist or has been removed.</p>
+        <Button onClick={() => navigate("/content")}>
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Content Library
+        </Button>
+      </div>
     );
   }
 
   return (
-    <MainLayout>
-      <div className="container mx-auto px-4 py-8">
-        {/* Navigation */}
-        <div className="mb-8">
-          <Button variant="outline" onClick={() => navigate("/content")}>
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Content Library
-          </Button>
-        </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h1 className="text-3xl font-bold mb-2">{content.title}</h1>
-                  <div className="flex items-center">
-                    <span className="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">
-                      {content.category}
-                    </span>
-                    <span className="text-gray-500 text-sm ml-4">
-                      Updated: {new Date(content.updated_at).toLocaleDateString()}
-                    </span>
-                  </div>
+    <div className="container mx-auto px-4 py-8">
+      {/* Navigation */}
+      <div className="mb-8">
+        <Button variant="outline" onClick={() => navigate("/content")} className="detail-back-button">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Content Library
+        </Button>
+      </div>
+      
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Main Content */}
+        <div className="lg:col-span-2">
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <h1 className="text-3xl font-bold mb-2 detail-title">{content.title}</h1>
+                <div className="flex items-center detail-meta">
+                  <span className="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">
+                    {content.category}
+                  </span>
+                  <span className="text-gray-500 text-sm ml-4">
+                    Updated: {new Date(content.updated_at).toLocaleDateString()}
+                  </span>
                 </div>
-                
-                <Button
-                  variant={isCompleted ? "default" : "outline"}
-                  onClick={handleToggleCompletion}
-                >
-                  {isCompleted ? (
-                    <>
-                      <CheckCircle className="mr-2 h-4 w-4" />
-                      Completed
-                    </>
-                  ) : (
-                    <>
-                      <CheckCircle className="mr-2 h-4 w-4" />
-                      Mark as Complete
-                    </>
-                  )}
-                </Button>
               </div>
               
-              {/* Content Body */}
-              <div className="prose max-w-none">
-                {content.content.split('\n').map((paragraph, i) => (
-                  <p key={i} className="mb-4">{paragraph}</p>
-                ))}
-              </div>
+              <Button
+                variant={isCompleted ? "default" : "outline"}
+                onClick={handleToggleCompletion}
+                className="detail-complete-button"
+              >
+                {isCompleted ? (
+                  <>
+                    <CheckCircle className="mr-2 h-4 w-4" />
+                    Completed
+                  </>
+                ) : (
+                  <>
+                    <CheckCircle className="mr-2 h-4 w-4" />
+                    Mark as Complete
+                  </>
+                )}
+              </Button>
+            </div>
+            
+            {/* Content Body */}
+            <div className="prose max-w-none" ref={contentRef}>
+              {content.content.split('\n').map((paragraph, i) => (
+                <p key={i} className="mb-4">{paragraph}</p>
+              ))}
             </div>
           </div>
-          
-          {/* Sidebar - Notes */}
-          <div className="lg:col-span-1">
-            <Card className="sticky top-24">
-              <div className="p-4 border-b">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-medium flex items-center">
-                    <Bookmark className="mr-2 h-4 w-4" />
-                    Your Notes
-                  </h3>
-                  {!isLoggedIn && (
-                    <Button
-                      variant="link"
-                      size="sm"
-                      onClick={() => navigate("/auth")}
-                    >
-                      Sign in to save
-                    </Button>
-                  )}
-                </div>
+        </div>
+        
+        {/* Sidebar - Notes */}
+        <div className="lg:col-span-1" ref={notesRef}>
+          <Card className="sticky top-24">
+            <div className="p-4 border-b">
+              <div className="flex justify-between items-center">
+                <h3 className="text-lg font-medium flex items-center">
+                  <Bookmark className="mr-2 h-4 w-4" />
+                  Your Notes
+                </h3>
+                {!isLoggedIn && (
+                  <Button
+                    variant="link"
+                    size="sm"
+                    onClick={() => navigate("/auth")}
+                  >
+                    Sign in to save
+                  </Button>
+                )}
               </div>
-              <div className="p-4">
-                <Textarea
-                  placeholder="Add your notes here..."
-                  className="min-h-[300px] mb-4"
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  disabled={!isLoggedIn}
-                />
-                <Button 
-                  onClick={handleSaveNotes}
-                  disabled={!isLoggedIn}
-                  className="w-full"
-                >
-                  <Save className="mr-2 h-4 w-4" />
-                  Save Notes
-                </Button>
-              </div>
-            </Card>
-          </div>
+            </div>
+            <div className="p-4">
+              <Textarea
+                placeholder="Add your notes here..."
+                className="min-h-[300px] mb-4"
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                disabled={!isLoggedIn}
+              />
+              <Button 
+                onClick={handleSaveNotes}
+                disabled={!isLoggedIn}
+                className="w-full notes-save-button"
+              >
+                <Save className="mr-2 h-4 w-4" />
+                Save Notes
+              </Button>
+            </div>
+          </Card>
         </div>
       </div>
-    </MainLayout>
+    </div>
   );
 };
 
