@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { User, LogOut } from "lucide-react";
+import { User, LogOut, UserCircle } from "lucide-react";
 import { Session } from "@supabase/supabase-js";
 
 const AuthButton = () => {
@@ -58,6 +58,12 @@ const AuthButton = () => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
+          <DropdownMenuItem asChild>
+            <Link to="/profile" className="flex items-center">
+              <UserCircle className="mr-2" size={16} />
+              Profile
+            </Link>
+          </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link to="/content">My Content</Link>
           </DropdownMenuItem>

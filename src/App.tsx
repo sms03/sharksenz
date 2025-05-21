@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ContentLibrary from "./pages/ContentLibrary";
 import ContentDetail from "./pages/ContentDetail";
+import ProfilePage from "./pages/ProfilePage";
 import MainLayout from "./layouts/MainLayout";
 import Auth from "./pages/Auth";
 import { useEffect } from "react";
@@ -26,7 +27,7 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
+      <TooltipProvider delayDuration={300}>
         <Toaster />
         <Sonner />
         <BrowserRouter>
@@ -34,6 +35,7 @@ const App = () => {
             <Route path="/" element={<MainLayout><Index /></MainLayout>} />
             <Route path="/content" element={<MainLayout><ContentLibrary /></MainLayout>} />
             <Route path="/content/:contentId" element={<MainLayout><ContentDetail /></MainLayout>} />
+            <Route path="/profile" element={<MainLayout><ProfilePage /></MainLayout>} />
             <Route path="/auth" element={<Auth />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />

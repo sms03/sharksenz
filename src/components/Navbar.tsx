@@ -1,18 +1,23 @@
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, BookText } from "lucide-react";
+import { Menu, X, BookText, UserCircle } from "lucide-react";
 import AuthButton from "@/components/AuthButton";
-import { useEffect } from "react";
 import gsap from "gsap";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
   
   // GSAP animations for navbar
   useEffect(() => {
@@ -61,11 +66,22 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Link to="/content" className="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link">
+            <Link 
+              to="/content" 
+              className={`text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link ${
+                location.pathname === "/content" ? "text-blue-600" : ""
+              }`}
+            >
               Content Library
             </Link>
-            <Link to="/dashboard" className="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link">
-              Dashboard
+            <Link 
+              to="/profile" 
+              className={`text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link flex items-center ${
+                location.pathname === "/profile" ? "text-blue-600" : ""
+              }`}
+            >
+              <UserCircle className="h-4 w-4 mr-1" />
+              Profile
             </Link>
             <div className="nav-auth">
               <AuthButton />
@@ -84,17 +100,22 @@ const Navbar = () => {
             <div className="flex flex-col space-y-4">
               <Link 
                 to="/content" 
-                className="text-gray-600 hover:text-blue-600 font-medium py-2"
+                className={`text-gray-600 hover:text-blue-600 font-medium py-2 ${
+                  location.pathname === "/content" ? "text-blue-600" : ""
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Content Library
               </Link>
               <Link 
-                to="/dashboard" 
-                className="text-gray-600 hover:text-blue-600 font-medium py-2"
+                to="/profile" 
+                className={`text-gray-600 hover:text-blue-600 font-medium py-2 flex items-center ${
+                  location.pathname === "/profile" ? "text-blue-600" : ""
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Dashboard
+                <UserCircle className="h-4 w-4 mr-1" />
+                Profile
               </Link>
               <div className="py-2">
                 <AuthButton />

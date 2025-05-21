@@ -9,7 +9,7 @@ interface TooltipProviderProps {
   delayDuration?: number;
 }
 
-const TooltipProvider = ({ children, delayDuration }: TooltipProviderProps) => {
+const TooltipProvider = ({ children, delayDuration = 300 }: TooltipProviderProps) => {
   return <TooltipPrimitive.Provider delayDuration={delayDuration}>{children}</TooltipPrimitive.Provider>
 }
 
