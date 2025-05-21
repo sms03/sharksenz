@@ -24,7 +24,7 @@ export type Database = {
           content: string
           created_at?: string
           first_letter: string
-          id?: string
+          id: string
           title: string
           updated_at?: string
         }
