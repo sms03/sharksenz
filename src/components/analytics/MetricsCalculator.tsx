@@ -87,7 +87,7 @@ const MetricsCalculator = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-ancizar">
       <div className="flex justify-end">
         <div className="w-40">
           <Label htmlFor="currency">Currency</Label>
@@ -192,25 +192,35 @@ const MetricsCalculator = () => {
             ))}
           </div>
 
-          <div className="h-96 w-full mt-6">
-            <ChartContainer
-              config={{
-                revenue: { label: "Revenue" },
-              }}
-            >
-              {/* Wrap the chart components in a fragment */}
-              <>
-                <RechartsBarChart data={getChartData()} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis yAxisId="left" orientation="left" />
-                  <Tooltip content={<CustomTooltip currency={currency} />} />
-                  <Legend />
-                  <Bar dataKey="value" fill="#3b82f6" name="Value" yAxisId="left" />
-                </RechartsBarChart>
-                <ChartTooltip />
-              </>
-            </ChartContainer>
+          <div className="h-96 w-full mt-10 pt-6 pb-10"> {/* Added more padding for better spacing */}
+            <ResponsiveContainer width="100%" height="100%">
+              <RechartsBarChart data={getChartData()} margin={{ top: 30, right: 30, left: 20, bottom: 70 }}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis 
+                  dataKey="name" 
+                  tick={{ fontSize: 12 }}
+                  angle={-45}
+                  textAnchor="end"
+                  height={80}
+                />
+                <YAxis 
+                  yAxisId="left" 
+                  orientation="left"
+                  tick={{ fontSize: 12 }}
+                  width={80}
+                  tickFormatter={(value) => `${currencySymbols[currency]}${value.toLocaleString()}`}
+                />
+                <Tooltip content={<CustomTooltip currency={currency} />} />
+                <Legend wrapperStyle={{ paddingTop: 20 }} />
+                <Bar 
+                  dataKey="value" 
+                  fill="#3b82f6" 
+                  name="Value" 
+                  yAxisId="left"
+                  barSize={40}
+                />
+              </RechartsBarChart>
+            </ResponsiveContainer>
           </div>
         </div>
       )}
