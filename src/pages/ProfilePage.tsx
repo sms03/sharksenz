@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -105,7 +104,13 @@ const ProfilePage = () => {
         .in('id', contentIds);
       
       if (contentError) throw contentError;
-      return content as CompletedContent[];
+      
+      // Map the returned data to match the CompletedContent type
+      return content.map((item: any) => ({
+        content_id: item.id,
+        title: item.title,
+        category: item.category
+      })) as CompletedContent[];
     },
     enabled: !!userId
   });
