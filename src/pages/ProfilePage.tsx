@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -9,8 +10,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { toast } from "@/components/ui/sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User, Edit, Save, BookOpen, BookMarked } from "lucide-react";
+import { User, Edit, Save, BookOpen, BookMarked, Presentation } from "lucide-react";
+import ImageUploader from "@/components/ImageUploader";
+import PitchSimulator from "@/components/PitchSimulator";
 import gsap from "gsap";
+
 type Profile = {
   id: string;
   username: string | null;
@@ -20,11 +24,13 @@ type Profile = {
   created_at: string;
   updated_at: string;
 };
+
 type CompletedContent = {
   content_id: string;
   title: string;
   category: string;
 };
+
 const ProfilePage = () => {
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
@@ -33,6 +39,7 @@ const ProfilePage = () => {
   const [bio, setBio] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
   const [userId, setUserId] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState("completed");
 
   // Refs for GSAP animations
   const profileRef = useRef<HTMLDivElement>(null);
@@ -165,6 +172,12 @@ const ProfilePage = () => {
       });
     }
   }, [profileLoading, profile, completedContent]);
+
+  // Handle profile image update
+  const handleImageUploaded = (url: string) => {
+    setAvatarUrl(url);
+  };
+
   const handleSaveProfile = async () => {
     if (!userId) {
       toast.error("You must be logged in to update your profile");
@@ -200,6 +213,7 @@ const ProfilePage = () => {
       });
     }
   };
+
   if (profileError) {
     return <div className="container mx-auto px-4 py-12 text-center">
         <h1 className="text-2xl font-bold text-red-600 mb-4">Error Loading Profile</h1>
@@ -209,6 +223,7 @@ const ProfilePage = () => {
         </Button>
       </div>;
   }
+
   return <div className="container mx-auto px-4 py-8" ref={profileRef}>
       <div className="mb-8 profile-header">
         <h1 className="text-3xl font-bold">User Profile</h1>
@@ -224,12 +239,22 @@ const ProfilePage = () => {
             <Card>
               <CardHeader className="text-center">
                 <div className="flex justify-center mb-4 profile-avatar">
-                  <Avatar className="h-24 w-24">
-                    <AvatarImage src={avatarUrl || ""} />
-                    <AvatarFallback>
-                      <User className="h-12 w-12" />
-                    </AvatarFallback>
-                  </Avatar>
+                  {!isEditing ? (
+                    <Avatar className="h-24 w-24">
+                      <AvatarImage src={avatarUrl || ""} />
+                      <AvatarFallback>
+                        <User className="h-12 w-12" />
+                      </AvatarFallback>
+                    </Avatar>
+                  ) : (
+                    <div className="w-full max-w-xs mx-auto">
+                      <ImageUploader 
+                        userId={userId || ""}
+                        onImageUploaded={handleImageUploaded}
+                        currentImageUrl={avatarUrl || ""}
+                      />
+                    </div>
+                  )}
                 </div>
                 <CardTitle className="profile-details text-base">
                   {profile?.full_name || username || "User"}
@@ -258,10 +283,6 @@ const ProfilePage = () => {
                       <Input value={fullName} onChange={e => setFullName(e.target.value)} className="mb-3" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-sm text-gray-500 mb-1">Avatar URL</h3>
-                      <Input value={avatarUrl} onChange={e => setAvatarUrl(e.target.value)} className="mb-3" />
-                    </div>
-                    <div>
                       <h3 className="font-medium text-sm text-gray-500 mb-1">Bio</h3>
                       <Textarea value={bio} onChange={e => setBio(e.target.value)} rows={4} />
                     </div>
@@ -286,10 +307,11 @@ const ProfilePage = () => {
           
           {/* Progress & Content */}
           <div className="lg:col-span-2">
-            <Tabs defaultValue="completed" className="w-full profile-tabs">
-              <TabsList className="grid w-full grid-cols-2 mb-6">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full profile-tabs">
+              <TabsList className="grid w-full grid-cols-3 mb-6">
                 <TabsTrigger value="completed">Completed Content</TabsTrigger>
                 <TabsTrigger value="notes">My Notes</TabsTrigger>
+                <TabsTrigger value="pitch">Pitch Simulator</TabsTrigger>
               </TabsList>
               
               <TabsContent value="completed" ref={contentRef}>
@@ -339,9 +361,14 @@ const ProfilePage = () => {
                   </CardContent>
                 </Card>
               </TabsContent>
+
+              <TabsContent value="pitch">
+                <PitchSimulator />
+              </TabsContent>
             </Tabs>
           </div>
         </div>}
     </div>;
 };
+
 export default ProfilePage;
