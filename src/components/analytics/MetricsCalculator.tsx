@@ -203,10 +203,10 @@ const MetricsCalculator = () => {
                 <RechartsBarChart data={getChartData()} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="name" />
-                  <YAxis />
+                  <YAxis yAxisId="left" orientation="left" /> {/* Specify YAxis with explicit ID */}
                   <Tooltip content={<CustomTooltip currency={currency} />} />
                   <Legend />
-                  <Bar dataKey="value" fill="#3b82f6" name="Value" />
+                  <Bar dataKey="value" fill="#3b82f6" name="Value" yAxisId="left" /> {/* Make sure Bar uses the same yAxisId */}
                 </RechartsBarChart>
                 <ChartTooltip />
               </>
