@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, BookText, UserCircle } from "lucide-react";
+import { Menu, X, BookText, UserCircle, BarChart } from "lucide-react";
 import AuthButton from "@/components/AuthButton";
 import gsap from "gsap";
 
@@ -75,6 +75,15 @@ const Navbar = () => {
               Content Library
             </Link>
             <Link 
+              to="/analytics" 
+              className={`text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link flex items-center ${
+                location.pathname === "/analytics" ? "text-blue-600" : ""
+              }`}
+            >
+              <BarChart className="h-4 w-4 mr-1" />
+              Analytics
+            </Link>
+            <Link 
               to="/profile" 
               className={`text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link flex items-center ${
                 location.pathname === "/profile" ? "text-blue-600" : ""
@@ -106,6 +115,16 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Content Library
+              </Link>
+              <Link 
+                to="/analytics" 
+                className={`text-gray-600 hover:text-blue-600 font-medium py-2 flex items-center ${
+                  location.pathname === "/analytics" ? "text-blue-600" : ""
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <BarChart className="h-4 w-4 mr-1" />
+                Analytics
               </Link>
               <Link 
                 to="/profile" 

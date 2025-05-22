@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import ContentLibrary from "./pages/ContentLibrary";
 import ContentDetail from "./pages/ContentDetail";
 import ProfilePage from "./pages/ProfilePage";
+import AnalyticsDashboard from "./pages/AnalyticsDashboard";
 import MainLayout from "./layouts/MainLayout";
 import Auth from "./pages/Auth";
 import { useEffect } from "react";
@@ -36,6 +37,7 @@ const App = () => {
             <Route path="/content" element={<MainLayout><ContentLibrary /></MainLayout>} />
             <Route path="/content/:contentId" element={<MainLayout><ContentDetail /></MainLayout>} />
             <Route path="/profile" element={<MainLayout><ProfilePage /></MainLayout>} />
+            <Route path="/analytics" element={<MainLayout><AnalyticsDashboard /></MainLayout>} />
             <Route path="/auth" element={<Auth />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
