@@ -16,6 +16,9 @@ const Auth = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [loginIdentifier, setLoginIdentifier] = useState(""); // Can be email or username
   const [isLoading, setIsLoading] = useState(false);
 
   // Check if user is already logged in
@@ -76,9 +79,16 @@ const Auth = () => {
     setIsLoading(true);
     
     try {
+      // Sign up with email and password
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          data: {
+            full_name: fullName,
+            username: username,
+          }
+        }
       });
       
       if (error) {
@@ -107,10 +117,44 @@ const Auth = () => {
     setIsLoading(true);
     
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+      // Determine if the identifier is an email
+      const isEmail = loginIdentifier.includes('@');
+      
+      let signInOptions;
+      if (isEmail) {
+        signInOptions = { email: loginIdentifier, password };
+      } else {
+        // Find user by username first
+        const { data: users, error: userError } = await supabase
+          .from('profiles')
+          .select('id')
+          .eq('username', loginIdentifier)
+          .single();
+        
+        if (userError || !users) {
+          toast.error("Sign in failed", {
+            description: "Username not found"
+          });
+          setIsLoading(false);
+          return;
+        }
+        
+        // Get user email using the found user ID
+        const { data: authUser, error: authError } = await supabase.auth.admin.getUserById(users.id);
+        
+        if (authError || !authUser) {
+          toast.error("Sign in failed", {
+            description: "User not found"
+          });
+          setIsLoading(false);
+          return;
+        }
+        
+        signInOptions = { email: authUser.user.email, password };
+      }
+      
+      // Sign in with the determined options
+      const { data, error } = await supabase.auth.signInWithPassword(signInOptions);
       
       if (error) {
         toast.error("Sign in failed", {
@@ -142,17 +186,17 @@ const Auth = () => {
               <form onSubmit={handleSignIn}>
                 <CardHeader>
                   <CardTitle className="text-2xl auth-title">Welcome Back</CardTitle>
-                  <CardDescription className="auth-description">Enter your email and password to sign in</CardDescription>
+                  <CardDescription className="auth-description">Enter your email/username and password to sign in</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2 auth-input">
-                    <Label htmlFor="signin-email">Email</Label>
+                    <Label htmlFor="signin-identifier">Email or Username</Label>
                     <Input 
-                      id="signin-email" 
-                      type="email" 
-                      placeholder="your@email.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      id="signin-identifier" 
+                      type="text" 
+                      placeholder="your@email.com or username"
+                      value={loginIdentifier}
+                      onChange={(e) => setLoginIdentifier(e.target.value)}
                       required
                     />
                   </div>
@@ -182,6 +226,28 @@ const Auth = () => {
                   <CardDescription className="auth-description">Enter your details to create a new account</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
+                  <div className="space-y-2 auth-input">
+                    <Label htmlFor="signup-fullname">Full Name</Label>
+                    <Input 
+                      id="signup-fullname" 
+                      type="text" 
+                      placeholder="John Doe"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2 auth-input">
+                    <Label htmlFor="signup-username">Username</Label>
+                    <Input 
+                      id="signup-username" 
+                      type="text" 
+                      placeholder="johndoe"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      required
+                    />
+                  </div>
                   <div className="space-y-2 auth-input">
                     <Label htmlFor="signup-email">Email</Label>
                     <Input 
