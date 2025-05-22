@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -11,7 +10,6 @@ import { toast } from "@/components/ui/sonner";
 import { useEffect } from "react";
 import MainLayout from "@/layouts/MainLayout";
 import gsap from "gsap";
-
 const Auth = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -24,73 +22,69 @@ const Auth = () => {
   // Check if user is already logged in
   useEffect(() => {
     const checkSession = async () => {
-      const { data } = await supabase.auth.getSession();
+      const {
+        data
+      } = await supabase.auth.getSession();
       if (data.session) {
         navigate("/content");
       }
     };
-    
     checkSession();
   }, [navigate]);
 
   // GSAP animations
   useEffect(() => {
     const tl = gsap.timeline();
-    
-    tl.from(".auth-card", { 
-      y: 30, 
-      opacity: 0, 
+    tl.from(".auth-card", {
+      y: 30,
+      opacity: 0,
       duration: 0.8,
       ease: "power3.out"
     });
-    
-    tl.from(".auth-title", { 
-      y: 20, 
-      opacity: 0, 
+    tl.from(".auth-title", {
+      y: 20,
+      opacity: 0,
       duration: 0.5,
-      ease: "power3.out" 
+      ease: "power3.out"
     }, "-=0.4");
-    
-    tl.from(".auth-description", { 
-      y: 20, 
-      opacity: 0, 
+    tl.from(".auth-description", {
+      y: 20,
+      opacity: 0,
       duration: 0.5,
-      ease: "power3.out" 
+      ease: "power3.out"
     }, "-=0.3");
-    
-    tl.from(".auth-input", { 
-      y: 15, 
-      opacity: 0, 
+    tl.from(".auth-input", {
+      y: 15,
+      opacity: 0,
       stagger: 0.1,
       duration: 0.4,
-      ease: "power3.out" 
+      ease: "power3.out"
     }, "-=0.2");
-    
-    tl.from(".auth-button", { 
-      scale: 0.9, 
-      opacity: 0, 
+    tl.from(".auth-button", {
+      scale: 0.9,
+      opacity: 0,
       duration: 0.4,
-      ease: "power3.out" 
+      ease: "power3.out"
     }, "-=0.1");
   }, []);
-
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
     try {
       // Sign up with email and password
-      const { data, error } = await supabase.auth.signUp({
+      const {
+        data,
+        error
+      } = await supabase.auth.signUp({
         email,
         password,
         options: {
           data: {
             full_name: fullName,
-            username: username,
+            username: username
           }
         }
       });
-      
       if (error) {
         toast.error("Sign up failed", {
           description: error.message
@@ -111,26 +105,24 @@ const Auth = () => {
       setIsLoading(false);
     }
   };
-
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
     try {
       // Determine if the identifier is an email
       const isEmail = loginIdentifier.includes('@');
-      
       let signInOptions;
       if (isEmail) {
-        signInOptions = { email: loginIdentifier, password };
+        signInOptions = {
+          email: loginIdentifier,
+          password
+        };
       } else {
         // Find user by username first
-        const { data: users, error: userError } = await supabase
-          .from('profiles')
-          .select('id')
-          .eq('username', loginIdentifier)
-          .single();
-        
+        const {
+          data: users,
+          error: userError
+        } = await supabase.from('profiles').select('id').eq('username', loginIdentifier).single();
         if (userError || !users) {
           toast.error("Sign in failed", {
             description: "Username not found"
@@ -138,10 +130,12 @@ const Auth = () => {
           setIsLoading(false);
           return;
         }
-        
+
         // Get user email using the found user ID
-        const { data: authUser, error: authError } = await supabase.auth.admin.getUserById(users.id);
-        
+        const {
+          data: authUser,
+          error: authError
+        } = await supabase.auth.admin.getUserById(users.id);
         if (authError || !authUser) {
           toast.error("Sign in failed", {
             description: "User not found"
@@ -149,13 +143,17 @@ const Auth = () => {
           setIsLoading(false);
           return;
         }
-        
-        signInOptions = { email: authUser.user.email, password };
+        signInOptions = {
+          email: authUser.user.email,
+          password
+        };
       }
-      
+
       // Sign in with the determined options
-      const { data, error } = await supabase.auth.signInWithPassword(signInOptions);
-      
+      const {
+        data,
+        error
+      } = await supabase.auth.signInWithPassword(signInOptions);
       if (error) {
         toast.error("Sign in failed", {
           description: error.message
@@ -171,9 +169,7 @@ const Auth = () => {
       setIsLoading(false);
     }
   };
-
-  return (
-    <MainLayout>
+  return <MainLayout>
       <div className="container flex items-center justify-center min-h-[80vh] py-10">
         <Card className="w-full max-w-md shadow-lg auth-card">
           <Tabs defaultValue="signin" className="w-full">
@@ -191,24 +187,11 @@ const Auth = () => {
                 <CardContent className="space-y-4">
                   <div className="space-y-2 auth-input">
                     <Label htmlFor="signin-identifier">Email or Username</Label>
-                    <Input 
-                      id="signin-identifier" 
-                      type="text" 
-                      placeholder="your@email.com or username"
-                      value={loginIdentifier}
-                      onChange={(e) => setLoginIdentifier(e.target.value)}
-                      required
-                    />
+                    <Input id="signin-identifier" type="text" placeholder="your@email.com or username" value={loginIdentifier} onChange={e => setLoginIdentifier(e.target.value)} required />
                   </div>
                   <div className="space-y-2 auth-input">
                     <Label htmlFor="signin-password">Password</Label>
-                    <Input 
-                      id="signin-password" 
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required 
-                    />
+                    <Input id="signin-password" type="password" value={password} onChange={e => setPassword(e.target.value)} required />
                   </div>
                 </CardContent>
                 <CardFooter>
@@ -228,47 +211,20 @@ const Auth = () => {
                 <CardContent className="space-y-4">
                   <div className="space-y-2 auth-input">
                     <Label htmlFor="signup-fullname">Full Name</Label>
-                    <Input 
-                      id="signup-fullname" 
-                      type="text" 
-                      placeholder="John Doe"
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                      required
-                    />
+                    <Input id="signup-fullname" type="text" placeholder="John Doe" value={fullName} onChange={e => setFullName(e.target.value)} required />
                   </div>
                   <div className="space-y-2 auth-input">
                     <Label htmlFor="signup-username">Username</Label>
-                    <Input 
-                      id="signup-username" 
-                      type="text" 
-                      placeholder="johndoe"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      required
-                    />
+                    <Input id="signup-username" type="text" placeholder="johndoe" value={username} onChange={e => setUsername(e.target.value)} required />
                   </div>
                   <div className="space-y-2 auth-input">
                     <Label htmlFor="signup-email">Email</Label>
-                    <Input 
-                      id="signup-email" 
-                      type="email" 
-                      placeholder="your@email.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
+                    <Input id="signup-email" type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} required />
                   </div>
                   <div className="space-y-2 auth-input">
                     <Label htmlFor="signup-password">Password</Label>
-                    <Input 
-                      id="signup-password" 
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required 
-                    />
-                    <p className="text-xs text-gray-500">Password must be at least 6 characters</p>
+                    <Input id="signup-password" type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+                    <p className="text-xs text-gray-500">Password must be at least 8 characters</p>
                   </div>
                 </CardContent>
                 <CardFooter>
@@ -281,8 +237,6 @@ const Auth = () => {
           </Tabs>
         </Card>
       </div>
-    </MainLayout>
-  );
+    </MainLayout>;
 };
-
 export default Auth;
