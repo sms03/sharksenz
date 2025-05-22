@@ -198,15 +198,18 @@ const MetricsCalculator = () => {
                 revenue: { label: "Revenue" },
               }}
             >
-              <RechartsBarChart data={getChartData()} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip content={<CustomTooltip currency={currency} />} />
-                <Legend />
-                <Bar dataKey="value" fill="#3b82f6" name="Value" />
-              </RechartsBarChart>
-              <ChartTooltip />
+              {/* Wrap the RechartsBarChart in a fragment to make it a single child */}
+              <>
+                <RechartsBarChart data={getChartData()} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip content={<CustomTooltip currency={currency} />} />
+                  <Legend />
+                  <Bar dataKey="value" fill="#3b82f6" name="Value" />
+                </RechartsBarChart>
+                <ChartTooltip />
+              </>
             </ChartContainer>
           </div>
         </div>
