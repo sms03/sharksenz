@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,6 +14,7 @@ import { UserOnboarding } from "@/components/UserOnboarding";
 
 const Auth = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -22,6 +23,10 @@ const Auth = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
+  
+  // Extract returnUrl from query parameters
+  const searchParams = new URLSearchParams(location.search);
+  const returnUrl = searchParams.get("returnUrl") || "/content";
 
   // Check if user is already logged in
   useEffect(() => {
@@ -233,9 +238,7 @@ const Auth = () => {
           email: userData.user.email,
           password
         };
-      }
-
-      // Sign in with the determined options
+      }      // Sign in with the determined options
       const { data, error } = await supabase.auth.signInWithPassword(signInOptions);
       
       if (error) {
@@ -244,7 +247,7 @@ const Auth = () => {
         });
       } else {
         toast.success("Welcome back!");
-        navigate("/content");
+        navigate(returnUrl); // Redirect to the page user was trying to access
       }
     } catch (error) {
       console.error("Error during signin:", error);
@@ -253,10 +256,9 @@ const Auth = () => {
       setIsLoading(false);
     }
   };
-
   const handleFinishOnboarding = () => {
     setShowOnboarding(false);
-    navigate("/content");
+    navigate(returnUrl);
   };
   
   if (showOnboarding) {
