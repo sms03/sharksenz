@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, BookText, UserCircle, BarChart } from "lucide-react";
+import { Menu, X, UserCircle, BarChart } from "lucide-react";
 import AuthButton from "@/components/AuthButton";
 import gsap from "gsap";
 const Navbar = () => {
@@ -54,10 +54,9 @@ const Navbar = () => {
   }, [isMenuOpen]);
   return <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+        <div className="flex justify-between items-center h-16">          {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 nav-logo">
-            <BookText className="h-8 w-8 text-blue-600" />
+            <img src="/logo_transparent.png" alt="SharkSenz Logo" className="h-10 w-auto" />
             <span className="font-bold text-xl">SharkSenz</span>
           </Link>
 
