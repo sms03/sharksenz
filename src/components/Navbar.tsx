@@ -61,10 +61,10 @@ const Navbar = () => {
           </Link>          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             <Link to="/content" className={`text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link ${location.pathname === "/content" ? "text-blue-600" : ""}`}>
-              Content Library
+              Library
             </Link>
             <Link to="/analytics" className={`text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link flex items-center ${location.pathname === "/analytics" ? "text-blue-600" : ""}`}>
-              <BarChart className="h-4 w-4 mr-1" />
+              {/*<BarChart className="h-4 w-4 mr-1" />*/}
               Analytics
             </Link>
             <Link to="/about" className={`text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link ${location.pathname === "/about" ? "text-blue-600" : ""}`}>
