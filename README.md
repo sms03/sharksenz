@@ -1,73 +1,87 @@
-# Welcome to your Lovable project
+# 🦈 SharkSenz - The Ultimate Founder Resource Platform
 
-## Project info
+[![Live Preview](https://img.shields.io/badge/Preview-Live%20Site-blue?style=for-the-badge)](https://sharksenz.vercel.app)
 
-**URL**: https://lovable.dev/projects/47672de9-0d8c-467d-8fa1-cc37e322ecf7
+## 🚀 About SharkSenz
 
-## How can I edit this code?
+SharkSenz is a comprehensive platform designed to help startup founders master essential skills and knowledge needed to build successful ventures. From idea validation to scaling, our platform provides all the resources founders need at any stage of their journey.
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+- 📚 **Comprehensive Content Library** - Access our A-Z library of founder knowledge
+- 🎓 **Progress Tracking** - Mark lessons as complete and take personalized notes
+- 🎤 **Pitch Simulator** - Practice your startup pitch and get instant feedback
+- 🎯 **Goal Setting** - Define your learning path and track progress
+- 📊 **Analytics Dashboard** - Visualize your learning journey and identify areas for improvement
+- 🛠️ **Founder Resources** - Access tools, templates, and practical resources
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/47672de9-0d8c-467d-8fa1-cc37e322ecf7) and start prompting.
+## 🔗 Live Preview
 
-Changes made via Lovable will be committed automatically to this repo.
+Visit [https://sharksenz.vercel.app](https://sharksenz.vercel.app) to see the live site!
 
-**Use your preferred IDE**
+## 🛠️ Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+This project is built with modern technologies:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- ⚡ **Vite** - Next generation frontend tooling
+- 🔷 **TypeScript** - Type safety for better development experience
+- ⚛️ **React** - UI component library
+- 🎨 **Tailwind CSS** - Utility-first CSS framework
+- 🧩 **Shadcn UI** - Beautiful and customizable UI components
+- 📊 **Recharts** - Composable charting library
+- 🔄 **React Query** - Data fetching and state management
+- 💾 **Supabase** - Backend and authentication services
+- 🎭 **GSAP** - Animation library for smooth transitions
 
-Follow these steps:
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (14.x or higher)
+- npm or Bun package manager
+
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone https://github.com/yourusername/sharksenz.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd sharksenz
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
+# or
+bun install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
+# or
+bun dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:5173`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📝 Project Structure
 
-**Use GitHub Codespaces**
+- `/src` - Main application code
+  - `/components` - Reusable UI components
+  - `/pages` - Page components
+  - `/layouts` - Layout components
+  - `/hooks` - Custom React hooks
+  - `/lib` - Utility functions
+  - `/integrations` - Third-party integrations
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🔧 Development
 
-## What technologies are used for this project?
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
 
-This project is built with:
+## 📄 License
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## How can I deploy this project?
+## 🌐 Connect With Us
 
-Simply open [Lovable](https://lovable.dev/projects/47672de9-0d8c-467d-8fa1-cc37e322ecf7) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Join our community of founders helping each other succeed!
