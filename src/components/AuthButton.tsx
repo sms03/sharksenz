@@ -14,26 +14,55 @@ import {
 import { User, LogOut, UserCircle } from "lucide-react";
 import { Session } from "@supabase/supabase-js";
 
+interface UserProfile {
+  username: string | null;
+  full_name: string | null;
+}
+
 const AuthButton = () => {
   const navigate = useNavigate();
   const [session, setSession] = useState<Session | null>(null);
+  const [profile, setProfile] = useState<UserProfile | null>(null);
   
   useEffect(() => {
     // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
+      if (session?.user) {
+        fetchUserProfile(session.user.id);
+      }
     });
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         setSession(session);
+        if (session?.user) {
+          fetchUserProfile(session.user.id);
+        } else {
+          setProfile(null);
+        }
       }
     );
 
     // Cleanup
     return () => subscription.unsubscribe();
   }, []);
+
+  const fetchUserProfile = async (userId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('username, full_name')
+        .eq('id', userId)
+        .single();
+      
+      if (error) throw error;
+      setProfile(data as UserProfile);
+    } catch (error) {
+      console.error("Error fetching user profile:", error);
+    }
+  };
 
   const handleSignOut = async () => {
     try {
@@ -53,7 +82,7 @@ const AuthButton = () => {
           <Button variant="outline" className="flex items-center gap-2">
             <User size={16} />
             <span className="max-w-[100px] truncate hidden sm:inline">
-              {session.user.email}
+              {profile?.username || session.user.email?.split('@')[0]}
             </span>
           </Button>
         </DropdownMenuTrigger>
@@ -77,7 +106,7 @@ const AuthButton = () => {
   }
 
   return (
-    <Button asChild>
+    <Button asChild className="font-ancizar">
       <Link to="/auth">Sign In</Link>
     </Button>
   );

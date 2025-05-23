@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "@/components/ui/sonner";
 import gsap from "gsap";
 import MainLayout from "@/layouts/MainLayout";
+import { UserOnboarding } from "@/components/UserOnboarding";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -19,6 +20,8 @@ const Auth = () => {
   const [fullName, setFullName] = useState("");
   const [loginIdentifier, setLoginIdentifier] = useState(""); // Can be email or username
   const [isLoading, setIsLoading] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
 
   // Check if user is already logged in
   useEffect(() => {
@@ -85,6 +88,21 @@ const Auth = () => {
     }
     
     try {
+      // Check if username already exists
+      const { data: existingUser, error: userCheckError } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('username', username)
+        .single();
+      
+      if (existingUser) {
+        toast.error("Username already exists", {
+          description: "Please choose a different username"
+        });
+        setIsLoading(false);
+        return;
+      }
+      
       // Sign up with email and password
       const { data, error } = await supabase.auth.signUp({
         email,
@@ -104,6 +122,8 @@ const Auth = () => {
       } else {
         // Update profiles table with additional info to ensure data is immediately available
         if (data.user) {
+          setUserId(data.user.id);
+          
           // Double-check if profile already exists
           const { data: existingProfile } = await supabase
             .from('profiles')
@@ -135,15 +155,15 @@ const Auth = () => {
                 }
               ]);
           }
-        }
-        
-        toast.success("Success!", {
-          description: "Check your email for the confirmation link."
-        });
-        
-        // In development, usually email verification is disabled
-        if (data.session) {
-          navigate("/content");
+          
+          toast.success("Account created successfully!");
+          
+          // Show onboarding for new users
+          if (data.session) {
+            setShowOnboarding(true);
+          } else {
+            toast.info("Check your email for the confirmation link.");
+          }
         }
       }
     } catch (error) {
@@ -183,20 +203,34 @@ const Auth = () => {
           return;
         }
 
-        // Get user email using auth table lookup
-        const { data: authData, error: authError } = await supabase.auth
-          .admin.getUserById(users.id);
-          
-        if (authError || !authData) {
+        // Get user email using auth.admin is not the right approach here
+        // Instead, use the special function we created to get the user
+        const { data: authData, error: authError } = await supabase
+          .rpc('get_user_by_username', { username_input: loginIdentifier });
+
+        if (!authData) {
           toast.error("Sign in failed", {
             description: "User not found"
           });
           setIsLoading(false);
           return;
         }
+
+        // Since our function returns the user id, we need to get the email address
+        const { data: userData, error: userDataError } = await supabase.auth.admin.getUserById(
+          authData.toString()
+        );
+        
+        if (userDataError || !userData?.user?.email) {
+          toast.error("Sign in failed", {
+            description: "Could not retrieve user details"
+          });
+          setIsLoading(false);
+          return;
+        }
         
         signInOptions = {
-          email: authData.user.email,
+          email: userData.user.email,
           password
         };
       }
@@ -219,6 +253,15 @@ const Auth = () => {
       setIsLoading(false);
     }
   };
+
+  const handleFinishOnboarding = () => {
+    setShowOnboarding(false);
+    navigate("/content");
+  };
+  
+  if (showOnboarding) {
+    return <UserOnboarding userId={userId} onFinish={handleFinishOnboarding} />;
+  }
   
   return (
     <MainLayout>
