@@ -13,6 +13,8 @@ import AnalyticsDashboard from "./pages/AnalyticsDashboard";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Pricing from "./pages/Pricing";
+import TermsOfService from "./pages/TermsOfService";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import MainLayout from "./layouts/MainLayout";
 import Auth from "./pages/Auth";
 import { useEffect } from "react";
