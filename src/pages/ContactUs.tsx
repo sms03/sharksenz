@@ -1,4 +1,3 @@
-
 import { ArrowRight, Building, Mail, MapPin, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -13,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { isBrowser, MapIcon } from "@/lib/leaflet-utils";
+import { isBrowser } from "@/lib/leaflet-utils";
 import { supabase } from "@/integrations/supabase/client";
 
 const ContactUs = () => {
@@ -82,7 +81,7 @@ const ContactUs = () => {
   };
 
   // Define map center coordinates
-  const mapCenter = [37.7749, -122.4194] as [number, number];
+  const mapCenter: [number, number] = [37.7749, -122.4194];
 
   return (
     <div className="min-h-screen font-ancizar">
@@ -342,6 +341,7 @@ const ContactUs = () => {
                   center={mapCenter}
                   zoom={13} 
                   scrollWheelZoom={false}
+                  style={{ height: '400px', width: '100%' }}
                 >
                   <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
