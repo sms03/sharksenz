@@ -1,11 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, BookOpen, GraduationCap, BarChart3, Rocket, Target, Code } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
@@ -15,21 +13,18 @@ const Index = () => {
     // Hero animations
     if (heroRef.current) {
       const tl = gsap.timeline();
-      
       tl.from(".hero-title", {
         y: 30,
         opacity: 0,
         duration: 0.8,
         ease: "power3.out"
       });
-      
       tl.from(".hero-description", {
         y: 20,
         opacity: 0,
         duration: 0.6,
         ease: "power3.out"
       }, "-=0.4");
-      
       tl.from(".hero-buttons .button", {
         y: 15,
         opacity: 0,
@@ -37,7 +32,6 @@ const Index = () => {
         duration: 0.5,
         ease: "back.out(1.4)"
       }, "-=0.2");
-
       tl.from(".hero-badge", {
         scale: 0.8,
         opacity: 0,
@@ -62,14 +56,9 @@ const Index = () => {
       });
     }
   }, []);
-
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       {/* Hero Section */}
-      <section 
-        ref={heroRef}
-        className="py-20 bg-gradient-to-b from-blue-50 to-white overflow-hidden"
-      >
+      <section ref={heroRef} className="py-20 bg-gradient-to-b from-blue-50 to-white overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center relative">
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-100 rounded-full opacity-30 blur-3xl"></div>
@@ -80,9 +69,7 @@ const Index = () => {
               <span className="text-xs font-medium text-blue-700">The Ultimate Founder Resource</span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 hero-title bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-800">
-              Alpha Founder Academy
-            </h1>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 hero-title bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-800">SharkSenz</h1>
             
             <p className="text-xl text-slate-700 mb-8 hero-description max-w-2xl mx-auto">
               Master the essential skills and knowledge every founder needs to build successful startups. 
@@ -252,8 +239,6 @@ const Index = () => {
           </Card>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
