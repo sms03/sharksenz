@@ -54,27 +54,23 @@ const Navbar = () => {
   }, [isMenuOpen]);
   return <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">          {/* Logo */}
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 nav-logo">
             <img src="/logo_transparent.png" alt="SharkSenz Logo" className="h-10 w-auto" />
             <span className="font-bold text-xl">SharkSenz</span>
-          </Link>          {/* Desktop Navigation */}
+          </Link>
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             <Link to="/content" className={`text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link ${location.pathname === "/content" ? "text-blue-600" : ""}`}>
-              Library
+              Content Library
             </Link>
             <Link to="/analytics" className={`text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link flex items-center ${location.pathname === "/analytics" ? "text-blue-600" : ""}`}>
               {/*<BarChart className="h-4 w-4 mr-1" />*/}
               Analytics
             </Link>
-            <Link to="/about" className={`text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link ${location.pathname === "/about" ? "text-blue-600" : ""}`}>
-              About Us
-            </Link>
             <Link to="/pricing" className={`text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link ${location.pathname === "/pricing" ? "text-blue-600" : ""}`}>
               Pricing
-            </Link>
-            <Link to="/contact" className={`text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link ${location.pathname === "/contact" ? "text-blue-600" : ""}`}>
-              Contact
             </Link>
             <Link to="/profile" className={`text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 nav-link flex items-center ${location.pathname === "/profile" ? "text-blue-600" : ""}`}>
               <UserCircle className="h-4 w-4 mr-1" />
@@ -89,7 +85,8 @@ const Navbar = () => {
           <button className="md:hidden" onClick={toggleMenu}>
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
-        </div>        {/* Mobile Navigation */}
+        </div>
+        {/* Mobile Navigation */}
         {isMenuOpen && <nav className="md:hidden py-4 border-t border-gray-200 mobile-nav">
             <div className="flex flex-col space-y-4">
               <Link to="/content" className={`text-gray-600 hover:text-blue-600 font-medium py-2 ${location.pathname === "/content" ? "text-blue-600" : ""}`} onClick={() => setIsMenuOpen(false)}>
@@ -99,14 +96,8 @@ const Navbar = () => {
                 <BarChart className="h-4 w-4 mr-1" />
                 Analytics
               </Link>
-              <Link to="/about" className={`text-gray-600 hover:text-blue-600 font-medium py-2 ${location.pathname === "/about" ? "text-blue-600" : ""}`} onClick={() => setIsMenuOpen(false)}>
-                About Us
-              </Link>
               <Link to="/pricing" className={`text-gray-600 hover:text-blue-600 font-medium py-2 ${location.pathname === "/pricing" ? "text-blue-600" : ""}`} onClick={() => setIsMenuOpen(false)}>
                 Pricing
-              </Link>
-              <Link to="/contact" className={`text-gray-600 hover:text-blue-600 font-medium py-2 ${location.pathname === "/contact" ? "text-blue-600" : ""}`} onClick={() => setIsMenuOpen(false)}>
-                Contact
               </Link>
               <Link to="/profile" className={`text-gray-600 hover:text-blue-600 font-medium py-2 flex items-center ${location.pathname === "/profile" ? "text-blue-600" : ""}`} onClick={() => setIsMenuOpen(false)}>
                 <UserCircle className="h-4 w-4 mr-1" />
