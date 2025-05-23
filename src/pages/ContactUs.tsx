@@ -1,3 +1,4 @@
+
 import { ArrowRight, Building, Mail, MapPin, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -14,6 +15,7 @@ import {
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { isBrowser, MapIcon } from "@/lib/leaflet-utils";
 import { supabase } from "@/integrations/supabase/client";
+import type { LatLngExpression } from "leaflet";
 
 const ContactUs = () => {
   const { toast } = useToast();
@@ -79,6 +81,9 @@ const ContactUs = () => {
       setLoading(false);
     }
   };
+
+  // Define map center as LatLngExpression
+  const mapCenter: LatLngExpression = [37.7749, -122.4194];
 
   return (
     <div className="min-h-screen font-ancizar">
@@ -331,18 +336,18 @@ const ContactUs = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold mb-8 text-center">Find Us</h2>            <div className="map-container">
+            <h2 className="text-2xl font-bold mb-8 text-center">Find Us</h2>            
+            <div className="map-container">
               {isBrowser() && (
                 <MapContainer 
-                  center={[37.7749, -122.4194]} 
+                  center={mapCenter}
                   zoom={13} 
                   scrollWheelZoom={false}
                 >
                   <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   />
-                  <Marker position={[37.7749, -122.4194]} icon={MapIcon}>
+                  <Marker position={mapCenter}>
                     <Popup>
                       <strong>SharkSenz HQ</strong><br />
                       123 Startup Avenue<br />
