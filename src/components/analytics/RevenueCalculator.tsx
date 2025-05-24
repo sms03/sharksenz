@@ -1,14 +1,12 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ChartContainer } from "@/components/ui/chart";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
-type Currency = "USD" | "EUR" | "GBP" | "JPY";
+type Currency = "USD" | "EUR" | "GBP" | "JPY" | "INR";
 
 interface RevenueFormData {
   initialCustomers: number;
@@ -22,14 +20,16 @@ const currencySymbols: Record<Currency, string> = {
   USD: "$",
   EUR: "€",
   GBP: "£",
-  JPY: "¥"
+  JPY: "¥",
+  INR: "₹"
 };
 
 const exchangeRates: Record<Currency, number> = {
   USD: 1,
   EUR: 0.93,
   GBP: 0.79,
-  JPY: 151.13
+  JPY: 151.13,
+  INR: 85.15
 };
 
 const RevenueCalculator = () => {
@@ -47,37 +47,41 @@ const RevenueCalculator = () => {
   });
 
   const onSubmit = (data: RevenueFormData) => {
-    const { initialCustomers, monthlyGrowthRate, initialPrice, annualPriceIncrease, projectionMonths } = data;
-    
-    const projectionResults = [];
-    let customers = initialCustomers;
-    let price = initialPrice;
-    let totalRevenue = 0;
-    
-    for (let month = 1; month <= projectionMonths; month++) {
-      // Update price annually (every 12 months)
-      if (month > 1 && month % 12 === 1) {
-        price = price * (1 + annualPriceIncrease / 100);
+    try {
+      const { initialCustomers, monthlyGrowthRate, initialPrice, annualPriceIncrease, projectionMonths } = data;
+      
+      const projectionResults = [];
+      let customers = initialCustomers;
+      let price = initialPrice;
+      let totalRevenue = 0;
+      
+      for (let month = 1; month <= projectionMonths; month++) {
+        // Update price annually (every 12 months)
+        if (month > 1 && month % 12 === 1) {
+          price = price * (1 + annualPriceIncrease / 100);
+        }
+        
+        // Calculate monthly customer growth
+        customers = customers * (1 + monthlyGrowthRate / 100);
+        
+        // Calculate monthly revenue
+        const monthlyRevenue = customers * price;
+        totalRevenue += monthlyRevenue;
+        
+        // Add data point to projection
+        projectionResults.push({
+          month,
+          customers: Math.round(customers),
+          price,
+          monthlyRevenue,
+          totalRevenue
+        });
       }
       
-      // Calculate monthly customer growth
-      customers = customers * (1 + monthlyGrowthRate / 100);
-      
-      // Calculate monthly revenue
-      const monthlyRevenue = customers * price;
-      totalRevenue += monthlyRevenue;
-      
-      // Add data point to projection
-      projectionResults.push({
-        month,
-        customers: Math.round(customers),
-        price,
-        monthlyRevenue,
-        totalRevenue
-      });
+      setProjectionData(projectionResults);
+    } catch (error) {
+      console.error("Error calculating revenue projection:", error);
     }
-    
-    setProjectionData(projectionResults);
   };
 
   // Convert value to selected currency
@@ -200,19 +204,19 @@ const RevenueCalculator = () => {
         <div className="space-y-6 mt-8">
           {/* Summary Statistics */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-gray-50 p-4 rounded-lg">
+            <div className="bg-white border border-gray-200 p-4 rounded-lg">
               <h3 className="text-sm font-medium text-gray-500">Final Monthly Revenue</h3>
               <p className="text-2xl font-bold mt-1">
                 {formatCurrency(projectionData[projectionData.length - 1].monthlyRevenue)}
               </p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg">
+            <div className="bg-white border border-gray-200 p-4 rounded-lg">
               <h3 className="text-sm font-medium text-gray-500">Total Revenue</h3>
               <p className="text-2xl font-bold mt-1">
                 {formatCurrency(projectionData[projectionData.length - 1].totalRevenue)}
               </p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg">
+            <div className="bg-white border border-gray-200 p-4 rounded-lg">
               <h3 className="text-sm font-medium text-gray-500">Final Customer Count</h3>
               <p className="text-2xl font-bold mt-1">
                 {projectionData[projectionData.length - 1].customers.toLocaleString()}
@@ -221,54 +225,113 @@ const RevenueCalculator = () => {
           </div>
 
           {/* Revenue Chart */}
-          <div className="h-96 w-full mt-6">
-            <ChartContainer
-              config={{
-                revenue: { label: "Monthly Revenue" },
-                customers: { label: "Customers" },
-              }}
-            >
-              <LineChart data={projectionData.map(item => ({
-                month: `Month ${item.month}`,
-                revenue: convertCurrency(item.monthlyRevenue),
-                customers: item.customers
-              }))}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="month" />
-                <YAxis yAxisId="left" />
-                <YAxis yAxisId="right" orientation="right" />
-                <Tooltip formatter={(value, name) => {
-                  if (name === "revenue") {
-                    return [`${currencySymbols[currency]}${Number(value).toLocaleString(undefined, {
-                      minimumFractionDigits: 0,
-                      maximumFractionDigits: 2
-                    })}`, "Monthly Revenue"];
-                  }
-                  return [value, "Customers"];
-                }} />
-                <Legend />
-                <Line 
-                  type="monotone" 
-                  dataKey="revenue" 
-                  stroke="#3b82f6" 
-                  yAxisId="left" 
-                  name="Monthly Revenue" 
-                  strokeWidth={2}
-                />
-                <Line 
-                  type="monotone" 
-                  dataKey="customers" 
-                  stroke="#10b981" 
-                  yAxisId="right" 
-                  name="Customers"
-                  strokeWidth={2}
-                />
-              </LineChart>
-            </ChartContainer>
+          <div className="bg-white border border-gray-200 rounded-lg p-4">
+            <h3 className="text-lg font-medium mb-4">Revenue Projection</h3>
+            <div className="h-96">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart 
+                  data={projectionData.map(item => ({
+                    month: `Month ${item.month}`,
+                    revenue: convertCurrency(item.monthlyRevenue),
+                    customers: item.customers
+                  }))}
+                  margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="month" />
+                  <YAxis 
+                    yAxisId="left" 
+                    tickFormatter={(value) => {
+                      if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`;
+                      if (value >= 1000) return `${(value / 1000).toFixed(0)}K`;
+                      return value.toString();
+                    }}
+                  />
+                  <YAxis 
+                    yAxisId="right" 
+                    orientation="right" 
+                    tickFormatter={(value) => {
+                      if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`;
+                      if (value >= 1000) return `${(value / 1000).toFixed(0)}K`;
+                      return value.toString();
+                    }}
+                  />
+                  <Tooltip 
+                    formatter={(value, name) => {
+                      if (name === "revenue") {
+                        return [
+                          `${currencySymbols[currency]}${Number(value).toLocaleString()}`,
+                          "Monthly Revenue"
+                        ];
+                      }
+                      return [value.toLocaleString(), "Customers"];
+                    }} 
+                  />
+                  <Legend />
+                  <Line 
+                    type="monotone" 
+                    dataKey="revenue" 
+                    stroke="#3b82f6" 
+                    yAxisId="left" 
+                    name="Monthly Revenue" 
+                    strokeWidth={2}
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="customers" 
+                    stroke="#10b981" 
+                    yAxisId="right" 
+                    name="Customers"
+                    strokeWidth={2}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+
+          {/* Cumulative Revenue Chart */}
+          <div className="bg-white border border-gray-200 rounded-lg p-4">
+            <h3 className="text-lg font-medium mb-4">Cumulative Revenue</h3>
+            <div className="h-80">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart 
+                  data={projectionData.map(item => ({
+                    month: `Month ${item.month}`,
+                    totalRevenue: convertCurrency(item.totalRevenue)
+                  }))}
+                  margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="month" />
+                  <YAxis 
+                    tickFormatter={(value) => {
+                      if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`;
+                      if (value >= 1000) return `${(value / 1000).toFixed(0)}K`;
+                      return value.toString();
+                    }}
+                  />
+                  <Tooltip 
+                    formatter={(value) => [
+                      `${currencySymbols[currency]}${Number(value).toLocaleString()}`, 
+                      "Cumulative Revenue"
+                    ]} 
+                  />
+                  <Legend />
+                  <Line 
+                    type="monotone" 
+                    dataKey="totalRevenue" 
+                    stroke="#8b5cf6" 
+                    name="Cumulative Revenue" 
+                    strokeWidth={2}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
           </div>
 
           {/* Data Table */}
-          <div className="overflow-x-auto mt-6">
+          <div className="overflow-x-auto bg-white border border-gray-200 rounded-lg">
+            <h3 className="text-lg font-medium p-4 border-b">Projection Details</h3>
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
