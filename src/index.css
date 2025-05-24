@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Animation for the hero section */
+@keyframes float {
+  0% { transform: translateY(0) translateX(0) rotate(0); }
+  33% { transform: translateY(-10px) translateX(10px) rotate(10deg); }
+  66% { transform: translateY(10px) translateX(-10px) rotate(-10deg); }
+  100% { transform: translateY(0) translateX(0) rotate(0); }
+}
+
+.stat-card {
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
