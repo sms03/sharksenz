@@ -1,15 +1,13 @@
-
 import { useState } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ChartContainer } from "@/components/ui/chart";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine } from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, ResponsiveContainer } from "recharts";
 import { Plus, X, Save, AlertCircle } from "lucide-react";
 
-type Currency = "USD" | "EUR" | "GBP" | "JPY";
+type Currency = "USD" | "EUR" | "GBP" | "JPY" | "INR";
 
 interface ExpenseItem {
   name: string;
@@ -27,14 +25,16 @@ const currencySymbols: Record<Currency, string> = {
   USD: "$",
   EUR: "€",
   GBP: "£",
-  JPY: "¥"
+  JPY: "¥",
+  INR: "₹"
 };
 
 const exchangeRates: Record<Currency, number> = {
   USD: 1,
   EUR: 0.93,
   GBP: 0.79,
-  JPY: 151.13
+  JPY: 151.13,
+  INR: 85.15
 };
 
 const BurnRateCalculator = () => {
@@ -59,70 +59,74 @@ const BurnRateCalculator = () => {
     control,
     name: "expenses"
   });
-
   const onSubmit = (data: BurnRateFormData) => {
-    const { cashBalance, monthlyRevenue, monthlyRevenueGrowth, expenses } = data;
-    
-    // Calculate total monthly expenses
-    const totalMonthlyExpenses = expenses.reduce((sum, expense) => sum + Number(expense.amount), 0);
-    
-    // Calculate current burn rate
-    const currentBurnRate = totalMonthlyExpenses - monthlyRevenue;
-    
-    // Calculate runway (in months)
-    const initialRunway = currentBurnRate > 0 ? cashBalance / currentBurnRate : Infinity;
-    
-    // Project cash flow for 24 months
-    const projectionMonths = 24;
-    const projectionData = [];
-    
-    let remainingCash = cashBalance;
-    let revenue = monthlyRevenue;
-    let burnRate = currentBurnRate;
-    let cumulativeBurn = 0;
-    
-    for (let month = 1; month <= projectionMonths; month++) {
-      // Increase revenue based on growth rate
-      revenue = revenue * (1 + monthlyRevenueGrowth / 100);
+    try {
+      const { cashBalance, monthlyRevenue, monthlyRevenueGrowth, expenses } = data;
       
-      // Calculate burn rate for this month
-      burnRate = totalMonthlyExpenses - revenue;
+      // Calculate total monthly expenses
+      let totalMonthlyExpenses = expenses.reduce((sum, expense) => sum + Number(expense.amount), 0);
       
-      // Update remaining cash
-      remainingCash -= burnRate;
-      cumulativeBurn += burnRate > 0 ? burnRate : 0;
+      // Calculate current burn rate
+      const currentBurnRate = totalMonthlyExpenses - monthlyRevenue;
       
-      // Add data point to projection
-      projectionData.push({
-        month,
-        cashBalance: Math.max(0, remainingCash),
-        burnRate: burnRate > 0 ? burnRate : 0,
-        revenue,
-        expenses: totalMonthlyExpenses,
-        cumulativeBurn
-      });
+      // Calculate runway (in months)
+      const initialRunway = currentBurnRate > 0 ? cashBalance / currentBurnRate : Infinity;
       
-      // Stop if we run out of cash
-      if (remainingCash <= 0) {
-        break;
+      // Project cash flow for 24 months
+      const projectionMonths = 24;
+      const projectionData = [];
+      
+      let remainingCash = cashBalance;
+      let revenue = monthlyRevenue;
+      let burnRate = currentBurnRate;
+      let cumulativeBurn = 0;
+      
+      for (let month = 1; month <= projectionMonths; month++) {
+        // Increase revenue based on growth rate
+        revenue = revenue * (1 + monthlyRevenueGrowth / 100);
+        
+        // Calculate burn rate for this month
+        burnRate = totalMonthlyExpenses - revenue;
+        
+        // Update remaining cash
+        remainingCash -= burnRate;
+        cumulativeBurn += burnRate > 0 ? burnRate : 0;
+        
+        // Add data point to projection
+        projectionData.push({
+          month,
+          cashBalance: Math.max(0, remainingCash),
+          burnRate: burnRate > 0 ? burnRate : 0,
+          revenue,
+          expenses: totalMonthlyExpenses,
+          cumulativeBurn
+        });
+        
+        // Stop if we run out of cash
+        if (remainingCash <= 0) {
+          break;
+        }
       }
+      
+      // Calculate when cash runs out (runway)
+      const runwayMonth = projectionData.findIndex(data => data.cashBalance <= 0);
+      const runway = runwayMonth !== -1 ? runwayMonth + 1 : projectionMonths > 24 ? "24+" : "∞";
+      
+      // Calculate breakeven month
+      const breakevenMonth = projectionData.findIndex(data => data.burnRate <= 0);
+      const breakeven = breakevenMonth !== -1 ? breakevenMonth + 1 : "Not within 24 months";
+      
+      setCalculationResults({
+        totalMonthlyExpenses,
+        currentBurnRate,
+        runway,
+        breakeven,
+        projectionData
+      });
+    } catch (error) {
+      console.error("Error calculating burn rate:", error);
+      // Show an error state instead of crashing
     }
-    
-    // Calculate when cash runs out (runway)
-    const runwayMonth = projectionData.findIndex(data => data.cashBalance <= 0);
-    const runway = runwayMonth !== -1 ? runwayMonth + 1 : projectionMonths > 24 ? "24+" : "∞";
-    
-    // Calculate breakeven month
-    const breakevenMonth = projectionData.findIndex(data => data.burnRate <= 0);
-    const breakeven = breakevenMonth !== -1 ? breakevenMonth + 1 : "Not within 24 months";
-    
-    setCalculationResults({
-      totalMonthlyExpenses,
-      currentBurnRate,
-      runway,
-      breakeven,
-      projectionData
-    });
   };
 
   // Convert value to selected currency
@@ -327,67 +331,74 @@ const BurnRateCalculator = () => {
           </div>
 
           {/* Cash Projection Chart */}
-          <div className="h-80 w-full mt-6">
-            <ChartContainer
-              config={{
-                cashBalance: { label: "Cash Balance" },
-                burnRate: { label: "Burn Rate" },
-              }}
-            >
-              <LineChart 
-                data={calculationResults.projectionData.map((item: any) => ({
-                  month: `Month ${item.month}`,
-                  cashBalance: convertCurrency(item.cashBalance),
-                  burnRate: convertCurrency(item.burnRate)
-                }))}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="month" />
-                <YAxis yAxisId="left" tickFormatter={(value) => {
-                  if (value >= 1000000) {
-                    return `${(value / 1000000).toFixed(1)}M`;
-                  } else if (value >= 1000) {
-                    return `${(value / 1000).toFixed(0)}K`;
-                  }
-                  return value;
-                }} />
-                <YAxis yAxisId="right" orientation="right" tickFormatter={(value) => {
-                  if (value >= 1000000) {
-                    return `${(value / 1000000).toFixed(1)}M`;
-                  } else if (value >= 1000) {
-                    return `${(value / 1000).toFixed(0)}K`;
-                  }
-                  return value;
-                }} />
-                <Tooltip formatter={(value, name) => [
-                  `${currencySymbols[currency]}${Number(value).toLocaleString()}`,
-                  name === "cashBalance" ? "Cash Balance" : "Burn Rate"
-                ]} />
-                <Legend />
-                <ReferenceLine y={0} stroke="#666" strokeDasharray="3 3" />
-                <Line 
-                  type="monotone" 
-                  dataKey="cashBalance" 
-                  stroke="#3b82f6" 
-                  strokeWidth={2}
-                  yAxisId="left"
-                  name="Cash Balance"
-                />
-                <Line 
-                  type="monotone" 
-                  dataKey="burnRate" 
-                  stroke="#ef4444" 
-                  strokeWidth={2}
-                  yAxisId="right"
-                  name="Burn Rate"
-                />
-              </LineChart>
-            </ChartContainer>
+          <div className="h-96 w-full mt-8 bg-white border border-gray-200 rounded-lg p-4">
+            <h4 className="text-lg font-medium mb-4">Cash Projection Chart</h4>
+            <div className="h-80 w-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart 
+                  data={calculationResults.projectionData.map((item: any) => ({
+                    month: `Month ${item.month}`,
+                    cashBalance: convertCurrency(item.cashBalance),
+                    burnRate: convertCurrency(item.burnRate)
+                  }))}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="month" />
+                  <YAxis 
+                    yAxisId="left" 
+                    tickFormatter={(value) => {
+                      if (value >= 1000000) {
+                        return `${(value / 1000000).toFixed(1)}M`;
+                      } else if (value >= 1000) {
+                        return `${(value / 1000).toFixed(0)}K`;
+                      }
+                      return value;
+                    }} 
+                  />
+                  <YAxis 
+                    yAxisId="right" 
+                    orientation="right" 
+                    tickFormatter={(value) => {
+                      if (value >= 1000000) {
+                        return `${(value / 1000000).toFixed(1)}M`;
+                      } else if (value >= 1000) {
+                        return `${(value / 1000).toFixed(0)}K`;
+                      }
+                      return value;
+                    }} 
+                  />
+                  <Tooltip 
+                    formatter={(value, name) => [
+                      `${currencySymbols[currency]}${Number(value).toLocaleString()}`,
+                      name === "cashBalance" ? "Cash Balance" : "Burn Rate"
+                    ]} 
+                  />
+                  <Legend />
+                  <ReferenceLine y={0} stroke="#666" strokeDasharray="3 3" />
+                  <Line 
+                    type="monotone" 
+                    dataKey="cashBalance" 
+                    stroke="#3b82f6" 
+                    strokeWidth={2}
+                    yAxisId="left"
+                    name="Cash Balance"
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="burnRate" 
+                    stroke="#ef4444" 
+                    strokeWidth={2}
+                    yAxisId="right"
+                    name="Burn Rate"
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
           </div>
 
           {/* Recommendations */}
           {calculationResults.currentBurnRate > 0 && (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
               <h4 className="text-lg font-medium text-blue-700 mb-3 flex items-center">
                 <AlertCircle className="h-5 w-5 mr-2" />
                 Burn Rate Analysis
