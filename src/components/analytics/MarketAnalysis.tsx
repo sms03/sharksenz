@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { ChartContainer } from "@/components/ui/chart";
 import { Loader2, RefreshCw, Zap } from "lucide-react";
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
@@ -99,48 +98,89 @@ const sampleMarketData = {
       major: ["UnitedHealth", "Johnson & Johnson", "Pfizer", "Medtronic"],
       emerging: ["Teladoc", "One Medical", "Noom", "Hims & Hers"]
     }
+  },
+  "Consumer": {
+    marketSize: "$14.3 trillion (2022)",
+    growthRate: "5.2% CAGR (2023-2030)",
+    keyTrends: [
+      "Direct-to-consumer brands growth",
+      "Subscription model expansion",
+      "Ethical and sustainable consumption",
+      "Personalization at scale"
+    ],
+    segments: [
+      { name: "Food & Beverage", value: 30, color: "#f59e0b" },
+      { name: "Personal Care", value: 25, color: "#ec4899" },
+      { name: "Apparel", value: 20, color: "#3b82f6" },
+      { name: "Home Goods", value: 15, color: "#10b981" },
+      { name: "Entertainment", value: 10, color: "#6366f1" }
+    ],
+    competitors: {
+      major: ["P&G", "Unilever", "Nestlé", "Nike", "LVMH"],
+      emerging: ["Glossier", "Allbirds", "Warby Parker", "Dollar Shave Club"]
+    }
   }
 };
 
 const MarketAnalysis = () => {
-  const [industry, setIndustry] = useState<keyof typeof sampleMarketData | "">("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [analysisData, setAnalysisData] = useState<any | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [analysis, setAnalysis] = useState<any | null>(null);
+  const [selectedIndustry, setSelectedIndustry] = useState<string>("SaaS");
   
   const { register, handleSubmit, formState: { errors } } = useForm<MarketAnalysisFormData>({
     defaultValues: {
-      industry: "",
-      target: "",
-      competitors: "",
-      productDescription: ""
+      industry: "SaaS",
+      target: "Small to medium-sized businesses",
+      competitors: "Major: Salesforce, HubSpot\nEmerging: Monday.com, Notion",
+      productDescription: "A productivity SaaS platform that helps teams collaborate and manage projects more efficiently."
     }
   });
 
-  const onSubmit = async (data: MarketAnalysisFormData) => {
-    setIsLoading(true);
-    
-    // Simulate API call delay
-    setTimeout(() => {
-      if (data.industry in sampleMarketData) {
-        setAnalysisData(sampleMarketData[data.industry as keyof typeof sampleMarketData]);
-        setIndustry(data.industry as keyof typeof sampleMarketData);
-      } else {
-        // Default to SaaS if selected industry not found in sample data
-        setAnalysisData(sampleMarketData.SaaS);
-        setIndustry("SaaS");
-      }
-      setIsLoading(false);
-    }, 1500);
+  const onSubmit = (data: MarketAnalysisFormData) => {
+    try {
+      setLoading(true);
+      
+      // In a real application, you would call an API here
+      // For now, use the sample data based on selected industry
+      setTimeout(() => {
+        // Use industry from form data
+        const industryData = sampleMarketData[data.industry as keyof typeof sampleMarketData] || sampleMarketData.SaaS;
+        
+        setAnalysis({
+          formData: data,
+          marketData: industryData,
+          insights: [
+            `The ${data.industry} market is growing at ${industryData.growthRate}, with a current size of ${industryData.marketSize}.`,
+            `Your target audience of "${data.target}" represents a significant segment of this market.`,
+            `Key competitors you mentioned (${data.competitors.split('\n')[0]}) hold substantial market share.`,
+            `Your product positioning can leverage current trends like ${industryData.keyTrends[0]} and ${industryData.keyTrends[1]}.`,
+            `Consider focusing on specific market segments like ${industryData.segments[0].name} and ${industryData.segments[1].name} for initial traction.`
+          ],
+          recommendations: [
+            "Focus on clear differentiation from major competitors",
+            "Leverage key industry trends in marketing messaging",
+            `Target the ${industryData.segments[0].name} segment initially`,
+            "Implement a product-led growth strategy",
+            "Consider strategic partnerships with complementary services"
+          ],
+          threats: [
+            "Market consolidation by major players",
+            "Emerging competitors with innovative business models",
+            "Changing regulatory landscape",
+            "Customer acquisition cost inflation"
+          ]
+        });
+        setSelectedIndustry(data.industry);
+        setLoading(false);
+      }, 1500);
+    } catch (error) {
+      console.error("Error generating market analysis:", error);
+      setLoading(false);
+    }
   };
 
   const refreshAnalysis = () => {
-    if (industry) {
-      setIsLoading(true);
-      setTimeout(() => {
-        setAnalysisData(sampleMarketData[industry]);
-        setIsLoading(false);
-      }, 1000);
-    }
+    handleSubmit(onSubmit)();
   };
 
   return (
@@ -150,12 +190,15 @@ const MarketAnalysis = () => {
           <div className="space-y-2">
             <Label htmlFor="industry">Industry</Label>
             <Select 
+              defaultValue="SaaS"
               onValueChange={(value) => {
-                const form = document.getElementById("industry") as HTMLInputElement;
-                if (form) form.value = value;
+                const event = {
+                  target: { name: "industry", value }
+                } as unknown as React.ChangeEvent<HTMLInputElement>;
+                register("industry").onChange(event);
               }}
             >
-              <SelectTrigger id="industry-select">
+              <SelectTrigger id="industry">
                 <SelectValue placeholder="Select industry" />
               </SelectTrigger>
               <SelectContent>
@@ -163,13 +206,9 @@ const MarketAnalysis = () => {
                 <SelectItem value="E-commerce">E-commerce</SelectItem>
                 <SelectItem value="Fintech">Fintech</SelectItem>
                 <SelectItem value="Healthcare">Healthcare</SelectItem>
+                <SelectItem value="Consumer">Consumer</SelectItem>
               </SelectContent>
             </Select>
-            <Input
-              id="industry"
-              type="hidden"
-              {...register("industry", { required: true })}
-            />
             {errors.industry && (
               <p className="text-sm text-red-500">Please select an industry</p>
             )}
@@ -179,36 +218,46 @@ const MarketAnalysis = () => {
             <Label htmlFor="target">Target Market</Label>
             <Input
               id="target"
-              placeholder="e.g., Small businesses in the US"
-              {...register("target")}
+              placeholder="E.g. Small to medium businesses, 25-45 year-old professionals"
+              {...register("target", { required: true })}
             />
-          </div>
-          
-          <div className="space-y-2">
-            <Label htmlFor="competitors">Key Competitors</Label>
-            <Input
-              id="competitors"
-              placeholder="e.g., Competitor A, Competitor B"
-              {...register("competitors")}
-            />
-          </div>
-          
-          <div className="space-y-2 md:col-span-2">
-            <Label htmlFor="productDescription">Product Description</Label>
-            <Textarea
-              id="productDescription"
-              placeholder="Briefly describe your product or service"
-              rows={3}
-              {...register("productDescription")}
-            />
+            {errors.target && (
+              <p className="text-sm text-red-500">Target market is required</p>
+            )}
           </div>
         </div>
         
-        <Button type="submit" disabled={isLoading} className="w-full">
-          {isLoading ? (
+        <div className="space-y-2">
+          <Label htmlFor="competitors">Key Competitors</Label>
+          <Textarea
+            id="competitors"
+            placeholder="Major: Competitor A, Competitor B&#10;Emerging: Startup X, Startup Y"
+            className="min-h-[80px]"
+            {...register("competitors", { required: true })}
+          />
+          {errors.competitors && (
+            <p className="text-sm text-red-500">Competitors information is required</p>
+          )}
+        </div>
+        
+        <div className="space-y-2">
+          <Label htmlFor="productDescription">Your Product/Service Description</Label>
+          <Textarea
+            id="productDescription"
+            placeholder="Briefly describe your product or service and its key value propositions"
+            className="min-h-[120px]"
+            {...register("productDescription", { required: true })}
+          />
+          {errors.productDescription && (
+            <p className="text-sm text-red-500">Product description is required</p>
+          )}
+        </div>
+        
+        <Button type="submit" className="w-full" disabled={loading}>
+          {loading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Analyzing Market...
+              Generating Analysis...
             </>
           ) : (
             <>
@@ -219,137 +268,144 @@ const MarketAnalysis = () => {
         </Button>
       </form>
 
-      {analysisData && (
-        <div className="space-y-6 mt-8">
+      {analysis && (
+        <div className="mt-8 space-y-6">
           <div className="flex justify-between items-center">
-            <h3 className="text-xl font-semibold">{industry} Market Analysis</h3>
-            <Button variant="outline" size="sm" onClick={refreshAnalysis} disabled={isLoading}>
-              <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
-              Refresh
+            <h2 className="text-xl font-bold">Market Analysis: {analysis.formData.industry}</h2>
+            <Button variant="outline" size="sm" onClick={refreshAnalysis}>
+              <RefreshCw className="mr-2 h-4 w-4" />
+              Update Analysis
             </Button>
           </div>
           
           {/* Market Overview */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h4 className="text-sm font-medium text-gray-500">Market Size</h4>
-              <p className="text-xl font-bold mt-1">{analysisData.marketSize}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-white border border-gray-200 p-4 rounded-lg">
+              <h3 className="text-sm font-medium text-gray-500 mb-1">Market Size</h3>
+              <p className="text-lg font-bold">{analysis.marketData.marketSize}</p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h4 className="text-sm font-medium text-gray-500">Growth Rate</h4>
-              <p className="text-xl font-bold mt-1">{analysisData.growthRate}</p>
+            
+            <div className="bg-white border border-gray-200 p-4 rounded-lg">
+              <h3 className="text-sm font-medium text-gray-500 mb-1">Growth Rate</h3>
+              <p className="text-lg font-bold">{analysis.marketData.growthRate}</p>
+            </div>
+            
+            <div className="bg-white border border-gray-200 p-4 rounded-lg">
+              <h3 className="text-sm font-medium text-gray-500 mb-1">Key Segments</h3>
+              <p className="text-lg font-bold">{analysis.marketData.segments.length} Major Segments</p>
             </div>
           </div>
-
-          {/* Key Trends */}
-          <div className="bg-white border border-gray-200 rounded-lg p-4">
-            <h4 className="text-lg font-medium mb-3">Key Market Trends</h4>
-            <ul className="space-y-2">
-              {analysisData.keyTrends.map((trend: string, index: number) => (
-                <li key={index} className="flex items-start">
-                  <span className="inline-flex items-center justify-center rounded-full bg-blue-100 text-blue-600 h-5 w-5 text-xs mr-2 mt-0.5">
-                    {index + 1}
-                  </span>
-                  <span>{trend}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
+          
           {/* Market Segmentation Chart */}
-          <div className="bg-white border border-gray-200 rounded-lg p-4">
-            <h4 className="text-lg font-medium mb-3">Market Segmentation</h4>
-            <div className="h-64">
-              <ChartContainer
-                config={{
-                  segment: { label: "Market Segment" },
-                }}
-              >
+          <div className="bg-white border border-gray-200 p-4 rounded-lg">
+            <h3 className="text-lg font-medium mb-4">Market Segmentation</h3>
+            <div className="h-80">
+              <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
-                    data={analysisData.segments}
-                    dataKey="value"
-                    nameKey="name"
+                    data={analysis.marketData.segments}
                     cx="50%"
                     cy="50%"
-                    outerRadius={80}
-                    label={(entry) => `${entry.name}: ${entry.value}%`}
+                    labelLine={true}
+                    outerRadius={130}
+                    fill="#8884d8"
+                    dataKey="value"
+                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
                   >
-                    {analysisData.segments.map((segment: any, index: number) => (
-                      <Cell key={`cell-${index}`} fill={segment.color} />
+                    {analysis.marketData.segments.map((entry: any, index: number) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
                   </Pie>
                   <Tooltip formatter={(value) => `${value}%`} />
                   <Legend />
                 </PieChart>
-              </ChartContainer>
+              </ResponsiveContainer>
             </div>
           </div>
-
-          {/* Competitor Analysis */}
-          <div className="bg-white border border-gray-200 rounded-lg p-4">
-            <h4 className="text-lg font-medium mb-3">Competitor Landscape</h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <h5 className="text-sm font-medium text-gray-500 mb-2">Major Players</h5>
-                <ul className="space-y-1">
-                  {analysisData.competitors.major.map((competitor: string, index: number) => (
-                    <li key={index} className="flex items-center">
-                      <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                      {competitor}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h5 className="text-sm font-medium text-gray-500 mb-2">Emerging Competitors</h5>
-                <ul className="space-y-1">
-                  {analysisData.competitors.emerging.map((competitor: string, index: number) => (
-                    <li key={index} className="flex items-center">
-                      <span className="inline-block w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                      {competitor}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Recommendations */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <h4 className="text-lg font-medium text-blue-700 mb-3">AI-Generated Recommendations</h4>
-            <p className="text-blue-800 mb-3">
-              Based on current market trends and your product profile, here are key recommendations:
-            </p>
+          
+          {/* Key Insights */}
+          <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+            <h3 className="text-lg font-medium text-blue-700 mb-3">Key Insights</h3>
             <ul className="space-y-2">
-              <li className="flex items-start">
-                <span className="inline-flex items-center justify-center rounded-full bg-blue-200 text-blue-700 h-5 w-5 text-xs mr-2 mt-0.5">
-                  1
-                </span>
-                <span>Focus on {industry === "SaaS" ? "vertical-specific solutions" : 
-                               industry === "E-commerce" ? "mobile-first experiences" :
-                               industry === "Fintech" ? "embedded finance options" :
-                               "telehealth integration"} to differentiate from competitors.</span>
-              </li>
-              <li className="flex items-start">
-                <span className="inline-flex items-center justify-center rounded-full bg-blue-200 text-blue-700 h-5 w-5 text-xs mr-2 mt-0.5">
-                  2
-                </span>
-                <span>Leverage AI for {industry === "SaaS" ? "personalization and automation" : 
-                                       industry === "E-commerce" ? "customer recommendations" :
-                                       industry === "Fintech" ? "risk assessment" :
-                                       "diagnostic assistance"} to gain competitive advantage.</span>
-              </li>
-              <li className="flex items-start">
-                <span className="inline-flex items-center justify-center rounded-full bg-blue-200 text-blue-700 h-5 w-5 text-xs mr-2 mt-0.5">
-                  3
-                </span>
-                <span>Consider strategic partnerships with {industry === "SaaS" ? "complementary tools" : 
-                                                           industry === "E-commerce" ? "logistics providers" :
-                                                           industry === "Fintech" ? "traditional financial institutions" :
-                                                           "insurance companies"} to expand your market reach.</span>
-              </li>
+              {analysis.insights.map((insight: string, index: number) => (
+                <li key={index} className="flex items-start">
+                  <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-blue-100 text-blue-700 text-xs mr-2 mt-0.5">•</span>
+                  <span className="text-blue-700">{insight}</span>
+                </li>
+              ))}
             </ul>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Key Trends */}
+            <div className="bg-white border border-gray-200 p-4 rounded-lg">
+              <h3 className="text-lg font-medium mb-3">Key Market Trends</h3>
+              <ul className="space-y-2">
+                {analysis.marketData.keyTrends.map((trend: string, index: number) => (
+                  <li key={index} className="flex items-start">
+                    <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-purple-100 text-purple-700 text-xs mr-2 mt-0.5">{index + 1}</span>
+                    <span>{trend}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            {/* Competitor Analysis */}
+            <div className="bg-white border border-gray-200 p-4 rounded-lg">
+              <h3 className="text-lg font-medium mb-3">Competitor Landscape</h3>
+              <div className="space-y-3">
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500">Major Players</h4>
+                  <p className="mt-1">{analysis.marketData.competitors.major.join(", ")}</p>
+                </div>
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500">Emerging Disruptors</h4>
+                  <p className="mt-1">{analysis.marketData.competitors.emerging.join(", ")}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Recommendations */}
+            <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
+              <h3 className="text-lg font-medium text-green-700 mb-3">Strategic Recommendations</h3>
+              <ul className="space-y-2">
+                {analysis.recommendations.map((rec: string, index: number) => (
+                  <li key={index} className="flex items-start">
+                    <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-green-100 text-green-700 text-xs mr-2 mt-0.5">✓</span>
+                    <span className="text-green-700">{rec}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            {/* Threats */}
+            <div className="bg-red-50 border border-red-200 p-4 rounded-lg">
+              <h3 className="text-lg font-medium text-red-700 mb-3">Market Threats</h3>
+              <ul className="space-y-2">
+                {analysis.threats.map((threat: string, index: number) => (
+                  <li key={index} className="flex items-start">
+                    <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-red-100 text-red-700 text-xs mr-2 mt-0.5">!</span>
+                    <span className="text-red-700">{threat}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          
+          {/* Product Fit Analysis */}
+          <div className="bg-white border border-gray-200 p-5 rounded-lg">
+            <h3 className="text-lg font-medium mb-4">Product-Market Fit Analysis</h3>
+            <p className="mb-4">Based on your product description:</p>
+            <div className="bg-gray-50 p-3 rounded mb-4 italic">
+              "{analysis.formData.productDescription}"
+            </div>
+            <p>
+              Your solution is well-positioned for the {selectedIndustry} market, particularly for {analysis.formData.target}. 
+              Focus on differentiating from {analysis.formData.competitors.split('\n')[0].replace('Major: ', '')} by emphasizing your unique approach.
+              To gain market traction, consider leveraging trends like {analysis.marketData.keyTrends[0].toLowerCase()} and target the {analysis.marketData.segments[0].name} segment initially.
+            </p>
           </div>
         </div>
       )}
