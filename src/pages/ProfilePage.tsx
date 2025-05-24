@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -14,6 +13,7 @@ import { User, Edit, Save, BookOpen, BookMarked, Presentation } from "lucide-rea
 import ImageUploader from "@/components/ImageUploader";
 import PitchSimulator from "@/components/PitchSimulator";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 type Profile = {
   id: string;
@@ -38,8 +38,8 @@ const ProfilePage = () => {
   const [fullName, setFullName] = useState("");
   const [bio, setBio] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
-  const [userId, setUserId] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState("completed");
+  const [userId, setUserId] = useState<string | null>(null);  const [activeTab, setActiveTab] = useState("completed");
+  const [animationPlayed, setAnimationPlayed] = useState(false);
 
   // Refs for GSAP animations
   const profileRef = useRef<HTMLDivElement>(null);
@@ -127,57 +127,92 @@ const ProfilePage = () => {
       setAvatarUrl(profile.avatar_url || "");
     }
   }, [profile]);
-
-  // GSAP animations
+  // Register ScrollTrigger plugin
   useEffect(() => {
-    if (!profileLoading && profile && profileRef.current) {
-      const tl = gsap.timeline();
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Cleanup function
+    return () => {
+      // Kill all animations and ScrollTriggers to prevent memory leaks
+      const scrollTriggers = ScrollTrigger.getAll();
+      scrollTriggers.forEach(trigger => trigger.kill(false));
+      gsap.killTweensOf("*");
+    };
+  }, []);
+  // Profile animation - only run once when profile is loaded
+  useEffect(() => {
+    // Only run animation when profile is loaded for the first time and hasn't been played yet
+    if (profileLoading || !profile || !profileRef.current || animationPlayed) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        onComplete: () => setAnimationPlayed(true) // Mark animation as played
+      });
       tl.from(".profile-header", {
         y: 20,
         opacity: 0,
         duration: 0.6,
-        ease: "power3.out"
+        ease: "power3.out",
+        clearProps: "all" // Clear properties after animation
       });
       tl.from(".profile-avatar", {
         scale: 0.8,
         opacity: 0,
         duration: 0.5,
-        ease: "back.out"
+        ease: "back.out",
+        clearProps: "all"
       }, "-=0.3");
       tl.from(".profile-details", {
         y: 15,
         opacity: 0,
         stagger: 0.1,
-        duration: 0.4,
-        ease: "power2.out"
+        duration: 0.4, 
+        ease: "power2.out",
+        clearProps: "all"
       }, "-=0.2");
       tl.from(".profile-tabs", {
         y: 20,
         opacity: 0,
         duration: 0.5,
-        ease: "power3.out"
+        ease: "power3.out",
+        clearProps: "all"
       }, "-=0.2");
-    }
-    if (completedContent && contentRef.current) {
-      gsap.from(".content-item", {
+    }, profileRef);
+
+    // Cleanup function for profile animations
+    return () => ctx.revert();
+  }, [profileLoading, profile]);
+  // Content items animation - separate from profile animation
+  useEffect(() => {
+    if (!contentRef.current || !completedContent || completedContent.length === 0 || activeTab !== "completed") return;
+
+    // Create a new context for this specific animation to ensure proper cleanup
+    const ctx = gsap.context(() => {
+      // Use a timeline to ensure proper control and cleanup
+      const contentTl = gsap.timeline();
+      contentTl.from(".content-item", {
         y: 20,
         opacity: 0,
         stagger: 0.1,
         duration: 0.4,
         ease: "power2.out",
+        clearProps: "all", // Clear properties after animation
         scrollTrigger: {
           trigger: contentRef.current,
-          start: "top 80%"
+          start: "top 80%",
+          once: true // Only trigger once to prevent re-animation issues
         }
       });
-    }
-  }, [profileLoading, profile, completedContent]);
+    }, contentRef);
+
+    // Cleanup function for content animations
+    return () => ctx.revert();
+  }, [completedContent, activeTab]);
 
   // Handle profile image update
   const handleImageUploaded = (url: string) => {
     setAvatarUrl(url);
   };
-
   const handleSaveProfile = async () => {
     if (!userId) {
       toast.error("You must be logged in to update your profile");
@@ -196,15 +231,15 @@ const ProfilePage = () => {
       if (error) throw error;
       toast.success("Profile updated successfully");
       setIsEditing(false);
-      refetchProfile();
-
-      // Animate save button
-      gsap.fromTo(".save-button", {
+      await refetchProfile(); // Wait for profile to be refetched// Animate save button - use timeline to ensure proper cleanup
+      const saveTl = gsap.timeline();
+      saveTl.fromTo(".save-button", {
         scale: 0.9
       }, {
         scale: 1,
         duration: 0.3,
-        ease: "back.out"
+        ease: "back.out",
+        clearProps: "scale" // Clear properties after animation to prevent glitches
       });
     } catch (error) {
       console.error("Error updating profile:", error);
@@ -308,9 +343,8 @@ const ProfilePage = () => {
           {/* Progress & Content */}
           <div className="lg:col-span-2">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full profile-tabs">
-              <TabsList className="grid w-full grid-cols-3 mb-6">
+              <TabsList className="grid w-full grid-cols-2 mb-6">
                 <TabsTrigger value="completed">Completed Content</TabsTrigger>
-                <TabsTrigger value="notes">My Notes</TabsTrigger>
                 <TabsTrigger value="pitch">Pitch Simulator</TabsTrigger>
               </TabsList>
               
@@ -343,23 +377,6 @@ const ProfilePage = () => {
                       Explore Content Library
                     </Button>
                   </div>}
-              </TabsContent>
-              
-              <TabsContent value="notes">
-                <Card>
-                  <CardContent className="pt-6">
-                    {/* Notes implementation will go here */}
-                    <div className="text-center py-10 bg-gray-50 rounded-lg">
-                      <h3 className="text-lg font-medium text-gray-900 mb-1">Your Notes Feature</h3>
-                      <p className="text-gray-600 mb-4">
-                        You can find all your content notes in their respective content pages.
-                      </p>
-                      <Button onClick={() => navigate("/content")}>
-                        Go to Content Library
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
               </TabsContent>
 
               <TabsContent value="pitch">
