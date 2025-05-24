@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, ResponsiveContainer } from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ReferenceLine, ResponsiveContainer } from "recharts";
 import { Plus, X, Save, AlertCircle } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 type Currency = "USD" | "EUR" | "GBP" | "JPY" | "INR";
 
@@ -40,6 +41,7 @@ const exchangeRates: Record<Currency, number> = {
 const BurnRateCalculator = () => {
   const [currency, setCurrency] = useState<Currency>("USD");
   const [calculationResults, setCalculationResults] = useState<any | null>(null);
+  const { toast } = useToast();
   
   const { register, control, handleSubmit, formState: { errors } } = useForm<BurnRateFormData>({
     defaultValues: {
@@ -58,34 +60,35 @@ const BurnRateCalculator = () => {
   const { fields, append, remove } = useFieldArray({
     control,
     name: "expenses"
-  });
-  const onSubmit = (data: BurnRateFormData) => {
+  });  const onSubmit = (data: BurnRateFormData) => {
     try {
       const { cashBalance, monthlyRevenue, monthlyRevenueGrowth, expenses } = data;
       
+      // Ensure all values are numbers
+      const cashBalanceNum = Number(cashBalance);
+      const monthlyRevenueNum = Number(monthlyRevenue);
+      const monthlyRevenueGrowthNum = Number(monthlyRevenueGrowth);
+      
       // Calculate total monthly expenses
-      let totalMonthlyExpenses = expenses.reduce((sum, expense) => sum + Number(expense.amount), 0);
+      let totalMonthlyExpenses = expenses.reduce((sum, expense) => sum + Number(expense.amount || 0), 0);
       
-      // Calculate current burn rate
-      const currentBurnRate = totalMonthlyExpenses - monthlyRevenue;
-      
-      // Calculate runway (in months)
-      const initialRunway = currentBurnRate > 0 ? cashBalance / currentBurnRate : Infinity;
+      // Calculate current burn rate (expenses - revenue)
+      const currentBurnRate = totalMonthlyExpenses - monthlyRevenueNum;
       
       // Project cash flow for 24 months
       const projectionMonths = 24;
       const projectionData = [];
       
-      let remainingCash = cashBalance;
-      let revenue = monthlyRevenue;
+      let remainingCash = cashBalanceNum;
+      let revenue = monthlyRevenueNum;
       let burnRate = currentBurnRate;
       let cumulativeBurn = 0;
       
       for (let month = 1; month <= projectionMonths; month++) {
         // Increase revenue based on growth rate
-        revenue = revenue * (1 + monthlyRevenueGrowth / 100);
+        revenue = revenue * (1 + monthlyRevenueGrowthNum / 100);
         
-        // Calculate burn rate for this month
+        // Calculate burn rate for this month (expenses - revenue)
         burnRate = totalMonthlyExpenses - revenue;
         
         // Update remaining cash
@@ -102,19 +105,31 @@ const BurnRateCalculator = () => {
           cumulativeBurn
         });
         
-        // Stop if we run out of cash
-        if (remainingCash <= 0) {
+        // Stop if we run out of cash (but ensure we have at least one data point)
+        if (remainingCash <= 0 && month > 1) {
           break;
         }
       }
       
       // Calculate when cash runs out (runway)
-      const runwayMonth = projectionData.findIndex(data => data.cashBalance <= 0);
+      const runwayMonth = projectionData.findIndex(item => item.cashBalance <= 0);
       const runway = runwayMonth !== -1 ? runwayMonth + 1 : projectionMonths > 24 ? "24+" : "∞";
       
       // Calculate breakeven month
-      const breakevenMonth = projectionData.findIndex(data => data.burnRate <= 0);
+      const breakevenMonth = projectionData.findIndex(item => item.burnRate <= 0);
       const breakeven = breakevenMonth !== -1 ? breakevenMonth + 1 : "Not within 24 months";
+      
+      // Ensure we have at least one data point
+      if (projectionData.length === 0) {
+        projectionData.push({
+          month: 1,
+          cashBalance: cashBalanceNum,
+          burnRate: currentBurnRate > 0 ? currentBurnRate : 0,
+          revenue: monthlyRevenueNum,
+          expenses: totalMonthlyExpenses,
+          cumulativeBurn: 0
+        });
+      }
       
       setCalculationResults({
         totalMonthlyExpenses,
@@ -125,7 +140,12 @@ const BurnRateCalculator = () => {
       });
     } catch (error) {
       console.error("Error calculating burn rate:", error);
-      // Show an error state instead of crashing
+      // Show an error message instead of going blank
+      toast({
+        title: "Calculation Error",
+        description: "There was an error calculating the burn rate. Please check your inputs and try again.",
+        variant: "destructive"
+      });
     }
   };
 
@@ -292,21 +312,19 @@ const BurnRateCalculator = () => {
             </div>
             
             <div className={`bg-gray-50 p-4 rounded-lg ${typeof calculationResults.runway === 'number' && calculationResults.runway < 6 ? 'border-l-4 border-red-500' : 'border-l-4 border-blue-500'}`}>
-              <h3 className="text-sm font-medium text-gray-500">Cash Runway</h3>
-              <p className="text-2xl font-bold mt-1">
-                {typeof calculationResults.runway === 'number' 
-                  ? `${calculationResults.runway} months`
-                  : calculationResults.runway
+              <h3 className="text-sm font-medium text-gray-500">Cash Runway</h3>              <p className="text-2xl font-bold mt-1">
+                {calculationResults.runway === "∞" || calculationResults.runway === "24+" 
+                  ? calculationResults.runway
+                  : `${calculationResults.runway} months`
                 }
               </p>
             </div>
             
             <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-purple-500">
-              <h3 className="text-sm font-medium text-gray-500">Breakeven Point</h3>
-              <p className="text-2xl font-bold mt-1">
-                {typeof calculationResults.breakeven === 'number' 
-                  ? `Month ${calculationResults.breakeven}`
-                  : calculationResults.breakeven
+              <h3 className="text-sm font-medium text-gray-500">Breakeven Point</h3>              <p className="text-2xl font-bold mt-1">
+                {calculationResults.breakeven === "Not within 24 months"
+                  ? calculationResults.breakeven
+                  : `Month ${calculationResults.breakeven}`
                 }
               </p>
             </div>
@@ -329,18 +347,15 @@ const BurnRateCalculator = () => {
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* Cash Projection Chart */}
-          <div className="h-96 w-full mt-8 bg-white border border-gray-200 rounded-lg p-4">
+          </div>          {/* Cash Projection Chart */}
+          <div className="bg-white border border-gray-200 rounded-lg p-4">
             <h4 className="text-lg font-medium mb-4">Cash Projection Chart</h4>
-            <div className="h-80 w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart 
+            <div style={{ width: '100%', height: '400px' }}>
+              <ResponsiveContainer width="100%" height="100%"><LineChart 
                   data={calculationResults.projectionData.map((item: any) => ({
                     month: `Month ${item.month}`,
-                    cashBalance: convertCurrency(item.cashBalance),
-                    burnRate: convertCurrency(item.burnRate)
+                    cashBalance: convertCurrency(item.cashBalance || 0),
+                    burnRate: convertCurrency(item.burnRate || 0)
                   }))}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
@@ -348,6 +363,7 @@ const BurnRateCalculator = () => {
                   <YAxis 
                     yAxisId="left" 
                     tickFormatter={(value) => {
+                      if (!value && value !== 0) return '';
                       if (value >= 1000000) {
                         return `${(value / 1000000).toFixed(1)}M`;
                       } else if (value >= 1000) {
@@ -360,6 +376,7 @@ const BurnRateCalculator = () => {
                     yAxisId="right" 
                     orientation="right" 
                     tickFormatter={(value) => {
+                      if (!value && value !== 0) return '';
                       if (value >= 1000000) {
                         return `${(value / 1000000).toFixed(1)}M`;
                       } else if (value >= 1000) {
@@ -368,14 +385,14 @@ const BurnRateCalculator = () => {
                       return value;
                     }} 
                   />
-                  <Tooltip 
-                    formatter={(value, name) => [
+                  <RechartsTooltip 
+                    formatter={(value: any, name: any) => [
                       `${currencySymbols[currency]}${Number(value).toLocaleString()}`,
                       name === "cashBalance" ? "Cash Balance" : "Burn Rate"
                     ]} 
                   />
                   <Legend />
-                  <ReferenceLine y={0} stroke="#666" strokeDasharray="3 3" />
+                  <ReferenceLine y={0} stroke="#666" strokeDasharray="3 3" yAxisId="left" />
                   <Line 
                     type="monotone" 
                     dataKey="cashBalance" 
@@ -405,8 +422,7 @@ const BurnRateCalculator = () => {
                 Burn Rate Analysis
               </h4>
               
-              <div className="space-y-3">
-                {calculationResults.runway < 6 && (
+              <div className="space-y-3">                {typeof calculationResults.runway === 'number' && calculationResults.runway < 6 && (
                   <div className="flex items-start">
                     <span className="inline-flex items-center justify-center rounded-full bg-red-100 text-red-700 h-5 w-5 text-xs mr-2 mt-0.5">!</span>
                     <p className="text-red-800">
@@ -415,7 +431,7 @@ const BurnRateCalculator = () => {
                   </div>
                 )}
                 
-                {calculationResults.runway >= 6 && calculationResults.runway < 12 && (
+                {typeof calculationResults.runway === 'number' && calculationResults.runway >= 6 && calculationResults.runway < 12 && (
                   <div className="flex items-start">
                     <span className="inline-flex items-center justify-center rounded-full bg-yellow-100 text-yellow-700 h-5 w-5 text-xs mr-2 mt-0.5">!</span>
                     <p className="text-yellow-800">
@@ -423,8 +439,7 @@ const BurnRateCalculator = () => {
                     </p>
                   </div>
                 )}
-                
-                {calculationResults.runway >= 12 && calculationResults.runway !== "∞" && calculationResults.runway !== "24+" && (
+                  {typeof calculationResults.runway === 'number' && calculationResults.runway >= 12 && calculationResults.runway !== "∞" && calculationResults.runway !== "24+" && (
                   <div className="flex items-start">
                     <span className="inline-flex items-center justify-center rounded-full bg-green-100 text-green-700 h-5 w-5 text-xs mr-2 mt-0.5">✓</span>
                     <p className="text-green-800">
@@ -441,8 +456,7 @@ const BurnRateCalculator = () => {
                     </p>
                   </div>
                 )}
-                
-                {typeof calculationResults.breakeven === 'number' && calculationResults.breakeven <= 12 && (
+                  {calculationResults.breakeven !== "Not within 24 months" && Number(calculationResults.breakeven) <= 12 && (
                   <div className="flex items-start">
                     <span className="inline-flex items-center justify-center rounded-full bg-blue-100 text-blue-700 h-5 w-5 text-xs mr-2 mt-0.5">i</span>
                     <p className="text-blue-800">
