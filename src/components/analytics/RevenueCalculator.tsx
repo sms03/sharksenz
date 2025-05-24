@@ -114,6 +114,7 @@ const RevenueCalculator = () => {
               <SelectItem value="EUR">EUR (€)</SelectItem>
               <SelectItem value="GBP">GBP (£)</SelectItem>
               <SelectItem value="JPY">JPY (¥)</SelectItem>
+              <SelectItem value="INR">INR (₹)</SelectItem>
             </SelectContent>
           </Select>
         </div>
