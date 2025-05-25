@@ -15,6 +15,8 @@ import ContactUs from "./pages/ContactUs";
 import Pricing from "./pages/Pricing";
 import TermsOfService from "./pages/TermsOfService";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiePolicy from "./pages/CookiePolicy";
+import Disclaimer from "./pages/Disclaimer";
 import MainLayout from "./layouts/MainLayout";
 import Auth from "./pages/Auth";
 import { useEffect } from "react";
@@ -79,12 +81,17 @@ const App = () => {
                     </ProtectedRoute>
                   </MainLayout>
                 } 
-              />
-              <Route path="/about" element={<MainLayout><AboutUs /></MainLayout>} />
+              />              <Route path="/about" element={<MainLayout><AboutUs /></MainLayout>} />
               <Route path="/contact" element={<MainLayout><ContactUs /></MainLayout>} />
               <Route path="/pricing" element={<MainLayout><Pricing /></MainLayout>} />
               <Route path="/auth" element={<Auth />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}              <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
+              {/* Legal Pages */}
+              <Route path="/privacy-policy" element={<MainLayout><PrivacyPolicy /></MainLayout>} />
+              <Route path="/terms-of-service" element={<MainLayout><TermsOfService /></MainLayout>} />
+              <Route path="/cookies" element={<MainLayout><CookiePolicy /></MainLayout>} />
+              <Route path="/disclaimer" element={<MainLayout><Disclaimer /></MainLayout>} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}              
+              <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
             </Routes>
           </BrowserRouter>
         </TooltipProvider>

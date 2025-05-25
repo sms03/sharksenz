@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import LegalPageFooter from "../components/LegalPageFooter";
 
 const PrivacyPolicy = () => {
   return (
@@ -15,15 +16,14 @@ const PrivacyPolicy = () => {
         <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
         
         <div className="prose lg:prose-lg max-w-none">
-          <p className="text-lg text-gray-700 mb-6">
-            Last updated: May 23, 2025
+          <p className="text-lg text-gray-700 mb-6">            Last updated: May 25, 2025
           </p>
           
           <h2>1. Introduction</h2>
           <p>
             SharkSenz ("we," "our," or "us") is committed to protecting your privacy. 
             This Privacy Policy explains how we collect, use, disclose, and safeguard your information 
-            when you visit our website and use our services.
+            when you visit our website and use our services. Please also read our <Link to="/terms-of-service" className="text-blue-600 hover:text-blue-800">Terms of Service</Link> and <Link to="/cookies" className="text-blue-600 hover:text-blue-800">Cookie Policy</Link>.
           </p>
           
           <h2>2. Information We Collect</h2>
@@ -104,6 +104,18 @@ const PrivacyPolicy = () => {
             Email: privacy@sharksenz.com<br />
             Address: 123 Startup Hub, Innovation District, San Francisco, CA 94107
           </p>
+
+          <h2>10. Related Legal Documents</h2>
+          <p>
+            Please review our other legal documents that govern your use of our services:
+          </p>
+          <ul>
+            <li><Link to="/terms-of-service" className="text-blue-600 hover:text-blue-800">Terms of Service</Link> - The rules and guidelines for using SharkSenz</li>
+            <li><Link to="/cookies" className="text-blue-600 hover:text-blue-800">Cookie Policy</Link> - Information about how we use cookies and similar technologies</li>
+            <li><Link to="/disclaimer" className="text-blue-600 hover:text-blue-800">Disclaimer</Link> - Important notices about the limitations of our services</li>
+          </ul>
+          
+          <LegalPageFooter currentPage="privacy" />
         </div>
       </div>
     </div>

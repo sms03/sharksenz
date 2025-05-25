@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import LegalPageFooter from "../components/LegalPageFooter";
 
 const TermsOfService = () => {
   return (
@@ -15,14 +16,16 @@ const TermsOfService = () => {
         <h1 className="text-4xl font-bold mb-8">Terms of Service</h1>
         
         <div className="prose lg:prose-lg max-w-none">
-          <p className="text-lg text-gray-700 mb-6">
-            Last updated: May 23, 2025
+          <p className="text-lg text-gray-700 mb-6">            Last updated: May 25, 2025
           </p>
           
           <h2>1. Agreement to Terms</h2>
           <p>
-            By accessing or using SharkSenz's website and services, you agree to be bound by these Terms of Service 
-            and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited 
+            By accessing or using SharkSenz's website and services, you agree to be bound by these Terms of Service, 
+            our <Link to="/privacy-policy" className="text-blue-600 hover:text-blue-800">Privacy Policy</Link>, 
+            <Link to="/cookies" className="text-blue-600 hover:text-blue-800"> Cookie Policy</Link>, and 
+            <Link to="/disclaimer" className="text-blue-600 hover:text-blue-800"> Disclaimer</Link>, as well as 
+            all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited 
             from using or accessing this site.
           </p>
           
@@ -104,7 +107,19 @@ const TermsOfService = () => {
             Email: legal@sharksenz.com<br />
             Address: 123 Startup Hub, Innovation District, San Francisco, CA 94107
           </p>
+          
+          <h2>11. Related Legal Documents</h2>
+          <p>
+            For a complete understanding of your rights and obligations when using our services, please review these related documents:
+          </p>
+          <ul>
+            <li><Link to="/privacy-policy" className="text-blue-600 hover:text-blue-800">Privacy Policy</Link> - How we collect, use, and protect your personal information</li>
+            <li><Link to="/cookies" className="text-blue-600 hover:text-blue-800">Cookie Policy</Link> - Information about how we use cookies on our website</li>
+            <li><Link to="/disclaimer" className="text-blue-600 hover:text-blue-800">Disclaimer</Link> - Important information about the limitations of our services</li>
+          </ul>
         </div>
+
+        <LegalPageFooter currentPage="terms" />
       </div>
     </div>
   );

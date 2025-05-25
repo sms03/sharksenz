@@ -99,9 +99,7 @@ const Footer = () => {
                   </Link>
                 </li>
               </ul>
-            </div>
-
-            {/* Legal */}
+            </div>            {/* Legal */}
             <div className="text-center sm:text-left">
               <h3 className="font-semibold text-lg mb-4">Legal</h3>
               <ul className="space-y-2">
@@ -115,6 +113,16 @@ const Footer = () => {
                     Terms of Service
                   </Link>
                 </li>
+                <li>
+                  <Link to="/cookies" className="text-gray-600 hover:text-blue-600">
+                    Cookie Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/disclaimer" className="text-gray-600 hover:text-blue-600">
+                    Disclaimer
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -122,6 +130,11 @@ const Footer = () => {
           {/* Copyright */}
           <div className="border-t border-gray-200 mt-8 pt-6 text-center text-gray-500">
             <p>&copy; {currentYear} SharkSenz. All rights reserved.</p>
+            <div className="mt-2 text-sm flex justify-center space-x-4">
+              <Link to="/privacy-policy" className="text-gray-500 hover:text-blue-600">Privacy Policy</Link>
+              <span className="text-gray-400">|</span>
+              <Link to="/terms-of-service" className="text-gray-500 hover:text-blue-600">Terms of Service</Link>
+            </div>
           </div>
         </div>
       </footer>
