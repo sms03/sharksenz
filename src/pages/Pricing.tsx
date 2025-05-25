@@ -1,4 +1,4 @@
-import { Check, HelpCircle, ArrowRight } from "lucide-react";
+import { Check, HelpCircle, ArrowRight, AlertCircle } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -202,8 +202,7 @@ const Pricing = () => {
 
       {/* Pricing Tables */}
       <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="container mx-auto px-4">          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {plans.map((plan) => (
               <div
                 key={plan.name}
@@ -221,15 +220,18 @@ const Pricing = () => {
 
                 <div className="p-6">
                   <h2 className="text-2xl font-bold mb-2">{plan.name}</h2>
-                  <p className="text-gray-600 mb-6">{plan.description}</p>
-
-                  <div className="mb-6">
+                  <p className="text-gray-600 mb-6">{plan.description}</p>                  <div className="mb-6">
                     <span className="text-4xl font-bold">
                       {getPrice(plan)}
                     </span>
                     <span className="text-gray-600">
                       {plan.priceMonthly[currency] > 0 ? getInterval() : ""}
                     </span>
+                    {currency === "inr" && plan.priceMonthly.inr > 0 && (
+                      <div className="text-xs text-green-600 mt-1 font-medium">
+                        GST Included
+                      </div>
+                    )}
                   </div>
 
                   <Button
@@ -291,8 +293,25 @@ const Pricing = () => {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            ))}          </div>
+          
+          {currency === "inr" && (
+            <div className="mt-12 max-w-4xl mx-auto bg-blue-50 border border-blue-100 rounded-lg p-4">
+              <div className="flex items-start">
+                <AlertCircle className="h-5 w-5 text-blue-500 mt-0.5 mr-3 shrink-0" />
+                <div>
+                  <h3 className="font-medium text-blue-800">GST Information</h3>
+                  <p className="text-sm text-blue-700 mt-1">
+                    All prices displayed in INR are inclusive of Goods and Services Tax (GST) at the current rate of 18%. 
+                    A detailed tax invoice will be provided with your purchase that itemizes the GST component.
+                  </p>
+                  <p className="text-xs text-blue-600 mt-2">
+                    GST Registration: XXGSTXXXXXXXX • HSN/SAC Code: 998431 (Online Information and Database Access or Retrieval Services)
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -352,11 +371,11 @@ const Pricing = () => {
                 Yes, we offer a 30-day money-back guarantee. If you're not satisfied with our service, contact support for a full refund.
               </p>
             </div>
-            
-            <div>
+              <div>
               <h3 className="font-bold text-xl mb-3">What currencies do you accept?</h3>
               <p className="text-gray-700">
-                We accept payments in USD, EUR, GBP, and INR. All charges will be processed in your selected currency.
+                We accept payments in USD, EUR, GBP, and INR. All charges will be processed in your selected currency. 
+                For INR payments, prices are inclusive of 18% GST as per Indian tax regulations.
               </p>
             </div>
           </div>
@@ -426,6 +445,18 @@ const Pricing = () => {
           </div>
         </div>
       </section>
+
+      {/* GST Disclaimer for INR */}
+      {currency === "inr" && (
+        <div className="bg-yellow-50 border-l-4 border-yellow-400 text-yellow-700 p-4 max-w-3xl mx-auto mt-8 rounded-lg">
+          <div className="flex items-center">
+            <AlertCircle className="h-5 w-5 mr-2" />
+            <p className="text-sm">
+              All prices in INR are exclusive of GST. 18% GST will be applied at checkout.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
