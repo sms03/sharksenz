@@ -26,22 +26,25 @@ const Footer = () => {
       
       {/* Footer component */}
       <footer className="bg-gray-50 pb-8">
-        <div className="container mx-auto px-4">
-          <div className="py-8 text-center">
-            <h2 className="text-2xl font-bold mb-2">Stay Connected</h2>
-            <p className="text-gray-600 mb-4">Join our community and never miss an update!</p>
-            <Link to="/subscribe" className="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-colors">
+        <div className="container mx-auto px-4 sm:px-6">
+          {/* Stay Connected Section */}
+          <div className="py-8 sm:py-12 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-2">Stay Connected</h2>
+            <p className="text-gray-600 mb-4 max-w-xl mx-auto">Join our community and never miss an update!</p>
+            <Link to="/subscribe" className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-colors">
               Subscribe Now
             </Link>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            
+          </div>
+
+          {/* Footer Links */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mt-4">
             {/* About */}
-            <div>
+            <div className="text-center sm:text-left">
               <h3 className="font-semibold text-lg mb-4">SharkSenz</h3>
               <p className="text-gray-600 mb-4">
                 The ultimate resource for startup founders to master essential skills and build successful ventures.
               </p>
-              <div className="flex space-x-4">
+              <div className="flex justify-center sm:justify-start space-x-4">
                 <Link to="https://github.com/sms03" className="text-gray-500 hover:text-blue-600">
                   <Github className="h-5 w-5" />
                 </Link>
@@ -55,7 +58,7 @@ const Footer = () => {
             </div>
 
             {/* Quick Links */}
-            <div>
+            <div className="text-center sm:text-left">
               <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
               <ul className="space-y-2">
                 <li>
@@ -76,7 +79,8 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div>
+            {/* Connect */}
+            <div className="text-center sm:text-left">
               <h3 className="font-semibold text-lg mb-4">Connect</h3>
               <ul className="space-y-2">
                 <li>
@@ -98,7 +102,7 @@ const Footer = () => {
             </div>
 
             {/* Legal */}
-            <div>
+            <div className="text-center sm:text-left">
               <h3 className="font-semibold text-lg mb-4">Legal</h3>
               <ul className="space-y-2">
                 <li>
@@ -114,11 +118,12 @@ const Footer = () => {
               </ul>
             </div>
           </div>
+          
+          {/* Copyright */}
           <div className="border-t border-gray-200 mt-8 pt-6 text-center text-gray-500">
             <p>&copy; {currentYear} SharkSenz. All rights reserved.</p>
           </div>
         </div>
-      </div>
       </footer>
     </>
   );

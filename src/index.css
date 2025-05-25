@@ -10,6 +10,25 @@
   100% { transform: translateY(0) translateX(0) rotate(0); }
 }
 
+/* Gentle wave animation for footer */
+@keyframes gentleWave {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+.footer-wave {
+  animation: gentleWave 6s ease-in-out infinite;
+}
+
+/* Responsive footer styling */
+@media (max-width: 640px) {
+  .footer-wave {
+    height: 60px;
+    animation: gentleWave 5s ease-in-out infinite;
+  }
+}
+
 .stat-card {
   transition: all 0.3s ease;
 }
