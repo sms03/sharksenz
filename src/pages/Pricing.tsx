@@ -51,7 +51,7 @@ const Pricing = () => {
 
   const plans: PricingPlan[] = [
     {
-      name: "Starter",
+      name: "Tiger Shark (Starter)",
       description: "Perfect for aspiring entrepreneurs",
       priceMonthly: {
         usd: 0,
@@ -77,7 +77,7 @@ const Pricing = () => {
       buttonText: "Get Started Free",
     },
     {
-      name: "Professional",
+      name: "Great White Shark (Professional)",
       description: "For serious startup founders",
       priceMonthly: {
         usd: 29,
@@ -104,7 +104,7 @@ const Pricing = () => {
       recommended: true,
     },
     {
-      name: "Enterprise",
+      name: "Megalodon Shark (Enterprise)",
       description: "For startup teams and accelerators",
       priceMonthly: {
         usd: 99,
