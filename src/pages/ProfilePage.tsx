@@ -9,7 +9,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { toast } from "@/components/ui/sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User, Edit, Save, BookOpen, BookMarked, Presentation } from "lucide-react";
+import { User, Edit, Save, BookOpen, BookMarked, Presentation, BarChart3, PieChart, CheckCircle2 } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
 import ImageUploader from "@/components/ImageUploader";
 import PitchSimulator from "@/components/PitchSimulator";
 import gsap from "gsap";
@@ -31,6 +32,14 @@ type CompletedContent = {
   category: string;
 };
 
+// New type for category-based progress
+type CategoryProgress = {
+  category: string;
+  completed: number;
+  total: number;
+  percentage: number;
+};
+
 const ProfilePage = () => {
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
@@ -38,12 +47,16 @@ const ProfilePage = () => {
   const [fullName, setFullName] = useState("");
   const [bio, setBio] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
-  const [userId, setUserId] = useState<string | null>(null);  const [activeTab, setActiveTab] = useState("completed");
+  const [userId, setUserId] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState("completed");
   const [animationPlayed, setAnimationPlayed] = useState(false);
+  const [categoryProgress, setCategoryProgress] = useState<CategoryProgress[]>([]);
+  const [overallProgress, setOverallProgress] = useState(0);
 
   // Refs for GSAP animations
   const profileRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   // Check if user is logged in
   useEffect(() => {
@@ -118,6 +131,196 @@ const ProfilePage = () => {
     enabled: !!userId
   });
 
+  // Fetch category-based progress
+  const {
+    data: categoryStats,
+    isLoading: categoryStatsLoading,
+    error: categoryStatsError
+  } = useQuery({
+    queryKey: ['categoryProgress', userId],
+    queryFn: async () => {
+      if (!userId) throw new Error("User ID is required");
+      // Get all categories and their counts
+      const { data: allContent, error: contentError } = await supabase
+        .from('learning_content')
+        .select('category');
+      if (contentError) throw contentError;
+
+      // Group by category and get counts
+      const categoryCounts = allContent?.reduce((acc: {[key: string]: number}, item) => {
+        const category = item.category;
+        acc[category] = (acc[category] || 0) + 1;
+        return acc;
+      }, {});
+
+      // Get completed content per category
+      const { data: userProgress, error: progressError } = await supabase
+        .from('user_progress')
+        .select('content_id, is_completed')
+        .eq('user_id', userId)
+        .eq('is_completed', true);
+      if (progressError) throw progressError;
+
+      // Get category information for all completed content
+      const completedIds = userProgress?.map(item => item.content_id) || [];
+      let categoryProgress: CategoryProgress[] = [];
+
+      if (completedIds.length > 0) {
+        const { data: completedContent, error: completedError } = await supabase
+          .from('learning_content')
+          .select('category')
+          .in('id', completedIds);
+        if (completedError) throw completedError;
+
+        // Count completed items by category
+        const completedCounts = completedContent?.reduce((acc: {[key: string]: number}, item) => {
+          const category = item.category;
+          acc[category] = (acc[category] || 0) + 1;
+          return acc;
+        }, {});
+
+        // Create progress data structure
+        categoryProgress = Object.entries(categoryCounts).map(([category, totalCount]) => {
+          const completed = completedCounts?.[category] || 0;
+          return {
+            category,
+            completed,
+            total: totalCount,
+            percentage: Math.round((completed / totalCount) * 100)
+          };
+        }).sort((a, b) => b.percentage - a.percentage);
+      } else {
+        // No completed content, set all to 0%
+        categoryProgress = Object.entries(categoryCounts).map(([category, totalCount]) => ({
+          category,
+          completed: 0,
+          total: totalCount,
+          percentage: 0
+        }));
+      }
+
+      return categoryProgress;
+    },
+    enabled: !!userId
+  });
+
+  // Fetch overall progress
+  const {
+    data: overallStat,
+    isLoading: overallStatLoading,
+    error: overallStatError
+  } = useQuery({
+    queryKey: ['overallProgress', userId],
+    queryFn: async () => {
+      if (!userId) throw new Error("User ID is required");
+      const {
+        data,
+        error
+      } = await supabase.from('user_progress').select('is_completed').eq('user_id', userId);
+      if (error) throw error;
+      const total = data.length;
+      const completed = data.filter((item: any) => item.is_completed).length;
+      const percentage = total > 0 ? (completed / total) * 100 : 0;
+      return {
+        total,
+        completed,
+        percentage
+      };
+    },
+    enabled: !!userId
+  });
+
+  // Fetch total content count and category distribution
+  const {
+    data: contentStats,
+    isLoading: statsLoading
+  } = useQuery({
+    queryKey: ['contentStats', userId],
+    queryFn: async () => {
+      if (!userId) throw new Error("User ID is required");
+      
+      // Get all categories and their counts
+      const { data: allContent, error: contentError } = await supabase
+        .from('learning_content')
+        .select('category');
+      
+      if (contentError) throw contentError;
+      
+      // Calculate total content
+      const total = allContent?.length || 0;
+      
+      // Group by category and get counts
+      const categoryCounts = allContent?.reduce((acc: {[key: string]: number}, item) => {
+        const category = item.category;
+        acc[category] = (acc[category] || 0) + 1;
+        return acc;
+      }, {});
+      
+      // Get completed content per category
+      const { data: userProgress, error: progressError } = await supabase
+        .from('user_progress')
+        .select('content_id, is_completed')
+        .eq('user_id', userId)
+        .eq('is_completed', true);
+      
+      if (progressError) throw progressError;
+      
+      // Get category information for all completed content
+      const completedIds = userProgress?.map(item => item.content_id) || [];
+      let categoryProgress: CategoryProgress[] = [];
+      
+      if (completedIds.length > 0) {
+        const { data: completedContent, error: completedError } = await supabase
+          .from('learning_content')
+          .select('category')
+          .in('id', completedIds);
+        
+        if (completedError) throw completedError;
+        
+        // Count completed items by category
+        const completedCounts = completedContent?.reduce((acc: {[key: string]: number}, item) => {
+          const category = item.category;
+          acc[category] = (acc[category] || 0) + 1;
+          return acc;
+        }, {});
+        
+        // Create progress data structure
+        categoryProgress = Object.entries(categoryCounts).map(([category, totalCount]) => {
+          const completed = completedCounts?.[category] || 0;
+          return {
+            category,
+            completed,
+            total: totalCount,
+            percentage: Math.round((completed / totalCount) * 100)
+          };
+        }).sort((a, b) => b.percentage - a.percentage);
+        
+        // Calculate overall percentage
+        const totalCompleted = Object.values(completedCounts || {}).reduce((sum, count) => sum + count, 0);
+        setOverallProgress(Math.round((totalCompleted / total) * 100));
+      } else {
+        // No completed content, set all to 0%
+        categoryProgress = Object.entries(categoryCounts).map(([category, totalCount]) => ({
+          category,
+          completed: 0,
+          total: totalCount,
+          percentage: 0
+        }));
+        setOverallProgress(0);
+      }
+      
+      setCategoryProgress(categoryProgress);
+      
+      return {
+        totalContent: total,
+        completedContent: completedIds.length,
+        categoryProgress,
+        overallPercentage: Math.round((completedIds.length / total) * 100)
+      };
+    },
+    enabled: !!userId
+  });
+
   // Update form fields when profile data is loaded
   useEffect(() => {
     if (profile) {
@@ -127,6 +330,7 @@ const ProfilePage = () => {
       setAvatarUrl(profile.avatar_url || "");
     }
   }, [profile]);
+
   // Register ScrollTrigger plugin
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -139,6 +343,7 @@ const ProfilePage = () => {
       gsap.killTweensOf("*");
     };
   }, []);
+
   // Profile animation - only run once when profile is loaded
   useEffect(() => {
     // Only run animation when profile is loaded for the first time and hasn't been played yet
@@ -182,37 +387,56 @@ const ProfilePage = () => {
     // Cleanup function for profile animations
     return () => ctx.revert();
   }, [profileLoading, profile]);
-  // Content items animation - separate from profile animation
+  // Content items and progress animation
   useEffect(() => {
-    if (!contentRef.current || !completedContent || completedContent.length === 0 || activeTab !== "completed") return;
+    if ((!contentRef.current && !progressRef.current) || activeTab !== "completed") return;
 
     // Create a new context for this specific animation to ensure proper cleanup
     const ctx = gsap.context(() => {
-      // Use a timeline to ensure proper control and cleanup
-      const contentTl = gsap.timeline();
-      contentTl.from(".content-item", {
-        y: 20,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.4,
-        ease: "power2.out",
-        clearProps: "all", // Clear properties after animation
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: "top 80%",
-          once: true // Only trigger once to prevent re-animation issues
-        }
-      });
-    }, contentRef);
+      // Animate progress elements
+      if (categoryProgress.length > 0) {
+        gsap.from(".progress-card", {
+          y: 20,
+          opacity: 0,
+          stagger: 0.1,
+          duration: 0.4,
+          ease: "power2.out",
+          clearProps: "all",
+          scrollTrigger: {
+            trigger: ".progress-section",
+            start: "top 80%",
+            once: true
+          }
+        });
+      }
+      
+      // Animate content items
+      if (completedContent && completedContent.length > 0) {
+        gsap.from(".content-item", {
+          y: 20,
+          opacity: 0,
+          stagger: 0.1,
+          duration: 0.4,
+          ease: "power2.out",
+          clearProps: "all",
+          scrollTrigger: {
+            trigger: ".content-list",
+            start: "top 80%",
+            once: true
+          }
+        });
+      }
+    });
 
-    // Cleanup function for content animations
+    // Cleanup function for animations
     return () => ctx.revert();
-  }, [completedContent, activeTab]);
+  }, [categoryProgress, completedContent, activeTab]);
 
   // Handle profile image update
   const handleImageUploaded = (url: string) => {
     setAvatarUrl(url);
   };
+
   const handleSaveProfile = async () => {
     if (!userId) {
       toast.error("You must be logged in to update your profile");
@@ -341,42 +565,119 @@ const ProfilePage = () => {
           </div>
           
           {/* Progress & Content */}
-          <div className="lg:col-span-2">
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full profile-tabs">
+          <div className="lg:col-span-2">            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full profile-tabs">
               <TabsList className="grid w-full grid-cols-2 mb-6">
-                <TabsTrigger value="completed">Completed Content</TabsTrigger>
+                <TabsTrigger value="completed">Learning Progress</TabsTrigger>
                 <TabsTrigger value="pitch">Pitch Simulator</TabsTrigger>
               </TabsList>
-              
-              <TabsContent value="completed" ref={contentRef}>
-                {contentLoading ? <div className="text-center py-10">
+                <TabsContent value="completed" ref={contentRef}>
+                {contentLoading || statsLoading ? <div className="text-center py-10">
                     <div className="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900 mb-2"></div>
-                    <p className="text-gray-600">Loading content...</p>
-                  </div> : completedContent && completedContent.length > 0 ? <div className="space-y-4">
-                    {completedContent.map((item, index) => <Card key={item.content_id} className="content-item">
-                        <CardContent className="pt-6">
-                          <div className="flex justify-between items-center">
-                            <div>
-                              <h3 className="font-medium">{item.title}</h3>
-                              <p className="text-sm text-gray-500">{item.category}</p>
-                            </div>
-                            <Button variant="ghost" size="sm" onClick={() => navigate(`/content/${item.content_id}`)}>
-                              <BookOpen className="h-4 w-4 mr-1" />
-                              View
-                            </Button>
+                    <p className="text-gray-600">Loading progress data...</p>
+                  </div> : (
+                  <div className="space-y-8">
+                    {/* Overall Progress Card */}
+                    <Card className="overflow-hidden progress-section" ref={progressRef}>
+                      <CardHeader className="pb-3">
+                        <div className="flex items-center justify-between">
+                          <CardTitle className="text-lg">Overall Learning Progress</CardTitle>
+                          <div className="rounded-full bg-blue-100 text-blue-700 px-3 py-1 text-sm font-semibold">
+                            {contentStats?.overallPercentage || 0}% Complete
                           </div>
-                        </CardContent>
-                      </Card>)}
-                  </div> : <div className="text-center py-10 bg-gray-50 rounded-lg">
-                    <BookMarked className="h-12 w-12 text-gray-400 mx-auto mb-3" />
-                    <h3 className="text-lg font-medium text-gray-900 mb-1">No completed content yet</h3>
-                    <p className="text-gray-600 mb-4">
-                      You haven't marked any content as complete yet.
-                    </p>
-                    <Button onClick={() => navigate("/content")}>
-                      Explore Content Library
-                    </Button>
-                  </div>}
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-6">
+                          <div>
+                            <div className="flex justify-between text-sm text-gray-500 mb-1">
+                              <span>Progress</span>
+                              <span>{contentStats?.completedContent || 0} / {contentStats?.totalContent || 0} modules</span>
+                            </div>
+                            <Progress 
+                              value={contentStats?.overallPercentage || 0} 
+                              className="h-3 bg-gray-100" 
+                            />
+                          </div>
+                          
+                          {/* Category Progress */}
+                          <div className="space-y-4">
+                            <h3 className="font-medium text-sm text-gray-500">Progress by Category</h3>
+                            
+                            {categoryProgress.length > 0 ? (
+                              <div className="space-y-3">
+                                {categoryProgress.map((category) => (
+                                  <div key={category.category} className="progress-card bg-gray-50 rounded-lg p-3">
+                                    <div className="flex justify-between items-center mb-1">
+                                      <span className="font-medium text-sm">{category.category}</span>
+                                      <span className="text-xs font-semibold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full">
+                                        {category.percentage}%
+                                      </span>
+                                    </div>
+                                    <div className="flex items-center">
+                                      <Progress 
+                                        value={category.percentage} 
+                                        className="h-2 flex-grow bg-gray-100"
+                                      />
+                                      <span className="text-xs text-gray-500 ml-3 min-w-[70px]">
+                                        {category.completed}/{category.total} modules
+                                      </span>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            ) : (
+                              <p className="text-sm text-gray-500">No categories available.</p>
+                            )}
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                    
+                    {/* Completed Content List */}
+                    <div className="content-list">
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="font-medium">Completed Modules</h3>
+                        {completedContent && completedContent.length > 0 && (
+                          <span className="text-sm text-gray-500">
+                            {completedContent.length} {completedContent.length === 1 ? 'module' : 'modules'} completed
+                          </span>
+                        )}
+                      </div>
+                      
+                      {completedContent && completedContent.length > 0 ? 
+                        <div className="space-y-4">
+                          {completedContent.map((item, index) => 
+                            <Card key={item.content_id} className="content-item hover:shadow-md transition-shadow">
+                              <CardContent className="p-4 flex justify-between items-center">
+                                <div className="flex-grow">
+                                  <div className="flex items-center">
+                                    <CheckCircle2 className="h-4 w-4 text-green-500 mr-2" />
+                                    <h4 className="font-medium">{item.title}</h4>
+                                  </div>
+                                  <p className="text-sm text-gray-500 mt-1">{item.category}</p>
+                                </div>
+                                <Button variant="ghost" size="sm" onClick={() => navigate(`/content/${item.content_id}`)}>
+                                  <BookOpen className="h-4 w-4 mr-1" />
+                                  View
+                                </Button>
+                              </CardContent>
+                            </Card>
+                          )}
+                        </div> :
+                        <div className="text-center py-10 bg-gray-50 rounded-lg">
+                          <BookMarked className="h-12 w-12 text-gray-400 mx-auto mb-3" />
+                          <h3 className="text-lg font-medium text-gray-900 mb-1">No completed content yet</h3>
+                          <p className="text-gray-600 mb-4">
+                            You haven't marked any content as complete yet.
+                          </p>
+                          <Button onClick={() => navigate("/content")}>
+                            Explore Content Library
+                          </Button>
+                        </div>
+                      }
+                    </div>
+                  </div>
+                )}
               </TabsContent>
 
               <TabsContent value="pitch">
