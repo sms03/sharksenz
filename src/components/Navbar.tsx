@@ -238,9 +238,9 @@ const Navbar = () => {
               {renderNavLink("/pricing", "Pricing", true, <CreditCard className="h-4 w-4" />)}
             </div>
             
-            <div className="desktop-nav-item">
+            {/*<div className="desktop-nav-item">
               {renderNavLink("/profile", "Profile", true, <UserCircle className="h-4 w-4" />)}
-            </div>
+            </div>*/}
             
             <div className="ml-3 nav-auth">
               <AuthButton />
@@ -283,9 +283,9 @@ const Navbar = () => {
                   {renderNavLink("/pricing", "Pricing", false, <CreditCard className="h-4 w-4" />)}
                 </div>
                 
-                <div className="mobile-nav-item">
+                {/*<div className="mobile-nav-item">
                   {renderNavLink("/profile", "Profile", false, <UserCircle className="h-4 w-4" />)}
-                </div>
+                </div>*/}
                 
                 <div className="mobile-nav-item mt-3 pt-3 border-t border-gray-100">
                   <div className="px-3 py-2">
