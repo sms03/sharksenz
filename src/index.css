@@ -29,6 +29,24 @@
   }
 }
 
+/* Tabs mobile responsive styling */
+@media (max-width: 640px) {
+  [data-orientation="horizontal"].tab-list-scroll {
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  [data-orientation="horizontal"].tab-list-scroll::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+  
+  [data-orientation="horizontal"] [role="tab"] {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}
+
 .stat-card {
   transition: all 0.3s ease;
 }
