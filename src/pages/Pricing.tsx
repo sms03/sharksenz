@@ -51,7 +51,7 @@ const Pricing = () => {
 
   const plans: PricingPlan[] = [
     {
-      name: "Tiger Shark (Starter)",
+      name: "Tiger Shark (Free)",
       description: "Perfect for aspiring entrepreneurs",
       priceMonthly: {
         usd: 0,
@@ -77,18 +77,18 @@ const Pricing = () => {
       buttonText: "Get Started Free",
     },
     {
-      name: "Great White Shark (Professional)",
+      name: "Great White Shark (Pro)",
       description: "For serious startup founders",
       priceMonthly: {
-        usd: 29,
-        eur: 27,
-        gbp: 23,
-        inr: 2415,
+        usd: 29.99,
+        eur: 28.99,
+        gbp: 25.99,
+        inr: 2499,
       },
       priceYearly: {
         usd: 299,
         eur: 275,
-        gbp: 236,
+        gbp: 245,
         inr: 24899,
       },
       features: [
@@ -104,19 +104,19 @@ const Pricing = () => {
       recommended: true,
     },
     {
-      name: "Megalodon Shark (Enterprise)",
+      name: "Megalodon Shark (Max)",
       description: "For startup teams and accelerators",
       priceMonthly: {
-        usd: 99,
-        eur: 91,
-        gbp: 78,
-        inr: 8243,
+        usd: 98.99,
+        eur: 90.99,
+        gbp: 84.99,
+        inr: 7999,
       },
       priceYearly: {
-        usd: 999,
+        usd: 998,
         eur: 919,
-        gbp: 789,
-        inr: 83186,
+        gbp: 875,
+        inr: 84999,
       },
       features: [
         { text: "Everything in Pro Plan", included: true },
