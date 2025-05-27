@@ -8,12 +8,11 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { 
-  User, LogOut, UserCircle, Settings, 
-  FileText, Bell, ChevronDown, Shield
+  User, LogOut, Settings, 
+  ChevronDown, UserCircle
 } from "lucide-react";
 import { Session } from "@supabase/supabase-js";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -94,72 +93,80 @@ const AuthButton = () => {
 
   if (session) {
     return (
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
+      <DropdownMenu>        <DropdownMenuTrigger asChild>
           <Button 
             variant="ghost" 
             className={cn(
-              "flex items-center gap-2 px-3 py-2 h-auto border border-transparent rounded-lg transition-all duration-200",
-              isHovered && "bg-gray-100/80 border-gray-200/80"
+              "flex items-center gap-2.5 px-3 py-2 h-auto border border-transparent rounded-xl transition-all duration-300 hover:scale-105",
+              "hover:bg-gradient-to-r hover:from-gray-50 hover:to-blue-50/50 hover:border-blue-200/30 hover:shadow-sm",
+              isHovered && "bg-gray-50/80 border-gray-200/50"
             )}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <Avatar className="h-8 w-8 border border-gray-200">
+            <Avatar className="h-8 w-8 border-2 border-gray-200/50 ring-2 ring-white shadow-sm">
               <AvatarImage src={profile?.avatar_url || ""} />
-              <AvatarFallback className="bg-gradient-to-tr from-blue-500 to-blue-600 text-white text-xs font-medium">
+              <AvatarFallback className="bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 text-white text-xs font-semibold">
                 {getInitials()}
               </AvatarFallback>
             </Avatar>
-            <span className="max-w-[100px] truncate hidden sm:inline font-medium">
+            <span className="max-w-[100px] truncate hidden sm:inline font-medium text-gray-700">
               {profile?.username || session.user.email?.split('@')[0]}
             </span>
             <ChevronDown size={14} className={cn(
-              "transition-transform duration-200",
-              isHovered && "transform rotate-180"
+              "text-gray-500 transition-all duration-300",
+              isHovered && "transform rotate-180 text-blue-600"
             )} />
           </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-56">
-          <div className="px-2 py-2.5 flex flex-col">
-            <div className="font-medium">{profile?.full_name || profile?.username}</div>
-            <div className="text-xs text-gray-500 truncate">{session.user.email}</div>
+        </DropdownMenuTrigger><DropdownMenuContent align="end" className="w-48 bg-white/95 backdrop-blur-md border border-gray-200/50 shadow-xl rounded-xl p-1">
+          <div className="px-3 py-3 flex items-center gap-3 border-b border-gray-100">
+            <Avatar className="h-10 w-10 border-2 border-gray-200/50">
+              <AvatarImage src={profile?.avatar_url || ""} />
+              <AvatarFallback className="bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 text-white text-sm font-semibold">
+                {getInitials()}
+              </AvatarFallback>
+            </Avatar>
+            <div className="flex flex-col min-w-0">
+              <div className="font-semibold text-gray-900 truncate">
+                {profile?.full_name || profile?.username || "User"}
+              </div>
+              <div className="text-xs text-gray-500 truncate">{session.user.email}</div>
+            </div>
           </div>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
-            <Link to="/profile" className="flex items-center cursor-pointer">
-              <UserCircle className="mr-2 h-4 w-4" />
-              Profile
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link to="/content" className="flex items-center cursor-pointer">
-              <FileText className="mr-2 h-4 w-4" />
-              My Content
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link to="/settings" className="flex items-center cursor-pointer">
-              <Settings className="mr-2 h-4 w-4" />
-              Settings
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={handleSignOut} className="text-red-600 cursor-pointer">
-            <LogOut size={16} className="mr-2 h-4 w-4" /> Sign Out
-          </DropdownMenuItem>
+            <div className="py-1">
+            <DropdownMenuItem asChild>
+              <Link to="/profile" className="flex items-center gap-3 px-3 py-2.5 cursor-pointer rounded-lg transition-colors hover:bg-gray-50 group">
+                <UserCircle className="h-4 w-4 text-gray-500 group-hover:text-blue-600 transition-colors" />
+                <span className="font-medium text-gray-700 group-hover:text-gray-900">Profile</span>
+              </Link>
+            </DropdownMenuItem>
+            
+            <DropdownMenuItem asChild>
+              <Link to="/settings" className="flex items-center gap-3 px-3 py-2.5 cursor-pointer rounded-lg transition-colors hover:bg-gray-50 group">
+                <Settings className="h-4 w-4 text-gray-500 group-hover:text-blue-600 transition-colors" />
+                <span className="font-medium text-gray-700 group-hover:text-gray-900">Settings</span>
+              </Link>
+            </DropdownMenuItem>
+            
+            <DropdownMenuItem 
+              onClick={handleSignOut} 
+              className="flex items-center gap-3 px-3 py-2.5 cursor-pointer rounded-lg transition-colors hover:bg-red-50 group text-red-600 hover:text-red-700"
+            >
+              <LogOut className="h-4 w-4 group-hover:scale-110 transition-transform" />
+              <span className="font-medium">Sign Out</span>
+            </DropdownMenuItem>
+          </div>
         </DropdownMenuContent>
       </DropdownMenu>
     );
   }
-
   return (
     <Button 
       variant="default" 
-      className="font-medium bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-sm hover:shadow"
+      className="font-medium bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105 rounded-xl"
     >
       <Link to="/auth" className="flex items-center gap-2">
-        <Shield className="h-4 w-4" />
+        <User className="h-4 w-4" />
         Sign In
       </Link>
     </Button>

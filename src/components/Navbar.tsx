@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { 
   Menu, X, UserCircle, BarChart, Lock, 
-  ChevronDown, Home, LibrarySquare, LineChart, CreditCard, Info
+  ChevronDown, Home, LibrarySquare, LineChart, CreditCard, Info, FileText
 } from "lucide-react";
 import AuthButton from "@/components/AuthButton";
 import { useAuth } from "@/contexts/AuthContext";
@@ -14,11 +14,14 @@ import { useScrollObserver } from "@/hooks/use-scroll";
 import { cn } from "@/lib/utils";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const location = useLocation();
   const { user } = useAuth();
   const isMobile = useIsMobile();
   const navRef = useRef<HTMLElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
   const { hasScrolled: scrolled, scrollY, isScrollingUp } = useScrollObserver({ 
     threshold: 20, 
     scrollUp: true 
@@ -57,25 +60,28 @@ const Navbar = () => {
     );
   };
   
-  // Function to render nav links with protection indicators when needed
+  // Track mouse movement for interactive effects
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isMobile) {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    }
+  };
+    // Function to render nav links with protection indicators when needed
   const renderNavLink = (path: string, label: string, isDesktop: boolean = true, icon?: React.ReactNode) => {
     const isActive = location.pathname === path;
     const needsProtection = !user && isProtectedRoute(path);
-    const isHovered = hoveredItem === path;
-    
-    const baseClasses = isDesktop
+    const isHovered = hoveredItem === path;    const baseClasses = isDesktop
       ? cn(
-          "relative font-medium transition-all duration-300 flex items-center gap-1.5 px-3 py-2 rounded-md",
-          isActive 
-            ? "text-blue-600" 
-            : "text-gray-700 hover:text-blue-600 hover:bg-blue-50/50",
-          isHovered && "bg-blue-50/50"
-        )
-      : cn(
-          "font-medium py-3 flex items-center gap-2 px-3 rounded-md transition-colors duration-200",
+          "relative group flex items-center gap-2 px-4 py-2 rounded-lg font-normal transition-all duration-300 transform hover:scale-105",
           isActive 
             ? "text-blue-600 bg-blue-50/80" 
-            : "text-gray-700 hover:text-blue-600 hover:bg-blue-50/50"
+            : "text-gray-600 hover:text-blue-600 hover:bg-gray-50/80"
+        )
+      : cn(
+          "group flex items-center gap-3 px-4 py-3 mx-2 rounded-lg font-normal transition-all duration-300 transform hover:scale-[1.02]",
+          isActive 
+            ? "text-blue-600 bg-blue-50/80" 
+            : "text-gray-600 hover:text-blue-600 hover:bg-gray-50/80"
         );
     
     return (
@@ -85,11 +91,20 @@ const Navbar = () => {
         onClick={isDesktop ? undefined : () => setIsMenuOpen(false)}
         onMouseEnter={isDesktop ? () => setHoveredItem(path) : undefined}
         onMouseLeave={isDesktop ? () => setHoveredItem(null) : undefined}
-      >
-        {icon && <span className={cn("transition-transform", isActive && "text-blue-600")}>{icon}</span>}
-        {label}
-        {needsProtection && <Lock className="h-3 w-3 text-gray-400" />}        {isActive && isDesktop && (
-          <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-blue-600 w-2/3 rounded-full animate-pulse-subtle" />
+      >        {icon && (
+          <span className={cn(
+            "transition-all duration-300 group-hover:scale-105",
+            isActive ? "text-blue-600" : "text-current"
+          )}>
+            {icon}
+          </span>
+        )}
+        <span className="relative z-10 transition-all duration-300">{label}</span>
+        {needsProtection && (
+          <Lock className={cn(
+            "h-3.5 w-3.5 transition-all duration-300",
+            isActive ? "text-blue-600/80" : "text-gray-400 group-hover:text-blue-500"
+          )} />
         )}
       </Link>
     );
@@ -98,48 +113,50 @@ const Navbar = () => {
   // Close menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
-  }, [location.pathname]);
-  // GSAP animations - Initial load
+  }, [location.pathname]);  // Simplified GSAP animations - Initial load
   useEffect(() => {
     const tl = gsap.timeline();
     
     // Only run animation on initial load
     if (navRef.current) {
+      // Logo entrance
       tl.fromTo(".nav-logo", 
-        { y: -15, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }
+        { y: -10, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }
       );
       
+      // Desktop nav items
       tl.fromTo(".desktop-nav-item", 
-        { y: -10, opacity: 0 },
+        { y: -8, opacity: 0 },
         { 
           y: 0, 
           opacity: 1, 
           stagger: 0.1, 
-          duration: 0.4, 
+          duration: 0.3, 
           ease: "power2.out" 
         }, 
-        "-=0.3"
+        "-=0.2"
       );
       
+      // Auth button
       tl.fromTo(".nav-auth", 
-        { y: -10, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }, 
-        "-=0.2"
+        { y: -8, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" }, 
+        "-=0.1"
       );
     }
   }, []);
   
-  // Mobile menu animation
+  // Simplified Mobile menu animation
   useEffect(() => {
     if (isMenuOpen) {
       gsap.fromTo(".mobile-nav", 
-        { opacity: 0, y: -20 },
+        { opacity: 0, y: -15 },
         { 
           opacity: 1, 
           y: 0, 
-          duration: 0.3,
-          ease: "power3.out"
+          duration: 0.25,
+          ease: "power2.out"
         }
       );
       
@@ -148,8 +165,8 @@ const Navbar = () => {
         { 
           x: 0, 
           opacity: 1, 
-          stagger: 0.05, 
-          duration: 0.3,
+          stagger: 0.04, 
+          duration: 0.25,
           delay: 0.1,
           ease: "power2.out"
         }
@@ -157,10 +174,9 @@ const Navbar = () => {
     }
   }, [isMenuOpen]);
   
-  // Scroll animations
+  // Simplified Scroll animations
   useEffect(() => {
     if (scrolled && !isMenuOpen) {
-      // Add subtle animation when navbar becomes compact
       gsap.fromTo(navRef.current, 
         { boxShadow: "none" },
         { 
@@ -170,7 +186,6 @@ const Navbar = () => {
         }
       );
     } else if (!scrolled && !isMenuOpen) {
-      // When returning to top
       gsap.to(navRef.current, { 
         boxShadow: "none", 
         duration: 0.3,
@@ -178,8 +193,7 @@ const Navbar = () => {
       });
     }
   }, [scrolled, isMenuOpen]);
-  return (
-    <header 
+  return (    <header 
       ref={navRef}
       className={cn(
         "sticky top-0 z-50 transition-all duration-300", 
@@ -187,28 +201,26 @@ const Navbar = () => {
           ? "bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm py-1" 
           : "bg-white py-2",
         hideOnScroll ? "transform -translate-y-full" : "transform translate-y-0",
-        isMenuOpen && "bg-white shadow-md" // Always solid when menu is open
+        isMenuOpen && "bg-white shadow-md"
       )}
+      onMouseMove={handleMouseMove}
     >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 nav-logo">
+        <div className="flex justify-between items-center h-16">          {/* Logo with subtle styling */}
+          <Link to="/" className="flex items-center space-x-2 nav-logo group">
             <img 
               src="/logo_transparent.png" 
               alt="SharkSenz Logo" 
               className={cn(
-                "transition-all duration-300",
+                "transition-all duration-300 group-hover:scale-105",
                 scrolled ? "h-9 w-auto" : "h-10 w-auto"
               )} 
             />
             <span className={cn(
-              "font-bold transition-all duration-300",
+              "font-bold transition-all duration-300 group-hover:text-blue-600",
               scrolled ? "text-lg" : "text-xl"
             )}>SharkSenz</span>
-          </Link>
-
-          {/* Desktop Navigation */}          
+          </Link>          {/* Desktop Navigation */}          
           <nav className="hidden md:flex items-center space-x-1">
             <div className="desktop-nav-item">
               {renderNavLink("/", "Home", true, <Home className="h-4 w-4" />)}
@@ -238,35 +250,33 @@ const Navbar = () => {
               {renderNavLink("/pricing", "Pricing", true, <CreditCard className="h-4 w-4" />)}
             </div>
             
-            {/*<div className="desktop-nav-item">
-              {renderNavLink("/profile", "Profile", true, <UserCircle className="h-4 w-4" />)}
-            </div>*/}
+            <div className="desktop-nav-item">
+              {renderNavLink("/about", "About", true, <Info className="h-4 w-4" />)}
+            </div>
             
             <div className="ml-3 nav-auth">
               <AuthButton />
             </div>
-          </nav>          {/* Mobile Menu Button */}
-          <button 
+          </nav>{/* Mobile Menu Button */}          <button 
             className={cn(
-              "md:hidden flex items-center justify-center p-2 rounded-md transition-all duration-300",
+              "md:hidden flex items-center justify-center p-2 rounded-lg transition-all duration-300 transform active:scale-95",
               isMenuOpen 
-                ? "bg-blue-50 text-blue-600 rotate-90 rotate-0" 
-                : "text-gray-700 hover:text-blue-600 hover:bg-blue-50/50"
+                ? "bg-blue-50 text-blue-600" 
+                : "text-gray-600 hover:text-blue-600 hover:bg-gray-50"
             )}
             onClick={toggleMenu}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? (
-              <X className="h-6 w-6 animate-in zoom-in-50 duration-300" />
+              <X className="h-5 w-5 transition-transform duration-300" />
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5 transition-transform duration-300" />
             )}
           </button>
         </div>        {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden mobile-menu-wrapper overflow-hidden">
-            <nav className="md:hidden py-3 border-t border-gray-100 mobile-nav bg-white/95 backdrop-blur-md">
-              <div className="flex flex-col space-y-2 py-2 px-2">
+          <div className="md:hidden mobile-menu-wrapper overflow-hidden">            <nav className="md:hidden py-3 border-t border-gray-100 mobile-nav bg-white/95 backdrop-blur-md">
+              <div className="flex flex-col space-y-1 py-2 px-2">
                 <div className="mobile-nav-item">
                   {renderNavLink("/", "Home", false, <Home className="h-4 w-4" />)}
                 </div>
@@ -283,9 +293,9 @@ const Navbar = () => {
                   {renderNavLink("/pricing", "Pricing", false, <CreditCard className="h-4 w-4" />)}
                 </div>
                 
-                {/*<div className="mobile-nav-item">
-                  {renderNavLink("/profile", "Profile", false, <UserCircle className="h-4 w-4" />)}
-                </div>*/}
+                <div className="mobile-nav-item">
+                  {renderNavLink("/about", "About", false, <Info className="h-4 w-4" />)}
+                </div>
                 
                 <div className="mobile-nav-item mt-3 pt-3 border-t border-gray-100">
                   <div className="px-3 py-2">
