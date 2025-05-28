@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Github, Twitter, Instagram } from "lucide-react";
+import { Github, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -43,8 +43,7 @@ const Footer = () => {
               <h3 className="font-semibold text-lg mb-4">SharkSenz</h3>
               <p className="text-gray-600 mb-4">
                 The ultimate resource for startup founders to master essential skills and build successful ventures.
-              </p>
-              <div className="flex justify-center sm:justify-start space-x-4">
+              </p>              <div className="flex justify-center sm:justify-start space-x-4">
                 <Link to="https://github.com/sms03" className="text-gray-500 hover:text-blue-600">
                   <Github className="h-5 w-5" />
                 </Link>
@@ -53,6 +52,9 @@ const Footer = () => {
                 </Link>
                 <Link to="https://www.instagram.com/smsxart/" className="text-gray-500 hover:text-blue-600">
                   <Instagram className="h-5 w-5" />
+                </Link>
+                <Link to="https://linkedin.com/in/sms03/" className="text-gray-500 hover:text-blue-600">
+                  <Linkedin className="h-5 w-5" />
                 </Link>
               </div>
             </div>
