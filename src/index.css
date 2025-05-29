@@ -2,6 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Ocean-themed animations for navbar */
+@keyframes ocean-flow {
+  0%, 100% { 
+    background-position: 0% 50%;
+    transform: translateX(0px);
+  }
+  25% { 
+    background-position: 25% 75%;
+    transform: translateX(10px);
+  }
+  50% { 
+    background-position: 100% 50%;
+    transform: translateX(-5px);
+  }
+  75% { 
+    background-position: 75% 25%;
+    transform: translateX(8px);
+  }
+}
+
+@keyframes underwater-ambiance {
+  0%, 100% { 
+    opacity: 0.1;
+    transform: scale(1) translateY(0px);
+  }
+  33% { 
+    opacity: 0.3;
+    transform: scale(1.2) translateY(-5px);
+  }
+  66% { 
+    opacity: 0.2;
+    transform: scale(0.9) translateY(3px);
+  }
+}
+
+@keyframes bubble-float {
+  0% { 
+    transform: translateY(0px) scale(0.8);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0.6;
+  }
+  100% { 
+    transform: translateY(-40px) scale(0.4);
+    opacity: 0;
+  }
+}
+
+@keyframes wave-gentle {
+  0%, 100% { 
+    transform: scaleX(1) translateY(0px);
+  }
+  50% { 
+    transform: scaleX(1.02) translateY(-1px);
+  }
+}
+
+@keyframes ripple-expand {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.5);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes sea-shimmer {
+  0%, 100% { 
+    background-position: 0% 0%;
+    opacity: 0.2;
+  }
+  50% { 
+    background-position: 100% 100%;
+    opacity: 0.4;
+  }
+}
+
 /* Animation for the hero section */
 @keyframes float {
   0% { transform: translateY(0) translateX(0) rotate(0); }
@@ -165,6 +250,212 @@
 
 .animate-logo-glow {
   animation: logo-glow 3s ease-in-out infinite;
+}
+
+/* Enhanced wave animations for more prominent movement */
+@keyframes wave-enhanced {
+  0%, 100% { 
+    transform: scaleX(1) translateY(0px) translateX(0px);
+  }
+  25% { 
+    transform: scaleX(1.05) translateY(-4px) translateX(8px);
+  }
+  50% { 
+    transform: scaleX(1.15) translateY(-7px) translateX(-5px);
+  }
+  75% { 
+    transform: scaleX(1.08) translateY(-3px) translateX(10px);
+  }
+}
+
+@keyframes wave-dynamic {
+  0%, 100% { 
+    transform: scaleX(1) translateY(0px) skewX(0deg);
+  }
+  33% { 
+    transform: scaleX(1.12) translateY(-5px) skewX(3deg);
+  }
+  66% { 
+    transform: scaleX(0.95) translateY(-8px) skewX(-2deg);
+  }
+}
+
+@keyframes wave-flow {
+  0%, 100% { 
+    transform: translateX(0px) scaleY(1) rotateZ(0deg);
+  }
+  25% { 
+    transform: translateX(20px) scaleY(1.08) rotateZ(1deg);
+  }
+  50% { 
+    transform: translateX(-15px) scaleY(0.95) rotateZ(-0.5deg);
+  }
+  75% { 
+    transform: translateX(12px) scaleY(1.05) rotateZ(0.3deg);
+  }
+}
+
+/* Ocean-themed footer animations */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.3;
+  }
+  25% { 
+    transform: translateY(-10px) translateX(2px);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateY(-20px) translateX(-1px);
+    opacity: 0.8;
+  }
+  75% { 
+    transform: translateY(-15px) translateX(1px);
+    opacity: 0.4;
+  }
+}
+
+@keyframes sway {
+  0%, 100% { 
+    transform: rotate(0deg) translateX(0px);
+  }
+  25% { 
+    transform: rotate(2deg) translateX(1px);
+  }
+  50% { 
+    transform: rotate(0deg) translateX(-1px);
+  }
+  75% { 
+    transform: rotate(-2deg) translateX(1px);
+  }
+}
+
+@keyframes swim {
+  0% { 
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  10%, 90% { 
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateX(20px);
+    opacity: 0.6;
+  }
+  100% { 
+    transform: translateX(40px);
+    opacity: 0;
+  }
+}
+
+@keyframes swim-reverse {
+  0% { 
+    transform: translateX(40px) scaleX(-1);
+    opacity: 0;
+  }
+  10%, 90% { 
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateX(-20px) scaleX(-1);
+    opacity: 0.6;
+  }
+  100% { 
+    transform: translateX(-40px) scaleX(-1);
+    opacity: 0;
+  }
+}
+
+/* Enhanced bubble floating animations for footer */
+@keyframes bubble-rise {
+  0% { 
+    transform: translateY(0px) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  50% { 
+    transform: translateY(-50px) scale(1);
+    opacity: 0.8;
+  }
+  80% {
+    transform: translateY(-80px) scale(1.2);
+    opacity: 0.4;
+  }
+  100% { 
+    transform: translateY(-120px) scale(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes underwater-current {
+  0%, 100% {
+    transform: translateX(-20px) skewX(-5deg);
+    opacity: 0.1;
+  }
+  25% {
+    transform: translateX(10px) skewX(2deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(30px) skewX(-2deg);
+    opacity: 0.2;
+  }
+  75% {
+    transform: translateX(-5px) skewX(3deg);
+    opacity: 0.25;
+  }
+}
+
+/* Animation classes for footer elements */
+.animate-float {
+  animation: float infinite ease-in-out;
+}
+
+.animate-sway {
+  animation: sway 4s infinite ease-in-out;
+  transform-origin: bottom center;
+}
+
+.animate-swim {
+  animation: swim 8s infinite linear;
+}
+
+.animate-swim-reverse {
+  animation: swim-reverse 10s infinite linear;
+}
+
+.animate-bubble-rise {
+  animation: bubble-rise infinite ease-out;
+}
+
+.animate-underwater-current {
+  animation: underwater-current 15s infinite ease-in-out;
+}
+
+/* Enhanced sea particle animations */
+@keyframes sea-drift {
+  0%, 100% { 
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% { 
+    transform: translateX(15px) translateY(-5px) rotate(90deg);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateX(-10px) translateY(-10px) rotate(180deg);
+    opacity: 0.4;
+  }
+  75% { 
+    transform: translateX(5px) translateY(-2px) rotate(270deg);
+    opacity: 0.7;
+  }
+}
+
+.animate-sea-drift {
+  animation: sea-drift infinite ease-in-out;
 }
 
 @layer base {
