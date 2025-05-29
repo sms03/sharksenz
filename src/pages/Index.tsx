@@ -35,8 +35,7 @@ const Index = () => {
         duration: 1.5,
         ease: "power2.out"
       });
-      
-      // Apply subtle movement to floating icons
+        // Apply subtle movement to floating icons
       gsap.to(".floating-icon", {
         x: x * 8,
         y: y * 8,
@@ -50,15 +49,13 @@ const Index = () => {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, []);
-
-  // GSAP animations
+  }, []);  // GSAP animations
   useEffect(() => {
     setIsLoaded(true);
-    
-    // Hero animations
+      // Hero animations
     if (heroRef.current) {
       const tl = gsap.timeline();
+      
       tl.from(".hero-logo", {
         y: -30,
         opacity: 0,
@@ -82,19 +79,17 @@ const Index = () => {
         opacity: 0,
         duration: 0.8,
         ease: "power3.out"
-      }, "-=0.6");
-      tl.from(".hero-description", {
+      }, "-=0.6");      tl.from(".hero-description", {
         y: 30,
         opacity: 0,
         duration: 0.7,
         ease: "power3.out"
       }, "-=0.5");
-      tl.from(".hero-buttons .button", {
+      tl.from(".hero-buttons", {
         y: 20,
         opacity: 0,
-        stagger: 0.2,
-        duration: 0.5,
-        ease: "back.out(1.7)"
+        duration: 0.8,
+        ease: "power3.out"
       }, "-=0.4");
       tl.from(".floating-icon", {
         y: 30,
@@ -117,9 +112,7 @@ const Index = () => {
         duration: 0.4,
         ease: "back.out"
       }, "-=0.6");
-    }
-
-    // Floating animation for icons
+    }    // Floating animation for icons
     gsap.to(".floating-icon", {
       y: "random(-8, 8)", 
       duration: "random(1.5, 3.5)",
@@ -223,8 +216,8 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           {/* Logo */}
           <div className="flex justify-center mb-8">
-            <div className="hero-logo bg-white/10 backdrop-blur-md p-3 rounded-full shadow-xl inline-block">
-              <img src="/logo_transparent.png" alt="SharkSenz" className="h-16 w-16" />
+            <div className="hero-logo bg-white/10 backdrop-blur-md p-4 rounded-full shadow-xl inline-block">
+              <img src="/logo_neon.png" alt="SharkSenz" className="h-20 w-20 animate-logo-glow" />
             </div>
           </div>
           
@@ -254,17 +247,31 @@ const Index = () => {
             <p className="hero-description text-xl md:text-2xl text-blue-100/90 mb-10 max-w-2xl mx-auto font-light">
               Master essential skills and knowledge to build successful startups. 
               From idea validation to scaling, we've got you covered.
-            </p>
-            
-            <div className="flex flex-wrap gap-5 justify-center hero-buttons">
-              <Button size="lg" className="button bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-none shadow-lg shadow-blue-500/25 h-14 px-8 transition-all duration-300 transform hover:scale-105">
-                <Link to="/content" className="flex items-center text-lg">
-                  Start Learning <ArrowRight className="ml-2 h-5 w-5" />
+            </p>            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center hero-buttons w-full max-w-md mx-auto sm:max-w-none">
+              <Button 
+                size="lg" 
+                className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-none shadow-xl shadow-blue-500/30 h-12 sm:h-14 px-6 sm:px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/40 w-full sm:w-auto"
+                asChild
+              >
+                <Link to="/content" className="flex items-center justify-center text-base sm:text-lg font-semibold">
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                  <span className="relative z-10 flex items-center">
+                    Start Learning <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
+                  </span>
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" className="button text-blue-100 border-blue-400/30 hover:bg-blue-800/50 backdrop-blur-sm h-14 px-8 transition-all duration-300 transform hover:scale-105">
-                <Link to="/content" className="flex items-center text-lg">
-                  Browse Library <ChevronRight className="ml-1 h-5 w-5" />
+              
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="group relative overflow-hidden bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 text-white hover:text-white shadow-xl shadow-black/10 h-12 sm:h-14 px-6 sm:px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:border-white/30 w-full sm:w-auto"
+                asChild
+              >
+                <Link to="/analytics" className="flex items-center justify-center text-base sm:text-lg font-semibold">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                  <span className="relative z-10 flex items-center">
+                    Dashboard <ChevronRight className="ml-1 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
+                  </span>
                 </Link>
               </Button>
             </div>

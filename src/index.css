@@ -241,10 +241,10 @@
 /* Navbar logo enhancement */
 @keyframes logo-glow {
   0%, 100% { 
-    filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3)); 
+    filter: drop-shadow(0 0 8px rgba(94, 209, 198, 0.4)) drop-shadow(0 0 12px rgba(245, 101, 101, 0.3)); 
   }
   50% { 
-    filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.6)); 
+    filter: drop-shadow(0 0 20px rgba(155, 255, 245, 0.8)) drop-shadow(0 0 30px rgba(245, 101, 101, 0.6)); 
   }
 }
 
