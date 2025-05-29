@@ -383,7 +383,7 @@ const Pricing = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 bg-blue-50">
+      {/*<section className="py-16 bg-blue-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">What Our Customers Say</h2>
           
@@ -428,7 +428,7 @@ const Pricing = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* CTA */}
       <section className="py-16">
