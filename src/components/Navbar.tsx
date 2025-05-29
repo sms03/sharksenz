@@ -286,9 +286,7 @@ const Navbar = () => {
             
             <div className="desktop-nav-item">
               {!user ? (
-                <ProtectedRouteIndicator>
-                  {renderNavLink("/content", "Content", true, <LibrarySquare className="h-4 w-4" />)}
-                </ProtectedRouteIndicator>
+                renderNavLink("/content", "Content", true, <LibrarySquare className="h-4 w-4" />)
               ) : (
                 renderNavLink("/content", "Content", true, <LibrarySquare className="h-4 w-4" />)
               )}
@@ -296,9 +294,7 @@ const Navbar = () => {
             
             <div className="desktop-nav-item">
               {!user ? (
-                <ProtectedRouteIndicator>
-                  {renderNavLink("/analytics", "Analytics", true, <LineChart className="h-4 w-4" />)}
-                </ProtectedRouteIndicator>
+                renderNavLink("/analytics", "Analytics", true, <LineChart className="h-4 w-4" />)
               ) : (
                 renderNavLink("/analytics", "Analytics", true, <LineChart className="h-4 w-4" />)
               )}
