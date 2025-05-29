@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import ContentLibrary from "./pages/ContentLibrary";
 import ContentDetail from "./pages/ContentDetail";
 import ProfilePage from "./pages/ProfilePage";
+import Settings from "./pages/Settings";
 import AnalyticsDashboard from "./pages/AnalyticsDashboard";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
@@ -61,13 +62,22 @@ const App = () => {
                     </ProtectedRoute>
                   </MainLayout>
                 } 
-              />
-              <Route 
+              />              <Route 
                 path="/profile" 
                 element={
                   <MainLayout>
                     <ProtectedRoute>
                       <ProfilePage />
+                    </ProtectedRoute>
+                  </MainLayout>
+                } 
+              />
+              <Route 
+                path="/settings" 
+                element={
+                  <MainLayout>
+                    <ProtectedRoute>
+                      <Settings />
                     </ProtectedRoute>
                   </MainLayout>
                 } 
@@ -81,7 +91,7 @@ const App = () => {
                     </ProtectedRoute>
                   </MainLayout>
                 } 
-              />              <Route path="/about" element={<MainLayout><AboutUs /></MainLayout>} />
+              /><Route path="/about" element={<MainLayout><AboutUs /></MainLayout>} />
               <Route path="/contact" element={<MainLayout><ContactUs /></MainLayout>} />
               <Route path="/pricing" element={<MainLayout><Pricing /></MainLayout>} />
               <Route path="/auth" element={<Auth />} />
