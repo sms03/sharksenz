@@ -307,9 +307,6 @@ const Navbar = () => {
             <div className="desktop-nav-item">
               {renderNavLink("/pricing", "Pricing", true, <CreditCard className="h-4 w-4" />)}
             </div>
-              <div className="desktop-nav-item">
-              {renderNavLink("/templates", "Templates", true, <FileText className="h-4 w-4" />)}
-            </div>
             
             <div className="desktop-nav-item">
               {renderNavLink("/about", "About", true, <Info className="h-4 w-4" />)}
@@ -377,9 +374,6 @@ const Navbar = () => {
                 
                 <div className="mobile-nav-item">
                   {renderNavLink("/pricing", "Pricing", false, <CreditCard className="h-4 w-4" />)}
-                </div>
-                  <div className="mobile-nav-item">
-                  {renderNavLink("/templates", "Templates", false, <FileText className="h-4 w-4" />)}
                 </div>
                 
                 <div className="mobile-nav-item">
