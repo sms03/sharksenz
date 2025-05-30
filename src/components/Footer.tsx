@@ -160,7 +160,7 @@ const Footer = () => {
                   <Github className="h-5 w-5" />
                 </Link>
                 <Link 
-                  to="https://twitter.com/smsxshivam" 
+                  to="https://x.com/smsxshivam" 
                   className="text-blue-200/70 hover:text-cyan-300 transition-all duration-300 transform hover:scale-110 hover:rotate-6"
                 >
                   <Twitter className="h-5 w-5" />
