@@ -229,7 +229,7 @@ const Index = () => {
             </div>
             
             <h1 className="hero-title text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-white leading-tight">
-              Where <span className="relative inline-block">
+              Turning <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">Founders</span>
                 <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 5.5C32.3333 1.16667 96.7 -3.5 154.5 5.5C212.3 14.5 277.667 8.33333 299 5.5" stroke="url(#paint0_linear)" strokeWidth="4" strokeLinecap="round"/>
@@ -240,14 +240,17 @@ const Index = () => {
                     </linearGradient>
                   </defs>
                 </svg>
-              </span> Become <br />
-              <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Sharks</span>
+              </span> Into <br />
+              <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Leaders</span>
             </h1>
-            
+
+            {/*Master essential skills and knowledge to build successful startups. 
+              From idea validation to scaling, we've got you covered.*/}
             <p className="hero-description text-xl md:text-2xl text-blue-100/90 mb-10 max-w-2xl mx-auto font-light">
-              Master essential skills and knowledge to build successful startups. 
-              From idea validation to scaling, we've got you covered.
-            </p>            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center hero-buttons w-full max-w-md mx-auto sm:max-w-none">
+              Launch. Lead. Dominate.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center hero-buttons w-full max-w-md mx-auto sm:max-w-none">
               <Button 
                 size="lg" 
                 className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-none shadow-xl shadow-blue-500/30 h-12 sm:h-14 px-6 sm:px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/40 w-full sm:w-auto"
