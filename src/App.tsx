@@ -11,6 +11,7 @@ import ContentDetail from "./pages/ContentDetail";
 import ProfilePage from "./pages/ProfilePage";
 import Settings from "./pages/Settings";
 import AnalyticsDashboard from "./pages/AnalyticsDashboard";
+import MarketTrends from "./pages/MarketTrends";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Pricing from "./pages/Pricing";
@@ -81,8 +82,7 @@ const App = () => {
                     </ProtectedRoute>
                   </MainLayout>
                 } 
-              />
-              <Route 
+              />              <Route 
                 path="/analytics" 
                 element={
                   <MainLayout>
@@ -91,7 +91,18 @@ const App = () => {
                     </ProtectedRoute>
                   </MainLayout>
                 } 
-              /><Route path="/about" element={<MainLayout><AboutUs /></MainLayout>} />
+              />
+              <Route 
+                path="/market-trends" 
+                element={
+                  <MainLayout>
+                    <ProtectedRoute>
+                      <MarketTrends />
+                    </ProtectedRoute>
+                  </MainLayout>
+                } 
+              />
+              <Route path="/about" element={<MainLayout><AboutUs /></MainLayout>} />
               <Route path="/contact" element={<MainLayout><ContactUs /></MainLayout>} />
               <Route path="/pricing" element={<MainLayout><Pricing /></MainLayout>} />
               <Route path="/auth" element={<Auth />} />

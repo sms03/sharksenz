@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { 
   Menu, X, UserCircle, BarChart, Lock, 
-  ChevronDown, Home, LibrarySquare, LineChart, CreditCard, Info, FileText
+  ChevronDown, Home, LibrarySquare, LineChart, CreditCard, Info, FileText, TrendingUp
 } from "lucide-react";
 import AuthButton from "@/components/AuthButton";
 import { useAuth } from "@/contexts/AuthContext";
@@ -52,10 +52,9 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  
-  // Function to check if a route is protected
+    // Function to check if a route is protected
   const isProtectedRoute = (path: string): boolean => {
-    return ['/content', '/analytics', '/profile'].some(route => 
+    return ['/content', '/analytics', '/market-trends', '/profile'].some(route => 
       path.startsWith(route)
     );
   };
@@ -291,12 +290,19 @@ const Navbar = () => {
                 renderNavLink("/content", "Content", true, <LibrarySquare className="h-4 w-4" />)
               )}
             </div>
-            
-            <div className="desktop-nav-item">
+              <div className="desktop-nav-item">
               {!user ? (
                 renderNavLink("/analytics", "Analytics", true, <LineChart className="h-4 w-4" />)
               ) : (
                 renderNavLink("/analytics", "Analytics", true, <LineChart className="h-4 w-4" />)
+              )}
+            </div>
+            
+            <div className="desktop-nav-item">
+              {!user ? (
+                renderNavLink("/market-trends", "Market Trends", true, <TrendingUp className="h-4 w-4" />)
+              ) : (
+                renderNavLink("/market-trends", "Market Trends", true, <TrendingUp className="h-4 w-4" />)
               )}
             </div>
             
@@ -363,9 +369,12 @@ const Navbar = () => {
                 <div className="mobile-nav-item">
                   {renderNavLink("/content", "Content Library", false, <LibrarySquare className="h-4 w-4" />)}
                 </div>
+                  <div className="mobile-nav-item">
+                  {renderNavLink("/analytics", "Analytics", false, <LineChart className="h-4 w-4" />)}
+                </div>
                 
                 <div className="mobile-nav-item">
-                  {renderNavLink("/analytics", "Analytics", false, <LineChart className="h-4 w-4" />)}
+                  {renderNavLink("/market-trends", "Market Trends", false, <TrendingUp className="h-4 w-4" />)}
                 </div>
                 
                 <div className="mobile-nav-item">

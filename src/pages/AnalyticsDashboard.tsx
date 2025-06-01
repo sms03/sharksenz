@@ -4,7 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import MetricsCalculator from "@/components/analytics/MetricsCalculator";
 import RevenueCalculator from "@/components/analytics/RevenueCalculator";
 import ProfitProjection from "@/components/analytics/ProfitProjection";
-import MarketAnalysis from "@/components/analytics/MarketAnalysis";
 import ValuationCalculator from "@/components/analytics/ValuationCalculator";
 import BurnRateCalculator from "@/components/analytics/BurnRateCalculator";
 import { BarChart, LineChart } from "lucide-react";
@@ -37,13 +36,11 @@ const AnalyticsDashboard = () => {
         <p className="text-gray-600 text-sm sm:text-base">
           Track, analyze, and project your startup's financial health and market position
         </p>
-      </div>      <Tabs defaultValue="metrics" value={activeTab} onValueChange={setActiveTab} className="space-y-4">
-        <div className="overflow-x-auto pb-2 -mx-3 px-3 tab-list-scroll">
-          <TabsList className="inline-flex sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 min-w-max sm:min-w-0 w-full">
+      </div>      <Tabs defaultValue="metrics" value={activeTab} onValueChange={setActiveTab} className="space-y-4">        <div className="overflow-x-auto pb-2 -mx-3 px-3 tab-list-scroll">
+          <TabsList className="inline-flex sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 min-w-max sm:min-w-0 w-full">
             <TabsTrigger value="metrics" className="text-xs sm:text-sm whitespace-nowrap flex-1">Metrics</TabsTrigger>
             <TabsTrigger value="revenue" className="text-xs sm:text-sm whitespace-nowrap flex-1">Revenue</TabsTrigger>
             <TabsTrigger value="profit" className="text-xs sm:text-sm whitespace-nowrap flex-1">Profit Projection</TabsTrigger>
-            <TabsTrigger value="market" className="text-xs sm:text-sm whitespace-nowrap flex-1">Market Analysis</TabsTrigger>
             <TabsTrigger value="valuation" className="text-xs sm:text-sm whitespace-nowrap flex-1">Valuation</TabsTrigger>
             <TabsTrigger value="burn" className="text-xs sm:text-sm whitespace-nowrap flex-1">Burn Rate</TabsTrigger>
           </TabsList>
@@ -92,23 +89,6 @@ const AnalyticsDashboard = () => {
             </CardHeader>
             <CardContent className="px-3 sm:px-6">
               <ProfitProjection />
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="market" className="space-y-4">
-          <Card className="overflow-hidden">
-            <CardHeader className="px-4 sm:px-6 py-4 sm:py-6">
-              <CardTitle className="flex items-center text-lg sm:text-xl">
-                <BarChart className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                Market Analysis
-              </CardTitle>
-              <CardDescription className="text-xs sm:text-sm">
-                Real-time AI-powered market trend analysis
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="px-3 sm:px-6">
-              <MarketAnalysis />
             </CardContent>
           </Card>
         </TabsContent>        <TabsContent value="valuation" className="space-y-4">
