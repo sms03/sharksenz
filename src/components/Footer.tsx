@@ -181,13 +181,12 @@ const Footer = () => {
             </div>
             <p className="text-blue-100/80 mb-6 max-w-2xl mx-auto text-lg">
               Join the depths of entrepreneurial knowledge and never surface empty-handed!
-            </p>
-            <Link 
+            </p>            <Link 
               to="/subscribe" 
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500 via-blue-500 to-teal-500 hover:from-cyan-400 hover:via-blue-400 hover:to-teal-400 text-white px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl shadow-blue-500/30 hover:shadow-cyan-500/40 backdrop-blur-sm"
+              className="group relative overflow-hidden inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-none shadow-xl shadow-blue-500/30 h-12 sm:h-14 px-6 sm:px-8 rounded-md transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/40"
             >
-              
-              <span className="font-semibold">Dive In Now</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              <span className="relative z-10 font-semibold text-base sm:text-lg">Dive In Now</span>
             </Link>
           </div>
 
