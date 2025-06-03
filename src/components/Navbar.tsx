@@ -277,27 +277,12 @@ const Navbar = () => {
             
             {/* Subtle water droplet effect */}
             <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
-          </Link>{/* Desktop Navigation */}          
-          <nav className="hidden md:flex items-center space-x-1">
+          </Link>{/* Desktop Navigation */}            <nav className="hidden md:flex items-center space-x-1">
             <div className="desktop-nav-item">
               {renderNavLink("/", "Home", true, <Home className="h-4 w-4" />)}
             </div>
-              <div className="desktop-nav-item">
-              {!user ? (
-                renderNavLink("/content", "Content", true, <LibrarySquare className="h-4 w-4" />)
-              ) : (
-                renderNavLink("/content", "Content", true, <LibrarySquare className="h-4 w-4" />)
-              )}
-            </div>
             
             <div className="desktop-nav-item">
-              {!user ? (
-                renderNavLink("/pitch-simulator", "Pitch Simulator", true, <Presentation className="h-4 w-4" />)
-              ) : (
-                renderNavLink("/pitch-simulator", "Pitch Simulator", true, <Presentation className="h-4 w-4" />)
-              )}
-            </div>
-              <div className="desktop-nav-item">
               {!user ? (
                 renderNavLink("/analytics", "Analytics", true, <LineChart className="h-4 w-4" />)
               ) : (
@@ -307,9 +292,25 @@ const Navbar = () => {
             
             <div className="desktop-nav-item">
               {!user ? (
-                renderNavLink("/market-trends", "Market Trends", true, <TrendingUp className="h-4 w-4" />)
+                renderNavLink("/content", "Content", true, <LibrarySquare className="h-4 w-4" />)
               ) : (
-                renderNavLink("/market-trends", "Market Trends", true, <TrendingUp className="h-4 w-4" />)
+                renderNavLink("/content", "Content", true, <LibrarySquare className="h-4 w-4" />)
+              )}
+            </div>
+            
+            <div className="desktop-nav-item">
+              {!user ? (
+                renderNavLink("/market-trends", "Trends", true, <TrendingUp className="h-4 w-4" />)
+              ) : (
+                renderNavLink("/market-trends", "Trends", true, <TrendingUp className="h-4 w-4" />)
+              )}
+            </div>
+            
+            <div className="desktop-nav-item">
+              {!user ? (
+                renderNavLink("/pitch-simulator", "Pitch Simulator", true, <Presentation className="h-4 w-4" />)
+              ) : (
+                renderNavLink("/pitch-simulator", "Pitch Simulator", true, <Presentation className="h-4 w-4" />)
               )}
             </div>
             
@@ -367,24 +368,25 @@ const Navbar = () => {
                 <div className="absolute bottom-4 left-12 w-0.5 h-0.5 bg-cyan-400/50 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
                 <div className="absolute top-1/2 right-1/4 w-0.5 h-0.5 bg-teal-400/40 rounded-full animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '3s' }} />
               </div>
-              
-              <div className="flex flex-col space-y-1 py-2 px-2 relative z-10">
+                <div className="flex flex-col space-y-1 py-2 px-2 relative z-10">
                 <div className="mobile-nav-item">
                   {renderNavLink("/", "Home", false, <Home className="h-4 w-4" />)}
                 </div>
-                  <div className="mobile-nav-item">
-                  {renderNavLink("/content", "Content Library", false, <LibrarySquare className="h-4 w-4" />)}
-                </div>
                 
                 <div className="mobile-nav-item">
-                  {renderNavLink("/pitch-simulator", "Pitch Simulator", false, <Presentation className="h-4 w-4" />)}
-                </div>
-                  <div className="mobile-nav-item">
                   {renderNavLink("/analytics", "Analytics", false, <LineChart className="h-4 w-4" />)}
                 </div>
                 
                 <div className="mobile-nav-item">
-                  {renderNavLink("/market-trends", "Market Trends", false, <TrendingUp className="h-4 w-4" />)}
+                  {renderNavLink("/content", "Content", false, <LibrarySquare className="h-4 w-4" />)}
+                </div>
+                
+                <div className="mobile-nav-item">
+                  {renderNavLink("/market-trends", "Trends", false, <TrendingUp className="h-4 w-4" />)}
+                </div>
+                
+                <div className="mobile-nav-item">
+                  {renderNavLink("/pitch-simulator", "Pitch Simulator", false, <Presentation className="h-4 w-4" />)}
                 </div>
                 
                 <div className="mobile-nav-item">
