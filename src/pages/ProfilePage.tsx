@@ -12,7 +12,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { User, Edit, Save, BookOpen, BookMarked, Presentation, BarChart3, PieChart, CheckCircle2 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import ImageUploader from "@/components/ImageUploader";
-import PitchSimulator from "@/components/PitchSimulator";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -566,9 +565,8 @@ const ProfilePage = () => {
           
           {/* Progress & Content */}
           <div className="lg:col-span-2">            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full profile-tabs">
-              <TabsList className="grid w-full grid-cols-2 mb-6">
+              <TabsList className="grid w-full grid-cols-1 mb-6">
                 <TabsTrigger value="completed">Learning Progress</TabsTrigger>
-                <TabsTrigger value="pitch">Pitch Simulator</TabsTrigger>
               </TabsList>
                 <TabsContent value="completed" ref={contentRef}>
                 {contentLoading || statsLoading ? <div className="text-center py-10">
@@ -677,12 +675,7 @@ const ProfilePage = () => {
                       }
                     </div>
                   </div>
-                )}
-              </TabsContent>
-
-              <TabsContent value="pitch">
-                <PitchSimulator />
-              </TabsContent>
+                )}                </TabsContent>
             </Tabs>
           </div>
         </div>}

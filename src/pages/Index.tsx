@@ -367,10 +367,9 @@ const Index = () => {
               <p className="text-slate-600">
                 Refine your elevator pitch with our interactive simulator and receive instant feedback to improve.
               </p>
-            </CardContent>
-            <CardFooter>
+            </CardContent>            <CardFooter>
               <Button variant="outline" asChild className="w-full">
-                <Link to="/profile">Try Pitch Simulator</Link>
+                <Link to="/pitch-simulator">Try Pitch Simulator</Link>
               </Button>
             </CardFooter>
           </Card>

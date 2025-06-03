@@ -12,6 +12,7 @@ import ProfilePage from "./pages/ProfilePage";
 import Settings from "./pages/Settings";
 import AnalyticsDashboard from "./pages/AnalyticsDashboard";
 import MarketTrends from "./pages/MarketTrends";
+import PitchSimulatorPage from "./pages/PitchSimulatorPage";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Pricing from "./pages/Pricing";
@@ -91,13 +92,22 @@ const App = () => {
                     </ProtectedRoute>
                   </MainLayout>
                 } 
-              />
-              <Route 
+              />              <Route 
                 path="/market-trends" 
                 element={
                   <MainLayout>
                     <ProtectedRoute>
                       <MarketTrends />
+                    </ProtectedRoute>
+                  </MainLayout>
+                } 
+              />
+              <Route 
+                path="/pitch-simulator" 
+                element={
+                  <MainLayout>
+                    <ProtectedRoute>
+                      <PitchSimulatorPage />
                     </ProtectedRoute>
                   </MainLayout>
                 } 

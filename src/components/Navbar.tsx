@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { 
   Menu, X, UserCircle, BarChart, Lock, 
-  ChevronDown, Home, LibrarySquare, LineChart, CreditCard, Info, FileText, TrendingUp
+  ChevronDown, Home, LibrarySquare, LineChart, CreditCard, Info, FileText, TrendingUp, Presentation
 } from "lucide-react";
 import AuthButton from "@/components/AuthButton";
 import { useAuth } from "@/contexts/AuthContext";
@@ -282,12 +282,19 @@ const Navbar = () => {
             <div className="desktop-nav-item">
               {renderNavLink("/", "Home", true, <Home className="h-4 w-4" />)}
             </div>
-            
-            <div className="desktop-nav-item">
+              <div className="desktop-nav-item">
               {!user ? (
                 renderNavLink("/content", "Content", true, <LibrarySquare className="h-4 w-4" />)
               ) : (
                 renderNavLink("/content", "Content", true, <LibrarySquare className="h-4 w-4" />)
+              )}
+            </div>
+            
+            <div className="desktop-nav-item">
+              {!user ? (
+                renderNavLink("/pitch-simulator", "Pitch Simulator", true, <Presentation className="h-4 w-4" />)
+              ) : (
+                renderNavLink("/pitch-simulator", "Pitch Simulator", true, <Presentation className="h-4 w-4" />)
               )}
             </div>
               <div className="desktop-nav-item">
@@ -365,9 +372,12 @@ const Navbar = () => {
                 <div className="mobile-nav-item">
                   {renderNavLink("/", "Home", false, <Home className="h-4 w-4" />)}
                 </div>
+                  <div className="mobile-nav-item">
+                  {renderNavLink("/content", "Content Library", false, <LibrarySquare className="h-4 w-4" />)}
+                </div>
                 
                 <div className="mobile-nav-item">
-                  {renderNavLink("/content", "Content Library", false, <LibrarySquare className="h-4 w-4" />)}
+                  {renderNavLink("/pitch-simulator", "Pitch Simulator", false, <Presentation className="h-4 w-4" />)}
                 </div>
                   <div className="mobile-nav-item">
                   {renderNavLink("/analytics", "Analytics", false, <LineChart className="h-4 w-4" />)}
