@@ -165,7 +165,7 @@ const Index = () => {
       {/* Hero Section */}
       <section 
         ref={heroRef} 
-        className="relative pt-20 pb-20 overflow-hidden bg-gradient-to-b from-blue-950 via-blue-900 to-indigo-900 min-h-[90vh] flex items-center"
+        className="relative pt-10 pb-40 overflow-hidden bg-gradient-to-b from-blue-950 via-blue-900 to-indigo-900 min-h-[90vh] flex items-center"
       >        {/* CSS for floating animation is in index.css */}
         
         {/* Animated background elements */}
