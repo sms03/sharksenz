@@ -134,149 +134,150 @@ const MarketTrends = () => {
       default: return <Clock className="h-4 w-4 text-blue-500" />;
     }
   };
-
   return (
-    <div className="container mx-auto py-6 sm:py-8 px-3 sm:px-4">
-      <div className="mb-6 sm:mb-8">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div>
-            <h1 className="text-2xl sm:text-3xl font-bold mb-2 flex items-center gap-2">
-              <Brain className="h-7 w-7 text-purple-600" />
-              AI Market Intelligence
+    <div className="container mx-auto py-4 sm:py-6 lg:py-8 px-3 sm:px-4 lg:px-6">
+      <div className="mb-4 sm:mb-6 lg:mb-8">
+        <div className="flex flex-col gap-4 sm:gap-0 sm:flex-row justify-between items-start sm:items-center">
+          <div className="min-w-0 flex-1">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 flex items-center gap-2">
+              <Brain className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-purple-600 flex-shrink-0" />
+              <span className="truncate">AI Market Intelligence</span>
             </h1>
-            <p className="text-gray-600 text-sm sm:text-base">
+            <p className="text-gray-600 text-xs sm:text-sm lg:text-base leading-relaxed">
               Real-time market trends and AI-powered insights for startup founders
             </p>
           </div>
-          <div className="flex items-center gap-3">
-            <Badge variant="outline" className="flex items-center gap-1">
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 w-full sm:w-auto justify-end">
+            <Badge variant="outline" className="flex items-center gap-1 text-xs">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              Live Data
+              <span className="hidden sm:inline">Live Data</span>
+              <span className="sm:hidden">Live</span>
             </Badge>
             <Button
               onClick={handleRefresh}
               disabled={isRefreshing}
               size="sm"
               variant="outline"
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 text-xs sm:text-sm"
             >
-              <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-              Refresh
+              <RefreshCw className={`h-3 w-3 sm:h-4 sm:w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+              <span className="hidden sm:inline">Refresh</span>
             </Button>
           </div>
         </div>
         <p className="text-xs text-gray-500 mt-2">
           Last updated: {lastUpdated.toLocaleTimeString()}
-        </p>
-      </div>
+        </p>      </div>
 
-      <Tabs defaultValue="overview" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2">
-          <TabsTrigger value="overview" className="flex items-center gap-2">
-            <Globe className="h-4 w-4" />
-            <span className="hidden sm:inline">Overview</span>
+      <Tabs defaultValue="overview" className="space-y-4 sm:space-y-6">
+        <TabsList className="inline-flex h-auto w-auto p-1 bg-muted rounded-md">
+          <TabsTrigger value="overview" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground">
+            <Globe className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+            <span className="hidden xs:inline">Overview</span>
           </TabsTrigger>
-          <TabsTrigger value="news" className="flex items-center gap-2">
-            <Zap className="h-4 w-4" />
-            <span className="hidden sm:inline">AI News</span>
+          <TabsTrigger value="news" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground">
+            <Zap className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+            <span className="hidden xs:inline">News</span>
           </TabsTrigger>
-          <TabsTrigger value="trends" className="flex items-center gap-2">
-            <TrendingUp className="h-4 w-4" />
-            <span className="hidden sm:inline">Trends</span>
+          <TabsTrigger value="trends" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground">
+            <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+            <span className="hidden xs:inline">Trends</span>
           </TabsTrigger>
-          <TabsTrigger value="insights" className="flex items-center gap-2">
-            <Brain className="h-4 w-4" />
-            <span className="hidden sm:inline">Insights</span>
+          <TabsTrigger value="insights" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground">
+            <Brain className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+            <span className="hidden xs:inline">Insights</span>
           </TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="overview" className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        </TabsList><TabsContent value="overview" className="space-y-4 sm:space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <Card>
-              <CardContent className="p-4">
+              <CardContent className="p-3 sm:p-4">
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">Market Cap</p>
-                    <p className="text-2xl font-bold text-green-600">$2.4T</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs sm:text-sm font-medium text-gray-600 truncate">Market Cap</p>
+                    <p className="text-lg sm:text-2xl font-bold text-green-600">$2.4T</p>
                     <p className="text-xs text-gray-500 flex items-center">
-                      <TrendingUp className="h-3 w-3 mr-1" /> +12.3% this month
+                      <TrendingUp className="h-3 w-3 mr-1 flex-shrink-0" /> 
+                      <span className="truncate">+12.3% this month</span>
                     </p>
                   </div>
-                  <DollarSign className="h-8 w-8 text-green-600" />
+                  <DollarSign className="h-6 w-6 sm:h-8 sm:w-8 text-green-600 flex-shrink-0 ml-2" />
                 </div>
               </CardContent>
             </Card>
 
             <Card>
-              <CardContent className="p-4">
+              <CardContent className="p-3 sm:p-4">
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">New Startups</p>
-                    <p className="text-2xl font-bold text-blue-600">8,247</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs sm:text-sm font-medium text-gray-600 truncate">New Startups</p>
+                    <p className="text-lg sm:text-2xl font-bold text-blue-600">8,247</p>
                     <p className="text-xs text-gray-500 flex items-center">
-                      <TrendingUp className="h-3 w-3 mr-1" /> +5.7% this week
+                      <TrendingUp className="h-3 w-3 mr-1 flex-shrink-0" /> 
+                      <span className="truncate">+5.7% this week</span>
                     </p>
                   </div>
-                  <Target className="h-8 w-8 text-blue-600" />
+                  <Target className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600 flex-shrink-0 ml-2" />
                 </div>
               </CardContent>
             </Card>
 
             <Card>
-              <CardContent className="p-4">
+              <CardContent className="p-3 sm:p-4">
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">Funding Rounds</p>
-                    <p className="text-2xl font-bold text-purple-600">1,034</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs sm:text-sm font-medium text-gray-600 truncate">Funding Rounds</p>
+                    <p className="text-lg sm:text-2xl font-bold text-purple-600">1,034</p>
                     <p className="text-xs text-gray-500 flex items-center">
-                      <TrendingDown className="h-3 w-3 mr-1" /> -2.1% this week
+                      <TrendingDown className="h-3 w-3 mr-1 flex-shrink-0" /> 
+                      <span className="truncate">-2.1% this week</span>
                     </p>
                   </div>
-                  <BarChart3 className="h-8 w-8 text-purple-600" />
+                  <BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-purple-600 flex-shrink-0 ml-2" />
                 </div>
               </CardContent>
             </Card>
 
             <Card>
-              <CardContent className="p-4">
+              <CardContent className="p-3 sm:p-4">
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">AI Score</p>
-                    <p className="text-2xl font-bold text-orange-600">87.5</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs sm:text-sm font-medium text-gray-600 truncate">AI Score</p>
+                    <p className="text-lg sm:text-2xl font-bold text-orange-600">87.5</p>
                     <p className="text-xs text-gray-500 flex items-center">
-                      <TrendingUp className="h-3 w-3 mr-1" /> +4.2% confidence
+                      <TrendingUp className="h-3 w-3 mr-1 flex-shrink-0" /> 
+                      <span className="truncate">+4.2% confidence</span>
                     </p>
                   </div>
-                  <Brain className="h-8 w-8 text-orange-600" />
+                  <Brain className="h-6 w-6 sm:h-8 sm:w-8 text-orange-600 flex-shrink-0 ml-2" />
                 </div>
               </CardContent>
             </Card>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <LineChart className="h-5 w-5" />
-                  Market Sentiment Trend
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                  <LineChart className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+                  <span className="truncate">Market Sentiment Trend</span>
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-xs sm:text-sm">
                   30-day sentiment analysis of startup ecosystem
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
+              <CardContent className="p-4 sm:p-6 pt-0">
+                <ResponsiveContainer width="100%" height={250}>
                   <RechartsLineChart data={trendData}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="day" />
-                    <YAxis />
+                    <XAxis dataKey="day" fontSize={12} />
+                    <YAxis fontSize={12} />
                     <Tooltip />
                     <Line 
                       type="monotone" 
                       dataKey="value" 
                       stroke="#3b82f6" 
                       strokeWidth={2}
-                      dot={{ r: 4 }}
+                      dot={{ r: 3 }}
                     />
                   </RechartsLineChart>
                 </ResponsiveContainer>
@@ -284,47 +285,47 @@ const MarketTrends = () => {
             </Card>
 
             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <BarChart3 className="h-5 w-5" />
-                  Market Segments
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                  <BarChart3 className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+                  <span className="truncate">Market Segments</span>
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-xs sm:text-sm">
                   Current market distribution by sector
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
+              <CardContent className="p-4 sm:p-6 pt-0">
+                <ResponsiveContainer width="100%" height={200}>
                   <PieChart>
                     <Pie
                       data={marketSegments}
                       cx="50%"
                       cy="50%"
-                      outerRadius={80}
+                      outerRadius={60}
                       fill="#8884d8"
                       dataKey="value"
-                      label={({ name, value }) => `${name}: ${value}%`}
+                      label={false}
                     >
                       {marketSegments.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
-                    <Tooltip />
+                    <Tooltip formatter={(value) => [`${value}%`, 'Share']} />
                   </PieChart>
                 </ResponsiveContainer>
-                <div className="mt-4 space-y-2">
+                <div className="mt-3 sm:mt-4 space-y-2">
                   {marketSegments.map((segment, index) => (
-                    <div key={index} className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-2">
+                    <div key={index} className="flex items-center justify-between text-xs sm:text-sm">
+                      <div className="flex items-center gap-2 min-w-0 flex-1">
                         <div 
-                          className="w-3 h-3 rounded-full" 
+                          className="w-2 h-2 sm:w-3 sm:h-3 rounded-full flex-shrink-0" 
                           style={{ backgroundColor: segment.color }}
                         />
-                        <span>{segment.name}</span>
+                        <span className="truncate">{segment.name}</span>
                       </div>
-                      <Badge variant="outline" className={
+                      <Badge variant="outline" className={`ml-2 text-xs ${
                         segment.growth.startsWith('+') ? 'text-green-600' : 'text-red-600'
-                      }>
+                      }`}>
                         {segment.growth}
                       </Badge>
                     </div>
@@ -333,18 +334,16 @@ const MarketTrends = () => {
               </CardContent>
             </Card>
           </div>
-        </TabsContent>
-
-        <TabsContent value="news" className="space-y-6">
-          <div className="flex flex-col sm:flex-row gap-4 mb-6">
+        </TabsContent>        <TabsContent value="news" className="space-y-4 sm:space-y-6">
+          <div className="flex flex-col gap-3 sm:gap-4 mb-4 sm:mb-6">
             <div className="flex-1">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <Input
-                  placeholder="Search AI-powered market news..."
+                  placeholder="Search market news..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 text-sm"
                 />
               </div>
             </div>
@@ -362,70 +361,70 @@ const MarketTrends = () => {
             </Select>
           </div>
 
-          <div className="grid gap-4">
+          <div className="grid gap-3 sm:gap-4">
             {aiNewsData.map((news) => (
               <Card key={news.id} className="hover:shadow-md transition-shadow">
-                <CardHeader className="pb-3">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <CardTitle className="text-lg mb-2">{news.title}</CardTitle>
-                      <CardDescription className="text-sm">
+                <CardHeader className="pb-2 sm:pb-3 p-3 sm:p-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">                    <div className="flex-1 min-w-0">
+                      <CardTitle className="text-sm sm:text-lg mb-1 sm:mb-2 line-clamp-2">{news.title}</CardTitle>
+                      <CardDescription className="text-xs sm:text-sm line-clamp-3">
                         {news.summary}
                       </CardDescription>
                     </div>
-                    <div className="flex flex-col items-end gap-2">
-                      <Badge className={getSentimentColor(news.sentiment)}>
+                    <div className="flex flex-row sm:flex-col items-start sm:items-end gap-2 flex-shrink-0">
+                      <Badge className={`text-xs ${getSentimentColor(news.sentiment)}`}>
                         {news.sentiment}
                       </Badge>
                       <div className="flex items-center gap-1">
                         {getImpactIcon(news.impact)}
-                        <span className="text-xs text-gray-500">{news.impact} impact</span>
+                        <span className="text-xs text-gray-500 whitespace-nowrap">{news.impact} impact</span>
                       </div>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="pt-0">
-                  <div className="flex items-center justify-between text-sm text-gray-500">
-                    <div className="flex items-center gap-4">
-                      <span>Source: {news.source}</span>
-                      <span>{news.timestamp}</span>
+                <CardContent className="pt-0 p-3 sm:p-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs sm:text-sm text-gray-500">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+                      <span className="truncate">Source: {news.source}</span>
+                      <span className="whitespace-nowrap">{news.timestamp}</span>
                     </div>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 flex-shrink-0">
                       <Star className="h-3 w-3 text-yellow-500" />
-                      <span>{news.relevance}% relevant</span>
+                      <span className="whitespace-nowrap">{news.relevance}% relevant</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
-        </TabsContent>
-
-        <TabsContent value="trends" className="space-y-6">
+        </TabsContent>        <TabsContent value="trends" className="space-y-4 sm:space-y-6">
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5" />
-                Trending Topics
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+                <span className="truncate">Trending Topics</span>
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-xs sm:text-sm">
                 Real-time analysis of trending topics in the startup ecosystem
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="grid gap-4">
+            <CardContent className="p-4 sm:p-6 pt-0">
+              <div className="grid gap-3 sm:gap-4">
                 {trendingTopics.map((topic, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 rounded-lg border bg-gray-50/50">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-sm font-medium text-blue-600">
+                  <div key={index} className="flex items-center justify-between p-3 sm:p-4 rounded-lg border bg-gray-50/50">
+                    <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-blue-100 flex items-center justify-center text-xs sm:text-sm font-medium text-blue-600 flex-shrink-0">
                         {index + 1}
                       </div>
-                      <div>
-                        <p className="font-medium">{topic.topic}</p>
-                        <p className="text-sm text-gray-500">{topic.mentions.toLocaleString()} mentions</p>
+                      <div className="min-w-0 flex-1">
+                        <p className="font-medium text-sm sm:text-base truncate">{topic.topic}</p>
+                        <p className="text-xs sm:text-sm text-gray-500">{topic.mentions.toLocaleString()} mentions</p>
                       </div>
                     </div>
-                    <Badge variant={topic.change.startsWith('+') ? 'default' : 'destructive'}>
+                    <Badge 
+                      variant={topic.change.startsWith('+') ? 'default' : 'destructive'}
+                      className="ml-2 text-xs flex-shrink-0"
+                    >
                       {topic.change}
                     </Badge>
                   </div>
@@ -433,48 +432,46 @@ const MarketTrends = () => {
               </div>
             </CardContent>
           </Card>
-        </TabsContent>
-
-        <TabsContent value="insights" className="space-y-6">
-          <div className="grid gap-6">
+        </TabsContent>        <TabsContent value="insights" className="space-y-4 sm:space-y-6">
+          <div className="grid gap-4 sm:gap-6">
             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Brain className="h-5 w-5 text-purple-600" />
-                  AI-Generated Market Insights
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                  <Brain className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600 flex-shrink-0" />
+                  <span className="truncate">AI-Generated Market Insights</span>
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-xs sm:text-sm">
                   Personalized recommendations based on current market trends
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="p-4 rounded-lg bg-green-50 border border-green-200">
-                  <h4 className="font-medium text-green-800 mb-2">🚀 Opportunity Alert</h4>
-                  <p className="text-sm text-green-700">
+              <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0">
+                <div className="p-3 sm:p-4 rounded-lg bg-green-50 border border-green-200">
+                  <h4 className="font-medium text-green-800 mb-2 text-sm sm:text-base">🚀 Opportunity Alert</h4>
+                  <p className="text-xs sm:text-sm text-green-700 leading-relaxed">
                     AI/ML startups are experiencing unprecedented growth. Consider pivoting towards AI-enhanced solutions 
                     or exploring partnerships with AI companies to stay competitive.
                   </p>
                 </div>
                 
-                <div className="p-4 rounded-lg bg-blue-50 border border-blue-200">
-                  <h4 className="font-medium text-blue-800 mb-2">💡 Strategic Insight</h4>
-                  <p className="text-sm text-blue-700">
+                <div className="p-3 sm:p-4 rounded-lg bg-blue-50 border border-blue-200">
+                  <h4 className="font-medium text-blue-800 mb-2 text-sm sm:text-base">💡 Strategic Insight</h4>
+                  <p className="text-xs sm:text-sm text-blue-700 leading-relaxed">
                     Sustainable tech funding has increased 45% this quarter. Environmental sustainability 
                     could be a key differentiator for your startup in 2025.
                   </p>
                 </div>
                 
-                <div className="p-4 rounded-lg bg-yellow-50 border border-yellow-200">
-                  <h4 className="font-medium text-yellow-800 mb-2">⚠️ Market Warning</h4>
-                  <p className="text-sm text-yellow-700">
+                <div className="p-3 sm:p-4 rounded-lg bg-yellow-50 border border-yellow-200">
+                  <h4 className="font-medium text-yellow-800 mb-2 text-sm sm:text-base">⚠️ Market Warning</h4>
+                  <p className="text-xs sm:text-sm text-yellow-700 leading-relaxed">
                     Remote work tools market is showing signs of saturation. If your startup operates in this space, 
                     consider diversifying or finding new market segments.
                   </p>
                 </div>
                 
-                <div className="p-4 rounded-lg bg-purple-50 border border-purple-200">
-                  <h4 className="font-medium text-purple-800 mb-2">🎯 Recommendation</h4>
-                  <p className="text-sm text-purple-700">
+                <div className="p-3 sm:p-4 rounded-lg bg-purple-50 border border-purple-200">
+                  <h4 className="font-medium text-purple-800 mb-2 text-sm sm:text-base">🎯 Recommendation</h4>
+                  <p className="text-xs sm:text-sm text-purple-700 leading-relaxed">
                     Based on current trends, cybersecurity and healthcare tech present the highest growth potential. 
                     Consider these sectors for your next funding round or product development.
                   </p>
