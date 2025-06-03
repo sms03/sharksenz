@@ -54,7 +54,7 @@ const Navbar = () => {
   };
     // Function to check if a route is protected
   const isProtectedRoute = (path: string): boolean => {
-    return ['/content', '/analytics', '/market-trends', '/profile'].some(route => 
+    return ['/analytics', '/content', '/market-trends', '/profile', '/pitch'].some(route => 
       path.startsWith(route)
     );
   };
