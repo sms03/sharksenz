@@ -208,10 +208,9 @@ const Auth = () => {
           return;
         }
 
-        // Get user email using auth.admin is not the right approach here
-        // Instead, use the special function we created to get the user
+        // Get user email using the special function we created
         const { data: authData, error: authError } = await supabase
-          .rpc('get_user_by_username', { username_input: loginIdentifier });
+          .rpc('get_user_by_username', { username: loginIdentifier });
 
         if (!authData) {
           toast.error("Sign in failed", {
@@ -238,7 +237,9 @@ const Auth = () => {
           email: userData.user.email,
           password
         };
-      }      // Sign in with the determined options
+      }      
+      
+      // Sign in with the determined options
       const { data, error } = await supabase.auth.signInWithPassword(signInOptions);
       
       if (error) {
@@ -256,6 +257,7 @@ const Auth = () => {
       setIsLoading(false);
     }
   };
+
   const handleFinishOnboarding = () => {
     setShowOnboarding(false);
     navigate(returnUrl);

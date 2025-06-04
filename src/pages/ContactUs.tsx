@@ -1,3 +1,4 @@
+
 import { ArrowRight, Building, Mail, MapPin, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -40,6 +41,9 @@ const ContactUs = () => {
     setLoading(true);
 
     try {
+      // Get current user session
+      const { data: { session } } = await supabase.auth.getSession();
+      
       const { error } = await supabase
         .from('contact_submissions')
         .insert({
@@ -47,7 +51,8 @@ const ContactUs = () => {
           email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          inquiry_type: formData.inquiryType
+          inquiry_type: formData.inquiryType,
+          user_id: session?.user?.id || crypto.randomUUID() // Use session user_id or generate a temporary UUID for anonymous users
         });
 
       if (error) {
