@@ -1,6 +1,5 @@
 import { Check, HelpCircle, ArrowRight, AlertCircle } from "lucide-react";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import {
@@ -16,6 +15,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { CashfreePayment } from "@/components/CashfreePayment";
+import { useNavigate } from "react-router-dom";
 
 interface PricingPlan {
   name: string;
@@ -34,6 +35,7 @@ interface PricingPlan {
 const Pricing = () => {
   const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
   const [currency, setCurrency] = useState<"usd" | "eur" | "gbp" | "inr">("usd");
+  const navigate = useNavigate();
 
   const currencySymbols: Record<string, string> = {
     usd: "$",
@@ -42,12 +44,6 @@ const Pricing = () => {
     inr: "₹",
   };
 
-  const exchangeRates: Record<string, number> = {
-    usd: 1,
-    eur: 0.92,
-    gbp: 0.79,
-    inr: 83.27,
-  };
   const plans: PricingPlan[] = [
     {
       name: "Tiger Shark (Free)",
@@ -144,6 +140,14 @@ const Pricing = () => {
     return billing === "monthly" ? "/mo" : "/year";
   };
 
+  const handlePaymentSuccess = (orderId: string) => {
+    navigate(`/payment/success?order_id=${orderId}`);
+  };
+
+  const handlePaymentError = (error: string) => {
+    console.error('Payment error:', error);
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -199,7 +203,8 @@ const Pricing = () => {
 
       {/* Pricing Tables */}
       <section className="py-12">
-        <div className="container mx-auto px-4">          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {plans.map((plan) => (
               <div
                 key={plan.name}
@@ -217,7 +222,8 @@ const Pricing = () => {
 
                 <div className="p-6">
                   <h2 className="text-2xl font-bold mb-2">{plan.name}</h2>
-                  <p className="text-gray-600 mb-6">{plan.description}</p>                  <div className="mb-6">
+                  <p className="text-gray-600 mb-6">{plan.description}</p>
+                  <div className="mb-6">
                     <span className="text-4xl font-bold">
                       {getPrice(plan)}
                     </span>
@@ -231,16 +237,29 @@ const Pricing = () => {
                     )}
                   </div>
 
-                  <Button
-                    className={`w-full ${
-                      plan.recommended
-                        ? "bg-blue-600 hover:bg-blue-700"
-                        : ""
-                    }`}
-                    variant={plan.name === "Starter" ? "outline" : "default"}
-                  >
-                    {plan.buttonText}
-                  </Button>
+                  {plan.name === "Megalodon Shark (Max)" ? (
+                    <CashfreePayment
+                      planName={plan.name}
+                      amount={billing === "monthly" ? plan.priceMonthly[currency] : plan.priceYearly[currency]}
+                      currency={currency}
+                      billingCycle={billing}
+                      onSuccess={handlePaymentSuccess}
+                      onError={handlePaymentError}
+                    >
+                      {plan.buttonText}
+                    </CashfreePayment>
+                  ) : (
+                    <CashfreePayment
+                      planName={plan.name}
+                      amount={billing === "monthly" ? plan.priceMonthly[currency] : plan.priceYearly[currency]}
+                      currency={currency}
+                      billingCycle={billing}
+                      onSuccess={handlePaymentSuccess}
+                      onError={handlePaymentError}
+                    >
+                      {plan.buttonText}
+                    </CashfreePayment>
+                  )}
 
                   <div className="border-t border-gray-200 mt-6 pt-6">
                     <p className="font-medium mb-4">Plan includes:</p>
@@ -290,7 +309,8 @@ const Pricing = () => {
                   </div>
                 </div>
               </div>
-            ))}          </div>
+            ))}
+          </div>
           
           {currency === "inr" && (
             <div className="mt-12 max-w-4xl mx-auto bg-blue-50 border border-blue-100 rounded-lg p-4">
@@ -321,9 +341,16 @@ const Pricing = () => {
               We offer tailored packages for accelerators, incubators, and educational institutions.
               Contact our sales team to discuss your specific needs.
             </p>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+            <CashfreePayment
+              planName="Custom Solution"
+              amount={0}
+              currency={currency}
+              billingCycle={billing}
+              onSuccess={handlePaymentSuccess}
+              onError={handlePaymentError}
+            >
               Contact Sales <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            </CashfreePayment>
           </div>
         </div>
       </section>

@@ -16,6 +16,7 @@ import PitchSimulatorPage from "./pages/PitchSimulatorPage";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Pricing from "./pages/Pricing";
+import PaymentSuccess from "./pages/PaymentSuccess";
 import TermsOfService from "./pages/TermsOfService";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
@@ -36,7 +37,9 @@ const App = () => {
   // Global page transition animation
   useEffect(() => {
     gsap.to("body", { opacity: 1, duration: 0.5, ease: "power1.out" });
-  }, []);  return (
+  }, []);
+
+  return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <TooltipProvider delayDuration={300}>
@@ -64,7 +67,8 @@ const App = () => {
                     </ProtectedRoute>
                   </MainLayout>
                 } 
-              />              <Route 
+              />
+              <Route 
                 path="/profile" 
                 element={
                   <MainLayout>
@@ -83,7 +87,8 @@ const App = () => {
                     </ProtectedRoute>
                   </MainLayout>
                 } 
-              />              <Route 
+              />
+              <Route 
                 path="/analytics" 
                 element={
                   <MainLayout>
@@ -92,7 +97,8 @@ const App = () => {
                     </ProtectedRoute>
                   </MainLayout>
                 } 
-              />              <Route 
+              />
+              <Route 
                 path="/market-trends" 
                 element={
                   <MainLayout>
@@ -115,6 +121,7 @@ const App = () => {
               <Route path="/about" element={<MainLayout><AboutUs /></MainLayout>} />
               <Route path="/contact" element={<MainLayout><ContactUs /></MainLayout>} />
               <Route path="/pricing" element={<MainLayout><Pricing /></MainLayout>} />
+              <Route path="/payment/success" element={<PaymentSuccess />} />
               <Route path="/auth" element={<Auth />} />
               {/* Legal Pages */}
               <Route path="/privacy-policy" element={<MainLayout><PrivacyPolicy /></MainLayout>} />

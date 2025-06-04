@@ -9,6 +9,50 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      cashfree_payments: {
+        Row: {
+          cashfree_order_id: string
+          cashfree_payment_id: string | null
+          created_at: string
+          gateway_response: Json | null
+          id: string
+          order_id: string
+          payment_method: string | null
+          payment_status: string | null
+          updated_at: string
+        }
+        Insert: {
+          cashfree_order_id: string
+          cashfree_payment_id?: string | null
+          created_at?: string
+          gateway_response?: Json | null
+          id?: string
+          order_id: string
+          payment_method?: string | null
+          payment_status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          cashfree_order_id?: string
+          cashfree_payment_id?: string | null
+          created_at?: string
+          gateway_response?: Json | null
+          id?: string
+          order_id?: string
+          payment_method?: string | null
+          payment_status?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cashfree_payments_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       contact_submissions: {
         Row: {
           created_at: string | null
@@ -19,6 +63,7 @@ export type Database = {
           name: string
           status: string | null
           subject: string
+          user_id: string
         }
         Insert: {
           created_at?: string | null
@@ -29,6 +74,7 @@ export type Database = {
           name: string
           status?: string | null
           subject: string
+          user_id: string
         }
         Update: {
           created_at?: string | null
@@ -39,6 +85,7 @@ export type Database = {
           name?: string
           status?: string | null
           subject?: string
+          user_id?: string
         }
         Relationships: []
       }
@@ -69,6 +116,45 @@ export type Database = {
           id?: string
           title?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          amount: number
+          billing_cycle: string
+          cashfree_order_id: string | null
+          created_at: string
+          currency: string
+          id: string
+          plan_name: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          billing_cycle: string
+          cashfree_order_id?: string | null
+          created_at?: string
+          currency?: string
+          id?: string
+          plan_name: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          billing_cycle?: string
+          cashfree_order_id?: string | null
+          created_at?: string
+          currency?: string
+          id?: string
+          plan_name?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
@@ -146,8 +232,8 @@ export type Database = {
     }
     Functions: {
       get_user_by_username: {
-        Args: { username_input: string }
-        Returns: string
+        Args: { username: string }
+        Returns: unknown
       }
     }
     Enums: {

@@ -1,1 +1,8 @@
+
 project_id = "gorlqqzogbmrpjubfwco"
+
+[functions.create-cashfree-order]
+verify_jwt = true
+
+[functions.verify-cashfree-payment]
+verify_jwt = false
