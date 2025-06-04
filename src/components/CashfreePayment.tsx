@@ -55,11 +55,19 @@ export const CashfreePayment = ({
         }
       );
 
+      console.log('Order response:', { orderData, orderError });
+
       if (orderError) {
+        console.error('Order creation error:', orderError);
         throw new Error(orderError.message || 'Failed to create order');
       }
 
+      if (!orderData) {
+        throw new Error('No response from order creation');
+      }
+
       if (!orderData.success) {
+        console.error('Order creation failed:', orderData);
         throw new Error(orderData.error || 'Failed to create order');
       }
 
@@ -73,6 +81,11 @@ export const CashfreePayment = ({
         });
         onSuccess?.(orderData.orderId);
         return;
+      }
+
+      // Validate required data for paid plans
+      if (!orderData.paymentSessionId) {
+        throw new Error('Payment session ID not received from server');
       }
 
       // Load Cashfree SDK and initialize payment
@@ -90,7 +103,19 @@ export const CashfreePayment = ({
 
     } catch (error) {
       console.error('Payment error:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Payment failed';
+      let errorMessage = 'Payment failed';
+      
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (typeof error === 'string') {
+        errorMessage = error;
+      }
+
+      // Check for specific authentication errors
+      if (errorMessage.includes('authentication') || errorMessage.includes('credentials')) {
+        errorMessage = 'Payment service configuration error. Please contact support.';
+      }
+
       toast({
         title: "Payment Error",
         description: errorMessage,
