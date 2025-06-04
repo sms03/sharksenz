@@ -222,7 +222,7 @@ const Pricing = () => {
                   </div>
                 )}
 
-                <div className="p-6">
+                <div className="p-6 text-center">
                   <h2 className="text-2xl font-bold mb-2">{plan.name}</h2>
                   <p className="text-gray-600 mb-6">{plan.description}</p>
                   <div className="mb-6">
