@@ -205,14 +205,13 @@ const Pricing = () => {
 
       {/* Pricing Tables */}
       <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="container mx-auto px-4">          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {plans.map((plan) => (
               <div
                 key={plan.name}
                 className={`border rounded-xl overflow-hidden ${
                   plan.recommended
-                    ? "border-blue-500 shadow-lg shadow-blue-100"
+                    ? "border-blue-500 shadow-lg shadow-blue-100 md:-mt-8 relative z-10"
                     : "border-gray-200"
                 }`}
               >
