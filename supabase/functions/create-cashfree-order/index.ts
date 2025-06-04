@@ -95,7 +95,10 @@ serve(async (req) => {
     }
 
     // Create Cashfree order for paid plans
-    const cashfreeOrderId = `order_${order.id}_${Date.now()}`
+    // Generate a shorter order ID that fits within 50 characters
+    const shortId = order.id.replace(/-/g, '').substring(0, 32) // Remove hyphens and truncate
+    const timestamp = Date.now().toString().substring(-10) // Last 10 digits of timestamp
+    const cashfreeOrderId = `ord_${shortId}_${timestamp}`.substring(0, 50) // Ensure max 50 chars
     
     const cashfreeOrderData = {
       order_id: cashfreeOrderId,
