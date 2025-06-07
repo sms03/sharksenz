@@ -1,8 +1,7 @@
 # 🦈 SharkSenz - The Ultimate Founder Resource Platform
 
 [![Live Preview](https://img.shields.io/badge/Preview-Live%20Site-blue?style=for-the-badge)](https://sharksenz.vercel.app)
-[![Mobile Optimized](https://img.shields.io/badge/Mobile-Optimized-green?style=for-the-badge)]()
-[![Payment Gateway](https://cashfree.com)]()
+[![Payment Gateway](https://img.shields.io/badge/Payment-Integrated-orange?style=for-the-badge)](https://cashfree.com)
 
 ## 🚀 About SharkSenz
 
