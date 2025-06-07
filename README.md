@@ -1,10 +1,12 @@
 # 🦈 SharkSenz - The Ultimate Founder Resource Platform
 
 [![Live Preview](https://img.shields.io/badge/Preview-Live%20Site-blue?style=for-the-badge)](https://sharksenz.vercel.app)
+[![Mobile Optimized](https://img.shields.io/badge/Mobile-Optimized-green?style=for-the-badge)]()
+[![Payment Gateway](https://img.shields.io/badge/Payment-Integrated-orange?style=for-the-badge)]()
 
 ## 🚀 About SharkSenz
 
-SharkSenz is a comprehensive platform designed to help startup founders master essential skills and knowledge needed to build successful ventures. From idea validation to scaling, our platform provides all the resources founders need at any stage of their journey.
+SharkSenz is a comprehensive platform designed to help startup founders master essential skills and knowledge needed to build successful ventures. From idea validation to scaling, our platform provides everything you need to turn your startup dreams into reality.
 
 ## ✨ Features
 
@@ -14,6 +16,22 @@ SharkSenz is a comprehensive platform designed to help startup founders master e
 - 🎯 **Goal Setting** - Define your learning path and track progress
 - 📊 **Analytics Dashboard** - Visualize your learning journey and identify areas for improvement
 - 🛠️ **Founder Resources** - Access tools, templates, and practical resources
+- 💳 **Integrated Payment Gateway** - Secure payment processing for premium features and courses
+- 📱 **Mobile Optimized** - Fully responsive design with mobile-first approach for learning on-the-go
+
+## 🆕 Latest Updates
+
+### Payment Gateway Integration
+- Secure payment processing for premium content
+- Multiple payment methods supported
+- Subscription management for ongoing access
+- Transparent pricing with no hidden fees
+
+### Mobile Optimization
+- Responsive design that works perfectly on all screen sizes
+- Touch-optimized interface for mobile devices
+- Offline-capable for uninterrupted learning
+- Progressive Web App (PWA) capabilities
 
 ## 🔗 Live Preview
 
@@ -32,6 +50,8 @@ This project is built with modern technologies:
 - 🔄 **React Query** - Data fetching and state management
 - 💾 **Supabase** - Backend and authentication services
 - 🎭 **GSAP** - Animation library for smooth transitions
+- 💳 **Payment Gateway** - Secure payment processing integration
+- 📱 **Responsive Design** - Mobile-first responsive framework
 
 ## 🚀 Getting Started
 
@@ -44,7 +64,7 @@ This project is built with modern technologies:
 
 ```sh
 # Clone the repository
-git clone https://github.com/yourusername/sharksenz.git
+git clone https://github.com/sms03/sharksenz.git
 
 # Navigate to the project directory
 cd sharksenz
@@ -58,30 +78,3 @@ bun install
 npm run dev
 # or
 bun dev
-```
-
-The app will be available at `http://localhost:5173`.
-
-## 📝 Project Structure
-
-- `/src` - Main application code
-  - `/components` - Reusable UI components
-  - `/pages` - Page components
-  - `/layouts` - Layout components
-  - `/hooks` - Custom React hooks
-  - `/lib` - Utility functions
-  - `/integrations` - Third-party integrations
-
-## 🔧 Development
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build locally
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🌐 Connect With Us
-
-Join our community of founders helping each other succeed!
