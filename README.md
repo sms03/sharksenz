@@ -11,10 +11,10 @@ SharkSenz is a comprehensive SaaS platform designed to help startup founders mas
 ## ✨ Key Features
 
 ### 📚 **Content & Learning**
-- **Comprehensive Content Library** - Access our A-Z library of founder knowledge
-- **Progress Tracking** - Mark lessons as complete and take personalized notes
-- **User Onboarding** - Guided setup process for new users
-- **Educational Resources** - Curated content for every stage of startup development
+- **Comprehensive Content Library** - Access our A-Z library with 150+ learning modules covering every aspect of startup development
+- **Progress Tracking** - Mark lessons as complete and take personalized notes across all modules
+- **User Onboarding** - Guided setup process for new users with structured learning paths
+- **Educational Resources** - Curated content spanning 12 key categories from ideation to scaling
 
 ### 🎤 **Interactive Tools**
 - **Pitch Simulator** - Practice your startup pitch and get instant feedback with AI-powered analysis
@@ -105,77 +105,7 @@ Visit [https://sharksenz.vercel.app](https://sharksenz.vercel.app) to see the li
 - 📱 **Responsive Design** - Mobile-first approach
 - 🛡️ **ESLint** - Code linting and quality assurance
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (14.x or higher)
-- npm or Bun package manager
-
-### Installation
-
-```sh
-# Clone the repository
-git clone https://github.com/sms03/sharksenz.git
-
-# Navigate to the project directory
-cd sharksenz
-
-# Install dependencies
-npm install
-# or
-bun install
-
-# Start the development server
-npm run dev
-# or
-bun dev
-```
-
-The app will be available at `http://localhost:5173`.
-
-### Environment Variables
-
-Create a `.env.local` file with the following variables:
-
-```env
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-VITE_CASHFREE_APP_ID=your_cashfree_app_id
-```
-
-## 📁 Project Structure
-
-```
-src/
-├── components/          # Reusable UI components
-│   ├── analytics/       # Analytics calculator components
-│   ├── ui/             # Shadcn UI components
-│   └── ...
-├── pages/              # Page components
-│   ├── Pricing.tsx     # Subscription pricing page
-│   ├── AnalyticsDashboard.tsx
-│   └── ...
-├── hooks/              # Custom React hooks
-├── lib/                # Utility functions
-├── contexts/           # React contexts
-└── integrations/       # Third-party service integrations
-
-supabase/
-├── functions/          # Edge functions
-│   ├── create-cashfree-order/
-│   └── verify-cashfree-payment/
-└── migrations/         # Database migrations
-```
-
-## 🔧 Development Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build locally
-- `npm run lint` - Run ESLint for code quality
-
-## 💰 Subscription Plans
+##  Subscription Plans
 
 ### 🦈 Tiger Shark (Free)
 - Limited learning content
