@@ -2,8 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- Additional mobile optimizations -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="theme-color" content="#3B82F6" />
+    <meta name="msapplication-TileColor" content="#3B82F6" />
+
     <link rel="icon" type="image/ico" href="/favi.png" />
+    <link rel="manifest" href="/manifest.json" />
     <title>SharkSenz - Ultimate Founder Resource</title>
     <meta name="description" content="Master the essential skills and knowledge every founder needs to build successful startups. From idea validation to scaling, we've got you covered." />
     <meta name="author" content="SharkSenz" />
@@ -19,28 +27,52 @@
     <meta name="twitter:description" content="Master the essential skills and knowledge every founder needs to build successful startups." />
     <meta name="twitter:image" content="/logo.png" />
 
-    <!-- Custom font import -->
+    <!-- Preload key resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- PWA Icons -->
+    <link rel="apple-touch-icon" href="/logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/logo.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/logo.png">
+    
+    <!-- Optimized font loading with display:swap for better performance -->
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Inline critical CSS for faster initial paint -->
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&display=swap');
-    </style>    
-    <!-- Custom font import -->
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-      
       body {
         font-family: 'Inter', sans-serif;
         opacity: 0; /* Initial opacity for page transition animation */
         background-color: #FFFFFF;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        overscroll-behavior: none;
+        -webkit-overflow-scrolling: touch;
       }
       
       ::selection {
         background-color: rgba(59, 130, 246, 0.2);
       }
+      
+      /* Prevent text size adjustment on iOS */
+      html {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+      
+      /* Prevent zoom on input focus on iOS */
+      @media screen and (max-width: 767px) {
+        select, textarea, input {
+          font-size: 16px !important;
+        }
+      }
     </style>
-    
-    <!-- Preload key resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   </head>
 
   <body>
