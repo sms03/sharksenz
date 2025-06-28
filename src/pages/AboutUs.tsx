@@ -67,13 +67,13 @@ const AboutUs = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               to="/pricing"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium inline-flex items-center transition-colors"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium inline-flex items-center transition-colors"
             >
               View Our Pricing <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
             <Link
               to="/contact"
-              className="bg-white border border-blue-200 hover:border-blue-300 text-blue-700 px-6 py-3 rounded-lg font-medium inline-flex items-center transition-colors"
+              className="bg-white border border-blue-200 hover:border-blue-300 text-blue-700 px-6 py-3 rounded-full font-medium inline-flex items-center transition-colors"
             >
               Contact Us
             </Link>
@@ -334,7 +334,7 @@ const AboutUs = () => {
           </p>
           <Link
             to="/auth"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium inline-flex items-center transition-colors"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium inline-flex items-center transition-colors"
           >
             Sign Up Now <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
