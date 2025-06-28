@@ -163,7 +163,7 @@ const AuthButton = () => {
   return (
     <Button 
       variant="default" 
-      className="font-medium bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105 rounded-xl"
+      className="font-medium bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105"
     >
       <Link to="/auth" className="flex items-center gap-2">
         <User className="h-4 w-4" />
