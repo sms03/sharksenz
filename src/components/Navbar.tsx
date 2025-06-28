@@ -71,7 +71,7 @@ const Navbar = () => {
     const needsProtection = !user && isProtectedRoute(path);
     const isHovered = hoveredItem === path;    const baseClasses = isDesktop
       ? cn(
-          "relative group flex items-center gap-2 px-4 py-2 rounded-lg font-normal transition-all duration-300 transform hover:scale-105 overflow-hidden",
+          "relative group flex items-center gap-2 px-4 py-2 rounded-full font-normal transition-all duration-300 transform hover:scale-105 overflow-hidden",
           isActive 
             ? "text-blue-700 bg-gradient-to-r from-blue-50 via-cyan-50 to-teal-50 shadow-sm border border-blue-200/30" 
             : "text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50/80 hover:via-cyan-50/60 hover:to-blue-50/80",
@@ -83,7 +83,7 @@ const Navbar = () => {
           "hover:shadow-md hover:shadow-blue-200/20"
         )
       : cn(
-          "group flex items-center gap-3 px-4 py-3 mx-2 rounded-lg font-normal transition-all duration-300 transform hover:scale-[1.02] overflow-hidden",
+          "group flex items-center gap-3 px-4 py-3 mx-2 rounded-full font-normal transition-all duration-300 transform hover:scale-[1.02] overflow-hidden",
           isActive 
             ? "text-blue-700 bg-gradient-to-r from-blue-50 via-cyan-50 to-teal-50 shadow-sm border border-blue-200/30" 
             : "text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50/90 hover:via-cyan-50/70 hover:to-blue-50/90",
@@ -328,7 +328,7 @@ const Navbar = () => {
           </nav>          {/* Mobile Menu Button with Ocean Effects */}          
           <button 
             className={cn(
-              "md:hidden flex items-center justify-center p-2 rounded-lg transition-all duration-300 transform active:scale-95 relative overflow-hidden",
+              "md:hidden flex items-center justify-center p-2 rounded-full transition-all duration-300 transform active:scale-95 relative overflow-hidden",
               isMenuOpen 
                 ? "bg-gradient-to-r from-blue-100 via-cyan-50 to-blue-100 text-blue-700 shadow-md" 
                 : "text-gray-600 hover:text-blue-600 hover:bg-gradient-to-r hover:from-blue-50/80 hover:via-cyan-50/60 hover:to-blue-50/80"
