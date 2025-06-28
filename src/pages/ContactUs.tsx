@@ -1,5 +1,6 @@
 import { ArrowRight, Building, Mail, MapPin, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
+import L from 'leaflet';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,10 +10,9 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Icon } from 'leaflet';
+import { Icon, LatLng } from 'leaflet';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
-
 // Fix default marker icons
 const defaultIcon = new Icon({
   iconUrl: markerIcon,
@@ -22,6 +22,9 @@ const defaultIcon = new Icon({
   popupAnchor: [1, -34],
   shadowSize: [41, 41]
 });
+
+// Set default icon for all markers
+L.Marker.prototype.options.icon = defaultIcon;
 
 const ContactUs = () => {
   const { toast } = useToast();
@@ -183,7 +186,7 @@ const ContactUs = () => {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
                   {loading ? (
                     <div className="flex items-center">
@@ -259,16 +262,16 @@ const ContactUs = () => {
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Location</h2>
                 <div className="rounded-lg overflow-hidden">
                   <MapContainer 
-                    center={[37.7749, -122.4194]} 
+                    center={new LatLng(37.7749, -122.4194)} 
                     zoom={13} 
                     scrollWheelZoom={false}
                     style={{ height: '300px', width: '100%' }}
+                    attributionControl={true}
                   >
                     <TileLayer
-                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    <Marker position={[37.7749, -122.4194]} icon={defaultIcon}>
+                    <Marker position={new LatLng(37.7749, -122.4194)} icon={defaultIcon}>
                       <Popup>
                         Startup Shark HQ<br />
                         123 Innovation Drive<br />
