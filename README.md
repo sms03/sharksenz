@@ -97,7 +97,7 @@ SharkSenz is a comprehensive SaaS platform designed to help startup founders mas
 
 ## 🔗 Live Preview
 
-Visit [https://sharksenz.vercel.app](https://sharksenz.vercel.app) to see the live site!
+Visit [https://sharksenz.vercel.app](https://sharksenz.vercel.app) to see the live site and explore all features in action!
 
 ## 🛠️ Tech Stack
 
