@@ -224,7 +224,8 @@ const Navbar = () => {
         scrolled 
           ? "bg-gradient-to-r from-blue-50/95 via-cyan-50/95 to-teal-50/95 backdrop-blur-md border-b border-blue-200/30 shadow-lg py-1" 
           : "bg-gradient-to-r from-blue-50/80 via-white to-cyan-50/80 py-2",
-        hideOnScroll ? "transform -translate-y-full" : "transform translate-y-0",
+        // Always keep navbar visible for better founder workflow
+        "transform translate-y-0",
         isMenuOpen && "bg-gradient-to-r from-blue-50/98 via-white/98 to-cyan-50/98 shadow-xl"
       )}
       onMouseMove={handleMouseMove}
@@ -290,7 +291,7 @@ const Navbar = () => {
               )}
             </div>
             
-            <div className="desktop-nav-item">
+            <div className="desktop-nav-item" data-tour="content">
               {!user ? (
                 renderNavLink("/content", "Content", true, <LibrarySquare className="h-4 w-4" />)
               ) : (
@@ -298,7 +299,7 @@ const Navbar = () => {
               )}
             </div>
             
-            <div className="desktop-nav-item">
+            <div className="desktop-nav-item" data-tour="market-trends">
               {!user ? (
                 renderNavLink("/market-trends", "Trends", true, <TrendingUp className="h-4 w-4" />)
               ) : (
@@ -306,7 +307,7 @@ const Navbar = () => {
               )}
             </div>
             
-            <div className="desktop-nav-item">
+            <div className="desktop-nav-item" data-tour="pitch-simulator">
               {!user ? (
                 renderNavLink("/pitch-simulator", "Pitch Simulator", true, <Presentation className="h-4 w-4" />)
               ) : (
