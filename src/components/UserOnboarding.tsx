@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -23,23 +22,23 @@ export const UserOnboarding = ({ userId, onFinish }: UserOnboardingProps) => {
   
   const onboardingSteps: OnboardingStep[] = [
     {
-      title: "Welcome to Alpha Founder Academy",
-      description: "We're excited to have you here! This quick walkthrough will help you get started with our platform.",
+      title: "Welcome to SharkSenz",
+      description: "We're excited to have you here! This quick walkthrough will help you get started with our founder-friendly workflow.",
       icon: <Book className="w-12 h-12 text-blue-600" />
     },
     {
-      title: "Browse our Content Library",
-      description: "Explore our extensive collection of resources tailored for founders at every stage of their journey.",
-      icon: <Book className="w-12 h-12 text-blue-600" />
+      title: "Analytics-First Approach",
+      description: "We surface LTV:CAC ratio first because it's the #1 metric investors examine. Benchmark: 3:1 minimum, 5:1+ excellent.",
+      icon: <BarChart className="w-12 h-12 text-blue-600" />
     },
     {
-      title: "Complete your Profile",
-      description: "Add more information about yourself to personalize your experience and connect with other founders.",
+      title: "Kill Pitch Paralysis",
+      description: "Our pitch simulator with AI-powered investor objection analysis helps you practice responses to common concerns and build confidence.",
       icon: <User className="w-12 h-12 text-blue-600" />
     },
     {
-      title: "Track your Progress",
-      description: "Use our analytics tools to measure your learning progress and track key metrics important to your growth.",
+      title: "Integrated Workflow",
+      description: "Navigate seamlessly between analytics, market insights, and pitch practice. Use our guided tour anytime for contextual help.",
       icon: <BarChart className="w-12 h-12 text-blue-600" />
     }
   ];
