@@ -1,4 +1,3 @@
-
 import { Check, HelpCircle, ArrowRight, AlertCircle } from "lucide-react";
 import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
