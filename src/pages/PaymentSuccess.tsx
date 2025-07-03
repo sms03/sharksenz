@@ -1,10 +1,10 @@
-
 import { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, XCircle, Clock, ArrowRight } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { ScrollProgressIndicator, ScrollToTopButton } from '@/components/ScrollProgress';
 
 const PaymentSuccess = () => {
   const [searchParams] = useSearchParams();
@@ -144,6 +144,16 @@ const PaymentSuccess = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      {/* Scroll Progress Components - only show if content is scrollable */}
+      <ScrollProgressIndicator 
+        showOnlyWhenScrolling={false}
+        className="z-50"
+      />
+      <ScrollToTopButton 
+        showThreshold={0.2}
+        hideOnPages={[]} // Don't hide on this page
+      />
+      
       <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
         {renderStatusIcon()}
         {renderStatusMessage()}
