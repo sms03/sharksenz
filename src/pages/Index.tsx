@@ -1,21 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BookOpen, GraduationCap, BarChart3, Rocket, Target, Code, ChevronRight, Shield, LineChart, Zap, DollarSign } from "lucide-react";
+import { ArrowRight, BookOpen, GraduationCap, BarChart3, Rocket, Target, Code, ChevronRight, Shield, LineChart, Zap, DollarSign, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { useScrollObserver } from "@/hooks/use-scroll";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
+  const howItWorksRef = useRef<HTMLDivElement>(null);
+  const demoRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const isMobile = useIsMobile();
+  const { scrollY, hasScrolled } = useScrollObserver({ threshold: 100 });
   
   gsap.registerPlugin(ScrollTrigger);
 
-  // Mouse move parallax effect
+  // Mouse move parallax effect - disabled on mobile for performance
   useEffect(() => {
+    if (isMobile) return;
+    
     const handleMouseMove = (e: MouseEvent) => {
       if (!heroRef.current) return;
       
@@ -49,94 +57,205 @@ const Index = () => {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, []);  // GSAP animations
+  }, [isMobile]);  // GSAP animations with mobile optimizations
   useEffect(() => {
     setIsLoaded(true);
-      // Hero animations
+    
+    // Faster animation speeds for better mobile experience
+    const mobileSpeedMultiplier = isMobile ? 0.7 : 1;
+    
+    // Hero animations
     if (heroRef.current) {
       const tl = gsap.timeline();
       
       tl.from(".hero-logo", {
         y: -30,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.6 * mobileSpeedMultiplier,
         ease: "back.out(1.7)"
       });
       tl.from(".hero-glow", {
         opacity: 0,
         scale: 0.8,
-        duration: 1.5,
+        duration: 1.2 * mobileSpeedMultiplier,
         ease: "power3.out"
-      }, "-=0.5");
+      }, "-=0.4");
       tl.from(".hero-badge", {
         y: -20,
         opacity: 0,
-        duration: 0.6,
+        duration: 0.5 * mobileSpeedMultiplier,
         ease: "back.out(1.7)"
-      }, "-=1.2");
+      }, "-=1.0");
       tl.from(".hero-title", {
         y: 40,
         opacity: 0,
-        duration: 0.8,
-        ease: "power3.out"
-      }, "-=0.6");      tl.from(".hero-description", {
-        y: 30,
-        opacity: 0,
-        duration: 0.7,
+        duration: 0.7 * mobileSpeedMultiplier,
         ease: "power3.out"
       }, "-=0.5");
+      tl.from(".hero-description", {
+        y: 30,
+        opacity: 0,
+        duration: 0.6 * mobileSpeedMultiplier,
+        ease: "power3.out"
+      }, "-=0.4");
       tl.from(".hero-buttons", {
         y: 20,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.7 * mobileSpeedMultiplier,
         ease: "power3.out"
-      }, "-=0.4");
+      }, "-=0.3");
       tl.from(".floating-icon", {
         y: 30,
         opacity: 0,
-        stagger: 0.1,
-        duration: 0.4,
+        stagger: 0.08,
+        duration: 0.4 * mobileSpeedMultiplier,
         ease: "back.out(1.7)"
-      }, "-=0.3");
+      }, "-=0.2");
       tl.from(".stat-card", {
         scale: 0.8,
         opacity: 0,
-        stagger: 0.15,
-        duration: 0.6,
+        stagger: 0.1,
+        duration: 0.5 * mobileSpeedMultiplier,
         ease: "back.out(1.4)"
-      }, "-=0.2");
+      }, "-=0.1");
       tl.from(".particle", { 
         opacity: 0,
         scale: 0,
-        stagger: 0.02,
-        duration: 0.4,
+        stagger: 0.01,
+        duration: 0.3 * mobileSpeedMultiplier,
         ease: "back.out"
-      }, "-=0.6");
-    }    // Floating animation for icons
+      }, "-=0.4");
+    }
+
+    // Floating animation for icons - reduced for mobile
     gsap.to(".floating-icon", {
-      y: "random(-8, 8)", 
-      duration: "random(1.5, 3.5)",
+      y: isMobile ? "random(-4, 4)" : "random(-8, 8)", 
+      duration: isMobile ? "random(2, 3)" : "random(1.5, 3.5)",
       ease: "sine.inOut",
       repeat: -1,
       yoyo: true,
       stagger: 0.2
     });
 
-    // Features animations
-    if (featuresRef.current) {
-      gsap.from(".feature-card", {
-        y: 40,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 0.6,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: featuresRef.current,
-          start: "top 75%"
+    // Enhanced scroll-triggered animations
+    gsap.utils.toArray(".scroll-animate").forEach((element: any) => {
+      gsap.fromTo(element, 
+        { 
+          y: 60,
+          opacity: 0,
+          scale: 0.95
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.8 * mobileSpeedMultiplier,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 85%",
+            end: "bottom 15%",
+            toggleActions: "play none none reverse"
+          }
         }
-      });
+      );
+    });
+
+    // How it works section animations
+    if (howItWorksRef.current) {
+      gsap.fromTo(".how-it-works-card", 
+        { 
+          y: 80,
+          opacity: 0,
+          scale: 0.9
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.7 * mobileSpeedMultiplier,
+          ease: "power3.out",
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: howItWorksRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
     }
-  }, []);
+
+    // Features animations with stagger
+    if (featuresRef.current) {
+      gsap.fromTo(".feature-card", 
+        { 
+          y: 50,
+          opacity: 0,
+          scale: 0.95
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.6 * mobileSpeedMultiplier,
+          ease: "power3.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: featuresRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }
+
+    // Demo section animation
+    if (demoRef.current) {
+      gsap.fromTo(".demo-content", 
+        { 
+          y: 60,
+          opacity: 0,
+          scale: 0.9
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.8 * mobileSpeedMultiplier,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: demoRef.current,
+            start: "top 85%",
+            end: "bottom 15%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }
+
+    // Micro-interactions for scroll progress
+    ScrollTrigger.create({
+      trigger: "body",
+      start: "top top",
+      end: "bottom bottom",
+      onUpdate: (self) => {
+        const progress = self.progress;
+        // Animate header elements based on scroll progress
+        gsap.to(".scroll-progress-element", {
+          opacity: progress > 0.1 ? 1 : 0,
+          y: progress > 0.1 ? 0 : -20,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      }
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, [isMobile]);
 
   // Generate random particles for background effect
   const generateParticles = (count: number) => {
@@ -165,7 +284,7 @@ const Index = () => {
       {/* Hero Section */}
       <section 
         ref={heroRef} 
-        className="relative pt-10 pb-40 overflow-hidden bg-gradient-to-b from-blue-950 via-blue-900 to-indigo-900 min-h-[90vh] flex items-center"
+        className={`relative pt-8 sm:pt-10 pb-32 sm:pb-40 overflow-hidden bg-gradient-to-b from-blue-950 via-blue-900 to-indigo-900 min-h-[85vh] sm:min-h-[90vh] flex items-center ${isMobile ? 'touch-pan-y' : ''}`}
       >        {/* CSS for floating animation is in index.css */}
         
         {/* Animated background elements */}
@@ -177,35 +296,35 @@ const Index = () => {
           {/* Random particles */}
           {generateParticles(30)}
           
-          {/* Floating icons */}
-          <div className="absolute top-20 left-[10%] floating-icon">
-            <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl rotate-12 shadow-xl">
-              <Shield className="h-6 w-6 text-blue-200" />
+          {/* Floating icons - Mobile optimized positioning */}
+          <div className="absolute top-16 sm:top-20 left-[8%] sm:left-[10%] floating-icon">
+            <div className="bg-white/10 backdrop-blur-sm p-2 sm:p-3 rounded-xl rotate-12 shadow-xl hover:bg-white/20 transition-all duration-300" style={{animation: 'shark-swim 8s ease-in-out infinite'}}>
+              <Shield className="h-4 w-4 sm:h-6 sm:w-6 text-blue-200" />
             </div>
           </div>
-          <div className="absolute top-40 right-[15%] floating-icon">
-            <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl -rotate-6 shadow-xl">
-              <LineChart className="h-6 w-6 text-blue-200" />
+          <div className="absolute top-32 sm:top-40 right-[12%] sm:right-[15%] floating-icon">
+            <div className="bg-white/10 backdrop-blur-sm p-2 sm:p-3 rounded-xl -rotate-6 shadow-xl hover:bg-white/20 transition-all duration-300" style={{animation: 'shark-swim 6s ease-in-out infinite 0.5s'}}>
+              <LineChart className="h-4 w-4 sm:h-6 sm:w-6 text-blue-200" />
             </div>
           </div>
-          <div className="absolute bottom-32 left-[20%] floating-icon">
-            <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl rotate-6 shadow-xl">
-              <Rocket className="h-6 w-6 text-blue-200" />
+          <div className="absolute bottom-24 sm:bottom-32 left-[15%] sm:left-[20%] floating-icon">
+            <div className="bg-white/10 backdrop-blur-sm p-2 sm:p-3 rounded-xl rotate-6 shadow-xl hover:bg-white/20 transition-all duration-300" style={{animation: 'shark-swim 7s ease-in-out infinite 1s'}}>
+              <Rocket className="h-4 w-4 sm:h-6 sm:w-6 text-blue-200" />
             </div>
           </div>
-          <div className="absolute bottom-40 right-[25%] floating-icon">
-            <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl -rotate-12 shadow-xl">
-              <BookOpen className="h-6 w-6 text-blue-200" />
+          <div className="absolute bottom-32 sm:bottom-40 right-[20%] sm:right-[25%] floating-icon">
+            <div className="bg-white/10 backdrop-blur-sm p-2 sm:p-3 rounded-xl -rotate-12 shadow-xl hover:bg-white/20 transition-all duration-300" style={{animation: 'shark-swim 9s ease-in-out infinite 1.5s'}}>
+              <BookOpen className="h-4 w-4 sm:h-6 sm:w-6 text-blue-200" />
             </div>
           </div>
-          <div className="absolute top-[60%] left-[8%] floating-icon">
-            <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl rotate-6 shadow-xl">
-              <Zap className="h-6 w-6 text-blue-200" />
+          <div className="absolute top-[60%] left-[6%] sm:left-[8%] floating-icon">
+            <div className="bg-white/10 backdrop-blur-sm p-2 sm:p-3 rounded-xl rotate-6 shadow-xl">
+              <Zap className="h-4 w-4 sm:h-6 sm:w-6 text-blue-200" />
             </div>
           </div>
-          <div className="absolute top-[30%] right-[8%] floating-icon">
-            <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl -rotate-12 shadow-xl">
-              <DollarSign className="h-6 w-6 text-blue-200" />
+          <div className="absolute top-[30%] right-[6%] sm:right-[8%] floating-icon">
+            <div className="bg-white/10 backdrop-blur-sm p-2 sm:p-3 rounded-xl -rotate-12 shadow-xl">
+              <DollarSign className="h-4 w-4 sm:h-6 sm:w-6 text-blue-200" />
             </div>
           </div>
           
@@ -213,25 +332,25 @@ const Index = () => {
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNTkuNSA2MEgxLjVWNTkuNUg2MFYuNUg1OS41VjYweiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+')] opacity-20"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Logo */}
-          <div className="flex justify-center mb-8">
-            <div className="hero-logo bg-white/10 backdrop-blur-md p-4 rounded-full shadow-xl inline-block">
-              <img src="/logo_neon.png" alt="SharkSenz" className="h-20 w-20 animate-logo-glow" />
+          <div className="flex justify-center mb-6 sm:mb-8">
+            <div className="hero-logo bg-white/10 backdrop-blur-md p-3 sm:p-4 rounded-full shadow-xl inline-block">
+              <img src="/logo_neon.png" alt="SharkSenz" className="h-16 w-16 sm:h-20 sm:w-20 animate-logo-glow" />
             </div>
           </div>
           
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
-            <div className="hero-badge inline-flex items-center rounded-full border border-blue-400/30 bg-blue-900/50 backdrop-blur-md px-4 py-1.5 mb-6">
+            <div className="hero-badge inline-flex items-center rounded-full border border-blue-400/30 bg-blue-900/50 backdrop-blur-md px-3 sm:px-4 py-1 sm:py-1.5 mb-4 sm:mb-6">
               <div className="w-2 h-2 rounded-full bg-blue-400 mr-2 animate-pulse"></div>
-              <span className="text-sm font-medium bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">The Ultimate Founder Resource</span>
+              <span className="text-xs sm:text-sm font-medium bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">The Ultimate Founder Resource</span>
             </div>
             
-            <h1 className="hero-title text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-white leading-tight">
+            <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white leading-tight px-2">
               Turning <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">Founders</span>
-                <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className="absolute -bottom-1 sm:-bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 5.5C32.3333 1.16667 96.7 -3.5 154.5 5.5C212.3 14.5 277.667 8.33333 299 5.5" stroke="url(#paint0_linear)" strokeWidth="4" strokeLinecap="round"/>
                   <defs>
                     <linearGradient id="paint0_linear" x1="1" y1="5.5" x2="299" y2="5.5" gradientUnits="userSpaceOnUse">
@@ -244,22 +363,20 @@ const Index = () => {
               <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Leaders</span>
             </h1>
 
-            {/*Master essential skills and knowledge to build successful startups. 
-              From idea validation to scaling, we've got you covered.*/}
-            <p className="hero-description text-xl md:text-2xl text-blue-100/90 mb-10 max-w-2xl mx-auto font-light">
+            <p className="hero-description text-lg sm:text-xl md:text-2xl text-blue-100/90 mb-8 sm:mb-10 max-w-2xl mx-auto font-light px-4">
               Launch. Lead. Dominate.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center hero-buttons w-full max-w-md mx-auto sm:max-w-none">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center items-center hero-buttons w-full max-w-sm sm:max-w-md mx-auto lg:max-w-none px-4 sm:px-0">
               <Button 
                 size="lg" 
-                className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-none shadow-xl shadow-blue-500/30 h-12 sm:h-14 px-6 sm:px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/40 w-full sm:w-auto"
+                className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-none shadow-xl shadow-blue-500/30 h-11 sm:h-12 lg:h-14 px-6 sm:px-6 lg:px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/40 w-full sm:w-auto active:scale-95"
                 asChild
               >
-                <Link to="/content" className="flex items-center justify-center text-base sm:text-lg font-semibold">
+                <Link to="/content" className="flex items-center justify-center text-sm sm:text-base lg:text-lg font-semibold">
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                   <span className="relative z-10 flex items-center">
-                    Start Learning <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
+                    Start Learning <ArrowRight className="ml-2 h-4 w-4 sm:h-4 sm:w-4 lg:h-5 lg:w-5 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Link>
               </Button>
@@ -267,31 +384,31 @@ const Index = () => {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="group relative overflow-hidden bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 text-white hover:text-white shadow-xl shadow-black/10 h-12 sm:h-14 px-6 sm:px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:border-white/30 w-full sm:w-auto"
+                className="group relative overflow-hidden bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 text-white hover:text-white shadow-xl shadow-black/10 h-11 sm:h-12 lg:h-14 px-6 sm:px-6 lg:px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:border-white/30 w-full sm:w-auto active:scale-95"
                 asChild
               >
-                <Link to="/analytics" className="flex items-center justify-center text-base sm:text-lg font-semibold">
+                <Link to="/analytics" className="flex items-center justify-center text-sm sm:text-base lg:text-lg font-semibold">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                   <span className="relative z-10 flex items-center">
-                    Dashboard <ChevronRight className="ml-1 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
+                    Dashboard <ChevronRight className="ml-1 h-4 w-4 sm:h-4 sm:w-4 lg:h-5 lg:w-5 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Link>
               </Button>
             </div>
             
-            {/* Stats cards - reformatted for better visual appeal */}
-            <div className="mt-16 flex flex-wrap justify-center gap-6">
-              <div className="stat-card bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-xl px-6 py-4 shadow-xl cursor-pointer">
-                <p className="font-bold text-3xl text-white">50+</p>
-                <p className="text-sm text-blue-200">Learning Modules</p>
+            {/* Stats cards - Mobile optimized */}
+            <div className="mt-12 sm:mt-16 flex flex-wrap justify-center gap-4 sm:gap-6 px-4">
+              <div className="stat-card bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 sm:px-6 py-3 sm:py-4 shadow-xl cursor-pointer transition-transform duration-200 active:scale-95">
+                <p className="font-bold text-2xl sm:text-3xl text-white">50+</p>
+                <p className="text-xs sm:text-sm text-blue-200">Learning Modules</p>
               </div>
-              <div className="stat-card bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-xl px-6 py-4 shadow-xl cursor-pointer">
-                <p className="font-bold text-3xl text-white">1000+</p>
-                <p className="text-sm text-blue-200">Startup Founders</p>
+              <div className="stat-card bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 sm:px-6 py-3 sm:py-4 shadow-xl cursor-pointer transition-transform duration-200 active:scale-95">
+                <p className="font-bold text-2xl sm:text-3xl text-white">1000+</p>
+                <p className="text-xs sm:text-sm text-blue-200">Startup Founders</p>
               </div>
-              <div className="stat-card bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-xl px-6 py-4 shadow-xl cursor-pointer">
-                <p className="font-bold text-3xl text-white">24/7</p>
-                <p className="text-sm text-blue-200">Learning Access</p>
+              <div className="stat-card bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 sm:px-6 py-3 sm:py-4 shadow-xl cursor-pointer transition-transform duration-200 active:scale-95">
+                <p className="font-bold text-2xl sm:text-3xl text-white">24/7</p>
+                <p className="text-xs sm:text-sm text-blue-200">Learning Access</p>
               </div>
             </div>
           </div>
@@ -305,134 +422,256 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section ref={featuresRef} className="container mx-auto px-4 py-20">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">Everything You Need to Succeed</h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Our platform provides all the essential resources for startup founders at any stage
-          </p>
+      {/* How It Works Section */}
+      <section ref={howItWorksRef} className="py-16 sm:py-20 bg-gradient-to-b from-white to-blue-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16 scroll-animate">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">How SharkSenz Works</h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+              A comprehensive platform designed specifically for startup founders at every stage of their journey
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
+            <div className="how-it-works-card bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100 transform hover:-translate-y-1">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mb-4 sm:mb-6">
+                <span className="text-white font-bold text-xl sm:text-2xl">1</span>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Learn & Analyze</h3>
+              <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">
+                Access our comprehensive library of startup knowledge while using powerful analytics tools to understand your business metrics.
+              </p>
+              <div className="space-y-2 text-xs sm:text-sm text-gray-500">
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>50+ Learning modules covering all startup aspects</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>LTV:CAC calculator with industry benchmarks</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>Revenue and burn rate projections</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="how-it-works-card bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100 transform hover:-translate-y-1">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mb-4 sm:mb-6">
+                <span className="text-white font-bold text-xl sm:text-2xl">2</span>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Practice & Refine</h3>
+              <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">
+                Use our AI-powered pitch simulator to practice investor conversations and receive intelligent feedback on your responses.
+              </p>
+              <div className="space-y-2 text-xs sm:text-sm text-gray-500">
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>AI-powered investor objection analysis</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>Industry-specific pitch scenarios</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>Performance tracking over time</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="how-it-works-card bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100 transform hover:-translate-y-1">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mb-4 sm:mb-6">
+                <span className="text-white font-bold text-xl sm:text-2xl">3</span>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Execute & Scale</h3>
+              <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">
+                Apply your learnings with actionable insights, templates, and tools designed to help you execute your startup strategy effectively.
+              </p>
+              <div className="space-y-2 text-xs sm:text-sm text-gray-500">
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>Actionable templates and frameworks</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>Progress tracking across all modules</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>Community access for ongoing support</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div ref={demoRef} className="demo-content bg-gradient-to-r from-blue-900 to-indigo-900 rounded-2xl p-6 sm:p-8 text-center text-white">
+            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">See It In Action</h3>
+            <p className="text-blue-100 mb-4 sm:mb-6 max-w-2xl mx-auto text-sm sm:text-base px-4">
+              Watch how our LTV:CAC calculator works with real startup data. See exactly what you get after signing up.
+            </p>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 sm:p-6 max-w-md mx-auto">
+              <div className="text-left space-y-2 sm:space-y-3 text-xs sm:text-sm">
+                <div className="flex justify-between">
+                  <span className="text-blue-200">Customer LTV:</span>
+                  <span className="font-semibold">$2,400</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-blue-200">Customer CAC:</span>
+                  <span className="font-semibold">$480</span>
+                </div>
+                <div className="border-t border-white/20 pt-2 flex justify-between">
+                  <span className="text-blue-200">LTV:CAC Ratio:</span>
+                  <span className="font-bold text-green-300">5:1 ✓ Excellent</span>
+                </div>
+                <div className="text-xs text-blue-200 mt-2">
+                  💡 Your ratio exceeds the 3:1 minimum benchmark
+                </div>
+              </div>
+            </div>
+            <Button 
+              size="lg" 
+              className="mt-4 sm:mt-6 bg-white text-blue-900 hover:bg-blue-50 transition-all duration-200 active:scale-95"
+              asChild
+            >
+              <Link to="/analytics">Try Live Demo</Link>
+            </Button>
+          </div>
         </div>
+      </section>
+
+      {/* Features Section */}
+      <section ref={featuresRef} className="py-16 sm:py-20 bg-gradient-to-b from-blue-50 to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16 scroll-animate">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4">Everything You Need to Succeed</h2>
+            <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto px-4">
+              Our platform provides all the essential resources for startup founders at any stage
+            </p>
+          </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
-          <Card className="feature-card hover:shadow-md transition-shadow">
-            <CardHeader>
-              <BookOpen className="h-10 w-10 text-blue-600 mb-2" />
-              <CardTitle>Comprehensive Content</CardTitle>
-              <CardDescription>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <Card className="feature-card hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-slate-200">
+            <CardHeader className="pb-4">
+              <BookOpen className="h-8 w-8 sm:h-10 sm:w-10 text-blue-600 mb-2" />
+              <CardTitle className="text-lg sm:text-xl">Comprehensive Content</CardTitle>
+              <CardDescription className="text-sm sm:text-base">
                 Access our A-Z library of founder knowledge
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <p className="text-slate-600">
+            <CardContent className="pb-4">
+              <p className="text-slate-600 text-sm sm:text-base">
                 Explore topics from fundraising to product-market fit, all organized in an easy-to-navigate format.
               </p>
             </CardContent>
             <CardFooter>
-              <Button variant="outline" asChild className="w-full">
+              <Button variant="outline" asChild className="w-full transition-all duration-200 active:scale-95">
                 <Link to="/content">Browse Library</Link>
               </Button>
             </CardFooter>
           </Card>
 
-          <Card className="feature-card hover:shadow-md transition-shadow">
-            <CardHeader>
-              <GraduationCap className="h-10 w-10 text-blue-600 mb-2" />
-              <CardTitle>Track Your Progress</CardTitle>
-              <CardDescription>
+          <Card className="feature-card hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-slate-200">
+            <CardHeader className="pb-4">
+              <GraduationCap className="h-8 w-8 sm:h-10 sm:w-10 text-blue-600 mb-2" />
+              <CardTitle className="text-lg sm:text-xl">Track Your Progress</CardTitle>
+              <CardDescription className="text-sm sm:text-base">
                 Mark lessons as complete and take notes
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <p className="text-slate-600">
+            <CardContent className="pb-4">
+              <p className="text-slate-600 text-sm sm:text-base">
                 Keep track of what you've learned and maintain personal notes alongside each lesson.
               </p>
             </CardContent>
             <CardFooter>
-              <Button variant="outline" asChild className="w-full">
+              <Button variant="outline" asChild className="w-full transition-all duration-200 active:scale-95">
                 <Link to="/dashboard">View Dashboard</Link>
               </Button>
             </CardFooter>
           </Card>
 
-          <Card className="feature-card hover:shadow-md transition-shadow">
-            <CardHeader>
-              <Rocket className="h-10 w-10 text-blue-600 mb-2" />
-              <CardTitle>Pitch Simulator</CardTitle>
-              <CardDescription>
+          <Card className="feature-card hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-slate-200">
+            <CardHeader className="pb-4">
+              <Rocket className="h-8 w-8 sm:h-10 sm:w-10 text-blue-600 mb-2" />
+              <CardTitle className="text-lg sm:text-xl">Pitch Simulator</CardTitle>
+              <CardDescription className="text-sm sm:text-base">
                 Practice your startup pitch and get feedback
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <p className="text-slate-600">
+            <CardContent className="pb-4">
+              <p className="text-slate-600 text-sm sm:text-base">
                 Refine your elevator pitch with our interactive simulator and receive instant feedback to improve.
               </p>
-            </CardContent>            <CardFooter>
-              <Button variant="outline" asChild className="w-full">
+            </CardContent>
+            <CardFooter>
+              <Button variant="outline" asChild className="w-full transition-all duration-200 active:scale-95">
                 <Link to="/pitch-simulator">Try Pitch Simulator</Link>
               </Button>
             </CardFooter>
           </Card>
 
-          <Card className="feature-card hover:shadow-md transition-shadow">
-            <CardHeader>
-              <Target className="h-10 w-10 text-blue-600 mb-2" />
-              <CardTitle>Goal Setting</CardTitle>
-              <CardDescription>
+          <Card className="feature-card hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-slate-200">
+            <CardHeader className="pb-4">
+              <Target className="h-8 w-8 sm:h-10 sm:w-10 text-blue-600 mb-2" />
+              <CardTitle className="text-lg sm:text-xl">Goal Setting</CardTitle>
+              <CardDescription className="text-sm sm:text-base">
                 Define your learning path
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <p className="text-slate-600">
+            <CardContent className="pb-4">
+              <p className="text-slate-600 text-sm sm:text-base">
                 Set clear learning objectives and track your progress towards your startup goals.
               </p>
             </CardContent>
             <CardFooter>
-              <Button variant="outline" asChild className="w-full">
+              <Button variant="outline" asChild className="w-full transition-all duration-200 active:scale-95">
                 <Link to="/dashboard">Set Goals</Link>
               </Button>
             </CardFooter>
           </Card>
 
-          <Card className="feature-card hover:shadow-md transition-shadow">
-            <CardHeader>
-              <BarChart3 className="h-10 w-10 text-blue-600 mb-2" />
-              <CardTitle>Analytics Dashboard</CardTitle>
-              <CardDescription>
+          <Card className="feature-card hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-slate-200">
+            <CardHeader className="pb-4">
+              <BarChart3 className="h-8 w-8 sm:h-10 sm:w-10 text-blue-600 mb-2" />
+              <CardTitle className="text-lg sm:text-xl">Analytics Dashboard</CardTitle>
+              <CardDescription className="text-sm sm:text-base">
                 Visualize your learning journey
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <p className="text-slate-600">
+            <CardContent className="pb-4">
+              <p className="text-slate-600 text-sm sm:text-base">
                 See your progress across different categories and identify areas for further improvement.
               </p>
             </CardContent>
             <CardFooter>
-              <Button variant="outline" asChild className="w-full">
+              <Button variant="outline" asChild className="w-full transition-all duration-200 active:scale-95">
                 <Link to="/dashboard">View Analytics</Link>
               </Button>
             </CardFooter>
           </Card>
 
-          <Card className="feature-card hover:shadow-md transition-shadow">
-            <CardHeader>
-              <Code className="h-10 w-10 text-blue-600 mb-2" />
-              <CardTitle>Founder Resources</CardTitle>
-              <CardDescription>
+          <Card className="feature-card hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-slate-200">
+            <CardHeader className="pb-4">
+              <Code className="h-8 w-8 sm:h-10 sm:w-10 text-blue-600 mb-2" />
+              <CardTitle className="text-lg sm:text-xl">Founder Resources</CardTitle>
+              <CardDescription className="text-sm sm:text-base">
                 Tools and templates for startups
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <p className="text-slate-600">
+            <CardContent className="pb-4">
+              <p className="text-slate-600 text-sm sm:text-base">
                 Access practical tools, templates, and resources to help you implement what you've learned.
               </p>
             </CardContent>
             <CardFooter>
-              <Button variant="outline" asChild className="w-full">
+              <Button variant="outline" asChild className="w-full transition-all duration-200 active:scale-95">
                 <Link to="/resources">Access Resources</Link>
               </Button>
             </CardFooter>
           </Card>
+        </div>
         </div>
       </section>
     </div>
