@@ -603,15 +603,40 @@
   }
 }
 
-/* Shimmer effect for ocean floor */
-@keyframes shimmer {
+/* Shark swimming animation */
+@keyframes shark-swim {
   0%, 100% { 
-    opacity: 0.2;
-    transform: scaleX(1);
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+  }
+  25% { 
+    transform: translateX(15px) translateY(-5px) rotate(2deg);
   }
   50% { 
+    transform: translateX(5px) translateY(5px) rotate(-1deg);
+  }
+  75% { 
+    transform: translateX(-10px) translateY(-2px) rotate(1deg);
+  }
+}
+
+@keyframes shark-fin {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg);
     opacity: 0.6;
-    transform: scaleX(1.5);
+  }
+  50% { 
+    transform: translateY(-8px) rotate(5deg);
+    opacity: 0.8;
+  }
+}
+
+/* Founder-themed gradients */
+@keyframes success-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
   }
 }
 
@@ -685,6 +710,14 @@
 
 .animate-shimmer {
   animation: shimmer 3s ease-in-out infinite;
+}
+
+.animate-shark-swim {
+  animation: shark-swim 6s ease-in-out infinite;
+}
+
+.animate-shark-fin {
+  animation: shark-fin 1s ease-in-out infinite;
 }
 
 @layer base {
@@ -872,5 +905,240 @@
   
   .prose h3 {
     @apply text-xl font-semibold mt-6 mb-3;
+  }
+}
+
+/* Mobile-specific optimizations and scroll animations */
+@media (max-width: 768px) {
+  /* Smooth scrolling for mobile */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Reduce motion for better performance on mobile */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Enhanced touch targets */
+  button, a {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Mobile-optimized floating animations */
+  .floating-icon {
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Reduce parallax effects on mobile for performance */
+  .hero-glow {
+    transform: none !important;
+  }
+}
+
+/* Scroll-triggered animation base styles */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: transform, opacity;
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Enhanced micro-interactions */
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.8;
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Stagger animation utilities */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* Touch feedback animations */
+.touch-feedback {
+  transition: transform 0.1s ease-out;
+}
+
+.touch-feedback:active {
+  transform: scale(0.98);
+}
+
+/* Optimized card hover effects for mobile */
+@media (hover: hover) {
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .how-it-works-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* Fast mobile animations */
+@media (max-width: 768px) {
+  .feature-card,
+  .how-it-works-card,
+  .stat-card {
+    transition-duration: 0.2s;
+  }
+  
+  .hero-buttons button {
+    transition-duration: 0.15s;
+  }
+}
+
+/* Improved loading states */
+.content-loading {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: content-load 0.5s ease-out forwards;
+}
+
+@keyframes content-load {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll progress indicator styles */
+.scroll-progress-element {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease-out;
+}
+
+.scroll-progress-element.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Global scroll progress enhancements */
+.scroll-progress-indicator {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Ensure scroll progress is above other fixed elements */
+.scroll-progress-indicator {
+  z-index: 9999 !important;
+}
+
+/* Scroll to top button enhancements */
+.scroll-to-top-button {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  z-index: 999 !important;
+}
+
+/* Smooth transitions for scroll elements */
+.scroll-progress-indicator,
+.scroll-to-top-button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mobile-specific optimizations for scroll progress */
+@media (max-width: 768px) {
+  .scroll-progress-indicator {
+    height: 2px; /* Slightly thicker on mobile for better visibility */
+  }
+  
+  .scroll-to-top-button {
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+}
+
+/* Dark mode support for scroll progress */
+@media (prefers-color-scheme: dark) {
+  .scroll-progress-indicator {
+    background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .scroll-progress-indicator {
+    background: #000 !important;
+    height: 3px;
+  }
+  
+  .scroll-to-top-button {
+    border: 2px solid #000;
+    background: #fff !important;
+    color: #000 !important;
+  }
+}
+
+/* Reduced motion support for scroll elements */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress-indicator {
+    transition: transform 0.01ms !important;
+  }
+  
+  .scroll-to-top-button {
+    transition: opacity 0.2s ease !important;
+    transform: none !important;
   }
 }
