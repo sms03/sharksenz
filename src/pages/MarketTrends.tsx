@@ -167,27 +167,34 @@ const MarketTrends = () => {
         </div>
         <p className="text-xs text-gray-500 mt-2">
           Last updated: {lastUpdated.toLocaleTimeString()}
-        </p>      </div>
+        </p>
+      </div>
 
       <Tabs defaultValue="overview" className="space-y-4 sm:space-y-6">
-        <TabsList className="inline-flex h-auto w-auto p-1 bg-muted rounded-md">
-          <TabsTrigger value="overview" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground">
-            <Globe className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-            <span className="inline">Market Overview</span>
-          </TabsTrigger>
-          <TabsTrigger value="news" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground">
-            <Zap className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-            <span className="inline">Latest News</span>
-          </TabsTrigger>
-          <TabsTrigger value="trends" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground">
-            <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-            <span className="inline">Hot Topics</span>
-          </TabsTrigger>
-          <TabsTrigger value="insights" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground">
-            <Brain className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-            <span className="inline">AI Insights</span>
-          </TabsTrigger>
-        </TabsList><TabsContent value="overview" className="space-y-4 sm:space-y-6">
+        <div className="flex justify-center w-full">
+          <TabsList className="inline-flex h-auto w-auto p-1 bg-muted rounded-full overflow-x-auto">
+            <TabsTrigger value="overview" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground whitespace-nowrap">
+              <Globe className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+              <span className="hidden sm:inline">Market Overview</span>
+              <span className="sm:hidden">Overview</span>
+            </TabsTrigger>
+            <TabsTrigger value="news" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground whitespace-nowrap">
+              <Zap className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+              <span className="hidden sm:inline">Latest News</span>
+              <span className="sm:hidden">News</span>
+            </TabsTrigger>
+            <TabsTrigger value="trends" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground whitespace-nowrap">
+              <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+              <span className="hidden sm:inline">Hot Topics</span>
+              <span className="sm:hidden">Topics</span>
+            </TabsTrigger>
+            <TabsTrigger value="insights" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground whitespace-nowrap">
+              <Brain className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+              <span className="hidden sm:inline">AI Insights</span>
+              <span className="sm:hidden">Insights</span>
+            </TabsTrigger>
+          </TabsList>
+        </div><TabsContent value="overview" className="space-y-4 sm:space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <Card>
               <CardContent className="p-3 sm:p-4">
