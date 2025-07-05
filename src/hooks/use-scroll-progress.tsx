@@ -1,62 +1,97 @@
-// Simplified and stable scroll progress hook
-import { useState, useEffect } from 'react';
+// Highly accurate scroll progress hook that matches exact scroll position
+import { useState, useEffect, useCallback } from 'react';
 
 export function useScrollProgress() {
   const [progress, setProgress] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   
+  // Precise calculation that matches browser scrollbar exactly
+  const calculateProgress = useCallback(() => {
+    // Get current scroll position - use the most reliable method
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+    
+    // Get document dimensions exactly as browser calculates them
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+    
+    // Maximum scroll position (this is what browser uses for scrollbar)
+    const maxScrollTop = scrollHeight - clientHeight;
+    
+    if (maxScrollTop <= 0) {
+      return 0;
+    }
+    
+    // Calculate exact progress as browser scrollbar position
+    const progressValue = scrollTop / maxScrollTop;
+    
+    // Ensure precise bounds and handle floating point precision
+    return Math.min(Math.max(progressValue, 0), 1);
+  }, []);
+  
   useEffect(() => {
     let scrollTimeout: NodeJS.Timeout;
+    let animationFrame: number | null = null;
     
-    const calculateProgress = () => {
-      // Use both document.body and document.documentElement for better compatibility
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      const documentHeight = Math.max(
-        document.body.scrollHeight,
-        document.body.offsetHeight,
-        document.documentElement.clientHeight,
-        document.documentElement.scrollHeight,
-        document.documentElement.offsetHeight
-      );
-      const windowHeight = window.innerHeight || document.documentElement.clientHeight || 0;
-      const scrollHeight = documentHeight - windowHeight;
-      
-      if (scrollHeight <= 0) {
-        return 0;
-      }
-      
-      const calculated = scrollTop / scrollHeight;
-      return Math.min(Math.max(calculated, 0), 1);
+    const updateProgress = () => {
+      const newProgress = calculateProgress();
+      setProgress(newProgress);
+      animationFrame = null;
     };
     
     const handleScroll = () => {
-      const newProgress = calculateProgress();
-      setProgress(newProgress);
       setIsScrolling(true);
       
+      // Cancel any pending animation frame to prevent multiple updates
+      if (animationFrame !== null) {
+        cancelAnimationFrame(animationFrame);
+      }
+      
+      // Schedule update for next frame - ensures smooth, instant response
+      animationFrame = requestAnimationFrame(updateProgress);
+      
+      // Reset scrolling state
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         setIsScrolling(false);
-      }, 150);
+      }, 100);
     };
     
-    // Initial calculation
+    const handleResize = () => {
+      // Immediate recalculation on resize without RAF delay
+      const newProgress = calculateProgress();
+      setProgress(newProgress);
+    };
+    
+    // Set initial progress
     const initialProgress = calculateProgress();
     setProgress(initialProgress);
     
-    // Add event listeners with passive for better performance
+    // Add optimized event listeners
     window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll, { passive: true });
-    // Also listen for load events to recalculate when content loads
-    window.addEventListener('load', handleScroll, { passive: true });
+    window.addEventListener('resize', handleResize, { passive: true });
+    window.addEventListener('orientationchange', handleResize, { passive: true });
+    
+    // Handle dynamic content changes that affect document height
+    const resizeObserver = new ResizeObserver(() => {
+      handleResize();
+    });
+    
+    if (document.documentElement) {
+      resizeObserver.observe(document.documentElement);
+    }
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-      window.removeEventListener('load', handleScroll);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+      resizeObserver.disconnect();
+      
+      if (animationFrame !== null) {
+        cancelAnimationFrame(animationFrame);
+      }
       clearTimeout(scrollTimeout);
     };
-  }, []);
+  }, [calculateProgress]);
   
   return { progress, isScrolling };
 }

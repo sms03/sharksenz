@@ -32,15 +32,14 @@ export function ScrollProgressIndicator({
   return (
     <div
       className={cn(
-        "fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 z-50 transition-opacity duration-300 shadow-sm",
+        "scroll-progress-indicator fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 z-[9999] shadow-sm",
         showOnlyWhenScrolling && !isScrolling && progress > 0.02 && "opacity-70",
         isMobile && "h-0.5", // Thinner on mobile
         className
       )}
       style={{
-        transform: `scaleX(${Math.max(progress, 0.001)})`, // Minimum visible width
-        transformOrigin: 'left',
-        transition: 'transform 0.1s ease-out'
+        width: `${progress * 100}%`, // Direct calculation - no rounding for instant response
+        willChange: 'width', // Optimize for width changes
       }}
     />
   );
@@ -78,18 +77,22 @@ export function ScrollToTopButton({
     });
   };
   
+  // Calculate visibility based on progress
+  const isVisible = progress > showThreshold;
+  
   return (
     <button
       onClick={scrollToTop}
       className={cn(
-        "fixed bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-40 group",
-        "transform hover:scale-110 active:scale-95 backdrop-blur-sm",
-        isMobile ? "w-12 h-12 bottom-4 right-4" : "w-14 h-14 bottom-6 right-6",
-        "opacity-0 translate-y-4"
+        "scroll-to-top-button fixed bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-full shadow-lg hover:shadow-xl z-[999] group",
+        "transform hover:scale-110 active:scale-95 backdrop-blur-sm transition-all duration-300",
+        isMobile ? "w-12 h-12 bottom-4 right-4" : "w-14 h-14 bottom-6 right-6"
       )}
       style={{
-        opacity: progress > showThreshold ? 1 : 0,
-        transform: `translateY(${progress > showThreshold ? 0 : 16}px) scale(${progress > showThreshold ? 1 : 0.9})`
+        opacity: isVisible ? 1 : 0,
+        transform: `translateY(${isVisible ? 0 : 16}px) scale(${isVisible ? 1 : 0.9})`,
+        pointerEvents: isVisible ? 'auto' : 'none', // Disable interaction when hidden
+        willChange: 'transform, opacity', // Optimize for transforms
       }}
       aria-label="Scroll to top"
     >
