@@ -1073,9 +1073,10 @@
 
 /* Global scroll progress enhancements */
 .scroll-progress-indicator {
-  will-change: transform;
+  will-change: width;
   backface-visibility: hidden;
   transform-style: preserve-3d;
+  contain: layout style paint;
 }
 
 /* Ensure scroll progress is above other fixed elements */
@@ -1088,18 +1089,22 @@
   will-change: transform, opacity;
   backface-visibility: hidden;
   z-index: 999 !important;
+  contain: layout style paint;
 }
 
-/* Smooth transitions for scroll elements */
-.scroll-progress-indicator,
+/* Remove any conflicting transitions for instant scroll response */
+.scroll-progress-indicator {
+  transition: opacity 0.2s ease-out !important;
+}
+
 .scroll-to-top-button {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 /* Mobile-specific optimizations for scroll progress */
 @media (max-width: 768px) {
   .scroll-progress-indicator {
-    height: 2px; /* Slightly thicker on mobile for better visibility */
+    height: 2px !important; /* Slightly thicker on mobile for better visibility */
   }
   
   .scroll-to-top-button {
