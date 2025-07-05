@@ -173,19 +173,19 @@ const MarketTrends = () => {
         <TabsList className="inline-flex h-auto w-auto p-1 bg-muted rounded-md">
           <TabsTrigger value="overview" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground">
             <Globe className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-            <span className="hidden xs:inline">Overview</span>
+            <span className="inline">Market Overview</span>
           </TabsTrigger>
           <TabsTrigger value="news" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground">
             <Zap className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-            <span className="hidden xs:inline">News</span>
+            <span className="inline">Latest News</span>
           </TabsTrigger>
           <TabsTrigger value="trends" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground">
             <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-            <span className="hidden xs:inline">Trends</span>
+            <span className="inline">Hot Topics</span>
           </TabsTrigger>
           <TabsTrigger value="insights" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm py-2 px-2 sm:px-3 data-[state=active]:bg-background data-[state=active]:text-foreground">
             <Brain className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-            <span className="hidden xs:inline">Insights</span>
+            <span className="inline">AI Insights</span>
           </TabsTrigger>
         </TabsList><TabsContent value="overview" className="space-y-4 sm:space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">

@@ -124,116 +124,153 @@ const PitchSimulator = () => {
   };
 
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <CardTitle className="flex items-center">
-          <PresentationIcon className="mr-2 h-5 w-5" />
-          Pitch Simulator
-        </CardTitle>
-        <CardDescription>
-          Practice your startup pitch and get instant feedback
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Textarea
-          placeholder="Enter your elevator pitch here (e.g., 'My company [name] is developing [product/service] to help [target customers] solve [problem] by [solution]...')"
-          value={pitchText}
-          onChange={(e) => setPitchText(e.target.value)}
-          rows={6}
-          className="mb-4"
-          disabled={isSubmitting || !!feedback}
-        />
-        
-        {feedback && (
-          <div className="mt-6 space-y-6">
-            {/* Main Feedback */}
-            <div className="border rounded-lg p-4 bg-gray-50 space-y-4">
-              <div>
-                <h4 className="text-sm font-medium flex items-center text-green-600">
-                  <ThumbsUp className="h-4 w-4 mr-2" />
-                  Strengths
-                </h4>
-                <p className="text-sm mt-1">{feedback.strength}</p>
-              </div>
-              
-              <div>
-                <h4 className="text-sm font-medium flex items-center text-red-600">
-                  <ThumbsDown className="h-4 w-4 mr-2" />
-                  Areas to Improve
-                </h4>
-                <p className="text-sm mt-1">{feedback.weakness}</p>
-              </div>
-              
-              <div>
-                <h4 className="text-sm font-medium">Suggestion</h4>
-                <p className="text-sm mt-1">{feedback.suggestion}</p>
-              </div>
-              
-              <div>
-                <h4 className="text-sm font-medium">Rating</h4>
-                <div className="flex items-center mt-1">
-                  <div className="bg-blue-100 rounded-full h-2 w-full mr-2">
+    <div className="w-full max-w-4xl mx-auto">
+      <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+        <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
+          <div className="flex items-center gap-3">
+            <div className="bg-white/20 p-3 rounded-xl">
+              <PresentationIcon className="h-6 w-6" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold">Pitch Simulator</h2>
+              <p className="text-blue-100 mt-1">Perfect your startup pitch with AI-powered feedback</p>
+            </div>
+          </div>
+        </div>
+        <div className="p-6 space-y-6">
+          <div className="space-y-3">
+            <label className="block text-sm font-medium text-gray-700">
+              Your Startup Pitch
+            </label>
+            <Textarea
+              placeholder="Describe your startup here. Include your product, target market, problem you solve, and unique value proposition..."
+              value={pitchText}
+              onChange={(e) => setPitchText(e.target.value)}
+              rows={5}
+              className="resize-none border-gray-200 focus:border-blue-500 focus:ring-blue-500 rounded-xl"
+              disabled={isSubmitting || !!feedback}
+            />
+            <div className="flex justify-between text-xs text-gray-500">
+              <span>{pitchText.length} characters</span>
+              <span>Minimum 50 characters required</span>
+            </div>
+          </div>
+          
+          {feedback && (
+            <div className="space-y-6">
+              {/* Main Feedback */}
+              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 space-y-5 border">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <h4 className="font-semibold flex items-center text-green-700 mb-2">
+                      <ThumbsUp className="h-4 w-4 mr-2" />
+                      Strengths
+                    </h4>
+                    <p className="text-sm text-green-800">{feedback.strength}</p>
+                  </div>
+                  
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <h4 className="font-semibold flex items-center text-red-700 mb-2">
+                      <ThumbsDown className="h-4 w-4 mr-2" />
+                      Areas to Improve
+                    </h4>
+                    <p className="text-sm text-red-800">{feedback.weakness}</p>
+                  </div>
+                </div>
+                
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <h4 className="font-semibold text-blue-700 mb-2 flex items-center">
+                    <Target className="h-4 w-4 mr-2" />
+                    Recommendation
+                  </h4>
+                  <p className="text-sm text-blue-800">{feedback.suggestion}</p>
+                </div>
+                
+                <div className="bg-white rounded-lg p-4 border">
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="font-semibold text-gray-700">Overall Score</h4>
+                    <span className="text-2xl font-bold text-blue-600">{feedback.rating}/10</span>
+                  </div>
+                  <div className="bg-gray-200 rounded-full h-3">
                     <div 
-                      className="bg-blue-600 h-2 rounded-full" 
+                      className="bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full transition-all duration-1000" 
                       style={{ width: `${feedback.rating * 10}%` }}
                     ></div>
                   </div>
-                  <span className="text-sm font-medium">{feedback.rating}/10</span>
+                </div>
+            </div>
+
+              {/* AI Investor Objections Digest */}
+              <div className="bg-white rounded-xl p-6 border shadow-sm">
+                <h4 className="text-lg font-semibold flex items-center text-orange-800 mb-4">
+                  <Brain className="h-5 w-5 mr-2" />
+                  Potential Investor Objections
+                </h4>
+                <div className="space-y-4">
+                  {feedback.investorObjections.map((objection, index) => (
+                    <div key={index} className="bg-gradient-to-r from-orange-50 to-red-50 rounded-lg p-4 border border-orange-200">
+                      <div className="flex items-start justify-between mb-3">
+                        <h5 className="font-semibold text-orange-900 flex items-center flex-1">
+                          <AlertTriangle className="w-4 h-4 mr-2 flex-shrink-0" />
+                          <span className="text-sm">{objection.objection}</span>
+                        </h5>
+                        <Badge 
+                          variant="outline" 
+                          className="text-xs border-orange-300 text-orange-700 ml-2"
+                        >
+                          {objection.likelihood}
+                        </Badge>
+                      </div>
+                      <div className="bg-white rounded-lg p-3 border-l-4 border-l-green-500">
+                        <p className="text-xs text-gray-700">
+                          <span className="font-semibold text-green-700">💡 Suggested Response:</span><br />
+                          {objection.preparedResponse}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  <p className="text-sm text-blue-700">
+                    <strong>💡 Pro Tip:</strong> Practice these responses until they feel natural. Confident answers to tough questions can make or break your pitch.
+                  </p>
                 </div>
               </div>
             </div>
-
-            {/* AI Investor Objections Digest */}
-            <div className="border rounded-lg p-4 bg-orange-50 border-orange-200">
-              <h4 className="text-sm font-medium flex items-center text-orange-800 mb-3">
-                <Brain className="h-4 w-4 mr-2" />
-                AI Digest: Likely Investor Objections
-              </h4>
-              <div className="space-y-3">
-                {feedback.investorObjections.map((objection, index) => (
-                  <div key={index} className="bg-white rounded-lg p-3 border border-orange-200">
-                    <div className="flex items-start justify-between mb-2">
-                      <h5 className="font-medium text-sm text-orange-900 flex items-center">
-                        <AlertTriangle className="w-3 h-3 mr-1" />
-                        {objection.objection}
-                      </h5>
-                      <Badge 
-                        variant="outline" 
-                        className="text-xs border-orange-300 text-orange-700"
-                      >
-                        {objection.likelihood}
-                      </Badge>
-                    </div>
-                    <div className="text-xs text-gray-600 bg-gray-50 rounded p-2">
-                      <strong>Prepared Response:</strong> {objection.preparedResponse}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-3 text-xs text-orange-600">
-                💡 Practice these responses to overcome common investor objections and build confidence
-              </div>
-            </div>
+          )}
+          
+          <div className="flex justify-center pt-4">
+            {feedback ? (
+              <Button 
+                onClick={handleReset} 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 transform hover:scale-105"
+              >
+                <RotateCw className="mr-2 h-4 w-4" />
+                Analyze New Pitch
+              </Button>
+            ) : (
+              <Button 
+                onClick={handleSubmit} 
+                disabled={pitchText.trim().length < 50 || isSubmitting}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-500 text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 transform hover:scale-105 disabled:transform-none disabled:hover:scale-100"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Analyzing Your Pitch...
+                  </>
+                ) : (
+                  <>
+                    <Brain className="mr-2 h-4 w-4" />
+                    Get AI Feedback Now
+                  </>
+                )}
+              </Button>
+            )}
           </div>
-        )}
-      </CardContent>
-      <CardFooter>
-        {feedback ? (
-          <Button onClick={handleReset} className="w-full">
-            <RotateCw className="mr-2 h-4 w-4" />
-            Try Another Pitch
-          </Button>
-        ) : (
-          <Button 
-            onClick={handleSubmit} 
-            disabled={pitchText.trim().length < 20 || isSubmitting}
-            className="w-full"
-          >
-            {isSubmitting ? "Analyzing..." : "Get Pitch Feedback"}
-          </Button>
-        )}
-      </CardFooter>
-    </Card>
+        </div>
+      </div>
+    </div>
   );
 };
 
