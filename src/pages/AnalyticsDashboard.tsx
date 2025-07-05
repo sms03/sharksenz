@@ -193,7 +193,10 @@ const AnalyticsDashboard = () => {
             </div>
           </div>
         </CardContent>
-      </Card>      <Tabs defaultValue="metrics" value={activeTab} onValueChange={setActiveTab} className="space-y-4">        <div className="overflow-x-auto pb-2 -mx-3 px-3 tab-list-scroll">
+      </Card>
+      
+      <Tabs defaultValue="metrics" value={activeTab} onValueChange={setActiveTab} className="space-y-4">
+        <div className="overflow-x-auto pb-2 -mx-3 px-3 tab-list-scroll">
           <TabsList className="inline-flex sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-2 min-w-max sm:min-w-0 w-full">
             <TabsTrigger value="metrics" className="text-xs sm:text-sm whitespace-nowrap flex-1">
               <Target className="w-3 h-3 mr-1" />Metrics
