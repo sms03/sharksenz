@@ -56,28 +56,38 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
+      {/* Animated underwater effect */}
+      <div className="absolute inset-0 overflow-hidden">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full animate-pulse opacity-10"
+            style={{
+              width: `${Math.random() * 100 + 50}px`,
+              height: `${Math.random() * 100 + 50}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              background: 'radial-gradient(circle, rgba(59, 130, 246, 0.8), transparent)',
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${Math.random() * 4 + 3}s`
+            }}
+          />
+        ))}
+      </div>
+
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">About SharkSenz</h1>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
-            Empowering startup founders with the knowledge and tools they need to build successful ventures
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="/pricing"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium inline-flex items-center transition-colors"
-            >
-              View Our Pricing <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-            <Link
-              to="/contact"
-              className="bg-white border border-blue-200 hover:border-blue-300 text-blue-700 px-6 py-3 rounded-full font-medium inline-flex items-center transition-colors"
-            >
-              Contact Us
-            </Link>
+      <section className="relative py-20 text-center text-white z-10">
+        <div className="container mx-auto px-4">
+          <div className="mb-6 inline-block animate-bounce">
+            <div className="text-8xl">🦈</div>
           </div>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-200 via-white to-blue-200 bg-clip-text text-transparent">
+            About SharkSenz
+          </h1>
+          <p className="text-2xl md:text-3xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
+            Swimming with the sharks of entrepreneurship since 2023
+          </p>
         </div>
       </section>
 
