@@ -1,6 +1,5 @@
 import { ArrowRight, Building, Mail, MapPin, Phone } from "lucide-react";
-import { useState, useEffect } from "react";
-import L from 'leaflet';
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,24 +7,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import { Icon, LatLng } from 'leaflet';
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
-// Fix default marker icons
-const defaultIcon = new Icon({
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
-
-// Set default icon for all markers
-L.Marker.prototype.options.icon = defaultIcon;
-
 const ContactUs = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
@@ -256,29 +237,19 @@ const ContactUs = () => {
               </CardContent>
             </Card>
 
-            {/* Map */}
+            {/* Map Placeholder */}
             <Card className="shadow-xl border-0 bg-white/80 backdrop-blur-sm">
               <CardContent className="p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Location</h2>
-                <div className="rounded-lg overflow-hidden">
-                  <MapContainer 
-                    center={new LatLng(37.7749, -122.4194)} 
-                    zoom={13} 
-                    scrollWheelZoom={false}
-                    style={{ height: '300px', width: '100%' }}
-                    attributionControl={true}
-                  >
-                    <TileLayer
-                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    <Marker position={new LatLng(37.7749, -122.4194)} icon={defaultIcon}>
-                      <Popup>
-                        Startup Shark HQ<br />
-                        123 Innovation Drive<br />
-                        San Francisco, CA 94107
-                      </Popup>
-                    </Marker>
-                  </MapContainer>
+                <div className="rounded-lg overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100 h-[300px] flex items-center justify-center">
+                  <div className="text-center">
+                    <MapPin className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+                    <h3 className="font-semibold text-gray-900 mb-2">Find Us Here</h3>
+                    <p className="text-gray-600">123 Innovation Drive<br />San Francisco, CA 94107</p>
+                    <Button className="mt-4 bg-blue-600 hover:bg-blue-700">
+                      View on Google Maps
+                    </Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>

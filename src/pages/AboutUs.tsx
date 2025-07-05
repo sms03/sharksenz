@@ -86,20 +86,14 @@ const AboutUs = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-8 text-center story-content">Our Story</h2>
-            <div className="space-y-6 text-gray-700">
-              <p className="text-lg story-content">
-                SharkSenz was born from a simple yet powerful observation: too many passionate founders with brilliant ideas were failing not because their concepts weren't viable, but because they lacked the foundational knowledge needed to navigate the complex startup ecosystem.
-              </p>
-              <p className="text-lg story-content">
-                Founded in 2023 by a team of serial entrepreneurs and startup mentors, our mission was clear from day one: democratize access to high-quality startup education and resources that were previously available only to those with privileged networks or expensive MBA programs.
-              </p>
-              <p className="text-lg story-content">
-                What started as a simple content library has evolved into a comprehensive platform that guides founders through every stage of their journey – from idea validation to scaling. Today, we're proud to have helped over 1,000 founders turn their visions into reality.
-              </p>
-              <p className="text-lg story-content">
-                The name "SharkSenz" represents the instinct and intelligence that successful founders develop – the ability to sense opportunities and navigate challenges like sharks in the business ocean.
-              </p>
-            </div>
+          <div className="space-y-4 text-gray-700">
+            <p className="text-lg story-content">
+              SharkSenz democratizes startup education by providing founders with the knowledge and tools previously available only through expensive programs or privileged networks.
+            </p>
+            <p className="text-lg story-content">
+              Founded in 2023, our platform has helped 1,000+ founders turn ideas into successful ventures through practical, actionable resources spanning idea validation to scaling.
+            </p>
+          </div>
           </div>
         </div>
       </section>
