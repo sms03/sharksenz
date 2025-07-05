@@ -153,11 +153,11 @@ const Pricing = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-b from-blue-50 to-white">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
             Simple, Transparent Pricing
           </h1>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-gray-700 mb-8">
             Choose the perfect plan to accelerate your founder journey
           </p>
           

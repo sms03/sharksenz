@@ -59,12 +59,12 @@ const AboutUs = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">About SharkSenz</h1>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-gray-700 mb-8">
             Empowering startup founders with the knowledge and tools they need to build successful ventures
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap gap-4">
             <Link
               to="/pricing"
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium inline-flex items-center transition-colors"
