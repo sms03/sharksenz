@@ -182,7 +182,7 @@ const Footer = () => {
             <p className="text-blue-100/80 mb-6 max-w-2xl mx-auto text-lg">
               Join the depths of entrepreneurial knowledge and never surface empty-handed!
             </p>            <Link 
-              to="/subscribe" 
+              to="/pricing" 
               className="group relative overflow-hidden inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-none shadow-xl shadow-blue-500/30 h-12 sm:h-14 px-6 sm:px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/40"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
