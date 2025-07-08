@@ -7,6 +7,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useScrollObserver } from "@/hooks/use-scroll";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { GettingStartedGuide } from "@/components/GettingStartedGuide";
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -344,27 +345,20 @@ const Index = () => {
             {/* Badge */}
             <div className="hero-badge inline-flex items-center rounded-full border border-blue-400/30 bg-blue-900/50 backdrop-blur-md px-3 sm:px-4 py-1 sm:py-1.5 mb-4 sm:mb-6">
               <div className="w-2 h-2 rounded-full bg-blue-400 mr-2 animate-pulse"></div>
-              <span className="text-xs sm:text-sm font-medium bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">The Ultimate Founder Resource</span>
+              <span className="text-xs sm:text-sm font-medium bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">For Startup Founders & Entrepreneurs</span>
             </div>
             
             <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white leading-tight px-2">
-              Turning <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">Founders</span>
-                <svg className="absolute -bottom-1 sm:-bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 5.5C32.3333 1.16667 96.7 -3.5 154.5 5.5C212.3 14.5 277.667 8.33333 299 5.5" stroke="url(#paint0_linear)" strokeWidth="4" strokeLinecap="round"/>
-                  <defs>
-                    <linearGradient id="paint0_linear" x1="1" y1="5.5" x2="299" y2="5.5" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#60A5FA"/>
-                      <stop offset="1" stopColor="#67E8F9" stopOpacity="0.8"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </span> Into <br />
-              <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Leaders</span>
+              The Complete Platform for
+              <span className="block bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+                First-Time Founders
+              </span>
             </h1>
 
-            <p className="hero-description text-lg sm:text-xl md:text-2xl text-blue-100/90 mb-8 sm:mb-10 max-w-2xl mx-auto font-light px-4">
-              Launch. Lead. Dominate.
+            <p className="hero-description text-lg sm:text-xl md:text-2xl text-blue-100/90 mb-8 sm:mb-10 max-w-3xl mx-auto font-light px-4 leading-relaxed">
+              Learn startup fundamentals, analyze your business metrics, & perfect your pitch. 
+              Everything you need to go from idea to funded startup.
+              Where Founders become Sharks.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center items-center hero-buttons w-full max-w-sm sm:max-w-md mx-auto lg:max-w-none px-4 sm:px-0">
@@ -373,10 +367,10 @@ const Index = () => {
                 className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-none shadow-xl shadow-blue-500/30 h-11 sm:h-12 lg:h-14 px-6 sm:px-6 lg:px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/40 w-full sm:w-auto active:scale-95"
                 asChild
               >
-                <Link to="/content" className="flex items-center justify-center text-sm sm:text-base lg:text-lg font-semibold">
+                <Link to="/pitch" className="flex items-center justify-center text-sm sm:text-base lg:text-lg font-semibold">
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                   <span className="relative z-10 flex items-center">
-                    Start Learning <ArrowRight className="ml-2 h-4 w-4 sm:h-4 sm:w-4 lg:h-5 lg:w-5 transition-transform group-hover:translate-x-1" />
+                    Try Free Pitch Analyzer <ArrowRight className="ml-2 h-4 w-4 sm:h-4 sm:w-4 lg:h-5 lg:w-5 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Link>
               </Button>
@@ -387,10 +381,10 @@ const Index = () => {
                 className="group relative overflow-hidden bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 text-white hover:text-white shadow-xl shadow-black/10 h-11 sm:h-12 lg:h-14 px-6 sm:px-6 lg:px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:border-white/30 w-full sm:w-auto active:scale-95"
                 asChild
               >
-                <Link to="/analytics" className="flex items-center justify-center text-sm sm:text-base lg:text-lg font-semibold">
+                <Link to="/content" className="flex items-center justify-center text-sm sm:text-base lg:text-lg font-semibold">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                   <span className="relative z-10 flex items-center">
-                    Dashboard <ChevronRight className="ml-1 h-4 w-4 sm:h-4 sm:w-4 lg:h-5 lg:w-5 transition-transform group-hover:translate-x-1" />
+                    Explore Learning Hub <ChevronRight className="ml-1 h-4 w-4 sm:h-4 sm:w-4 lg:h-5 lg:w-5 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Link>
               </Button>
@@ -422,13 +416,22 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Getting Started Guide Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <GettingStartedGuide variant="hero" />
+          </div>
+        </div>
+      </section>
+
       {/* How It Works Section */}
       <section ref={howItWorksRef} className="py-16 sm:py-20 bg-gradient-to-b from-white to-blue-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16 scroll-animate">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">How SharkSenz Works</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">Everything You Need to Succeed</h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-              A comprehensive platform designed specifically for startup founders at every stage of their journey
+              From idea to funded startup, we guide first-time founders through every critical step
             </p>
           </div>
           
@@ -437,22 +440,22 @@ const Index = () => {
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mb-4 sm:mb-6">
                 <span className="text-white font-bold text-xl sm:text-2xl">1</span>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Learn & Analyze</h3>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Learn What Actually Matters</h3>
               <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">
-                Access our comprehensive library of startup knowledge while using powerful analytics tools to understand your business metrics.
+                Skip the theory. Get practical guidance on building a profitable business, from validating your idea to calculating the right prices.
               </p>
               <div className="space-y-2 text-xs sm:text-sm text-gray-500">
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>50+ Learning modules covering all startup aspects</span>
+                  <span>How to validate your business idea with real customers</span>
                 </div>
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>LTV:CAC calculator with industry benchmarks</span>
+                  <span>Calculate if your business model actually makes money</span>
                 </div>
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>Revenue and burn rate projections</span>
+                  <span>Set the right prices and forecast revenue growth</span>
                 </div>
               </div>
             </div>
@@ -461,22 +464,22 @@ const Index = () => {
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mb-4 sm:mb-6">
                 <span className="text-white font-bold text-xl sm:text-2xl">2</span>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Practice & Refine</h3>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Perfect Your Pitch</h3>
               <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">
-                Use our AI-powered pitch simulator to practice investor conversations and receive intelligent feedback on your responses.
+                Practice explaining your startup to investors, customers, or partners. Get feedback that helps you sound confident and compelling.
               </p>
               <div className="space-y-2 text-xs sm:text-sm text-gray-500">
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>AI-powered investor objection analysis</span>
+                  <span>Instant feedback on weak spots in your presentation</span>
                 </div>
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>Industry-specific pitch scenarios</span>
+                  <span>Practice answering tough investor questions</span>
                 </div>
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>Performance tracking over time</span>
+                  <span>Track your improvement over time</span>
                 </div>
               </div>
             </div>
@@ -485,44 +488,45 @@ const Index = () => {
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mb-4 sm:mb-6">
                 <span className="text-white font-bold text-xl sm:text-2xl">3</span>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Execute & Scale</h3>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Build With Confidence</h3>
               <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">
-                Apply your learnings with actionable insights, templates, and tools designed to help you execute your startup strategy effectively.
+                Get step-by-step guidance and proven templates that help you make smart decisions and avoid common mistakes that sink startups.
               </p>
               <div className="space-y-2 text-xs sm:text-sm text-gray-500">
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>Actionable templates and frameworks</span>
+                  <span>Ready-to-use templates for legal docs and agreements</span>
                 </div>
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>Progress tracking across all modules</span>
+                  <span>Track your progress with clear milestones</span>
                 </div>
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>Community access for ongoing support</span>
+                  <span>Connect with other founders facing similar challenges</span>
                 </div>
               </div>
             </div>
           </div>
           
           <div ref={demoRef} className="demo-content bg-gradient-to-r from-blue-900 to-indigo-900 rounded-2xl p-6 sm:p-8 text-center text-white">
-            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">See It In Action</h3>
+            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">See How Our Tools Save You Money</h3>
             <p className="text-blue-100 mb-4 sm:mb-6 max-w-2xl mx-auto text-sm sm:text-base px-4">
-              Watch how our LTV:CAC calculator works with real startup data. See exactly what you get after signing up.
+              Our Customer Value Calculator shows if your business model actually makes money. 
+              Here's what a healthy startup looks like:
             </p>
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 sm:p-6 max-w-md mx-auto">
               <div className="text-left space-y-2 sm:space-y-3 text-xs sm:text-sm">
                 <div className="flex justify-between">
-                  <span className="text-blue-200">Customer LTV:</span>
+                  <span className="text-blue-200">Average Customer Value:</span>
                   <span className="font-semibold">$2,400</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-blue-200">Customer CAC:</span>
+                  <span className="text-blue-200">Cost to Get One Customer:</span>
                   <span className="font-semibold">$480</span>
                 </div>
                 <div className="border-t border-white/20 pt-2 flex justify-between">
-                  <span className="text-blue-200">LTV:CAC Ratio:</span>
+                  <span className="text-blue-200">Profit Ratio:</span>
                   <span className="font-bold text-green-300">5:1 ✓ Excellent</span>
                 </div>
                 <div className="text-xs text-blue-200 mt-2">
