@@ -112,9 +112,15 @@ const App = () => {
                 path="/pitch-simulator" 
                 element={
                   <MainLayout>
-                    <ProtectedRoute>
-                      <PitchSimulatorPage />
-                    </ProtectedRoute>
+                    <PitchSimulatorPage />
+                  </MainLayout>
+                } 
+              />
+              <Route 
+                path="/pitch" 
+                element={
+                  <MainLayout>
+                    <PitchSimulatorPage />
                   </MainLayout>
                 } 
               />
