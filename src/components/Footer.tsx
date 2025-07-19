@@ -203,30 +203,38 @@ const Footer = () => {
                 Navigate the treacherous waters of entrepreneurship with our comprehensive toolkit for startup success.
               </p>
               <div className="flex justify-center sm:justify-start space-x-5">
-                <Link 
-                  to="https://github.com/sms03" 
+                <a
+                  href="https://github.com/sms03"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-200/70 hover:text-cyan-300 transition-all duration-300 transform hover:scale-125 hover:rotate-12 p-2 rounded-full hover:bg-blue-800/30"
                 >
                   <Github className="h-6 w-6" />
-                </Link>
-                <Link 
-                  to="https://x.com/smsxshivam" 
+                </a>
+                <a
+                  href="https://x.com/smsxshivam"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-200/70 hover:text-cyan-300 transition-all duration-300 transform hover:scale-125 hover:rotate-12 p-2 rounded-full hover:bg-blue-800/30"
                 >
                   <Twitter className="h-6 w-6" />
-                </Link>
-                <Link 
-                  to="https://www.instagram.com/smsxart/" 
+                </a>
+                <a
+                  href="https://www.instagram.com/smsxart/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-200/70 hover:text-cyan-300 transition-all duration-300 transform hover:scale-125 hover:rotate-12 p-2 rounded-full hover:bg-blue-800/30"
                 >
                   <Instagram className="h-6 w-6" />
-                </Link>
-                <Link 
-                  to="https://linkedin.com/in/sms03/" 
+                </a>
+                <a
+                  href="https://linkedin.com/in/sms03/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-200/70 hover:text-cyan-300 transition-all duration-300 transform hover:scale-125 hover:rotate-12 p-2 rounded-full hover:bg-blue-800/30"
                 >
                   <Linkedin className="h-6 w-6" />
-                </Link>
+                </a>
               </div>
             </div>
 
