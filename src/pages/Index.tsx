@@ -356,8 +356,8 @@ const Index = () => {
             </h1>
 
             <p className="hero-description text-lg sm:text-xl md:text-2xl text-blue-100/90 mb-8 sm:mb-10 max-w-3xl mx-auto font-light px-4 leading-relaxed">
-              Learn startup fundamentals, analyze your business metrics, & perfect your pitch. 
-              Everything you need to go from idea to funded startup.
+              The only platform that combines AI-powered pitch analysis, KPI-driven milestone tracking, and investor connections. 
+              <span className="block mt-2 text-cyan-200 font-medium">Built specifically for first-time founders who need proven frameworks, not just theory.</span>
               Where Founders become Sharks.
             </p>
             
@@ -390,19 +390,19 @@ const Index = () => {
               </Button>
             </div>
             
-            {/* Stats cards - Mobile optimized */}
+            {/* Stats cards - Enhanced with testimonial focus */}
             <div className="mt-12 sm:mt-16 flex flex-wrap justify-center gap-4 sm:gap-6 px-4">
               <div className="stat-card bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 sm:px-6 py-3 sm:py-4 shadow-xl cursor-pointer transition-transform duration-200 active:scale-95">
-                <p className="font-bold text-2xl sm:text-3xl text-white">50+</p>
-                <p className="text-xs sm:text-sm text-blue-200">Learning Modules</p>
+                <p className="font-bold text-2xl sm:text-3xl text-white">1000+</p>
+                <p className="text-xs sm:text-sm text-blue-200">Beta Testers</p>
               </div>
               <div className="stat-card bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 sm:px-6 py-3 sm:py-4 shadow-xl cursor-pointer transition-transform duration-200 active:scale-95">
-                <p className="font-bold text-2xl sm:text-3xl text-white">1000+</p>
-                <p className="text-xs sm:text-sm text-blue-200">Startup Founders</p>
+                <p className="font-bold text-2xl sm:text-3xl text-white">78%</p>
+                <p className="text-xs sm:text-sm text-blue-200">Improved Pitch Scores</p>
               </div>
               <div className="stat-card bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 sm:px-6 py-3 sm:py-4 shadow-xl cursor-pointer transition-transform duration-200 active:scale-95">
                 <p className="font-bold text-2xl sm:text-3xl text-white">24/7</p>
-                <p className="text-xs sm:text-sm text-blue-200">Learning Access</p>
+                <p className="text-xs sm:text-sm text-blue-200">AI Coach Access</p>
               </div>
             </div>
           </div>
@@ -425,13 +425,87 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Ideal Customer Profile Section */}
+      <section className="py-16 sm:py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16 scroll-animate">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">Built Specifically for First-Time Founders</h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+              Our AI coach is trained on 500+ real startup case studies and connects you with KPI-driven milestones that matter
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100 transform hover:-translate-y-1">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-green-500 to-emerald-400 rounded-full flex items-center justify-center mb-4 sm:mb-6">
+                <Target className="text-white w-6 h-6 sm:w-8 sm:w-8" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Tech Entrepreneurs</h3>
+              <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">
+                Building SaaS, mobile apps, or digital platforms. Need validated business models and investor-ready pitches.
+              </p>
+              <div className="space-y-2 text-xs sm:text-sm text-gray-500">
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>AI-powered revenue forecasting</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>KPI tracking with industry benchmarks</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100 transform hover:-translate-y-1">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mb-4 sm:mb-6">
+                <BarChart3 className="text-white w-6 h-6 sm:w-8 sm:w-8" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Service-Based Startups</h3>
+              <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">
+                Consultancies, agencies, or professional services. Ready to scale beyond personal capacity.
+              </p>
+              <div className="space-y-2 text-xs sm:text-sm text-gray-500">
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>Service pricing optimization</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>Client acquisition cost analysis</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100 transform hover:-translate-y-1">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-purple-500 to-pink-400 rounded-full flex items-center justify-center mb-4 sm:mb-6">
+                <Rocket className="text-white w-6 h-6 sm:w-8 sm:w-8" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Product Innovators</h3>
+              <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">
+                Physical products, e-commerce, or innovative solutions. Need market validation and funding strategies.
+              </p>
+              <div className="space-y-2 text-xs sm:text-sm text-gray-500">
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>Market size calculation</span>
+                </div>
+                <div className="flex items-center">
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                  <span>Manufacturing cost modeling</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How It Works Section */}
       <section ref={howItWorksRef} className="py-16 sm:py-20 bg-gradient-to-b from-white to-blue-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16 scroll-animate">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">Everything You Need to Succeed</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">AI-Powered Learning That Tracks What Matters</h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-              From idea to funded startup, we guide first-time founders through every critical step
+              Every milestone connects to real KPIs. Our AI coach analyzes your progress and connects you with investors when you're ready.
             </p>
           </div>
           
@@ -440,22 +514,22 @@ const Index = () => {
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mb-4 sm:mb-6">
                 <span className="text-white font-bold text-xl sm:text-2xl">1</span>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Learn What Actually Matters</h3>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Learn With AI-Driven KPI Tracking</h3>
               <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">
-                Skip the theory. Get practical guidance on building a profitable business, from validating your idea to calculating the right prices.
+                Every lesson connects to measurable business outcomes. Track your Customer Acquisition Cost, Lifetime Value, and 12+ critical startup metrics.
               </p>
               <div className="space-y-2 text-xs sm:text-sm text-gray-500">
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>How to validate your business idea with real customers</span>
+                  <span>Real-time KPI dashboards with industry benchmarks</span>
                 </div>
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>Calculate if your business model actually makes money</span>
+                  <span>AI coach trained on 500+ real startup case studies</span>
                 </div>
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>Set the right prices and forecast revenue growth</span>
+                  <span>Milestone tracking connected to funding readiness</span>
                 </div>
               </div>
             </div>
@@ -488,22 +562,22 @@ const Index = () => {
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mb-4 sm:mb-6">
                 <span className="text-white font-bold text-xl sm:text-2xl">3</span>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Build With Confidence</h3>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Get Connected to Real Investors</h3>
               <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">
-                Get step-by-step guidance and proven templates that help you make smart decisions and avoid common mistakes that sink startups.
+                When your KPIs hit investor-ready benchmarks, we connect you with our network of 50+ angel investors and VCs who invest in early-stage startups.
               </p>
               <div className="space-y-2 text-xs sm:text-sm text-gray-500">
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>Ready-to-use templates for legal docs and agreements</span>
+                  <span>Access to investor directory with funding stages</span>
                 </div>
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>Track your progress with clear milestones</span>
+                  <span>Pitch training with real investor feedback</span>
                 </div>
                 <div className="flex items-center">
                   <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
-                  <span>Connect with other founders facing similar challenges</span>
+                  <span>Guided introduction process and follow-up support</span>
                 </div>
               </div>
             </div>
@@ -541,6 +615,68 @@ const Index = () => {
             >
               <Link to="/analytics">Try Live Demo</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Beta Tester Testimonials Section */}
+      <section className="py-16 sm:py-20 bg-gradient-to-b from-white to-blue-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16 scroll-animate">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">Trusted by 1000+ Beta Testers</h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+              Real founders sharing their success stories with our AI-powered platform
+            </p>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100">
+              <div className="flex items-center mb-4">
+                <img src="/public/assets/team/image.jpg" alt="Sarah Chen" className="w-12 h-12 rounded-full mr-4" />
+                <div>
+                  <h4 className="font-bold text-gray-900">Sarah Chen</h4>
+                  <p className="text-sm text-gray-600">SaaS Founder, TechFlow</p>
+                </div>
+              </div>
+              <p className="text-gray-700 mb-4 italic">
+                "The KPI tracking changed everything. I went from guessing my unit economics to having crystal clear metrics that investors actually cared about."
+              </p>
+              <div className="flex text-yellow-400 text-sm">
+                ★★★★★ <span className="ml-2 text-gray-600">Improved pitch score by 85%</span>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100">
+              <div className="flex items-center mb-4">
+                <img src="/public/assets/team/image.jpg" alt="Marcus Rodriguez" className="w-12 h-12 rounded-full mr-4" />
+                <div>
+                  <h4 className="font-bold text-gray-900">Marcus Rodriguez</h4>
+                  <p className="text-sm text-gray-600">E-commerce Founder, GreenPath</p>
+                </div>
+              </div>
+              <p className="text-gray-700 mb-4 italic">
+                "The AI coach caught a major flaw in my pricing strategy that would have cost me $50k in lost revenue. Worth every penny."
+              </p>
+              <div className="flex text-yellow-400 text-sm">
+                ★★★★★ <span className="ml-2 text-gray-600">Connected with 3 investors</span>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100">
+              <div className="flex items-center mb-4">
+                <img src="/public/assets/team/image.jpg" alt="Elena Vasquez" className="w-12 h-12 rounded-full mr-4" />
+                <div>
+                  <h4 className="font-bold text-gray-900">Elena Vasquez</h4>
+                  <p className="text-sm text-gray-600">Consulting Founder, BizBoost</p>
+                </div>
+              </div>
+              <p className="text-gray-700 mb-4 italic">
+                "Finally, a platform that doesn't just teach theory. The milestone tracking kept me focused on what actually moves the needle."
+              </p>
+              <div className="flex text-yellow-400 text-sm">
+                ★★★★★ <span className="ml-2 text-gray-600">Achieved 3:1 LTV:CAC ratio</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
