@@ -21,6 +21,8 @@ import TermsOfService from "./pages/TermsOfService";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
 import Disclaimer from "./pages/Disclaimer";
+import Resources from "./pages/Resources";
+import FAQ from "./pages/FAQ";
 import MainLayout from "./layouts/MainLayout";
 import Auth from "./pages/Auth";
 import { useEffect } from "react";
@@ -127,6 +129,8 @@ const App = () => {
               <Route path="/about" element={<MainLayout><AboutUs /></MainLayout>} />
               <Route path="/contact" element={<MainLayout><ContactUs /></MainLayout>} />
               <Route path="/pricing" element={<MainLayout><Pricing /></MainLayout>} />
+              <Route path="/resources" element={<MainLayout><Resources /></MainLayout>} />
+              <Route path="/faq" element={<MainLayout><FAQ /></MainLayout>} />
               <Route path="/payment/success" element={<PaymentSuccess />} />
               <Route path="/auth" element={<Auth />} />
               {/* Legal Pages */}
