@@ -109,7 +109,7 @@ const AnalyticsDashboard = () => {
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold mb-2">Startup Analytics Dashboard</h1>
           <p className="text-gray-600 text-sm sm:text-base">
-            Track, analyze, and project your startup's financial health and market position
+            AI-powered KPI tracking with investor readiness benchmarks and milestone tracking
           </p>
         </div>
         <Button 
@@ -122,6 +122,55 @@ const AnalyticsDashboard = () => {
           <span>Take Tour</span>
         </Button>
       </div>
+
+      {/* AI-Powered KPI Tracking */}
+      <Card className="mb-6 bg-gradient-to-r from-blue-900 to-indigo-900 text-white border-0">
+        <CardContent className="p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-2xl font-bold mb-2">AI-Powered KPI Tracking</h2>
+              <p className="text-blue-100">
+                Your metrics connected to investor readiness benchmarks and milestone tracking
+              </p>
+            </div>
+            <div className="text-right">
+              <Badge variant="secondary" className="bg-green-500 text-white">
+                78% Ready for Seed Funding
+              </Badge>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="bg-white/10 rounded-lg p-4 text-center">
+              <Target className="w-8 h-8 mx-auto mb-2 text-green-400" />
+              <p className="text-2xl font-bold">3.2:1</p>
+              <p className="text-sm text-blue-200">LTV:CAC Ratio</p>
+              <p className="text-xs text-green-400">✓ Above 3:1 benchmark</p>
+            </div>
+            <div className="bg-white/10 rounded-lg p-4 text-center">
+              <TrendingUp className="w-8 h-8 mx-auto mb-2 text-cyan-400" />
+              <p className="text-2xl font-bold">23%</p>
+              <p className="text-sm text-blue-200">Monthly Growth</p>
+              <p className="text-xs text-cyan-400">⚡ Strong growth rate</p>
+            </div>
+            <div className="bg-white/10 rounded-lg p-4 text-center">
+              <Calendar className="w-8 h-8 mx-auto mb-2 text-yellow-400" />
+              <p className="text-2xl font-bold">14 mo</p>
+              <p className="text-sm text-blue-200">Runway</p>
+              <p className="text-xs text-yellow-400">⚠ Consider extending</p>
+            </div>
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-white/20">
+            <p className="text-sm text-blue-200 mb-2">
+              🎯 <strong>Next Milestone:</strong> Achieve 18-month runway for Series A readiness
+            </p>
+            <p className="text-xs text-blue-300">
+              💡 AI Recommendation: Focus on improving gross margins to extend runway and attract growth investors
+            </p>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Investor Objections AI Digest */}
       <Card className="mb-6 border-orange-200 bg-orange-50/50">
