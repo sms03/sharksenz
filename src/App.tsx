@@ -15,6 +15,7 @@ import PitchSimulatorPage from "./pages/PitchSimulatorPage";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Pricing from "./pages/Pricing";
+import EnhancedPricing from "./pages/EnhancedPricing";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import TermsOfService from "./pages/TermsOfService";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -127,7 +128,8 @@ const App = () => {
               />
               <Route path="/about" element={<MainLayout><AboutUs /></MainLayout>} />
               <Route path="/contact" element={<MainLayout><ContactUs /></MainLayout>} />
-              <Route path="/pricing" element={<MainLayout><Pricing /></MainLayout>} />
+              <Route path="/pricing" element={<MainLayout><EnhancedPricing /></MainLayout>} />
+              <Route path="/pricing-old" element={<MainLayout><Pricing /></MainLayout>} />
               <Route path="/resources" element={<MainLayout><Resources /></MainLayout>} />
               <Route path="/faq" element={<MainLayout><FAQ /></MainLayout>} />
               <Route path="/payment/success" element={<PaymentSuccess />} />
