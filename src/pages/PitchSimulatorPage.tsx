@@ -1,8 +1,45 @@
-import React from 'react';
-import PitchSimulator from '../components/PitchSimulator';
+import React, { useState } from 'react';
 import { Presentation, Target, TrendingUp, CheckCircle } from 'lucide-react';
+import { AIRoleCustomizer, AIRole } from '../components/AIRoleCustomizer';
+import { StartupJourneyStepper } from '../components/StartupJourneyStepper';
+import { GuidedPitchInput } from '../components/GuidedPitchInput';
+import { PreviewAnalysis } from '../components/PreviewAnalysis';
+import PitchSimulator from '../components/PitchSimulator';
+import { useNavigate } from 'react-router-dom';
+
+type PageStep = 'role' | 'journey' | 'pitch' | 'preview' | 'analysis';
 
 const PitchSimulatorPage: React.FC = () => {
+  const [currentStep, setCurrentStep] = useState<PageStep>('role');
+  const [aiRole, setAiRole] = useState<AIRole | undefined>();
+  const [currentJourneyStep, setCurrentJourneyStep] = useState('validate');
+  const [pitch, setPitch] = useState('');
+  const navigate = useNavigate();
+
+  const handleRoleSet = (role: AIRole) => {
+    setAiRole(role);
+    setCurrentStep('journey');
+  };
+
+  const handleJourneyStepChange = (stepId: string) => {
+    setCurrentJourneyStep(stepId);
+    setCurrentStep('pitch');
+  };
+
+  const handlePreview = (pitchText: string) => {
+    setPitch(pitchText);
+    setCurrentStep('preview');
+  };
+
+  const handleFullAnalysis = (pitchText: string) => {
+    setPitch(pitchText);
+    setCurrentStep('analysis');
+  };
+
+  const handleUpgrade = () => {
+    navigate('/pricing');
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Clean Hero Section */}
@@ -48,83 +85,143 @@ const PitchSimulatorPage: React.FC = () => {
         </div>
       </section>
 
-      {/* How It Helps Section */}
-      <section className="py-16 bg-white">
+      {/* Main Content Area */}
+      <section className="py-12 bg-gradient-to-b from-white to-slate-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-                Why First-Time Founders Love This Tool
-              </h2>
-              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                Skip the guesswork. Get the same quality feedback that investors provide, 
-                but before you're in the room.
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Target className="h-8 w-8 text-blue-600" />
+          <div className="max-w-5xl mx-auto">
+            {/* Step Content */}
+            {currentStep === 'role' && (
+              <div className="space-y-8">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl font-bold text-slate-900 mb-4">Step 1: Customize Your AI Advisor</h2>
+                  <p className="text-lg text-slate-600">
+                    Help us tailor the feedback to your specific startup and needs
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">
-                  Spot Missing Elements
-                </h3>
-                <p className="text-slate-600">
-                  Identify gaps in your revenue model, market analysis, or competitive positioning 
-                  before investors do.
-                </p>
+                <AIRoleCustomizer onRoleSet={handleRoleSet} />
               </div>
-              
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="h-8 w-8 text-green-600" />
+            )}
+
+            {currentStep === 'journey' && (
+              <div className="space-y-8">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl font-bold text-slate-900 mb-4">Step 2: Choose Your Focus</h2>
+                  <p className="text-lg text-slate-600">
+                    Select the stage that best matches where you are in your startup journey
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">
-                  Strengthen Your Story
-                </h3>
-                <p className="text-slate-600">
-                  Transform confusing jargon into clear, compelling narratives that 
-                  resonate with any audience.
-                </p>
+                <StartupJourneyStepper 
+                  currentStepId={currentJourneyStep}
+                  onStepChange={handleJourneyStepChange}
+                />
               </div>
-              
-              <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="h-8 w-8 text-purple-600" />
+            )}
+
+            {currentStep === 'pitch' && (
+              <div className="space-y-8">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl font-bold text-slate-900 mb-4">Step 3: Describe Your Startup</h2>
+                  <p className="text-lg text-slate-600">
+                    The more details you provide, the better and more personalized your feedback will be
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">
-                  Build Confidence
-                </h3>
-                <p className="text-slate-600">
-                  Practice and refine until you feel ready to present to investors, 
-                  customers, or partners with confidence.
-                </p>
+                <GuidedPitchInput 
+                  onSubmit={handleFullAnalysis}
+                  onPreview={handlePreview}
+                  aiRole={aiRole}
+                />
               </div>
-            </div>
+            )}
+
+            {currentStep === 'preview' && (
+              <div className="space-y-8">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl font-bold text-slate-900 mb-4">Your Free Analysis Preview</h2>
+                  <p className="text-lg text-slate-600">
+                    Here's a sample of what our full AI analysis provides
+                  </p>
+                </div>
+                <PreviewAnalysis 
+                  pitch={pitch}
+                  onUpgrade={handleUpgrade}
+                />
+              </div>
+            )}
+
+            {currentStep === 'analysis' && (
+              <div className="space-y-8">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl font-bold text-slate-900 mb-4">Your Complete AI Analysis</h2>
+                  <p className="text-lg text-slate-600">
+                    Detailed feedback and actionable recommendations for your startup
+                  </p>
+                </div>
+                <PitchSimulator />
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* Main Simulator Section */}
-      <section className="py-16 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                Try It Now - It's Free
-              </h2>
-              <p className="text-lg text-slate-600">
-                Paste your pitch below and get detailed feedback in seconds
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
-              <PitchSimulator />
+      {/* How It Helps Section - Only show on role step */}
+      {currentStep === 'role' && (
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+                  Why First-Time Founders Love This Tool
+                </h2>
+                <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                  Skip the guesswork. Get the same quality feedback that investors provide, 
+                  but before you're in the room.
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-3 gap-8 mb-16">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Target className="h-8 w-8 text-blue-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-3">
+                    Spot Missing Elements
+                  </h3>
+                  <p className="text-slate-600">
+                    Identify gaps in your revenue model, market analysis, or competitive positioning 
+                    before investors do.
+                  </p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <TrendingUp className="h-8 w-8 text-green-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-3">
+                    Strengthen Your Story
+                  </h3>
+                  <p className="text-slate-600">
+                    Transform confusing jargon into clear, compelling narratives that 
+                    resonate with any audience.
+                  </p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle className="h-8 w-8 text-purple-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-3">
+                    Build Confidence
+                  </h3>
+                  <p className="text-slate-600">
+                    Practice and refine your pitch until you can deliver it with confidence 
+                    to anyone.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 };
